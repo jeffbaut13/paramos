@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.BoxOrigenText {
+  @apply overflow-hidden rounded-s-3xl relative bg-[#DDDDDD];
+}
+.BoxOrigenImg {
+  @apply overflow-hidden bg-no-repeat bg-cover rounded-e-3xl  bg-[#DDDDDD];
+}

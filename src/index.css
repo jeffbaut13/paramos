@@ -1,19 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.poppins {
-  font-family: "Poppins", sans-serif;
+@font-face {
+  font-family: "Amenti";
+  src: url("/fonts/Amenti-VF.ttf");
+}
+:root {
+  --Amarillo: #b78b67;
+}
+
+.helvetica {
+  font-family: "Helvetica", sans-serif;
+}
+.amenti {
+  font-family: "Amenti", sans-serif;
+}
+.onBoarding h1 {
+  @apply text-white uppercase mb-8 text-center;
+}
+.letterSpacing {
+  @apply tracking-[0.3em];
+}
+.absoluteCenter {
+  @apply fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
+  @apply xl:w-[80%] xs:w-[85%] xl:h-[80%] xl:max-h-[874px] xs:h-[70%];
+}
+.absoluteCenterParrafos {
+  @apply absolute top-1/2 left-1/2 z-50 translate-x-[-50%] translate-y-[-50%];
+}
+.absoluteImg {
+  @apply absolute left-0 top-0;
+}
+.borderWhite {
+  @apply rounded-3xl;
 }
 html {
   @apply w-screen h-screen;
 }
-
+.maxW {
+  @apply max-w-[1550px];
+}
+.parrafoOnboarding {
+  @apply text-center m-auto letterSpacing uppercase font-bold text-[#ffffff] leading-normal;
+  @apply 2xl:text-4xl xl:text-2xl sm:text-sm xs:text-xs lg:w-4/5 xs:w-4/6;
+}
 body {
-  @apply m-0 p-0 poppins box-content;
-  @apply w-full h-full overflow-hidden;
+  @apply m-0 p-0 amenti box-content;
+  @apply w-full h-full overflow-x-hidden;
 }
 #root {
   @apply w-full h-full;
@@ -28,8 +62,9 @@ body {
 .flex-row-btwen {
   @apply flex items-center justify-between;
 }
+img,
 svg {
-  @apply w-full h-full;
+  @apply w-full h-full object-cover;
 }
 .transicion {
   @apply transition-all ease-in-out duration-1000;
@@ -37,3 +72,128 @@ svg {
 .transicion_200 {
   @apply transition-all ease-in-out duration-200;
 }
+
+.backdrop {
+  @apply bg-black bg-opacity-30 backdrop-blur-sm;
+}
+.camposFecha {
+  @apply w-[180px] mb-4 opacity-50 flex-row-btwen;
+}
+.camposFecha input {
+  @apply backdrop  mb-4 w-1/5 p-3 2xl:h-14 xs:h-12 border-b border-white text-white;
+}
+.btn {
+  @apply transicion_200 pl-3 backdrop hover:bg-white hover:bg-opacity-70 border border-[--Amarillo] min-w-[180px] rounded-lg text-white hover:text-[#000000] uppercase py-2 letterSpacing;
+  @apply 2xl:text-2xl xl:text-xl xs:text-sm font-normal m-4 translate-y-6;
+}
+.btn-cards {
+  @apply text-white xl:text-lg sm:text-sm xs:text-xs xl:min-w-[180px] xs:min-w-[150px];
+  @apply transicion_200 pl-3 bg-black bg-opacity-60 hover:bg-white text-white hover:text-[#000000] hover:bg-opacity-70 min-w-[180px] rounded-lg uppercase py-2 letterSpacing hover:shadow-none;
+  box-shadow: 0px 0px 3px 3px #00000073;
+}
+.gradiente {
+  @apply bg-black bg-opacity-50 rounded-full;
+  box-shadow: 0px 0px 80px 30px #000000b6;
+}
+
+.active span {
+  @apply text-[--Amarillo];
+}
+.fechaIndividual {
+  @apply lg:text-sm xs:text-[60%];
+}
+.active .fechaIndividual {
+  @apply font-bold 2xl:text-3xl lg:text-2xl xs:text-sm;
+}
+
+.Line:before {
+  content: "";
+  width: 2px;
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  background: rgb(255 255 255 / 16%);
+  left: 50%;
+  top: 60%;
+  transform: translateX(-50%);
+}
+.LineFather:last-child .Line:before {
+  display: none;
+}
+
+.col {
+  @apply bg-lime-300 bg-opacity-5 mx-[6.35%];
+}
+
+/***************Inicio del sitio**************************/
+
+.image-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.imagen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 18s ease;
+  opacity: 0;
+}
+
+.imagen.active {
+  opacity: 1;
+  transition: opacity 8s ease;
+}
+.nube {
+  position: absolute;
+  top: 0;
+  animation-duration: 100s; /* Duración de la animación para todas las nubes */
+  animation-timing-function: ease-out; /* Transición suave al principio y al final */
+  z-index: 10;
+}
+
+.nube1 {
+  top: 15%;
+  left: 1%; /* Posición inicial fuera del área visible */
+  animation-name: mover-izquierda-derecha; /* Nombre de la animación para esta nube */
+  animation-timing-function: ease;
+  animation-duration: 1500s; /* Duración de la animación para esta nube */
+  z-index: 10;
+}
+
+.nube2 {
+  left: 60%; /* Posición inicial fuera del área visible */
+  animation-name: mover-izquierda-derecha; /* Nombre de la animación para esta nube */
+  animation-timing-function: ease;
+  animation-duration: 900s; /* Duración de la animación para esta nube */
+  z-index: 10;
+}
+.nube3 {
+  top: 1%;
+  left: 30%; /* Posición inicial fuera del área visible */
+  animation-name: mover-izquierda-derecha; /* Nombre de la animación para esta nube */
+  animation-timing-function: ease;
+  animation-duration: 1000s; /* Duración de la animación para esta nube */
+  z-index: 10;
+}
+.nube4 {
+  top: 15%;
+  left: 80%; /* Posición inicial fuera del área visible */
+  animation-name: mover-izquierda-derecha; /* Nombre de la animación para esta nube */
+  animation-timing-function: ease;
+  animation-duration: 1800s; /* Duración de la animación para esta nube */
+  z-index: 10;
+}
+
+@keyframes mover-izquierda-derecha {
+  0% {
+    transform: translateX(-20%);
+  }
+  100% {
+    transform: translateX(2000%);
+  }
+}
+
+/***************Inicio del sitio**************************/

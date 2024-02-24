@@ -1,0 +1,49 @@
+{
+  "cards": [
+    {
+      "id": 3,
+      "descripcion": "el año en que naciste nuestros páramos se veían así:",
+      "fondo": "/HOME-FRAILEJONES-3T.webp"
+    },
+    {
+      "id": 4,
+      "descripcion": "En promedio, cada diez años perdemos 500,000 hectáreas de vegetación.",
+      "fondo": "/cajaDefaultLeft.png"
+    },
+    {
+      "id": 5,
+      "descripcion": "Para el año 2000, esta pérdida será de más de 670,000 canchas de fútbol.",
+      "fondo": "/cajaDefaultLeft.png"
+    },
+    {
+      "id": 6,
+      "descripcion": "En el 2010, los incendios forestales arrasaron un 30% de la vegetación.",
+      "fondo": "/cajaDefaultLeft.png"
+    },
+    {
+      "id": 7,
+      "descripcion": "Con la desaparición acelerada de frailejones, en el 2020 tuvimos una reducción considerable del agua potable",
+      "fondo": "/cajaDefaultLeft.png"
+    },
+    {
+      "id": 8,
+      "descripcion": "Para el 2030, más de 4,000 especies de plantas y animales se extinguirían.",
+      "fondo": "/cajaDefaultLeft.png"
+    },
+    {
+      "id": 9,
+      "descripcion": "De seguir deforestando nuestros páramos, en 2040 tendremos grandes deslizamientos y tragedias ambientales.",
+      "fondo": "/cajaDefaultLeft.png"
+    },
+    {
+      "id": 10,
+      "descripcion": "En el 2050 habremos perdido el 20% de todos nuestros páramos, trayendo un desequilibrio irreparable.",
+      "fondo": "/cajaDefaultLeft.png"
+    },
+    {
+      "id": 11,
+      "descripcion": "Nuestro presente es el mejor momento para cambiar esta realidad. Salvemos nuestros páramos.",
+      "fondo": "/cajaDefaultLeft.png"
+    }
+  ]
+}

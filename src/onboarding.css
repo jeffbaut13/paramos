@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.onBg1 {
+  @apply bg-[url('/trancisiones/onBg1.jpg')] bg-no-repeat bg-cover;
+}
+.onBg2 {
+  @apply bg-[url('/trancisiones/onBg2.jpg')] bg-no-repeat bg-cover;
+}
+.onBg3 {
+  @apply bg-[url('/trancisiones/onBg3.jpg')] bg-no-repeat bg-cover;
+}
+.onBg4 {
+  @apply bg-[url('/trancisiones/onBg4.jpg')] bg-no-repeat bg-cover;
+}
+.onBg5 {
+  @apply bg-[url('/trancisiones/onBg5.jpg')] bg-no-repeat bg-cover;
+}
+.onBg6 {
+  @apply bg-[url('/trancisiones/onBg6.jpg')] bg-no-repeat bg-cover;
+}
+.onBg7 {
+  @apply bg-[url('/trancisiones/onBg7.jpg')] bg-no-repeat bg-cover;
+}
+.onBg8 {
+  @apply bg-[url('/trancisiones/onBg8.jpg')] bg-no-repeat bg-cover;
+}
+.onBg9 {
+  @apply bg-[url('/trancisiones/onBg9.jpg')] bg-no-repeat bg-cover;
+}
+.onBg10 {
+  @apply bg-[url('/trancisiones/onBg10.jpg')] bg-no-repeat bg-cover;
+}
+.onBg11 {
+  @apply bg-[url('/trancisiones/onBg11.jpg')] bg-no-repeat bg-cover;
+}
+
+.bg2 {
+  @apply bg-white bg-opacity-10 backdrop-blur-lg drop-shadow-2xl;
+}
+.bg3,
+.bg1 {
+  @apply bg-[url('/bgIndividual/bg3.webp')] bg-no-repeat bg-cover;
+}
+.bg3m {
+  @apply bg-[url('/bgIndividual/bg3m.webp')] bg-no-repeat bg-cover;
+}
+.bg4m {
+  @apply bg-[url('/bgIndividual/bg4m.webp')] bg-no-repeat bg-cover;
+}
+.bg5m {
+  @apply bg-[url('/bgIndividual/bg5m.webp')] bg-no-repeat bg-cover;
+}
+.bg6m {
+  @apply bg-[url('/bgIndividual/bg6m.webp')] bg-no-repeat bg-cover;
+}
+.bg7m {
+  @apply bg-[url('/bgIndividual/bg7m.webp')] bg-no-repeat bg-cover;
+}
+.bg8m {
+  @apply bg-[url('/bgIndividual/bg8m.webp')] bg-no-repeat bg-cover;
+}
+.bg9m {
+  @apply bg-[url('/bgIndividual/bg9m.webp')] bg-no-repeat bg-cover;
+}
+.bg10m {
+  @apply bg-[url('/bgIndividual/bg10m.webp')] bg-no-repeat bg-cover;
+}
+.bg11m {
+  @apply bg-[url('/bgIndividual/bg11m.webp')] bg-no-repeat bg-cover;
+}
+
+.bg4 {
+  @apply bg-[url('/bgIndividual/bg4.webp')] bg-no-repeat bg-cover;
+}
+
+.bg5 {
+  @apply bg-[url('/bgIndividual/bg5.webp')] bg-no-repeat bg-cover;
+}
+.bg6 {
+  @apply bg-[url('/bgIndividual/bg6.webp')] bg-no-repeat bg-cover;
+}
+.bg7 {
+  @apply bg-[url('/bgIndividual/bg7.webp')] bg-no-repeat bg-cover;
+}
+.bg8 {
+  @apply bg-[url('/bgIndividual/bg8.webp')] bg-no-repeat bg-cover;
+}
+.bg9 {
+  @apply bg-[url('/bgIndividual/bg9.webp')] bg-no-repeat bg-cover;
+}
+.bg10 {
+  @apply bg-[url('/bgIndividual/bg10.webp')] bg-no-repeat bg-cover;
+}
+.bg11 {
+  @apply bg-[url('/bgIndividual/bg11.webp')] bg-no-repeat bg-cover;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Aplica la animación al elemento que deseas que aparezca */
+.fadeIn {
+  animation: fadeIn 0.5s ease-out; /* Puedes ajustar la duración y el efecto de easing según tus necesidades */
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.animatedElement {
+  animation: moveUpDown 1.5s ease-in infinite 1.5s;
+  opacity: 0;
+}
