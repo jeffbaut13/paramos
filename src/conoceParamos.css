@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.circulo1,
+.circulo2,
+.circulo3,
+.circulo4,
+.circulo5,
+.circulo6,
+.circulo7 {
+  /* Aplicar la animación llamada palpito */
+  animation: palpito 1s infinite;
+  /* Hace que la animación se ejecute de manera alterna para que crezca y se encoja */
+  animation-direction: alternate;
+  /* Asegura que la animación sea suave */
+  animation-timing-function: ease-in-out;
+}
+
+/* Definir los fotogramas clave de la animación */
+@keyframes palpito {
+  /* Estado inicial de la imagen */
+  0% {
+    transform: scale(1); /* Tamaño original */
+  }
+  /* Estado final de la imagen */
+  100% {
+    transform: scale(1.3); /* 10% más grande */
+  }
+}
+
+/* En tu archivo CSS global */
+.textoFadeIn {
+  opacity: 0;
+  transition: opacity 1s ease-in-out; /* Ajusta la duración según necesites */
+}
+
+.textoVisible {
+  opacity: 1;
+}
+/* Añadir reglas CSS para controlar la visibilidad de los elementos en hover */
+.circulo1:hover + .LineaUnoMontaña,
+.circulo1:hover ~ .textoUnoLosParamos {
+  opacity: 1; /* Asegúrate de que la opacidad sea 1 para que sean visibles */
+  /* Agrega aquí más estilos si es necesario para la transición o visibilidad */
+}
+
+/* Asegúrate de que los elementos iniciales estén ocultos o tengan opacidad 0 */
+.LineaUnoMontaña,
+.textoUnoLosParamos {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+.circulo2:hover + .LineaDosMontaña,
+.circulo2:hover ~ .textoDosLosParamos {
+  opacity: 1; /* Asegúrate de que la opacidad sea 1 para que sean visibles */
+  /* Agrega aquí más estilos si es necesario para la transición o visibilidad */
+}
+
+/* Asegúrate de que los elementos iniciales estén ocultos o tengan opacidad 0 */
+.LineaDosMontaña,
+.textoDosLosParamos {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+.circulo3:hover + .LineaTresMontaña,
+.circulo3:hover ~ .textoTresLosParamos {
+  opacity: 1; /* Asegúrate de que la opacidad sea 1 para que sean visibles */
+  /* Agrega aquí más estilos si es necesario para la transición o visibilidad */
+}
+
+/* Asegúrate de que los elementos iniciales estén ocultos o tengan opacidad 0 */
+.LineaTresMontaña,
+.textoTresLosParamos {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+.circulo4:hover + .LineaCuatroMontaña,
+.circulo4:hover ~ .textoCuatroLosParamos {
+  opacity: 1; /* Asegúrate de que la opacidad sea 1 para que sean visibles */
+  /* Agrega aquí más estilos si es necesario para la transición o visibilidad */
+}
+
+/* Asegúrate de que los elementos iniciales estén ocultos o tengan opacidad 0 */
+.LineaCuatroMontaña,
+.textoCuatroLosParamos {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+.circulo5:hover + .LineaCincoMontaña,
+.circulo5:hover ~ .textoCincoLosParamos {
+  opacity: 1; /* Asegúrate de que la opacidad sea 1 para que sean visibles */
+  /* Agrega aquí más estilos si es necesario para la transición o visibilidad */
+}
+
+/* Asegúrate de que los elementos iniciales estén ocultos o tengan opacidad 0 */
+.LineaCincoMontaña,
+.textoCincoLosParamos {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+.circulo6:hover + .LineaSeisMontaña,
+.circulo6:hover ~ .textoSeisLosParamos {
+  opacity: 1; /* Asegúrate de que la opacidad sea 1 para que sean visibles */
+  /* Agrega aquí más estilos si es necesario para la transición o visibilidad */
+}
+
+/* Asegúrate de que los elementos iniciales estén ocultos o tengan opacidad 0 */
+.LineaSeisMontaña,
+.textoSeisLosParamos {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+.circulo7:hover + .LineaSieteMontaña,
+.circulo7:hover ~ .textoSieteLosParamos {
+  opacity: 1; /* Asegúrate de que la opacidad sea 1 para que sean visibles */
+  /* Agrega aquí más estilos si es necesario para la transición o visibilidad */
+}
+
+/* Asegúrate de que los elementos iniciales estén ocultos o tengan opacidad 0 */
+.LineaSieteMontaña,
+.textoSieteLosParamos {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Transición suave */
+}

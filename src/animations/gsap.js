@@ -42,7 +42,7 @@ export const scrollEffects = (component) => {
     scrollTrigger: {
       trigger: component.current,
       start: "top 0",
-      end: "50% 0",
+      end: "95% 0",
       scrub: 5,
 
       markers: true,

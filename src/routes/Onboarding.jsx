@@ -22,8 +22,9 @@ const Onboarding = () => {
   const isTablet = window.innerWidth >= 600 && window.innerWidth <= 1024;
   const fechaRef = useRef(null);
   const TextEfect = useRef(null);
+  const videobg = useRef(null);
   const [numero, setNumero] = useState(10);
-  const [iniciarContador, setIniciarContador] = useState(false);
+
   useEffect(() => {
     setinicio(1);
     // Obtener la URL actual
@@ -40,55 +41,6 @@ const Onboarding = () => {
       document.body.style.overflow = "auto";
     };
   }, []);
-  useEffect(() => {
-    if (inicio == 2) {
-      gsap.fromTo(
-        border.current,
-        {
-          backgroundPosition: "center",
-          backgroundSize: `${isTablet ? "cover" : "100%"} `,
-        },
-        {
-          backgroundPosition: "center",
-          backgroundSize: `${isTablet ? "cover" : "120%"} `,
-          ease: "power2.Out",
-          duration: 1,
-        }
-      );
-    }
-    /*****************Decremento para mostrar imagenes aleatorias */
-    let intervalId;
-    const customEase = (t) => Math.pow(t, 4);
-
-    const decrementarNumero = () => {
-      if (numero > 1) {
-        const t = 1 - (numero - 1) / 10; // Normalizar el progreso
-        let velocidad = customEase(t);
-        velocidad = Math.max(velocidad, 1);
-        setNumero((prevNumero) =>
-          prevNumero > 1 ? prevNumero - Math.round(velocidad) : 1
-        );
-      } else {
-        clearInterval(intervalId);
-        setIniciarContador(false);
-      }
-    };
-
-    if (iniciarContador) {
-      intervalId = setInterval(decrementarNumero, 4500 / 10);
-    }
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [numero, iniciarContador]);
-
-  const numeroMostrar = `onBg${numero}`;
-
-  const handleIniciarContador = () => {
-    setNumero(11);
-    setIniciarContador(true);
-  };
 
   useEffect(() => {
     // Configuración de ScrollTrigger para los estados de 'inicio'
@@ -104,12 +56,10 @@ const Onboarding = () => {
       gsap.fromTo(
         border.current,
         {
-          opacity: 0.8,
           backgroundPosition: "center",
           backgroundSize: `${isTablet ? "cover" : "102%"} `,
         },
         {
-          opacity: 1,
           backgroundPosition: "center",
           backgroundSize: `${isTablet ? "cover" : "100%"} `,
           ease: "power2.inOut",
@@ -165,18 +115,26 @@ const Onboarding = () => {
 
       <div
         ref={border}
-        className={`${inicio >= 3 ? containerClass : ""} ${
-          inicio == 2 ? numeroMostrar : ""
+        className={`${
+          inicio >= 3 ? containerClass : ""
         } contain maxW borderWhite absoluteCenter z-20 flex-center-col p-8 overflow-hidden`}
       >
+        {inicio >= 2 && (
+          <div ref={videobg} className="videobg absolute w-full h-full">
+            <video className="Moisesbgvid" playsInline autoPlay muted loop>
+              <source src={"/videoIntro.mp4"} type="video/mp4" />
+            </video>
+          </div>
+        )}
+
         <Fecha
+          videobg={videobg}
           fechaRef={fechaRef}
           TextEfect={TextEfect}
           border={border}
           inicio={inicio}
           inputNumber={inputNumber}
           setinicio={setinicio}
-          handleIniciarContador={handleIniciarContador}
           setInputNumber={setInputNumber}
         />
         {inicio > 2 && (

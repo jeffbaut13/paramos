@@ -11,7 +11,7 @@ const Origen = () => {
         </p>
       </div>
       <div
-        style={{ backgroundImage: "url(/360/360.webp)" }}
+        style={{ backgroundImage: "url(/bgParamos/360.webp)" }}
         className="BoxOrigenImg BoxesImgEnd"
       >
         <EmbeddedIframe customStyle={"embeded"} />

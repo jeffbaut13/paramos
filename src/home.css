@@ -1,0 +1,235 @@
+/* export const primerEfecto = (padre) => {
+    let ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+  
+      tl.to(".cards1", {
+        x: "-50%",
+        left: "50%",
+        zIndex: 3,
+        transformOrigin: "50% 50%",
+        duration: 1,
+        ease: "power1.inOut",
+      }).addLabel("first");
+  
+      tl.to(
+        ".cards2",
+        {
+          x: "130%",
+          duration: 1,
+          zIndex: 4,
+          ease: "power1.inOut",
+        },
+        "first-=0.7"
+      );
+      tl.to(
+        ".cards3",
+        {
+          opacity: 0,
+          zIndex: 5,
+          pointerEvents: "none",
+          x: "105%",
+          duration: 1,
+          ease: "power1.inOut",
+        },
+        "first-=0.8"
+      );
+      tl.to(
+        ".cards1",
+        {
+          x: "0",
+          y: "0",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          ease: "power1.inOut",
+          duration: 0.4,
+        },
+        "first"
+      );
+  
+      tl.to(
+        ".cards1 .imgpasto",
+        {
+          opacity: 0,
+          ease: "power1.in",
+          duration: 0.1,
+        },
+        "first"
+      );
+      tl.to(
+        ".cards1 .imgComplete",
+        {
+          opacity: 1,
+          ease: "power1.in",
+          duration: 0.1,
+        },
+        "first"
+      );
+      tl.to(
+        ".cards1 .punto",
+        {
+          opacity: 0,
+          ease: "power1.in",
+          duration: 0.5,
+        },
+        "first"
+      );
+      tl.to(
+        ".cards1 .cajaTitulos .titulo",
+        {
+          opacity: 0,
+  
+          ease: "power1.in",
+          duration: 0.5,
+        },
+        "first-=0.7"
+      );
+      tl.to(
+        ".cards1 .cajaTitulos .titulo",
+        {
+          color: "#ffffff",
+          textAlign: "start",
+          fontSize: "4rem",
+          lineHeight: 1,
+          y: "100%",
+        },
+        "first"
+      );
+      tl.to(
+        ".cards2 .cajaTitulos .titulo",
+        {
+          color: "#ffffff",
+  
+          ease: "power1.in",
+          duration: 1,
+        },
+        "first"
+      );
+      tl.to(
+        ".cards1 .cajaTitulos",
+        {
+          padding: "6% 0 0 16%",
+        },
+        "first+=0.1"
+      );
+  
+      tl.to(
+        ".cards1 .cajaTitulos .titulo ",
+        {
+          opacity: 1,
+          zIndex: 5,
+          textAlign: "start",
+          fontSize: "4rem",
+          lineHeight: 1,
+          y: "0%",
+          ease: "power1.in",
+          color: "#ffffff",
+          duration: 1,
+        },
+        "first+=0.3"
+      );
+      tl.to(
+        ".cards1 .cajaTitulos .titulo2",
+        {
+          display: "block",
+          opacity: 1,
+          ease: "power1.in",
+          duration: 0.5,
+        },
+        "first+=0.3"
+      );
+      tl.to(
+        ".cards1 .cajaTitulos .parrafo",
+        {
+          display: "block",
+        },
+        "first+=0.4"
+      );
+      tl.to(
+        ".cards1 .cajaTitulos .parrafo",
+        {
+          opacity: 1,
+          ease: "power1.in",
+          duration: 0.2,
+        },
+        "first+=0.8"
+      );
+      tl.fromTo(
+        ".cards1 .caminante2",
+        {
+          opacity: 0,
+          zIndex: 1,
+        },
+        {
+          opacity: 1,
+          zIndex: 1,
+          ease: "none",
+          duration: 0.1,
+        },
+        "first+=0.6"
+      );
+      tl.to(
+        ".caminante",
+        {
+          opacity: 0,
+          display: "none",
+          ease: "none",
+          duration: 0.1,
+        },
+        "first+=0.7"
+      );
+      tl.fromTo(
+        ".cards1 .bg-degradadoTravesia ",
+        {
+          opacity: 0,
+          zIndex: 2,
+        },
+        {
+          opacity: 1,
+          zIndex: 4,
+          ease: "power1.in",
+          duration: 1,
+        },
+        "first+=0.4"
+      );
+  
+      tl.fromTo(
+        ".cards1 .cajaIconos .svgIcono1",
+        {
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 1,
+          ease: "power1.in",
+        },
+        "first+=0.9"
+      );
+      tl.fromTo(
+        ".cards1 .cajaIconos .svgIcono2",
+        {
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 1,
+          ease: "power1.in",
+        },
+        "first+=1.1"
+      );
+      tl.fromTo(
+        ".cards1 .cajaIconos .svgIcono3",
+        {
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 1,
+          ease: "power1.in",
+        },
+        "first+=1.3"
+      );
+    }, padre);
+    return () => ctx.revert();
+  }; */

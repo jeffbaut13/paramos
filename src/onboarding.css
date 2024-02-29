@@ -111,6 +111,10 @@
   animation: fadeIn 0.5s ease-out; /* Puedes ajustar la duración y el efecto de easing según tus necesidades */
 }
 
+.fadeInTwo {
+  animation: fadeIn 1.5s ease-out; /* Puedes ajustar la duración y el efecto de easing según tus necesidades */
+}
+
 @keyframes moveUpDown {
   0% {
     transform: translateY(-100%);

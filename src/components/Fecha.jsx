@@ -6,11 +6,11 @@ import { ScrollAnimation } from "./ScrollAnimation";
 import { TextoAbajoArriba } from "../animations/gsap";
 
 const Fecha = ({
+  videobg,
   inicio,
   setinicio,
   inputNumber,
   setInputNumber,
-  handleIniciarContador,
   fechaRef,
   TextEfect,
 }) => {
@@ -59,7 +59,6 @@ const Fecha = ({
   };
 
   const handleNextClick = () => {
-    handleIniciarContador();
     setinicio(2);
     setTimeout(() => {
       startAnimation();
@@ -73,6 +72,14 @@ const Fecha = ({
         ease: "power2.inOut",
       });
     }, 3500);
+
+    setTimeout(() => {
+      gsap.to(videobg.current, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      });
+    }, 4800);
 
     setTimeout(() => {
       setinicio(3);
