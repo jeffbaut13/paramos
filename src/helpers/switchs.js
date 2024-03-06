@@ -119,7 +119,7 @@ export const switchProcentageZindex = (scrollPercentage) => {
       gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
       break;
 
-    case scrollPercentage >= 76 && scrollPercentage < 90:
+    case scrollPercentage >= 76 && scrollPercentage < 84:
       gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
       gsap.to(".origen", { zIndex: "10", display: "none", y: "-100%" });
       gsap.to(".dosmilFrailejones", {
@@ -133,7 +133,7 @@ export const switchProcentageZindex = (scrollPercentage) => {
       gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
       break;
 
-    case scrollPercentage >= 90 && scrollPercentage < 97:
+    case scrollPercentage >= 84 && scrollPercentage < 90:
       gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
       gsap.to(".origen", { zIndex: "10", display: "none", y: "-100%" });
       gsap.to(".dosmilFrailejones", {
@@ -147,7 +147,7 @@ export const switchProcentageZindex = (scrollPercentage) => {
       gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
       break;
 
-    case scrollPercentage >= 95:
+    case scrollPercentage >= 90:
       gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
       gsap.to(".origen", { zIndex: "10", display: "none", y: "-100%" });
       gsap.to(".dosmilFrailejones", {

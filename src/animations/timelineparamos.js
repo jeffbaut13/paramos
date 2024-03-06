@@ -50,7 +50,6 @@ export const timeLine = (
       "<"
     );
   }
-
   tl.to(".montaña", { display: "block" });
   if (isMobile) {
     tl.to(".BoxConoceText", { height: "0", duration: rapido });
@@ -63,6 +62,7 @@ export const timeLine = (
     tl.to(".BoxConoceImg", { width: "100%", duration: rapido }, "<");
   }
   tl.to(".blurParamos", { opacity: 1, duration: rapido });
+  tl.to(".mouseScroll", { opacity: 0, duration: lento }, "<");
 
   tl.to(".conoce", { padding: 0, duration: rapido }, "<");
 
@@ -83,9 +83,18 @@ export const timeLine = (
     "m4-=0.5"
   );
 
-  tl2.to(".circulo1", { display: "none", duration: normal }, "m4-=1");
+  tl2
+    .to(".circulo1", { display: "none", duration: normal }, "m4-=1")
+    .addLabel("circulo1");
   tl2.to(".circulo2", { display: "block", duration: rapido }, "m4+=1");
   tl2.to(".circulo3", { display: "block", duration: rapido }, "m4+=1");
+  tl2.to(
+    ".moveTwo",
+    {
+      display: "none",
+    },
+    "circulo1-=1"
+  );
 
   tl2.fromTo(
     ".conoce .titulo2",
@@ -154,30 +163,30 @@ export const timeLine = (
 
   tl4.to(".circulo6", { display: "block" });
   tl4.to(".circulo7", { display: "block" }, "<");
+  tl4.to(".mouseScroll", { opacity: 1, duration: lento });
+  tl4.to(".mainParamos", { overflow: "hidden" });
 
-  const tl5 = scrollEffects(main, tipoScroll * 5);
+  const tl5 = scrollEffects(main, tipoScroll * 5.4, true);
 
-  tl5.to(".blurParamos", { opacity: 0, duration: lento });
-
-  /* tl5.to(".conoce", { y: "-100%", duration: normal });
-  tl5.fromTo(".origen", { y: "100%" }, { y: "0%", duration: normal }); */
+  tl5.to(".blurParamos", { opacity: 0, duration: rapido }, "<");
 
   if (isMobile) {
-    tl5.fromTo(".BoxOrigenText", { height: "100%" }, { height: "50%" });
-    tl5.fromTo(".BoxOrigenImg", { height: "0%" }, { height: "50%" }, "<");
+    tl5.to(".BoxOrigenText", { height: "50%" });
+    tl5.to(".BoxOrigenImg", { height: "50%" }, "<");
   } else {
-    tl5.fromTo(".BoxOrigenText", { width: "100%" }, { width: "50%" });
-    tl5.fromTo(".BoxOrigenImg", { width: "0%" }, { width: "50%" }, "<");
+    tl5.to(".BoxOrigenText", { width: "50%" });
+    tl5.to(".BoxOrigenImg", { width: "50%" }, "<");
   }
 
-  const tl6 = scrollEffects(main, tipoScroll * 6);
+  const tl6 = scrollEffects(main, tipoScroll * 6.33);
+  tl6.to(".mainParamos", { overflow: "hidden" }).addLabel("dosMil");
 
   if (isMobile) {
-    tl6.fromTo(".BoxDosmilTexto", { height: "100%" }, { height: "50%" });
-    tl6.fromTo(".BoxDosmilImage", { height: "0%" }, { height: "50%" }, "<");
+    tl6.to(".BoxDosmilTexto", { height: "50%" }, "dosMil");
+    tl6.to(".BoxDosmilImage", { height: "50%" }, "<");
   } else {
-    tl6.fromTo(".BoxDosmilTexto", { width: "100%" }, { width: "50%" });
-    tl6.fromTo(".BoxDosmilImage", { width: "0%" }, { width: "50%" }, "<");
+    tl6.to(".BoxDosmilTexto", { width: "50%" }, "dosMil");
+    tl6.to(".BoxDosmilImage", { width: "50%" }, "<");
   }
 
   const tl7 = scrollEffects(main, tipoScroll * 7);
@@ -279,27 +288,11 @@ export const timeLine = (
     tl9.to(".BoxDosmilImage", { width: "50%" });
     tl9.to(".BoxDosmilTexto", { width: "50%" }, "<");
   }
-  const tl10 = scrollEffects(main, tipoScroll * 10);
 
-  /*  tl10.to(".dosmilFrailejones", {
-    y: "-100%",
+  const tl11 = scrollEffects(main, tipoScroll * 10.8);
 
-    duration: normal,
-  });
+  tl11.to(".blurParamos", { opacity: 1, duration: rapido });
 
-  tl10.fromTo(".capituloMoises", { y: "100%" }, { y: "0%", duration: normal }); */
-
-  const tl11 = scrollEffects(main, tipoScroll * 11);
-
-  if (isMobile) {
-    tl11.to(".BoxTravesiaTexto", { height: "100%" });
-  } else {
-    tl11.to(".BoxTravesiaTexto", { width: "100%" });
-  }
-  /*  tl11.to(".capituloMoises", { y: "-100%", duration: normal });
-
-  tl11.fromTo(".travesia", { y: "100%" }, { y: "0%", duration: normal });
- */
   if (isMobile) {
     tl11.to(".BoxTravesiaCards", { height: "50%" });
     tl11.to(".BoxTravesiaTexto", { height: "50%" }, "<");
@@ -307,7 +300,8 @@ export const timeLine = (
     tl11.to(".BoxTravesiaCards", { width: "50%" });
     tl11.to(".BoxTravesiaTexto", { width: "50%" }, "<");
   }
-  const tl12 = scrollEffects(main, tipoScroll * 12);
+
+  const tl12 = scrollEffects(main, tipoScroll * 11.3);
 
   if (isMobile) {
     tl12.to(".BoxTravesiaCards", { height: "100%" });
@@ -344,7 +338,7 @@ export const timeLine = (
   }
   tl12.to(".caminante", { display: "block", opacity: 1 });
 
-  const tl13 = scrollEffects(main, tipoScroll * 13);
+  const tl13 = scrollEffects(main, tipoScroll * 12);
   tl13.add(() => {
     setTravesiaReverse(true);
   });
@@ -352,14 +346,9 @@ export const timeLine = (
     setTravesiaReverse(false);
   }, "<");
 
-  /* tl13.to(".travesia", { y: "-100%", duration: normal });
-  tl13.fromTo(".contacto", { y: "100%" }, { y: "0%", duration: normal }); */
   tl13.to(".blurParamos", { opacity: 0, duration: rapido }, "<");
 
-  const tl14 = scrollEffects(main, tipoScroll * 14);
+  const tl14 = scrollEffects(main, tipoScroll * 12.8);
 
-  /* tl14.to(".contacto", { y: "-100%", duration: normal });
-
-  tl14.fromTo(".descargable", { y: "100%" }, { y: "0%", duration: normal }); */
   tl14.to(".blurParamos", { opacity: 1, duration: rapido }, "<");
 };

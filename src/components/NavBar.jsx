@@ -1,11 +1,29 @@
 import gsap from "gsap";
 import React, { useState, useEffect, useRef } from "react";
+import MouseScroll from "./MouseScroll";
 
-const NavBar = ({ activeButton }) => {
+const NavBar = ({ activeButton, scrollPercentage }) => {
   const isMobile = window.innerWidth <= 1024;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuMobile = useRef(null);
   const bntMobile = useRef(null);
+  const buton = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      buton.current,
+      {
+        y: "20%",
+        opacity: 0,
+      },
+      {
+        y: "0%",
+        opacity: 1,
+        duration: 1,
+        ease: "power1.inOut",
+      }
+    );
+  }, [activeButton]);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -45,12 +63,12 @@ const NavBar = ({ activeButton }) => {
   };
 
   const buttons = [
-    { text: "Origen", percentage: 0 },
-    { text: "Nuestro propósito", percentage: 33 },
-    { text: "2.000 Frailejones", percentage: 39 },
-    { text: "Los páramos", percentage: 60 },
-    { text: "Contacto", percentage: 80 },
-    { text: "Cuéntale a todos", percentage: 84 },
+    { id: 1, text: "Origen", percentage: 0 },
+    { id: 2, text: "Nuestro propósito", percentage: 33 },
+    { id: 3, text: "2.000 Frailejones", percentage: 39 },
+    { id: 4, text: "Los páramos", percentage: 60 },
+    { id: 5, text: "Contacto", percentage: 84 },
+    { id: 6, text: "Cuéntale a todos", percentage: 90 },
   ];
 
   return (
@@ -64,20 +82,20 @@ const NavBar = ({ activeButton }) => {
               className="w-[25px]"
             />
           </div>
-          <div className="max-lg:hidden lg:flex space-x-4 bg-white rounded-3xl">
-            {buttons.map((button) => (
-              <button
-                key={button.text}
-                onClick={() => handleScrollToPercentage(button.percentage)}
-                className={`px-4 py-1 transition-colors rounded-3xl cursor-pointer uppercase ${
-                  activeButton === button.text
-                    ? "bg-black text-white"
-                    : "hover:bg-black hover:text-white"
-                }`}
-              >
-                {button.text}
-              </button>
-            ))}
+          <div className="max-lg:hidden lg:flex space-x-4 rounded-3xl">
+            {buttons.map((button) => {
+              if (activeButton === button.text) {
+                return (
+                  <button
+                    ref={buton}
+                    key={button.text}
+                    className={`cursor-default px-4 py-1 transition-colors text-xl tracking-[0.8em] rounded-3xl uppercase text-white`}
+                  >
+                    {button.text}
+                  </button>
+                );
+              }
+            })}
           </div>
           <div className="max-lg:hidden w-[10%]"></div>
           <button className="lg:hidden " onClick={() => setIsMenuOpen(true)}>
@@ -86,18 +104,22 @@ const NavBar = ({ activeButton }) => {
         </div>
       </nav>
       {!isMobile && (
-        <div className="navVertical z-[60] w-[4.4vw] h-auto rounded-xl fixed right-0 top-1/2 translate-y-[-50%] translate-x-[130%] flex-col">
-          {buttons.map((button, index) => (
-            <button
-              key={index}
-              onClick={() => handleScrollToPercentage(button.percentage)}
-            >
+        <div className="navVertical z-[60] w-[4.4vw] h-auto rounded-xl fixed right-0 top-1/2 translate-y-[-50%] translate-x-[110%] flex-col">
+          <MouseScroll
+            customStyle={
+              "mouseScroll w-10 fixed rigth-0 top-1/2 translate-x-[210%] translate-y-[-50%] "
+            }
+          />
+          {buttons.map((button) => (
+            <button key={button.id}>
               <img
-                src={`/navVertical/menu-lateral-0${index + 3}.webp`}
+                src={`/navVertical/menu-lateral-${button.id}.webp`}
                 alt=""
-                className={`m-auto ${
-                  activeButton === button.text ? "opacity-100" : "opacity-40"
-                }`}
+                className={` cursor-default m-auto ${
+                  scrollPercentage >= button.id
+                    ? "opacity-100 wave"
+                    : "opacity-35"
+                }  `}
               />
             </button>
           ))}

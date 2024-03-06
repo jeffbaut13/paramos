@@ -25,6 +25,7 @@ function App() {
 
   const [altura, setAltura] = useState(null);
   const [pixelsScrolled, setPixelsScrolled] = useState(0);
+  const [scrollPercentage, setScrollPercentage] = useState(1);
   useEffect(() => {
     gsap.to(main.current, {
       scrollTrigger: {
@@ -35,27 +36,34 @@ function App() {
         scrub: true,
         onUpdate: (self) => {
           const scrollPercentage = self.progress * 100;
-          //console.log("scroll " + scrollPercentage);
+          setScrollPercentage(scrollPercentage);
+          //  console.log("scroll Padre " + scrollPercentage);
           switchProcentageZindex(scrollPercentage);
 
           if (scrollPercentage >= 0 && scrollPercentage < 37) {
             setActiveButton("Origen");
+            setScrollPercentage(1);
           } else if (scrollPercentage >= 37 && scrollPercentage < 44) {
             setActiveButton("Nuestro propósito");
+            setScrollPercentage(2);
           } else if (scrollPercentage >= 44 && scrollPercentage < 69) {
             setActiveButton("2.000 Frailejones");
-          } else if (scrollPercentage >= 69 && scrollPercentage < 90) {
+            setScrollPercentage(3);
+          } else if (scrollPercentage >= 69 && scrollPercentage < 84) {
             setActiveButton("Los páramos");
-          } else if (scrollPercentage >= 90 && scrollPercentage < 97) {
+            setScrollPercentage(4);
+          } else if (scrollPercentage >= 84 && scrollPercentage < 97) {
             setActiveButton("Contacto");
-          } else if (scrollPercentage >= 97) {
+            setScrollPercentage(5);
+          } else if (scrollPercentage >= 90) {
             setActiveButton("Cuéntale a todos");
+            setScrollPercentage(6);
           }
         },
       },
     });
-  }, [main, activeButton, numFrailejon]);
-  console.log(numFrailejon);
+  }, [main, activeButton, numFrailejon, scrollPercentage]);
+  //console.log(scrollPercentage);
   function getScrollDistance() {
     // Obtén la posición actual de desplazamiento vertical
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -153,10 +161,13 @@ function App() {
           <img src="/svg/close.svg" alt="" />
         </span>
       )}
-      <div className="blurParamos fixed top-0 left-0 bg2 z-10 w-full h-full opacity-0"></div>
-      <div className="cajaParaelementos fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[85%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%]">
-        <NavBar activeButton={activeButton} />
-        <div className="maxW mainParamos relative rounded-3xl overflow-hidden bg-white w-full h-full ">
+      <div className="blurParamos  fixed top-0 left-0 bg2 z-10 w-full h-full opacity-0"></div>
+      <div className="cajaParaelementos maxW fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[85%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%]">
+        <NavBar
+          activeButton={activeButton}
+          scrollPercentage={scrollPercentage}
+        />
+        <div className=" mainParamos relative rounded-3xl overflow-hidden bg-white w-full h-full ">
           <div className="contenedor">
             <VideoComponent />
             <VideoComponent />

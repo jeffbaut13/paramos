@@ -148,3 +148,111 @@
     opacity: 0;
   }
 }
+
+.mask {
+  -webkit-mask-image: url("/navVertical/barralateral.png");
+  mask-image: url("/navVertical/barralateral.png");
+}
+.maskChild {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.wave {
+  @apply transition-all ease-out duration-500;
+  animation: waveAnimation 2s ease-out infinite;
+}
+.goScroll {
+  @apply transition-all ease-out duration-500;
+  animation: scrolling 2s ease-out infinite;
+}
+.goScrollReverse {
+  @apply transition-all ease-out duration-500;
+  animation: scrollingReverse 2s ease-out infinite;
+}
+@keyframes waveAnimation {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+@keyframes scrolling {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scrollingReverse {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+.move {
+  pointer-events: none;
+  @apply transition-all ease-out duration-500;
+  animation: moving 1.5s ease-in-out infinite;
+}
+
+@keyframes moving {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(32%, -38%);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(32%, -38%) scale(0.9);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(32%, -38%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(32%, -38%) scale(1);
+  }
+}
+
+.moveTwo {
+  pointer-events: none;
+  @apply transition-all ease-out duration-500;
+  animation: movingTwo 2s ease-in-out infinite;
+}
+
+@keyframes movingTwo {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(32%, -38%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(32%, -38%);
+  }
+}
