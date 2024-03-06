@@ -13,6 +13,7 @@ export const timeLine = (
   setTranslate,
   translate,
   setNumFrailejon,
+  numFrailejon,
   setTravesiaReverse
 ) => {
   const tipoScroll = 6;
@@ -180,7 +181,10 @@ export const timeLine = (
   }
 
   const tl7 = scrollEffects(main, tipoScroll * 7);
-  tl7.from(".bgvid", { opacity: 0, duration: normal }).addLabel("niebla");
+  tl7.add(() => {
+    setNumFrailejon(0);
+  });
+  tl7.from(".bgvid", { opacity: 0, duration: normal }, "<").addLabel("niebla");
   if (isMobile) {
     tl7.to(".BoxDosmilImage", { height: "0%" }, "niebla-=0.5");
     tl7.to(".BoxDosmilTexto", { height: "100%" }, "niebla-=0.5");
@@ -188,7 +192,11 @@ export const timeLine = (
     tl7.to(".BoxDosmilImage", { width: "0%" }, "niebla-=0.5");
     tl7.to(".BoxDosmilTexto", { width: "100%" }, "niebla-=0.5");
   }
-  tl7.to(".imgFrailejon", { display: "block" });
+  if (numFrailejon) {
+    tl7.to(".imgFrailejon", {
+      display: `${numFrailejon == 0 ? "none" : "block"}`,
+    });
+  }
   tl7.to(".bgvid", { opacity: 0, duration: rapido });
   tl7
     .to(

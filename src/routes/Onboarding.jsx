@@ -99,14 +99,14 @@ const Onboarding = () => {
         className="overflow-hidden backgroundImage fixed w-full h-full z-0 flex-center-col "
       >
         <img
-          className="absoluteImg "
+          className="absoluteImg w-full h-full"
           ref={imagen2}
           src={`/OnboardingBgBack/HOME-FRAILEJONES-${inicio}T.webp`}
           alt=""
         />
 
         <img
-          className="absoluteImg img2"
+          className="absoluteImg img2 w-full h-full"
           ref={imagen}
           src={"/OnboardingBgBack/HOME-FRAILEJONES-2T.webp"}
           alt=""

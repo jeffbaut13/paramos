@@ -1,4 +1,5 @@
 import React from "react";
+import ContactForm from "./Formulario";
 
 const Contacto = () => {
   return (
@@ -9,8 +10,8 @@ const Contacto = () => {
           className=" overflow-hidden  bg-no-repeat bg-cover w-full rounded-3xl flex "
         >
           <div className=" w-full h-auto bg2 flex">
-            <div className=" w-[50%] h-full flex-center flex-col">
-              <p className="textoContacto font-bold text-white text-3xl tracking-widest whitespace-wrap relative">
+            <div className=" w-[50%] h-full flex flex-col justify-center p-32">
+              <p className="tamanoTitulos textoContacto font-bold text-white  tracking-widest whitespace-wrap relative">
                 ESTAMOS PARA
                 <br /> RESOLVER TODAS
                 <br /> TUS DUDAS.
@@ -21,7 +22,7 @@ const Contacto = () => {
                 <br /> CÓMO PODEMOS AYUDARTE.
               </p>
             </div>
-            <div className=" w-[50%] h-full z-50">
+            <div className=" w-[50%] h-full z-50 flex items-center justify-center">
               <ContactForm />
             </div>
           </div>

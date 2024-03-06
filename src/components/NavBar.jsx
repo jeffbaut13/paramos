@@ -5,35 +5,38 @@ const NavBar = ({ activeButton }) => {
   const isMobile = window.innerWidth <= 1024;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuMobile = useRef(null);
+  const bntMobile = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.fromTo(
-      menuMobile.current,
-      {
-        x: "100%",
-      },
-      {
-        x: "0",
-        ease: "power1.inOut",
-        duration: 0.5,
-      }
-    );
-    tl.fromTo(
-      ".btnMobile",
-      {
-        opacity: 0,
-        y: "30%",
-      },
-      {
-        opacity: 1,
-        y: "0",
-        ease: "power1.inOut",
-        duration: 0.5,
-        stagger: 0.2,
-      }
-    );
-  }, [isMenuOpen]);
+    if (menuMobile) {
+      tl.fromTo(
+        menuMobile.current,
+        {
+          x: "100%",
+        },
+        {
+          x: "0",
+          ease: "power1.inOut",
+          duration: 0.5,
+        }
+      );
+      tl.fromTo(
+        bntMobile.current,
+        {
+          opacity: 0,
+          y: "30%",
+        },
+        {
+          opacity: 1,
+          y: "0",
+          ease: "power1.inOut",
+          duration: 0.5,
+          stagger: 0.2,
+        }
+      );
+    }
+  }, [menuMobile, bntMobile, isMenuOpen]);
 
   const handleScrollToPercentage = (percentage) => {
     const position = document.documentElement.scrollHeight * (percentage / 100);
@@ -109,6 +112,7 @@ const NavBar = ({ activeButton }) => {
           <div className="text-white p-6 rounded-lg text-2xl font-light amenti">
             {buttons.map((button) => (
               <button
+                ref={bntMobile}
                 key={button.text}
                 onClick={() => handleScrollToPercentage(button.percentage)}
                 className={`btnMobile block w-full px-4 py-7 transition-colors rounded-3xl cursor-pointer uppercase ${

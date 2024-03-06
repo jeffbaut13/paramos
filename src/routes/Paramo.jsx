@@ -35,7 +35,7 @@ function App() {
         scrub: true,
         onUpdate: (self) => {
           const scrollPercentage = self.progress * 100;
-
+          //console.log("scroll " + scrollPercentage);
           switchProcentageZindex(scrollPercentage);
 
           if (scrollPercentage >= 0 && scrollPercentage < 37) {
@@ -54,7 +54,8 @@ function App() {
         },
       },
     });
-  }, [main, activeButton]);
+  }, [main, activeButton, numFrailejon]);
+  console.log(numFrailejon);
   function getScrollDistance() {
     // Obtén la posición actual de desplazamiento vertical
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -68,7 +69,7 @@ function App() {
   // Ejemplo de cómo usar la función
   window.addEventListener("scroll", () => {
     const scrollDistance = getScrollDistance();
-    console.log("Recorrido vertical:", scrollDistance);
+    // console.log("Recorrido vertical:", scrollDistance);
   });
   const handleScroll = () => {
     const scrolled = window.scrollY;
@@ -129,6 +130,7 @@ function App() {
           setTranslate,
           translate,
           setNumFrailejon,
+          numFrailejon,
           setTravesiaReverse
         );
       },

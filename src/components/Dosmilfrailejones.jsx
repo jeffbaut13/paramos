@@ -7,19 +7,21 @@ const Dosmilfrailejones = ({ numFrailejon }) => {
   const parrafoFrailejon = useRef(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      parrafoFrailejon.current,
-      {
-        opacity: 0,
-        y: "40%",
-      },
-      {
-        opacity: 1,
-        y: "0",
-        ease: "power1.inOut",
-        duration: 1,
-      }
-    );
+    if (parrafoFrailejon) {
+      gsap.fromTo(
+        parrafoFrailejon.current,
+        {
+          opacity: 0,
+          y: "40%",
+        },
+        {
+          opacity: 1,
+          y: "0",
+          ease: "power1.inOut",
+          duration: 1,
+        }
+      );
+    }
   }, [numFrailejon]);
 
   return (
