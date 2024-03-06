@@ -28,7 +28,7 @@ const Dosmilfrailejones = ({ numFrailejon }) => {
     <div className="dosmilFrailejones absolute w-full h-full z-[1] flex">
       <div className=" flex responsiveReverse relative w-full h-full paddingComponentes">
         <div
-          className={`BoxDosmilImage w-0 bg-center BoxesImgStart flex-center z-10 relative ${
+          className={`BoxDosmilImage   bg-center BoxesImgStart flex-center z-10 relative ${
             numFrailejon >= 1 ? "Frailejonactivo" : ""
           } `}
           style={{ backgroundImage: "url(/bgParamos/Bg20mil.webp)" }}
@@ -77,7 +77,7 @@ const Dosmilfrailejones = ({ numFrailejon }) => {
             />
           )}
         </div>
-        <div className="BoxDosmilTexto w-full BoxesTextEnd flex-center z-0 relative">
+        <div className="BoxDosmilTexto   BoxesTextEnd flex-center z-0 relative">
           <p className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Llevaremos <br /> <span className="font-black">2,000 </span> <br />
             frailejones <br />

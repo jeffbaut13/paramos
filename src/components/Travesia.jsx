@@ -17,7 +17,7 @@ const Travesia = ({ travesiaReverse }) => {
         ref={padre}
         className=" flex relative w-full h-full responsiveReverse  paddingComponentes bg-white"
       >
-        <div className="BoxTravesiaCards w-0  BoxesImgStart">
+        <div className="BoxTravesiaCards    BoxesImgStart">
           <div className="card w-full h-full relative">
             <img
               className="caminante iconoCaminante"
@@ -250,7 +250,7 @@ const Travesia = ({ travesiaReverse }) => {
             </div>
           </div>
         </div>
-        <div className="BoxTravesiaTexto w-full BoxesTextEnd flex-center">
+        <div className="BoxTravesiaTexto   BoxesTextEnd flex-center">
           <p className="origenTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             La travesía <br />
             por los <br /> páramos <br />
