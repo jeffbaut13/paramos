@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 export const getContainerClass = (inicio, isMobile) => {
   switch (inicio) {
     case 3:
@@ -55,6 +57,112 @@ export const switchProcentage = (setinicio, scrollPercentage) => {
       break;
     default:
       // El caso por defecto si ninguno de los anteriores se cumple
+      break;
+  }
+};
+
+export const switchProcentageZindex = (scrollPercentage) => {
+  switch (true) {
+    case scrollPercentage < 37:
+      gsap.to(".conoce", { zIndex: "100", display: "block", y: "0%" });
+      gsap.to(".origen", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".dosmilFrailejones", {
+        zIndex: "10",
+        display: "none",
+        y: "100%",
+      });
+      gsap.to(".capituloMoises", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".travesia", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".contacto", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
+      break;
+
+    case scrollPercentage >= 37 && scrollPercentage < 44:
+      gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".origen", { zIndex: "100", display: "block", y: "0%" });
+      gsap.to(".dosmilFrailejones", {
+        zIndex: "10",
+        display: "none",
+        y: "100%",
+      });
+      gsap.to(".capituloMoises", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".travesia", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".contacto", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
+      break;
+
+    case scrollPercentage >= 44 && scrollPercentage < 69:
+      gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".origen", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".dosmilFrailejones", {
+        zIndex: "100",
+        display: "block",
+        y: "0%",
+      });
+      gsap.to(".capituloMoises", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".travesia", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".contacto", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
+      break;
+
+    case scrollPercentage >= 69 && scrollPercentage < 76:
+      gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".origen", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".dosmilFrailejones", {
+        zIndex: "10",
+        display: "none",
+        y: "-100%",
+      });
+      gsap.to(".capituloMoises", { zIndex: "100", display: "block", y: "0%" });
+      gsap.to(".travesia", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".contacto", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
+      break;
+
+    case scrollPercentage >= 76 && scrollPercentage < 90:
+      gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".origen", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".dosmilFrailejones", {
+        zIndex: "10",
+        display: "none",
+        y: "-100%",
+      });
+      gsap.to(".capituloMoises", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".travesia", { zIndex: "100", display: "block", y: "0%" });
+      gsap.to(".contacto", { zIndex: "10", display: "none", y: "100%" });
+      gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
+      break;
+
+    case scrollPercentage >= 90 && scrollPercentage < 97:
+      gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".origen", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".dosmilFrailejones", {
+        zIndex: "10",
+        display: "none",
+        y: "-100%",
+      });
+      gsap.to(".capituloMoises", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".travesia", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".contacto", { zIndex: "100", display: "block", y: "0%" });
+      gsap.to(".descargable", { zIndex: "10", display: "none", y: "100%" });
+      break;
+
+    case scrollPercentage >= 95:
+      gsap.to(".conoce", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".origen", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".dosmilFrailejones", {
+        zIndex: "10",
+        display: "none",
+        y: "-100%",
+      });
+      gsap.to(".capituloMoises", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".travesia", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".contacto", { zIndex: "10", display: "none", y: "-100%" });
+      gsap.to(".descargable", { zIndex: "100", display: "block", y: "0%" });
+      break;
+
+    default:
+      // Acciones por defecto si no se cumple ningún caso
       break;
   }
 };

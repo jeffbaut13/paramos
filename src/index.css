@@ -148,6 +148,7 @@ svg {
 }
 .nube {
   position: absolute;
+  opacity: 0.4;
   top: 0;
   animation-duration: 100s; /* Duración de la animación para todas las nubes */
   animation-timing-function: ease-out; /* Transición suave al principio y al final */
@@ -197,3 +198,27 @@ svg {
 }
 
 /***************Inicio del sitio**************************/
+
+.contenedor-padre {
+  height: 100vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s ease; /* Agrega una transición suave al movimiento */
+}
+
+.elementos,
+.elemento {
+  height: 100%;
+  width: 100%;
+}
+.contenedor {
+  height: 100%;
+  width: 100%;
+}
+
+.visible {
+  transform: translateY(
+    -100%
+  ); /* Mueve hacia arriba los elementos cuando el primero es visible */
+}

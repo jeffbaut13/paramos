@@ -18,8 +18,8 @@ const Onboarding = () => {
   const barra = useRef(null);
   const bgOverlay = useRef(null);
   const border = useRef(null);
-  const isMobile = window.innerWidth <= 1024;
-  const isTablet = window.innerWidth >= 600 && window.innerWidth <= 1024;
+  const Mobile = window.innerWidth <= 1024;
+  const Tablet = window.innerWidth >= 600 && window.innerWidth <= 1024;
   const fechaRef = useRef(null);
   const TextEfect = useRef(null);
   const videobg = useRef(null);
@@ -57,11 +57,11 @@ const Onboarding = () => {
         border.current,
         {
           backgroundPosition: "center",
-          backgroundSize: `${isTablet ? "cover" : "102%"} `,
+          backgroundSize: `${Tablet ? "cover" : "102%"} `,
         },
         {
           backgroundPosition: "center",
-          backgroundSize: `${isTablet ? "cover" : "100%"} `,
+          backgroundSize: `${Tablet ? "cover" : "100%"} `,
           ease: "power2.inOut",
           duration: 1,
         }
@@ -88,7 +88,7 @@ const Onboarding = () => {
     Opacidad(barra, 1);
   }, [inicio]);
 
-  const containerClass = getContainerClass(inicio, isMobile);
+  const containerClass = getContainerClass(inicio, Mobile);
 
   return (
     <div ref={padre} className="h-[600vh] onBoarding">

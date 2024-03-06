@@ -1,38 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getImagePath, useWindowSize } from "../helpers/helpers";
+import BackgroundTransition from "../components/BackgroundTransition";
 
 // Componente Home que utiliza el hook useWindowSize
 const Home = () => {
-  const [currentImage, setCurrentImage] = useState(1);
-  const [width, height] = useWindowSize(); // Usa el hook para obtener el ancho y alto de la ventana
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const nextImage = currentImage === 4 ? 1 : currentImage + 1;
-      setCurrentImage(nextImage);
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, [currentImage]);
-
   return (
     <div className="image-container">
-      {Array.from({ length: 4 }, (_, i) => (
-        <img
-          key={i}
-          src={getImagePath(`transicionNueva${i + 1}.webp`)}
-          className={`imagen imagen${i + 1} ${
-            currentImage === i + 1 ? "active" : ""
-          }`}
-          style={{ zIndex: currentImage === i + 1 ? 4 : 1 }}
-        />
-      ))}
-
-      <img src="/NUBE-1.png" className="nube nube1 w-auto h-auto" />
-      <img src="/NUBE-2.png" className="nube nube2 w-auto h-auto" />
-      <img src="/NUBE-3.png" className="nube nube3 w-auto h-auto" />
-      <img src="/NUBE-4.png" className="nube nube4 w-auto h-auto" />
+      <BackgroundTransition />
 
       <div className="fadeIn onBoarding absoluteCenterParrafos gradiente">
         <h1 className="2xl:text-4xl xl:text-2xl xs:text-2xl font-semibold letterSpacing">

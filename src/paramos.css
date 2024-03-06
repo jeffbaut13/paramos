@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 .BoxesTextStart {
-  @apply overflow-hidden rounded-s-3xl relative bg-[#DDDDDD];
+  @apply overflow-hidden lg:rounded-s-3xl relative bg-[#DDDDDD];
 }
 .BoxesImgEnd {
-  @apply overflow-hidden bg-no-repeat bg-cover rounded-e-3xl  bg-[#DDDDDD];
+  @apply overflow-hidden bg-no-repeat bg-cover lg:rounded-e-3xl  bg-[#DDDDDD];
 }
 
 .BoxesTextEnd {
-  @apply overflow-hidden rounded-e-3xl relative bg-[#DDDDDD];
+  @apply overflow-hidden lg:rounded-e-3xl max-lg:rounded-t-3xl relative bg-[#DDDDDD];
 }
 .BoxesImgStart {
-  @apply overflow-hidden bg-no-repeat bg-cover rounded-s-3xl  bg-[#DDDDDD];
+  @apply overflow-hidden bg-no-repeat bg-cover lg:rounded-s-3xl max-lg:rounded-b-3xl  bg-[#DDDDDD];
 }
 
 .bgvid {
@@ -33,6 +33,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 100;
+  @apply rounded-3xl;
 }
 .dosmilFrailejones img {
   @apply object-cover w-full h-full;
@@ -40,8 +41,11 @@
 .punto {
   @apply absolute z-50  rounded-full bg-white;
 }
+.travesia .punto {
+  @apply cursor-pointer left-1/2 translate-x-[-50%] lg:bottom-16 xs:bottom-[45%] w-10 h-10;
+}
 .dosmilFrailejones .text {
-  @apply w-[240px] absolute z-50 bg-black bg-opacity-60 font-medium text-white text-center text-lg rounded-lg py-2 px-3 border border-white;
+  @apply w-[240px] absolute z-[60] bg-black bg-opacity-60 font-medium text-white text-center lg:text-lg xs:text-sm rounded-lg py-2 px-3 border border-white;
 }
 
 .punto:before {
@@ -68,44 +72,66 @@
   transform: translate(-50%, -50%);
   z-index: 1;
 }
-
+.paddingComponentes {
+  @apply 2xl:p-2 xs:p-1;
+}
 .SegundoTextoDosmil span {
   @apply inline-block;
 }
 
 .travesia .cards {
-  @apply absolute w-1/4 h-2/4  top-1/2 translate-y-[-70%] rounded-3xl overflow-hidden;
+  @apply hidden absolute w-1/4 h-2/4 rounded-3xl overflow-hidden;
 }
 .travesia .cards.active {
   @apply w-full h-full left-0 top-0 translate-y-[0%] translate-x-[0%];
 }
 .cajaTitulos {
-  @apply flex relative z-[4] p-[6%];
+  @apply flex relative z-[4] p-[6%] max-lg:flex-col max-lg:items-center;
 }
 .titulo {
-  @apply font-bold  text-3xl text-center w-full translate-y-[100%];
+  @apply lg:font-bold xs:font-light text-3xl text-center lg:max-w-[340px] w-full translate-y-[100%] xs:tracking-[5px] lg:tracking-[3px] max-lg:mt-8;
 }
 .titulo2 {
-  @apply font-bold uppercase text-white text-2xl;
+  @apply lg:font-bold xs:font-light uppercase text-white 2xl:text-2xl lg:text-lg;
 }
 .bg-degradadoTravesia {
   @apply opacity-0 pointer-events-none bg-gradient-to-t from-[#2A1100d4] via-transparent to-[#020a47d6] bg-opacity-0;
 }
 
 .parrafo {
-  @apply text-white max-w-[700px] hidden opacity-0 text-2xl;
+  @apply text-white max-w-[570px] hidden opacity-0 2xl:text-xl lg:text-lg max-lg:text-center max-lg:px-6 max-lg:mt-8;
 }
 .cajaIconos .subtitulo {
-  @apply w-52 text-white font-normal text-xl text-center;
+  @apply 2xl:w-48 lg:w-36 text-white font-normal 2xl:text-lg lg:text-sm xs:text-[0.6rem] text-center;
+}
+.cajaIconos {
+  @apply lg:p-[6%] xs:p-[3%] lg:pr-[12%] flex justify-end relative z-[4];
 }
 .cajaIconos .svgIcono {
-  @apply ml-8 flex items-center flex-col justify-between opacity-0;
+  @apply xl:ml-8 max-lg:mx-2 flex items-center flex-col justify-between opacity-0;
 }
 .svgIcono .icono {
-  @apply w-28 flex justify-center;
+  @apply 2xl:w-24 lg:w-16 xs:w-12 flex justify-center;
 }
-.travesia .punto {
-  @apply cursor-pointer;
+
+.tamanoTitulos {
+  @apply 2xl:text-5xl lg:text-4xl xs:text-xl;
+}
+.iconoCaminante {
+  @apply opacity-90 pointer-events-none lg:w-fit xs:w-[35%] absolute z-[6]
+  lg:left-[25%] lg:top-[40%] 
+  xs:left-[50%] xs:top-[50%] max-lg:translate-x-[-50%]
+  /* 2xl:translate-y-[85%] 2xl:translate-x-[300%] 
+  lg:translate-y-[60%] lg:translate-x-[200%]; */
+
+  /*  sm:translate-y-[85%] sm:translate-x-[300%];
+   xs:translate-y-[85%] xs:translate-x-[300%]; */;
+}
+.responsiveReverse {
+  @apply flex   max-lg:flex-col-reverse;
+}
+.responsive {
+  @apply flex max-lg:flex-col;
 }
 @keyframes puntos {
   0% {

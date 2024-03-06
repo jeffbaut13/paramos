@@ -35,17 +35,16 @@ export const scrolltrigerFunction = (ref, Function) => {
   });
 };
 
-export const scrollEffects = (component) => {
+export const scrollEffects = (component, time, Function) => {
   gsap.defaults({ ease: "power1.inOut" });
 
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: component.current,
-      start: "top 0",
-      end: "95% 0",
-      scrub: 5,
-
-      markers: true,
+      start: `${time}% 0"`,
+      end: "50% 0",
+      toggleActions: "play none none reverse",
+      onUpdate: Function,
     },
   });
   return tl;

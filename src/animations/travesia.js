@@ -1,5 +1,10 @@
 import gsap from "gsap";
 
+const Mobile = window.innerWidth <= 600;
+const Tablet = window.innerWidth > 600 && window.innerWidth < 1024;
+const laptop = window.innerWidth >= 1024 && window.innerWidth <= 1400;
+const full = window.innerWidth > 1400;
+
 export const primerEfecto2 = (
   padre,
   cardInicial,
@@ -113,8 +118,6 @@ export const primerEfecto2 = (
       {
         color: "#ffffff",
         textAlign: "start",
-        fontSize: "1.875rem",
-        lineHeight: "2.25rem",
         marginRight: "0",
         y: "100%",
       },
@@ -178,7 +181,20 @@ export const primerEfecto2 = (
       },
       "first"
     );
-
+    tl.to(
+      `${cardInicial} .caminante2`,
+      {
+        display: "block",
+      },
+      "first+=0.2"
+    );
+    tl.to(
+      `${cardTerciaria} .caminante2`,
+      {
+        display: "none",
+      },
+      "first+=0.2"
+    );
     tl.fromTo(
       `${cardInicial} .caminante2`,
       {
@@ -237,7 +253,6 @@ export const primerEfecto2 = (
       {
         color: "#ffffff",
         textAlign: "start",
-        fontSize: "4rem",
         lineHeight: 1,
       },
       "first"
@@ -246,6 +261,8 @@ export const primerEfecto2 = (
       `${cardSecundaria} .cajaTitulos .titulo`,
       {
         color: "#ffffff",
+        fontSize: `${(full && "1.875rem") || (laptop && "1.5rem")}`,
+        lineHeight: `${(full && "2.25rem") || (laptop && "2rem")}`,
         paddingLeft: "6%",
         ease: "power1.in",
         marginRight: 0,
@@ -255,13 +272,15 @@ export const primerEfecto2 = (
       },
       "first"
     );
-    tl.to(
-      `${cardInicial} .cajaTitulos`,
-      {
-        padding: "6% 0 0 16%",
-      },
-      "first+=0.1"
-    );
+    if (full) {
+      tl.to(
+        `${cardInicial} .cajaTitulos`,
+        {
+          padding: "6% 0 0 16%",
+        },
+        "first+=0.1"
+      );
+    }
     tl.to(
       `${cardSecundaria} .cajaTitulos`,
       {
@@ -282,14 +301,20 @@ export const primerEfecto2 = (
       {
         opacity: 1,
         zIndex: 5,
-        textAlign: "start",
+        textAlign: `${
+          (laptop && "start") || (full && "start") || (Mobile && "center")
+        }`,
         width: "fit-content",
-        fontSize: "4rem",
+        fontSize: `${
+          (laptop && "3rem") || (full && "4rem") || (Mobile && "22px")
+        }`,
         lineHeight: 1,
         y: 0,
         ease: "power1.in",
         color: "#ffffff",
-        marginRight: "6rem",
+        marginRight: `${
+          (laptop && "4rem") || (full && "6rem") || (Mobile && "0")
+        }`,
         duration: 1,
       },
       "first+=0.3"
@@ -374,40 +399,87 @@ export const primerEfecto2 = (
 export const reverseAction = (padre) => {
   let ctx = gsap.context(() => {
     const tl = gsap.timeline();
-
-    tl.to(".cards1", {
-      width: "25%",
-      height: "50%",
-      top: "50%",
-      left: "8%",
-      y: "-70%",
-      x: "0%",
-      opacity: 1,
-    }).addLabel("first");
-    tl.to(
-      ".cards2",
-      {
+    if (full) {
+      tl.to(".cards1", {
         width: "25%",
         height: "50%",
         top: "50%",
-        left: "50%",
+        left: "8%",
         y: "-70%",
+        x: "0%",
+        opacity: 1,
+      }).addLabel("first");
+
+      tl.to(
+        ".cards2",
+        {
+          width: "25%",
+          height: "50%",
+          top: "50%",
+          left: "50%",
+          y: "-70%",
+          x: "-50%",
+
+          opacity: 1,
+        },
+        "first"
+      );
+      tl.to(
+        ".cards3",
+        {
+          width: "25%",
+          height: "50%",
+          top: "50%",
+          left: "unset",
+          right: "8%",
+          y: "-70%",
+          x: "0%",
+          opacity: 1,
+        },
+        "first"
+      );
+    } else if (Mobile) {
+      tl.to(".cards1", {
+        width: "90%",
+        height: "60%",
+        top: "60%",
+        left: "50%",
+        y: "-80%",
         x: "-50%",
         opacity: 1,
-      },
-      "first"
-    );
+      }).addLabel("first");
+      tl.to(
+        ".cards2",
+        {
+          width: "90%",
+          height: "60%",
+          top: "60%",
+          left: "50%",
+          y: "-80%",
+          x: "-50%",
+          opacity: 1,
+        },
+        "first"
+      );
+      tl.to(
+        ".cards3",
+        {
+          width: "90%",
+          height: "60%",
+          top: "60%",
+          left: "50%",
+          y: "-80%",
+          x: "-50%",
+          opacity: 1,
+        },
+        "first"
+      );
+    }
+
     tl.to(
-      ".cards3",
+      ".caminante2",
       {
-        width: "25%",
-        height: "50%",
-        top: "50%",
-        right: "8%",
-        left: "unset",
-        y: "-70%",
-        x: 0,
-        opacity: 1,
+        display: "none",
       },
       "first"
     );
