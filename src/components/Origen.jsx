@@ -136,7 +136,7 @@ const Origen = ({ active360, setActive360 }) => {
             >
               <img src="/svg/360Icon.svg" alt="" />
               <HandScroll
-                customstyle={`handScroll move absolute w-14 ${
+                customstyle={`handScroll move absolute lg:w-12 xs:w-10 ${
                   active360 < 2 ? "block" : "hidden"
                 }`}
               />

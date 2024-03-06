@@ -152,7 +152,11 @@
 .mask {
   -webkit-mask-image: url("/navVertical/barralateral.png");
   mask-image: url("/navVertical/barralateral.png");
+  mask-size: contain; /* O ajusta a tus necesidades (auto, contain, etc.) */
+  mask-position: center; /* Puedes ajustar la posición según tus necesidades */
+  mask-repeat: no-repeat; /* Para que la imagen de la máscara no se repita */
 }
+
 .maskChild {
   display: inline-block;
   width: 100%;

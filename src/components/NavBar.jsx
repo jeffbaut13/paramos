@@ -2,7 +2,7 @@ import gsap from "gsap";
 import React, { useState, useEffect, useRef } from "react";
 import MouseScroll from "./MouseScroll";
 
-const NavBar = ({ activeButton, scrollPercentage }) => {
+const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
   const isMobile = window.innerWidth <= 1024;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuMobile = useRef(null);
@@ -123,6 +123,18 @@ const NavBar = ({ activeButton, scrollPercentage }) => {
               />
             </button>
           ))}
+        </div>
+      )}
+
+      {isMobile && (
+        <div className="navVertical z-[60] w-full h-auto rounded-xl fixed left-0 bottom-0 translate-y-[300%] flex justify-center">
+          <div className="mask w-full h-[17px] relative">
+            <div className="maskChild bg-white opacity-35"></div>
+            <div
+              style={{ width: `${scrollPercentageTwo}%` }}
+              className=" absolute z-50 top-0 left-0 inline-block h-full  bg-white "
+            ></div>
+          </div>
         </div>
       )}
 

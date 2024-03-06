@@ -166,27 +166,37 @@ export const timeLine = (
   tl4.to(".mouseScroll", { opacity: 1, duration: lento });
   tl4.to(".mainParamos", { overflow: "hidden" });
 
-  const tl5 = scrollEffects(main, tipoScroll * 5.4, true);
+  const tl5 = scrollEffects(main, tipoScroll * 5.4);
 
   tl5.to(".blurParamos", { opacity: 0, duration: rapido }, "<");
 
   if (isMobile) {
-    tl5.to(".BoxOrigenText", { height: "50%" });
-    tl5.to(".BoxOrigenImg", { height: "50%" }, "<");
+    tl5.fromTo(".BoxOrigenText", { height: "100%" }, { height: "50%" });
+    tl5.fromTo(".BoxOrigenImg", { height: "0%" }, { height: "50%" }, "<");
   } else {
-    tl5.to(".BoxOrigenText", { width: "50%" });
-    tl5.to(".BoxOrigenImg", { width: "50%" }, "<");
+    tl5.fromTo(".BoxOrigenText", { width: "100%" }, { width: "50%" });
+    tl5.fromTo(".BoxOrigenImg", { width: "0%" }, { width: "50%" }, "<");
   }
 
   const tl6 = scrollEffects(main, tipoScroll * 6.33);
   tl6.to(".mainParamos", { overflow: "hidden" }).addLabel("dosMil");
 
   if (isMobile) {
-    tl6.to(".BoxDosmilTexto", { height: "50%" }, "dosMil");
-    tl6.to(".BoxDosmilImage", { height: "50%" }, "<");
+    tl6.fromTo(
+      ".BoxDosmilTexto",
+      { height: "100%" },
+      { height: "50%" },
+      "dosMil"
+    );
+    tl6.fromTo(".BoxDosmilImage", { height: "0%" }, { height: "50%" }, "<");
   } else {
-    tl6.to(".BoxDosmilTexto", { width: "50%" }, "dosMil");
-    tl6.to(".BoxDosmilImage", { width: "50%" }, "<");
+    tl6.fromTo(
+      ".BoxDosmilTexto",
+      { width: "100%" },
+      { width: "50%" },
+      "dosMil"
+    );
+    tl6.fromTo(".BoxDosmilImage", { width: "0%" }, { width: "50%" }, "<");
   }
 
   const tl7 = scrollEffects(main, tipoScroll * 7);
@@ -289,16 +299,21 @@ export const timeLine = (
     tl9.to(".BoxDosmilTexto", { width: "50%" }, "<");
   }
 
-  const tl11 = scrollEffects(main, tipoScroll * 10.8);
+  const tl11 = scrollEffects(main, tipoScroll * 11);
 
   tl11.to(".blurParamos", { opacity: 1, duration: rapido });
 
   if (isMobile) {
-    tl11.to(".BoxTravesiaCards", { height: "50%" });
-    tl11.to(".BoxTravesiaTexto", { height: "50%" }, "<");
+    tl11.fromTo(".BoxTravesiaCards", { height: "0%" }, { height: "50%" });
+    tl11.fromTo(
+      ".BoxTravesiaTexto",
+      { height: "100%" },
+      { height: "50%" },
+      "<"
+    );
   } else {
-    tl11.to(".BoxTravesiaCards", { width: "50%" });
-    tl11.to(".BoxTravesiaTexto", { width: "50%" }, "<");
+    tl11.fromTo(".BoxTravesiaCards", { width: "0%" }, { width: "50%" });
+    tl11.fromTo(".BoxTravesiaTexto", { width: "100%" }, { width: "50%" }, "<");
   }
 
   const tl12 = scrollEffects(main, tipoScroll * 11.3);

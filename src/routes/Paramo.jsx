@@ -26,6 +26,7 @@ function App() {
   const [altura, setAltura] = useState(null);
   const [pixelsScrolled, setPixelsScrolled] = useState(0);
   const [scrollPercentage, setScrollPercentage] = useState(1);
+  const [scrollPercentageTwo, setScrollPercentageTwo] = useState(0);
   useEffect(() => {
     gsap.to(main.current, {
       scrollTrigger: {
@@ -36,7 +37,7 @@ function App() {
         scrub: true,
         onUpdate: (self) => {
           const scrollPercentage = self.progress * 100;
-          setScrollPercentage(scrollPercentage);
+          setScrollPercentageTwo(scrollPercentage);
           //  console.log("scroll Padre " + scrollPercentage);
           switchProcentageZindex(scrollPercentage);
 
@@ -166,6 +167,7 @@ function App() {
         <NavBar
           activeButton={activeButton}
           scrollPercentage={scrollPercentage}
+          scrollPercentageTwo={scrollPercentageTwo}
         />
         <div className=" mainParamos relative rounded-3xl overflow-hidden bg-white w-full h-full ">
           <div className="contenedor">
