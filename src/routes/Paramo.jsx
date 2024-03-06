@@ -169,11 +169,11 @@ function App() {
           scrollPercentage={scrollPercentage}
           scrollPercentageTwo={scrollPercentageTwo}
         />
+        <VideoComponent />
+        <VideoComponent />
+        <VideoComponent />
         <div className=" mainParamos relative rounded-3xl overflow-hidden bg-white w-full h-full ">
           <div className="contenedor">
-            <VideoComponent />
-            <VideoComponent />
-            <VideoComponent />
             <Conocelosparamos />
             <Origen active360={active360} setActive360={setActive360} />
             <Dosmilfrailejones numFrailejon={numFrailejon} />

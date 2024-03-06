@@ -132,7 +132,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
             <div className="maskChild bg-white opacity-35"></div>
             <div
               style={{ width: `${scrollPercentageTwo}%` }}
-              className=" absolute z-50 top-0 left-0 inline-block h-full  bg-white "
+              className=" transition-all ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
             ></div>
           </div>
         </div>
