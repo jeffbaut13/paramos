@@ -289,3 +289,8 @@
     transform: translate(-50%, -35%) scale(1);
   }
 }
+
+.navVertical {
+  @apply z-[60] xs:w-full xs:h-auto rounded-xl fixed max-lg:left-0 max-lg:bottom-0 max-lg:translate-y-[300%] flex justify-center 
+  lg:w-[17px] lg:right-0 lg:top-0 lg:h-full lg:translate-x-[160%];
+}

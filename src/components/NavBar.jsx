@@ -104,7 +104,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
           </button>
         </div>
       </nav>
-      {!isMobile && (
+      {/* {!isMobile && (
         <div className="navVertical z-[60] w-[4.4vw] h-auto rounded-xl fixed right-0 top-1/2 translate-y-[-50%] translate-x-[110%] flex-col">
           <MouseScroll
             customStyle={
@@ -125,28 +125,36 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
             </button>
           ))}
         </div>
-      )}
+      )} */}
 
       {isMobile && (
-        <>
-          <HandScroll
-            customstyle={
-              "mouseScroll scrollMobile w-10 fixed left-1/2 top-6 z-[200]"
-            }
-            black={true}
-            visible={true}
-          />
-          <div className="navVertical z-[60] w-full h-auto rounded-xl fixed left-0 bottom-0 translate-y-[300%] flex justify-center">
-            <div className="mask w-full h-[17px] relative">
-              <div className="maskChild bg-white opacity-35"></div>
-              <div
-                style={{ width: `${scrollPercentageTwo}%` }}
-                className=" transition-all ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
-              ></div>
-            </div>
-          </div>
-        </>
+        <HandScroll
+          customstyle={
+            "mouseScroll scrollMobile w-10 fixed left-1/2 top-6 z-[200]"
+          }
+          black={true}
+          visible={true}
+        />
       )}
+      <div className="navVertical">
+        <span className="fixed top-0 right-0 translate-y-[-50px] text-white">
+          {scrollPercentageTwo}
+        </span>
+        <div className="barra overflow-hidden rounded-3xl w-full xs:h-[17px] lg:h-full relative">
+          <div className="maskChild bg-white opacity-35"></div>
+          {isMobile ? (
+            <div
+              style={{ width: `${scrollPercentageTwo}%` }}
+              className=" transition-all ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
+            ></div>
+          ) : (
+            <div
+              style={{ height: `${scrollPercentageTwo}%` }}
+              className=" transition-all w-full ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
+            ></div>
+          )}
+        </div>
+      </div>
 
       {isMenuOpen && (
         <div
