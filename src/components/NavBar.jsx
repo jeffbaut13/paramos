@@ -137,7 +137,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
         />
       )}
       <div className="navVertical">
-        <span className="fixed top-0 right-0 translate-y-[-50px] text-white">
+        <span className="fixed lg:top-0 right-0 xs:translate-y-[-20px] lg:translate-y-[-50px] text-white">
           {scrollPercentageTwo}
         </span>
         <div className="barra overflow-hidden rounded-3xl w-full xs:h-[17px] lg:h-full relative">
