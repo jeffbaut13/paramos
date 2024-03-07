@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 .BoxesTextStart {
-  @apply overflow-hidden lg:rounded-s-3xl relative bg-[#DDDDDD];
+  @apply overflow-hidden lg:rounded-s-3xl max-lg:rounded-t-3xl relative bg-[#DDDDDD];
 }
 .BoxesImgEnd {
-  @apply overflow-hidden bg-no-repeat bg-cover lg:rounded-e-3xl  bg-[#DDDDDD];
+  @apply overflow-hidden bg-no-repeat bg-cover lg:rounded-e-3xl max-lg:rounded-b-3xl bg-[#DDDDDD];
 }
 
 .BoxesTextEnd {
@@ -258,5 +258,34 @@
   100% {
     opacity: 0;
     transform: translate(32%, -38%);
+  }
+}
+
+.scrollMobile {
+  pointer-events: none;
+  @apply transition-all ease-out duration-500;
+  animation: scrollingMobile 3s ease-in-out infinite;
+}
+
+@keyframes scrollingMobile {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -30%) scale(0.85);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -35%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -35%) scale(1);
   }
 }

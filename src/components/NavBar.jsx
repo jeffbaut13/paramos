@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import React, { useState, useEffect, useRef } from "react";
 import MouseScroll from "./MouseScroll";
+import HandScroll from "./HandScroll";
 
 const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
   const isMobile = window.innerWidth <= 1024;
@@ -73,7 +74,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
 
   return (
     <>
-      <nav className="text-black maxW w-full fixed z-20  font-semibold m-0 px-6 top-0 left-1/2  translate-x-[-50%] translate-y-[-200%]">
+      <nav className="text-black maxW w-full fixed flex items-center justify-center z-20 font-semibold m-0 px-6 top-0 left-1/2 min-h-[7vh] translate-x-[-50%] translate-y-[-130%]">
         <div className="flex justify-between items-center w-full">
           <div className="w-[10%]">
             <img
@@ -82,14 +83,14 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
               className="w-[25px]"
             />
           </div>
-          <div className="max-lg:hidden lg:flex space-x-4 rounded-3xl">
+          <div className="lg:flex space-x-4 rounded-3xl">
             {buttons.map((button) => {
               if (activeButton === button.text) {
                 return (
                   <button
                     ref={buton}
                     key={button.text}
-                    className={`cursor-default px-4 py-1 transition-colors text-xl tracking-[0.8em] rounded-3xl uppercase text-white`}
+                    className={`cursor-default px-4 py-1 transition-colors lg:text-xl xs:text-sm tracking-[0.8em] rounded-3xl uppercase text-white`}
                   >
                     {button.text}
                   </button>
@@ -107,7 +108,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
         <div className="navVertical z-[60] w-[4.4vw] h-auto rounded-xl fixed right-0 top-1/2 translate-y-[-50%] translate-x-[110%] flex-col">
           <MouseScroll
             customStyle={
-              "mouseScroll w-10 fixed rigth-0 top-1/2 translate-x-[210%] translate-y-[-50%] "
+              "mouseScroll 2xl:w-10 lg:w-9 fixed rigth-0 top-1/2 2xl:translate-x-[210%] lg:translate-x-[120%] translate-y-[-50%] "
             }
           />
           {buttons.map((button) => (
@@ -127,15 +128,24 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
       )}
 
       {isMobile && (
-        <div className="navVertical z-[60] w-full h-auto rounded-xl fixed left-0 bottom-0 translate-y-[300%] flex justify-center">
-          <div className="mask w-full h-[17px] relative">
-            <div className="maskChild bg-white opacity-35"></div>
-            <div
-              style={{ width: `${scrollPercentageTwo}%` }}
-              className=" transition-all ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
-            ></div>
+        <>
+          <HandScroll
+            customstyle={
+              "mouseScroll scrollMobile w-10 fixed left-1/2 top-6 z-[200]"
+            }
+            black={true}
+            visible={true}
+          />
+          <div className="navVertical z-[60] w-full h-auto rounded-xl fixed left-0 bottom-0 translate-y-[300%] flex justify-center">
+            <div className="mask w-full h-[17px] relative">
+              <div className="maskChild bg-white opacity-35"></div>
+              <div
+                style={{ width: `${scrollPercentageTwo}%` }}
+                className=" transition-all ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
+              ></div>
+            </div>
           </div>
-        </div>
+        </>
       )}
 
       {isMenuOpen && (

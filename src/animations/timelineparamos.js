@@ -39,7 +39,7 @@ export const timeLine = (
     tl.fromTo(
       ".BoxConoceImg",
       { height: "50%" },
-      { height: "0", duration: rapido },
+      { height: "0", borderRadius: "1.5rem", duration: rapido },
       "<"
     );
   } else {
@@ -50,6 +50,7 @@ export const timeLine = (
       "<"
     );
   }
+
   tl.to(".montaña", { display: "block" });
   if (isMobile) {
     tl.to(".BoxConoceText", { height: "0", duration: rapido });
