@@ -30,7 +30,7 @@ const Origen = ({ active360, setActive360 }) => {
       }).addLabel("origen");
 
       tl.to(".handScroll", { display: "none" }, "origen-=0.5");
-      tl.to(".mainParamos", { overflow: "visible" }, "origen-=0.5");
+
       tl.to("body", { overflowX: "visible" }, "origen-=0.5");
       tl.to(
         ".blurParamos",
@@ -47,7 +47,7 @@ const Origen = ({ active360, setActive360 }) => {
         tl.fromTo(
           ".BoxOrigenImg",
           { height: "50%" },
-          { height: "100%", duration: 0.5 },
+          { height: "100%", borderRadius: "1.25rem", duration: 0.5 },
           "origen+=0.5"
         );
       } else {
@@ -60,7 +60,7 @@ const Origen = ({ active360, setActive360 }) => {
         tl.fromTo(
           ".BoxOrigenImg",
           { width: "50%" },
-          { width: "100%", duration: 0.5 },
+          { width: "100%", borderRadius: "1.25rem", duration: 0.5 },
           "origen-=0.5"
         );
       }
@@ -70,7 +70,7 @@ const Origen = ({ active360, setActive360 }) => {
         tl.to(
           ".BoxOrigenImg",
 
-          { height: "50%", duration: 0.5 }
+          { height: "50%", borderRadius: "1.25rem 1.25rem 0 0", duration: 0.5 }
         ).addLabel("reverse");
         tl.to(".handScroll", { display: "none" }, "reverse-=0.5");
         tl.to(
@@ -83,7 +83,7 @@ const Origen = ({ active360, setActive360 }) => {
         tl.to(
           ".BoxOrigenImg",
 
-          { width: "50%", duration: 0.5 }
+          { width: "50%", borderRadius: "0 1.25rem 1.25rem 0", duration: 0.5 }
         ).addLabel("reverse");
         tl.to(
           ".BoxOrigenText",
@@ -117,7 +117,8 @@ const Origen = ({ active360, setActive360 }) => {
   }, [active360]);
 
   return (
-    <div className="origen absolute w-full h-full z-[1] flex">
+    //<div className="origen absolute w-full h-full z-[1] flex">
+    <div className="origen w-full h-full z-[1] flex">
       <div className=" responsive flex relative w-full h-full paddingComponentes ">
         <div className="BoxOrigenText  BoxesTextStart flex-center">
           <p className="origenTexto  font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">

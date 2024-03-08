@@ -1,592 +1,477 @@
-if (isMobile) {
-  tl.fromTo(
-    ".BoxConoceText",
-    { height: "50%" },
-    { height: "100%", duration: 2 }
-  );
-} else {
-  tl.fromTo(".BoxConoceText", { width: "50%" }, { width: "100%", duration: 2 });
-}
-if (isMobile) {
-  tl.fromTo(
-    ".BoxConoceImg",
-    { height: "50%" },
-    { height: "0", duration: 2 },
-    "<"
-  );
-} else {
-  tl.fromTo(
-    ".BoxConoceImg",
-    { width: "50%" },
-    { width: "0", duration: 2 },
-    "<"
-  );
-}
+import { useEffect } from "react";
+import { scrollEffects } from "./gsap";
+import gsap from "gsap";
 
+const isMobile = window.innerWidth <= 1024;
+const rapido = 0.5;
+const normal = 1;
+const medio = 1.5;
+const lento = 2;
+
+export const timeLine = (
+  main,
+  setTranslate,
+  translate,
+  setNumFrailejon,
+  numFrailejon,
+  setTravesiaReverse
+) => {
+  const tipoScroll = 6;
+
+  const tl = scrollEffects(main, tipoScroll);
+
+  /***************Conoce los paramos */
+
+  if (isMobile) {
+    tl.fromTo(
+      ".BoxConoceText",
+      { height: "50%" },
+      { height: "100%", duration: rapido }
+    );
+  } else {
+    tl.fromTo(
+      ".BoxConoceText",
+      { width: "50%" },
+      { width: "100%", duration: rapido }
+    );
+  }
+  if (isMobile) {
+    tl.fromTo(
+      ".BoxConoceImg",
+      { height: "50%" },
+      { height: "0", borderRadius: "1.5rem", duration: rapido },
+      "<"
+    );
+  } else {
+    tl.fromTo(
+      ".BoxConoceImg",
+      { width: "50%" },
+      { width: "0", duration: rapido },
+      "<"
+    );
+  }
+
+  tl.to(".montaña", { display: "block" });
+  if (isMobile) {
+    tl.to(".BoxConoceText", { height: "0", duration: rapido });
+  } else {
+    tl.to(".BoxConoceText", { width: "0", duration: rapido });
+  }
+  if (isMobile) {
+    tl.to(".BoxConoceImg", { height: "100%", duration: rapido }, "<");
+  } else {
+    tl.to(".BoxConoceImg", { width: "100%", duration: rapido }, "<");
+  }
+  tl.to(".blurParamos", { opacity: 1, duration: rapido });
+  tl.to(".mouseScroll", { opacity: 0, duration: lento }, "<");
+
+  tl.to(".conoce", { padding: 0, duration: rapido }, "<");
+
+  const tl2 = scrollEffects(main, tipoScroll * 2);
+
+  tl2
+    .to(".m4", { scale: 2, opacity: 0, x: "-80%", duration: rapido })
+    .addLabel("m4");
+  tl2.fromTo(
+    ".m1",
+    { opacity: 0.3, width: "30%" },
+    { opacity: 1, width: "100%", duration: normal },
+    "m4-=0.5"
+  );
+  tl2.to(
+    ".conoce .titulo1",
+    { scale: 2, opacity: 0, x: "-80%", duration: rapido },
+    "m4-=0.5"
+  );
+
+  tl2
+    .to(".circulo1", { display: "none", duration: normal }, "m4-=1")
+    .addLabel("circulo1");
+  tl2.to(".circulo2", { display: "block", duration: rapido }, "m4+=1");
+  tl2.to(".circulo3", { display: "block", duration: rapido }, "m4+=1");
+  tl2.to(
+    ".moveTwo",
+    {
+      display: "none",
+    },
+    "circulo1-=1"
+  );
+
+  tl2.fromTo(
+    ".conoce .titulo2",
+    { opacity: 0, width: "30%" },
+    { opacity: 1, width: "100%", duration: rapido },
+    "<"
+  );
+
+  const tl3 = scrollEffects(main, tipoScroll * 3);
+
+  tl3
+    .to(".m1", { scale: 2, opacity: 0, x: "-80%", duration: rapido })
+    .addLabel("m2");
+  tl3.to(".circulo2", { display: "none" }, "m2-=0.5");
+  tl3.to(".circulo3", { display: "none" }, "m2-=0.5");
+
+  tl3.fromTo(
+    ".m2",
+    { opacity: 0.3, width: "30%" },
+    { opacity: 1, width: "100%", duration: normal },
+    "m2-=0.5"
+  );
+  tl3.to(
+    ".conoce .titulo2",
+    { scale: 2, opacity: 0, x: "-80%", duration: rapido },
+    "m2-=0.5"
+  );
+
+  tl3.to(".circulo4", { display: "block", duration: rapido }, "m2+=1");
+  tl3.to(".circulo5", { display: "block", duration: rapido }, "m2+=1");
+
+  tl3.fromTo(
+    ".conoce .titulo3",
+    { opacity: 0, width: "30%" },
+    { opacity: 1, width: "100%", duration: rapido },
+    "<"
+  );
+
+  const tl4 = scrollEffects(main, tipoScroll * 4);
+
+  tl4.to(".m2", { scale: 2, opacity: 0, x: "80%", duration: rapido });
+
+  tl4.fromTo(
+    ".m3",
+    { opacity: 0.3, width: "30%" },
+    { opacity: 1, width: "100%", duration: normal },
+    "<"
+  );
+  tl4.to(".circulo6", { display: "none", duration: rapido }, "<");
+  tl4.to(".circulo7", { display: "none", duration: rapido }, "<");
+
+  tl4.to(
+    ".conoce .titulo3",
+    { scale: 2, opacity: 0, x: "-80%", duration: rapido },
+    "<"
+  );
+  tl4.to(".circulo4", { display: "none", duration: rapido }, "<");
+  tl4.to(".circulo5", { display: "none", duration: rapido }, "<");
+
+  tl4.fromTo(
+    ".conoce .titulo4",
+    { opacity: 0, width: "30%" },
+    { opacity: 1, width: "100%", duration: rapido },
+    "<"
+  );
+
+  tl4.to(".circulo6", { display: "block" });
+  tl4.to(".circulo7", { display: "block" }, "<");
+  tl4.to(".mouseScroll", { opacity: 1, duration: lento });
+  tl4.to(".mainParamos", { overflow: "hidden" });
+
+  const tl5 = scrollEffects(main, tipoScroll * 5.4);
+
+  tl5.to(".blurParamos", { opacity: 0, duration: rapido }, "<");
+
+  if (isMobile) {
+    tl5.fromTo(".BoxOrigenText", { height: "100%" }, { height: "50%" });
+    tl5.fromTo(".BoxOrigenImg", { height: "0%" }, { height: "50%" }, "<");
+  } else {
+    tl5.fromTo(".BoxOrigenText", { width: "100%" }, { width: "50%" });
+    tl5.fromTo(".BoxOrigenImg", { width: "0%" }, { width: "50%" }, "<");
+  }
+
+  const tl6 = scrollEffects(main, tipoScroll * 6.33);
+  tl6.to(".mainParamos", { overflow: "hidden" }).addLabel("dosMil");
+
+  if (isMobile) {
+    tl6.fromTo(
+      ".BoxDosmilTexto",
+      { height: "100%" },
+      { height: "50%" },
+      "dosMil"
+    );
+    tl6.fromTo(".BoxDosmilImage", { height: "0%" }, { height: "50%" }, "<");
+  } else {
+    tl6.fromTo(
+      ".BoxDosmilTexto",
+      { width: "100%" },
+      { width: "50%" },
+      "dosMil"
+    );
+    tl6.fromTo(".BoxDosmilImage", { width: "0%" }, { width: "50%" }, "<");
+  }
+
+  const tl7 = scrollEffects(main, tipoScroll * 7);
+  tl7.add(() => {
+    setNumFrailejon(0);
+  });
+  tl7.from(".bgvid", { opacity: 0, duration: normal }, "<").addLabel("niebla");
+  if (isMobile) {
+    tl7.to(".BoxDosmilImage", { height: "0%" }, "niebla-=0.5");
+    tl7.to(".BoxDosmilTexto", { height: "100%" }, "niebla-=0.5");
+  } else {
+    tl7.to(".BoxDosmilImage", { width: "0%" }, "niebla-=0.5");
+    tl7.to(".BoxDosmilTexto", { width: "100%" }, "niebla-=0.5");
+  }
+  if (numFrailejon) {
+    tl7.to(".imgFrailejon", {
+      display: `${numFrailejon == 0 ? "none" : "block"}`,
+    });
+  }
+  tl7.to(".bgvid", { opacity: 0, duration: rapido });
+  tl7
+    .to(
+      ".PrimerTextoDosmil",
+      {
+        opacity: 0,
+        y: "-100%",
+        display: "none",
+        duration: rapido,
+      },
+      "<-=0.5"
+    )
+    .addLabel("titulo1");
+
+  tl7.from(
+    ".SegundoTextoDosmil",
+    { display: "none", opacity: 0, y: "0%", duration: rapido },
+    "titulo1-=0.5"
+  );
+  tl7.add(() => {
+    setNumFrailejon(0);
+  }, "titulo1-=0.1");
+  tl7.add(() => {
+    setNumFrailejon(1);
+  }, "titulo1-=0.1");
+  if (isMobile) {
+    tl7.to(".BoxDosmilImage", { height: "50%" });
+    tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
+  } else {
+    tl7.to(".BoxDosmilImage", { width: "50%" });
+    tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
+  }
+
+  const tl8 = scrollEffects(main, tipoScroll * 8);
+  tl8.to(".bgvid", { opacity: 1, duration: normal }).addLabel("niebla2");
+
+  if (isMobile) {
+    tl8.to(".BoxDosmilImage", { height: "0%" }, "niebla2-=0.5");
+    tl8.to(".BoxDosmilTexto", { height: "100%" }, "niebla2-=0.5");
+  } else {
+    tl8.to(".BoxDosmilImage", { width: "0%" }, "niebla2-=0.5");
+    tl8.to(".BoxDosmilTexto", { width: "100%" }, "niebla2-=0.5");
+  }
+  tl8.add(() => {
+    setNumFrailejon(1);
+  }, "niebla2+=0.5");
+  tl8.add(() => {
+    setNumFrailejon(2);
+  }, "niebla2+=0.5");
+  tl8.to(".bgvid", { opacity: 0, duration: normal }, "niebla2+=0.6");
+  if (isMobile) {
+    tl8.to(".BoxDosmilImage", { height: "50%" });
+    tl8.to(".BoxDosmilTexto", { height: "50%" }, "<");
+  } else {
+    tl8.to(".BoxDosmilImage", { width: "50%" });
+    tl8.to(".BoxDosmilTexto", { width: "50%" }, "<");
+  }
+
+  const tl9 = scrollEffects(main, tipoScroll * 9);
+  tl9.to(".bgvid", { opacity: 1, duration: normal }).addLabel("niebla3");
+
+  if (isMobile) {
+    tl9.to(".BoxDosmilImage", { height: "0%" }, "niebla3-=0.5");
+    tl9.to(".BoxDosmilTexto", { height: "100%" }, "niebla3-=0.5");
+  } else {
+    tl9.to(".BoxDosmilImage", { width: "0%" }, "niebla3-=0.5");
+    tl9.to(".BoxDosmilTexto", { width: "100%" }, "niebla3-=0.5");
+  }
+  tl9.add(() => {
+    setNumFrailejon(2);
+  }, "niebla3+=0.5");
+  tl9.add(() => {
+    setNumFrailejon(3);
+  }, "niebla3+=0.5");
+  tl9.to(".bgvid", { opacity: 0, duration: normal }, "niebla3+=0.6");
+  if (isMobile) {
+    tl9.to(".BoxDosmilImage", { height: "50%" });
+    tl9.to(".BoxDosmilTexto", { height: "50%" }, "<");
+  } else {
+    tl9.to(".BoxDosmilImage", { width: "50%" });
+    tl9.to(".BoxDosmilTexto", { width: "50%" }, "<");
+  }
+
+  const tl11 = scrollEffects(main, tipoScroll * 11);
+
+  tl11.to(".blurParamos", { opacity: 1, duration: rapido });
+
+  if (isMobile) {
+    tl11.fromTo(".BoxTravesiaCards", { height: "0%" }, { height: "50%" });
+    tl11.fromTo(
+      ".BoxTravesiaTexto",
+      { height: "100%" },
+      { height: "50%" },
+      "<"
+    );
+  } else {
+    tl11.fromTo(".BoxTravesiaCards", { width: "0%" }, { width: "50%" });
+    tl11.fromTo(".BoxTravesiaTexto", { width: "100%" }, { width: "50%" }, "<");
+  }
+
+  const tl12 = scrollEffects(main, tipoScroll * 11.3);
+
+  if (isMobile) {
+    tl12.to(".BoxTravesiaCards", { height: "100%" });
+    tl12
+      .to(".BoxTravesiaTexto", { height: "0%" }, "<")
+      .addLabel("cambioTravesia");
+  } else {
+    tl12.to(".BoxTravesiaCards", { width: "100%" });
+    tl12
+      .to(".BoxTravesiaTexto", { width: "0%" }, "<")
+      .addLabel("cambioTravesia");
+  }
+  tl12.to(".blurParamos", { opacity: 1, duration: rapido });
+  tl12.add(() => {
+    setTravesiaReverse(false);
+  }, "cambioTravesia");
+  tl12.add(() => {
+    setTravesiaReverse(true);
+  }, "cambioTravesia");
+  tl12.to(".travesia > div", { padding: 0, duration: 1 }, "<-=0.5");
+
+  if (isMobile) {
+    tl12.fromTo(
+      ".cards1",
+      { display: "none", opacity: 0 },
+      { display: "block", opacity: 1, duration: rapido }
+    );
+  } else {
+    tl12.fromTo(
+      ".cards",
+      { display: "none", opacity: 0 },
+      { display: "block", opacity: 1, duration: rapido }
+    );
+  }
+  tl12.to(".caminante", { display: "block", opacity: 1 });
+
+  const tl13 = scrollEffects(main, tipoScroll * 12);
+  tl13.add(() => {
+    setTravesiaReverse(true);
+  });
+  tl13.add(() => {
+    setTravesiaReverse(false);
+  }, "<");
+
+  tl13.to(".blurParamos", { opacity: 0, duration: rapido }, "<");
+
+  const tl14 = scrollEffects(main, tipoScroll * 12.8);
+
+  tl14.to(".blurParamos", { opacity: 1, duration: rapido }, "<");
+};
+
+/********************************** */
+
+tl.fromTo(".BoxConoceText", { width: "50%" }, { width: "100%" }, "inicio-=1");
+tl.fromTo(".BoxConoceImg", { width: "50%" }, { width: "0%" }, "inicio-=1");
 tl.to(".montaña", { display: "block" });
-if (isMobile) {
-  tl.to(".BoxConoceImg", { height: "100%", duration: 4 });
-} else {
-  tl.to(".BoxConoceImg", { width: "100%", duration: 4 });
-}
-tl.from(".blurParamos", { opacity: 0, duration: 4 });
-if (isMobile) {
-  tl.to(".BoxConoceText", { height: "0", duration: 4 }, "<");
-} else {
-  tl.to(".BoxConoceText", { width: "0", duration: 4 }, "<");
-}
-tl.delay(3);
-tl.to(".conoce", { padding: 0, duration: 5 }, "<");
+tl.to(".BoxConoceText", { width: "50%" }, "<");
+tl.to(".BoxConoceImg", { width: "50%" }, "<");
 
-tl.delay(3);
-
-tl.to(".m4", { scale: 2, opacity: 0, x: "-80%", duration: 5 });
-tl.fromTo(
-  ".m1",
-  { opacity: 0.3, width: "30%" },
-  { opacity: 1, width: "100%", duration: 5 },
-  "<"
-);
-tl.to(
-  ".conoce .titulo1",
-  { scale: 2, opacity: 0, x: "-80%", duration: 5 },
-  "<"
-);
-tl.to(".circulo1", { display: "none", duration: 1 }, "<");
-tl.to(".circulo2", { display: "block", duration: 4 });
-tl.to(".circulo3", { display: "block", duration: 4 }, "<");
-
-tl.fromTo(
-  ".conoce .titulo2",
-  { opacity: 0, width: "30%" },
-  { opacity: 1, width: "100%", duration: 3 },
-  "<"
-);
-
-tl.to(".m1", { scale: 2, opacity: 0, x: "-80%", duration: 5 });
-tl.delay(3); // Pausa de 1 segundo
-tl.fromTo(
-  ".m2",
-  { opacity: 0.3, width: "30%" },
-  { opacity: 1, width: "100%", duration: 5 },
-  "<"
-);
-tl.to(
-  ".conoce .titulo2",
-  { scale: 2, opacity: 0, x: "-80%", duration: 5 },
-  "<"
-);
-tl.to(".circulo2", { display: "none", duration: 1 }, "<");
-tl.to(".circulo3", { display: "none", duration: 1 }, "<");
-tl.to(".circulo4", { display: "block", duration: 4 });
-tl.to(".circulo5", { display: "block", duration: 4 }, "<");
-
-tl.fromTo(
-  ".conoce .titulo3",
-  { opacity: 0, width: "30%" },
-  { opacity: 1, width: "100%", duration: 2 },
-  "<"
-);
-tl.to(".m2", { scale: 2, opacity: 0, x: "80%", duration: 5 });
-tl.delay(3); // Pausa de 1 segundo
-tl.fromTo(
-  ".m3",
-  { opacity: 0.3, width: "30%" },
-  { opacity: 1, width: "100%", duration: 5 },
-  "<"
-);
-tl.to(".circulo6", { display: "none", duration: 4 }, "<");
-tl.to(".circulo7", { display: "none", duration: 4 }, "<");
-
-tl.to(
-  ".conoce .titulo3",
-  { scale: 2, opacity: 0, x: "-80%", duration: 5 },
-  "<"
-);
-tl.to(".circulo4", { display: "none", duration: 4 }, "<");
-tl.to(".circulo5", { display: "none", duration: 4 }, "<");
-
-tl.fromTo(
-  ".conoce .titulo4",
-  { opacity: 0, width: "30%" },
-  { opacity: 1, width: "100%", duration: 5 },
-  "<"
-);
-tl.delay(3);
-tl.to(".circulo6", { display: "block" });
-tl.to(".circulo7", { display: "block" }, "<");
-tl.to(".conoce", { opacity: 0, duration: 1 }, "<+=3");
-tl.to(".conoce", { display: "none" });
-
-tl.from(".blurParamos", { opacity: 1, duration: 8 }, "<+=0.5");
-tl.add(() => {
-  setImageBg("/Conoce/fondoConoce.webp");
-}, "<+=0.2");
-tl.add(() => {
-  setImageBg("/bgParamos/360.webp");
-}, "<+=0.2");
-
-/**************Origen */
-
-if (isMobile) {
-  tl.fromTo(".BoxOrigenText", { height: "50%" }, { height: "0", duration: 4 });
-  tl.fromTo(
-    ".BoxOrigenImg",
-    { height: "50%" },
-    { height: "100%", duration: 4 },
-    "<"
-  );
-} else {
-  tl.fromTo(".BoxOrigenText", { width: "50%" }, { width: "0", duration: 4 });
-  tl.fromTo(
-    ".BoxOrigenImg",
-    { width: "50%" },
-    { width: "100%", duration: 4 },
-    "<"
-  );
-}
-
-tl.from(".blurParamos", { opacity: 0, duration: 4 }, "<-=1");
-tl.from(".embeded", { opacity: 0 }).addLabel("embebido");
-tl.to(".origen", { padding: 0 }, "<");
-tl.to(".origen", { opacity: 0, duration: 1 }, "embebido+=8").addLabel(
-  "outOrigen"
-);
-tl.to(".origen", { display: "none" }, "outOrigen");
-
-/********************DosMil frailejones */
-
-tl.add(() => {
-  setImageBg("/bgParamos/360.webp");
-}, "outOrigen-=0.5");
-tl.add(() => {
-  setImageBg("/bgParamos/Bg20mil.webp");
-}, "outOrigen-=0.5");
-
-if (isMobile) {
-  tl.fromTo(
-    ".BoxDosmilImage",
-    { height: "0%" },
-    { height: "50%", duration: 4 }
-  );
-  tl.fromTo(
-    ".BoxDosmilTexto",
-    { height: "0%" },
-    { height: "50%", duration: 4 },
-    "<+=1"
-  );
-} else {
-  tl.fromTo(".BoxDosmilImage", { width: "0%" }, { width: "50%", duration: 4 });
-  tl.fromTo(
-    ".BoxDosmilTexto",
-    { width: "0%" },
-    { width: "50%", duration: 4 },
-    "<+=1"
-  );
-}
-tl.to(".blurParamos", { opacity: 0, duration: 4 });
-tl.from(".bgvid", { opacity: 0, duration: 3 }, "+=3").addLabel("niebla1");
-if (isMobile) {
-  tl.fromTo(
-    ".BoxDosmilTexto",
-    { height: "50%" },
-    { height: "0%", duration: 4 },
-    "niebla1+=3"
-  );
-  tl.fromTo(
-    ".BoxDosmilImage",
-    { height: "50%" },
-    { height: "0%", duration: 4 },
-    "niebla1+=6"
-  );
-} else {
-  tl.fromTo(
-    ".BoxDosmilTexto",
-    { width: "50%" },
-    { width: "0%", duration: 4 },
-    "niebla1+=3"
-  );
-  tl.fromTo(
-    ".BoxDosmilImage",
-    { width: "50%" },
-    { width: "0%", duration: 4 },
-    "niebla1+=6"
-  );
-}
-
-tl.to(".BoxDosmilTexto", { opacity: 0 }, "niebla1+=6");
-if (isMobile) {
-  tl.to(".BoxDosmilTexto", { y: "120%", height: "50%", duration: 4 });
-} else {
-  tl.to(".BoxDosmilTexto", { x: "210%", width: "50%", duration: 4 });
-}
-tl.to(".PrimerTextoDosmil", { display: "none" }).addLabel("cambioTitulo");
-tl.from(".SegundoTextoDosmil", { display: "none" }, "cambioTitulo");
-tl.add(() => {
+const tl7 = scrollEffects(main, 30);
+tl7.add(() => {
   setNumFrailejon(0);
-}, "cambioTitulo");
-tl.add(() => {
-  setNumFrailejon(1);
-}, "cambioTitulo");
-tl.to(".imgFrailejon", { display: "block" }, "cambioTitulo");
-if (isMobile) {
-  tl.to(".BoxDosmilTexto", {
-    opacity: 1,
-    y: 0,
-    height: "100%",
-    duration: 4,
-  });
-} else {
-  tl.to(".BoxDosmilTexto", {
-    opacity: 1,
-    x: 0,
-    width: "100%",
-    duration: 4,
-  });
-}
-tl.to(".bgvid", { opacity: 0, duration: 4 }, "+=3").addLabel("nuevascajas");
-if (isMobile) {
-  tl.to(".BoxDosmilTexto", { height: "50%", duration: 4 }, "nuevascajas+=6");
-  tl.to(".BoxDosmilImage", { height: "50%", duration: 4 }, "nuevascajas+=6");
-} else {
-  tl.to(".BoxDosmilTexto", { width: "50%", duration: 4 }, "nuevascajas+=6");
-  tl.to(".BoxDosmilImage", { width: "50%", duration: 4 }, "nuevascajas+=6");
-}
-tl.fromTo(".BoxDosmilImage span", { opacity: 0 }, { opacity: 1, duration: 4 });
-
-tl.to(".bgvid", { opacity: 1, duration: 4 }, "+=6").addLabel("niebla2");
-tl.fromTo(
-  ".BoxDosmilImage span",
-  { opacity: 1 },
-  { opacity: 0, duration: 4 },
-  "niebla2"
-);
-if (isMobile) {
-  tl.to(".BoxDosmilTexto", { height: "100%", duration: 4 }, "niebla2+=6");
-  tl.to(".BoxDosmilImage", { height: "0%", duration: 4 }, "niebla2+=6");
-} else {
-  tl.to(".BoxDosmilTexto", { width: "100%", duration: 4 }, "niebla2+=6");
-  tl.to(".BoxDosmilImage", { width: "0%", duration: 4 }, "niebla2+=6");
-}
-tl.add(() => {
-  setNumFrailejon(1);
 });
-tl.add(() => {
-  setNumFrailejon(2);
-}, "<");
-tl.to(".bgvid", { opacity: 0, duration: 4 }, "+=3");
+tl7.from(".bgvid", { opacity: 0, duration: normal }, "<").addLabel("niebla");
 if (isMobile) {
-  tl.to(".BoxDosmilTexto", { height: "50%", duration: 4 }, "+=6");
-  tl.to(".BoxDosmilImage", { height: "50%", duration: 4 }, "<");
+  tl7.to(".BoxDosmilImage", { height: "0%" }, "niebla-=0.5");
+  tl7.to(".BoxDosmilTexto", { height: "100%" }, "niebla-=0.5");
 } else {
-  tl.to(".BoxDosmilTexto", { width: "50%", duration: 4 }, "+=6");
-  tl.to(".BoxDosmilImage", { width: "50%", duration: 4 }, "<");
+  tl7.to(".BoxDosmilImage", { width: "0%" }, "niebla-=0.5");
+  tl7.to(".BoxDosmilTexto", { width: "100%" }, "niebla-=0.5");
 }
-tl.fromTo(".BoxDosmilImage span", { opacity: 0 }, { opacity: 1, duration: 4 });
-tl.to(".bgvid", { opacity: 1 }, "+=3");
-tl.fromTo(".BoxDosmilImage span", { opacity: 1 }, { opacity: 0, duration: 4 });
+if (numFrailejon) {
+  tl7.to(".imgFrailejon", {
+    display: `${numFrailejon == 0 ? "none" : "block"}`,
+  });
+}
+tl7.to(".bgvid", { opacity: 0, duration: rapido });
+tl7
+  .to(
+    ".PrimerTextoDosmil",
+    {
+      opacity: 0,
+      y: "-100%",
+      display: "none",
+      duration: rapido,
+    },
+    "<-=0.5"
+  )
+  .addLabel("titulo1");
+
+tl7.from(
+  ".SegundoTextoDosmil",
+  { display: "none", opacity: 0, y: "0%", duration: rapido },
+  "titulo1-=0.5"
+);
+tl7.add(() => {
+  setNumFrailejon(0);
+}, "titulo1-=0.1");
+tl7.add(() => {
+  setNumFrailejon(1);
+}, "titulo1-=0.1");
 if (isMobile) {
-  tl.to(".BoxDosmilTexto", { height: "100%", duration: 4 });
-  tl.to(".BoxDosmilImage", { height: "0%", duration: 4 }, "<");
+  tl7.to(".BoxDosmilImage", { height: "50%" });
+  tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
 } else {
-  tl.to(".BoxDosmilTexto", { width: "100%", duration: 4 });
-  tl.to(".BoxDosmilImage", { width: "0%", duration: 4 }, "<");
+  tl7.to(".BoxDosmilImage", { width: "50%" });
+  tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
 }
-tl.add(() => {
+const tl8 = scrollEffects(main, 35);
+tl8.to(".bgvid", { opacity: 1, duration: normal }).addLabel("niebla2");
+
+if (isMobile) {
+  tl8.to(".BoxDosmilImage", { height: "0%" }, "niebla2-=0.5");
+  tl8.to(".BoxDosmilTexto", { height: "100%" }, "niebla2-=0.5");
+} else {
+  tl8.to(".BoxDosmilImage", { width: "0%" }, "niebla2-=0.5");
+  tl8.to(".BoxDosmilTexto", { width: "100%" }, "niebla2-=0.5");
+}
+tl8.add(() => {
+  setNumFrailejon(1);
+}, "niebla2+=0.5");
+tl8.add(() => {
   setNumFrailejon(2);
-}),
-  "+=2";
-tl.add(() => {
+}, "niebla2+=0.5");
+tl8.to(".bgvid", { opacity: 0, duration: normal }, "niebla2+=0.6");
+if (isMobile) {
+  tl8.to(".BoxDosmilImage", { height: "50%" });
+  tl8.to(".BoxDosmilTexto", { height: "50%" }, "<");
+} else {
+  tl8.to(".BoxDosmilImage", { width: "50%" });
+  tl8.to(".BoxDosmilTexto", { width: "50%" }, "<");
+}
+
+const tl9 = scrollEffects(main, 36.7, true);
+tl9.to(".bgvid", { opacity: 1, duration: normal }).addLabel("niebla3");
+
+if (isMobile) {
+  tl9.to(".BoxDosmilImage", { height: "0%" }, "niebla3-=0.5");
+  tl9.to(".BoxDosmilTexto", { height: "100%" }, "niebla3-=0.5");
+} else {
+  tl9.to(".BoxDosmilImage", { width: "0%" }, "niebla3-=0.5");
+  tl9.to(".BoxDosmilTexto", { width: "100%" }, "niebla3-=0.5");
+}
+tl9.add(() => {
+  setNumFrailejon(2);
+}, "niebla3+=0.5");
+tl9.add(() => {
   setNumFrailejon(3);
-}, "<");
-tl.to(".bgvid", { opacity: 0, duration: 4 }, "+=3");
+}, "niebla3+=0.5");
+tl9.to(".bgvid", { opacity: 0, duration: normal }, "niebla3+=0.6");
 if (isMobile) {
-  tl.to(".BoxDosmilTexto", { height: "50%", duration: 4 }, "+=6");
-  tl.to(".BoxDosmilImage", { height: "50%", duration: 4 }, "<");
+  tl9.to(".BoxDosmilImage", { height: "50%" });
+  tl9.to(".BoxDosmilTexto", { height: "50%" }, "<");
 } else {
-  tl.to(".BoxDosmilTexto", { width: "50%", duration: 4 }, "+=6");
-  tl.to(".BoxDosmilImage", { width: "50%", duration: 4 }, "<");
+  tl9.to(".BoxDosmilImage", { width: "50%" });
+  tl9.to(".BoxDosmilTexto", { width: "50%" }, "<");
 }
-tl.fromTo(".BoxDosmilImage span", { opacity: 0 }, { opacity: 1 });
-tl.to(".blurParamos", { opacity: 1, duration: 8 });
-tl.to(".dosmilFrailejones", { opacity: 0, duration: 4 }).addLabel(
-  "entradaMoises"
-);
-tl.to(
-  ".dosmilFrailejones",
-  { display: "none", duration: 0.1 },
-  "entradaMoises+=1"
-);
-
-/*************Capitulo Moises */
-tl.add(() => {
-  setImageBg("/bgParamos/Bg20mil.webp");
-}, "entradaMoises");
-tl.add(() => {
-  setImageBg("/contruccionVivero.webp");
-}, "entradaMoises");
-
-tl.to(".capituloMoises", { opacity: 1, padding: 0 }, "entradaMoises");
-
-tl.to(".capituloMoises", { opacity: 0, duration: 1 }, "+=12").addLabel(
-  "entradatravesia"
-);
-
-tl.to(".capituloMoises", { display: "none", duration: 0.1 }, "entradatravesia");
-/*************Entrada Travesia  */
-tl.fromTo(
-  ".travesia",
-  { opacity: 0 },
-  { opacity: 1, duration: 1 },
-  "entradatravesia+=1"
-);
-tl.add(() => {
-  setImageBg("/bgParamos/Bg20mil.webp");
-}, "entradatravesia");
-tl.add(() => {
-  setImageBg("/bgParamos/bg-travesia1.webp");
-}, "entradatravesia");
-if (isMobile) {
-  tl.fromTo(
-    ".BoxTravesiaTexto",
-    {
-      height: "0%",
-    },
-    {
-      height: "100%",
-      ease: "power1.inOut",
-      duration: 2,
-    }
-  );
-  tl.to(".BoxTravesiaTexto", {
-    height: "50%",
-    ease: "power1.inOut",
-    duration: 2,
-  });
-  tl.to(
-    ".BoxTravesiaCards",
-    {
-      height: "50%",
-      ease: "power1.inOut",
-      duration: 2,
-    },
-    "<"
-  );
-  tl.to(".BoxTravesiaCards", {
-    height: "100%",
-    ease: "power1.inOut",
-    duration: 2,
-  });
-  tl.to(".BoxTravesiaTexto", {
-    height: "0%",
-    ease: "power1.inOut",
-    duration: 2,
-  }).addLabel("cambioTravesia");
-} else {
-  tl.fromTo(
-    ".BoxTravesiaTexto",
-    {
-      width: "0%",
-    },
-    {
-      width: "100%",
-      ease: "power1.inOut",
-      duration: 2,
-    }
-  ),
-    "cambioTravesia";
-  tl.to(".BoxTravesiaTexto", {
-    width: "50%",
-    ease: "power1.inOut",
-    duration: 2,
-  });
-  tl.to(
-    ".BoxTravesiaCards",
-    {
-      width: "50%",
-      ease: "power1.inOut",
-      duration: 2,
-    },
-    "<"
-  );
-
-  tl.to(".BoxTravesiaCards", {
-    width: "100%",
-    ease: "power1.inOut",
-    duration: 2,
-  });
-  tl.to(".BoxTravesiaTexto", {
-    width: "0%",
-    ease: "power1.inOut",
-    duration: 2,
-  }).addLabel("cambioTravesia");
-}
-tl.add(() => {
-  setTravesiaReverse(false);
-}, "cambioTravesia");
-tl.add(() => {
-  setTravesiaReverse(true);
-}, "cambioTravesia");
-tl.add(() => {
-  setImageBg("/bgParamos/bg-travesia1.webp");
-}, "cambioTravesia");
-
-tl.to(".travesia", { padding: 0, duration: 1 });
-
-if (isMobile) {
-  tl.to(".cards1", { display: "block" }, "<");
-} else {
-  tl.to(".cards", { display: "block" }, "<");
-}
-
-tl.to(".caminante", { display: "block", opacity: 1 });
-tl.to(".travesia", { opacity: 0, duration: 1 }, "+=6");
-tl.to(".travesia", { display: "none" });
-tl.to(".blurParamos", { opacity: 0, duration: 2 });
-tl.add(() => {
-  setImageBg("/bgParamos/bg-travesia1.webp");
-}, "<");
-tl.add(() => {
-  setImageBg("/contacto/contacto.webp");
-}, "<");
-tl.add(() => {
-  setTravesiaReverse(true);
-}, "<");
-tl.add(() => {
-  setTravesiaReverse(false);
-}, "<");
-/************Contact */
-
-tl.fromTo(
-  ".contacto .textoContacto",
-  {
-    opacity: 0,
-    y: 20,
-  },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power1.inOut",
-  }
-),
-  "<";
-tl.fromTo(
-  ".contacto .parrafoContacto",
-  {
-    opacity: 0,
-    x: 20,
-  },
-  {
-    opacity: 1,
-    x: 0,
-    duration: 1,
-    ease: "power1.inOut",
-  }
-);
-
-tl.to(
-  ".contacto",
-  {
-    display: "none",
-  },
-  "+=3"
-);
-
-tl.to(".blurParamos", { opacity: 1, duration: 0.5 });
-/********Descargable */
-
-tl.add(() => {
-  setImageBg("/contacto/contacto.webp");
-}, "<");
-tl.add(() => {
-  setImageBg("/contacto/descargable.webp");
-}, "<");
-
-tl.fromTo(
-  ".descargable .textoContacto",
-  {
-    opacity: 0,
-    y: 20,
-  },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power1.inOut",
-  }
-);
-tl.fromTo(
-  ".descargable .textoContacto2",
-  {
-    opacity: 0,
-    y: 20,
-  },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power1.inOut",
-  }
-);
-tl.fromTo(
-  ".descargable .BotonContacto",
-  {
-    opacity: 0,
-    y: 20,
-  },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power1.inOut",
-  }
-);
-
-tl5.to(".conoce", { zIndex: "10" }).addLabel("z2");
-tl5.to(".origen", { zIndex: "100" }, "z2");
-tl5.to(".dosmilFrailejones", { zIndex: "10" }, "z2");
-tl5.to(".capituloMoises", { zIndex: "10" }, "z2");
-tl5.to(".travesia", { zIndex: "10" }, "z2");
-tl5.to(".contacto", { zIndex: "10" }, "z2");
-tl5.to(".descargable", { zIndex: "10" }, "z2");
-
-tl6.to(".conoce", { zIndex: "10" }).addLabel("z3");
-tl6.to(".origen", { zIndex: "10" }, "z3");
-tl6.to(".dosmilFrailejones", { zIndex: "100" }, "z3");
-tl6.to(".capituloMoises", { zIndex: "10" }, "z3");
-tl6.to(".travesia", { zIndex: "10" }, "z3");
-tl6.to(".contacto", { zIndex: "10" }, "z3");
-tl6.to(".descargable", { zIndex: "10" }, "z3");
-
-tl10.to(".conoce", { zIndex: "10" }).addLabel("z4");
-tl10.to(".origen", { zIndex: "10" }, "z4");
-tl10.to(".dosmilFrailejones", { zIndex: "10" }, "z4");
-tl10.to(".capituloMoises", { zIndex: "100" }, "z4");
-tl10.to(".travesia", { zIndex: "10" }, "z4");
-tl10.to(".contacto", { zIndex: "10" }, "z4");
-tl10.to(".descargable", { zIndex: "10" }, "z4");
-
-tl11.to(".conoce", { zIndex: "10" }).addLabel("z5");
-tl11.to(".origen", { zIndex: "10" }, "z5");
-tl11.to(".dosmilFrailejones", { zIndex: "10" }, "z5");
-tl11.to(".capituloMoises", { zIndex: "10" }, "z5");
-tl11.to(".travesia", { zIndex: "100" }, "z5");
-tl11.to(".contacto", { zIndex: "10" }, "z5");
-tl11.to(".descargable", { zIndex: "10" }, "z5");
-
-tl13.to(".conoce", { zIndex: "10" }).addLabel("z6");
-tl13.to(".origen", { zIndex: "10" }, "z6");
-tl13.to(".dosmilFrailejones", { zIndex: "10" }, "z6");
-tl13.to(".capituloMoises", { zIndex: "10" }, "z6");
-tl13.to(".travesia", { zIndex: "10" }, "z6");
-tl13.to(".contacto", { zIndex: "100" }, "z6");
-tl13.to(".descargable", { zIndex: "10" }, "z6");
-
-tl14.to(".conoce", { zIndex: "10" }).addLabel("z6");
-tl14.to(".origen", { zIndex: "10" }, "z6");
-tl14.to(".dosmilFrailejones", { zIndex: "10" }, "z6");
-tl14.to(".capituloMoises", { zIndex: "10" }, "z6");
-tl14.to(".travesia", { zIndex: "10" }, "z6");
-tl14.to(".contacto", { zIndex: "10" }, "z6");
-tl14.to(".descargable", { zIndex: "100" }, "z6");

@@ -12,7 +12,8 @@ const Travesia = ({ travesiaReverse }) => {
   }, [travesiaReverse]);
 
   return (
-    <div className="travesia absolute w-full h-full z-[1] flex">
+    //<div className="travesia absolute w-full h-full z-[1] flex">
+    <div className="travesia ocultarEnOrigen w-full h-full z-[1] flex">
       <div
         ref={padre}
         className=" flex relative w-full h-full responsiveReverse  paddingComponentes bg-white"

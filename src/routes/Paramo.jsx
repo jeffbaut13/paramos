@@ -13,6 +13,7 @@ import BackgroundTransition from "../components/BackgroundTransition";
 import VideoComponent from "../components/videclud";
 import { switchProcentageZindex } from "../helpers/switchs";
 import NavBar from "../components/NavBar";
+import { transitionSection } from "../animations/gsap";
 
 function App() {
   const main = useRef(null);
@@ -24,45 +25,69 @@ function App() {
   const [activeButton, setActiveButton] = useState("Origen");
 
   const [altura, setAltura] = useState(null);
-  const [pixelsScrolled, setPixelsScrolled] = useState(0);
+  const [itemActive, setItemActive] = useState(0);
   const [scrollPercentage, setScrollPercentage] = useState(1);
   const [scrollPercentageTwo, setScrollPercentageTwo] = useState(0);
   useEffect(() => {
     gsap.to(main.current, {
       scrollTrigger: {
         trigger: main.current,
-        ease: "power2.inOut",
-        start: "top 5px", // Comienza en la parte superior del contenedor
+        start: "top top", // Comienza en la parte superior del contenedor
         end: "bottom bottom", // Termina en la parte inferior del contenedor
-        scrub: true,
-        onUpdate: (self) => {
-          const scrollPercentage = self.progress * 100;
-          setScrollPercentageTwo(scrollPercentage);
-          //  console.log("scroll Padre " + scrollPercentage);
-          switchProcentageZindex(scrollPercentage);
 
-          if (scrollPercentage >= 0 && scrollPercentage < 37) {
+        onUpdate: (self) => {
+          const scroll = self.progress * 100;
+          setScrollPercentageTwo(scroll);
+          //console.log("scroll Padre " + scroll);
+          //switchProcentageZindex(scrollPercentage);
+
+          if (scroll >= 0 && scroll < 14.28) {
             setActiveButton("Origen");
             setScrollPercentage(1);
-          } else if (scrollPercentage >= 37 && scrollPercentage < 44) {
+          } else if (scroll >= 14.28 && scroll < 28.56) {
+            setItemActive(0);
             setActiveButton("Nuestro propósito");
             setScrollPercentage(2);
-          } else if (scrollPercentage >= 44 && scrollPercentage < 69) {
+          } else if (scroll >= 28.56 && scroll < 42.84) {
             setActiveButton("2.000 Frailejones");
             setScrollPercentage(3);
-          } else if (scrollPercentage >= 69 && scrollPercentage < 84) {
+          } else if (scroll >= 42.84 && scroll < 57.12) {
             setActiveButton("Los páramos");
             setScrollPercentage(4);
-          } else if (scrollPercentage >= 84 && scrollPercentage < 97) {
+          } else if (scroll >= 57.12 && scroll < 71.4) {
             setActiveButton("Contacto");
             setScrollPercentage(5);
-          } else if (scrollPercentage >= 90) {
-            setActiveButton("Cuéntale a todos");
+          } else if (scroll >= 71.4 && scroll < 85.68) {
             setScrollPercentage(6);
+          } else if (scroll >= 85.68) {
+            setActiveButton("Cuéntale a todos");
+            setScrollPercentage(7);
           }
         },
       },
     });
+    if (scrollPercentage == 1) {
+      transitionSection(".contenedor", 0, 1);
+    }
+    if (scrollPercentage == 2) {
+      transitionSection(".contenedor", 100, 1);
+      setItemActive(false);
+    }
+    if (scrollPercentage == 3) {
+      transitionSection(".contenedor", 200, 1);
+    }
+    if (scrollPercentage == 4) {
+      transitionSection(".contenedor", 300, 1);
+    }
+    if (scrollPercentage == 5) {
+      transitionSection(".contenedor", 400, 1);
+    }
+    if (scrollPercentage == 6) {
+      transitionSection(".contenedor", 500, 1);
+    }
+    if (scrollPercentage == 7) {
+      transitionSection(".contenedor", 600, 1);
+    }
   }, [main, activeButton, numFrailejon, scrollPercentage]);
   //console.log(scrollPercentage);
   function getScrollDistance() {
@@ -174,9 +199,15 @@ function App() {
         <VideoComponent />
         <div className=" mainParamos relative rounded-3xl overflow-hidden bg-white w-full h-full ">
           <div className="contenedor">
-            <Conocelosparamos />
+            <Conocelosparamos
+              itemActive={itemActive}
+              setItemActive={setItemActive}
+            />
             <Origen active360={active360} setActive360={setActive360} />
-            <Dosmilfrailejones numFrailejon={numFrailejon} />
+            <Dosmilfrailejones
+              numFrailejon={numFrailejon}
+              setNumFrailejon={setNumFrailejon}
+            />
             <CapituloMoises />
             <Travesia travesiaReverse={travesiaReverse} />
             <Contacto />

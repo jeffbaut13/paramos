@@ -3,7 +3,8 @@ import ContactForm from "./Formulario";
 
 const Contacto = () => {
   return (
-    <div className="contacto absolute w-full h-full z-[1] flex">
+    //<div className="contacto absolute w-full h-full z-[1] flex">
+    <div className="contacto ocultarEnOrigen w-full h-full z-[1] flex">
       <div className=" flex w-full h-full">
         <div
           style={{ backgroundImage: "url(/contacto/contacto.webp)" }}

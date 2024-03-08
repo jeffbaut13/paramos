@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.anchoInicialPrimario {
+  @apply lg:w-1/2 xs:w-full lg:h-full xs:h-1/2;
+}
 .BoxesTextStart {
   @apply overflow-hidden lg:rounded-s-3xl max-lg:rounded-t-3xl relative bg-[#DDDDDD];
 }

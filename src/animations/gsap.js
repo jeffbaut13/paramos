@@ -21,6 +21,13 @@ export const Opacidad = (ref, Num) => {
     duration: 1,
   });
 };
+export const transitionSection = (ref, Num, duration) => {
+  gsap.to(ref, {
+    y: `-${Num}%`,
+    ease: "power2.out",
+    duration: duration,
+  });
+};
 
 export const scrolltrigerFunction = (ref, Function) => {
   gsap.to(ref.current, {

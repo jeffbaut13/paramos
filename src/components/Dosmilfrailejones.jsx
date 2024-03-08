@@ -3,9 +3,16 @@ import DescripcionFrailejones from "./DescripcionFrailejones";
 
 import gsap from "gsap";
 
-const Dosmilfrailejones = ({ numFrailejon }) => {
+const isMobile = window.innerWidth <= 1024;
+const rapido = 0.5;
+const normal = 1;
+const medio = 1.5;
+const lento = 2;
+
+const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
   const parrafoFrailejon = useRef(null);
 
+  console.log(numFrailejon);
   useEffect(() => {
     if (parrafoFrailejon) {
       gsap.fromTo(
@@ -22,10 +29,145 @@ const Dosmilfrailejones = ({ numFrailejon }) => {
         }
       );
     }
+
+    if (numFrailejon == 1) {
+      const tl7 = gsap.timeline();
+
+      tl7
+        .to(".bgvid", { opacity: 1, duration: normal }, "<")
+        .addLabel("niebla");
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "0%" });
+        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "0%" });
+        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
+      }
+
+      tl7.to(".bgvid", { opacity: 0, duration: rapido });
+      tl7
+        .to(
+          ".PrimerTextoDosmil",
+          {
+            opacity: 0,
+            y: "-100%",
+            display: "none",
+            duration: rapido,
+          },
+          "<-=0.5"
+        )
+        .addLabel("titulo1");
+
+      tl7.from(
+        ".SegundoTextoDosmil",
+        { display: "none", opacity: 0, y: "0%", duration: rapido },
+        "titulo1-=0.5"
+      );
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "50%" });
+        tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "50%" });
+        tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
+      }
+      tl7.to(".Espeletia", { display: "block" }, "<-=0.5");
+      tl7.to(".TituloFrailejon", { display: "block" }, "<");
+      tl7.to(".punto", { display: "block" }, "<");
+    }
+
+    if (numFrailejon == 2) {
+      const tl7 = gsap.timeline();
+
+      tl7
+        .to(".bgvid", { opacity: 1, duration: normal }, "<")
+        .addLabel("niebla");
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "0%" });
+        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "0%" });
+        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
+      }
+
+      tl7.to(".bgvid", { opacity: 0, duration: rapido });
+      tl7
+        .to(
+          ".PrimerTextoDosmil",
+          {
+            opacity: 0,
+            y: "-100%",
+            display: "none",
+            duration: rapido,
+          },
+          "<-=0.5"
+        )
+        .addLabel("titulo1");
+
+      tl7.from(
+        ".SegundoTextoDosmil",
+        { display: "none", opacity: 0, y: "0%", duration: rapido },
+        "titulo1-=0.5"
+      );
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "50%" });
+        tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "50%" });
+        tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
+      }
+      tl7.to(".amarillo", { display: "block" }, "<-=0.5");
+      tl7.to(".TituloFrailejon", { display: "block" }, "<");
+      tl7.to(".punto", { display: "block" }, "<");
+    }
+    if (numFrailejon == 3) {
+      const tl7 = gsap.timeline();
+
+      tl7
+        .to(".bgvid", { opacity: 1, duration: normal }, "<")
+        .addLabel("niebla");
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "0%" });
+        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "0%" });
+        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
+      }
+
+      tl7.to(".bgvid", { opacity: 0, duration: rapido });
+      tl7
+        .to(
+          ".PrimerTextoDosmil",
+          {
+            opacity: 0,
+            y: "-100%",
+            display: "none",
+            duration: rapido,
+          },
+          "<-=0.5"
+        )
+        .addLabel("titulo1");
+
+      tl7.from(
+        ".SegundoTextoDosmil",
+        { display: "none", opacity: 0, y: "0%", duration: rapido },
+        "titulo1-=0.5"
+      );
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "50%" });
+        tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "50%" });
+        tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
+      }
+      tl7.to(".Blanco", { display: "block" }, "<-=0.5");
+      tl7.to(".TituloFrailejon", { display: "block" }, "<");
+      tl7.to(".punto", { display: "block" }, "<");
+    }
   }, [numFrailejon]);
 
   return (
-    <div className="dosmilFrailejones absolute w-full h-full z-[1] flex">
+    //<div className="dosmilFrailejones absolute w-full h-full z-[1] flex">
+    <div className="dosmilFrailejones ocultarEnOrigen w-full h-full z-[1] flex">
       <div className=" flex responsiveReverse relative w-full h-full paddingComponentes">
         <div
           className={`BoxDosmilImage   bg-center BoxesImgStart flex-center z-10 relative ${
@@ -77,7 +219,28 @@ const Dosmilfrailejones = ({ numFrailejon }) => {
             />
           )}
         </div>
-        <div className="BoxDosmilTexto   BoxesTextEnd flex-center z-0 relative">
+        <div className="BoxDosmilTexto BoxesTextEnd flex-center z-0 relative">
+          <span
+            onClick={() => {
+              if (numFrailejon >= 3) {
+                setNumFrailejon(1);
+              } else {
+                setNumFrailejon(numFrailejon + 1);
+              }
+            }}
+            className="  cursor-pointer absolute right-0 top-1/4 z-50"
+          >
+            SIGUIENTE frailejon
+          </span>
+
+          <span
+            onClick={() => {
+              setNumFrailejon(0);
+            }}
+            className="   cursor-pointer absolute right-0 translate-x-[-110%] top-1/4 z-50"
+          >
+            ANTERIOR MONTAÑA
+          </span>
           <p className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Llevaremos <br /> <span className="font-black">2,000 </span> <br />
             frailejones <br />

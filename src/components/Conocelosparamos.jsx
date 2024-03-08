@@ -1,12 +1,387 @@
+import gsap from "gsap";
 import HandScroll from "./HandScroll";
+import { useEffect } from "react";
 
-const Conocelosparamos = () => {
+const isMobile = window.innerWidth <= 1024;
+const rapido = 0.5;
+const normal = 1;
+const medio = 1.5;
+const lento = 2;
+const Conocelosparamos = ({ itemActive, setItemActive }) => {
+  const handleClick = () => {
+    setItemActive(1);
+  };
+
+  useEffect(() => {
+    if (itemActive == 0) {
+      const tl = gsap.timeline();
+      tl.to(".slideBtn", {
+        display: "none",
+      });
+      tl.fromTo(
+        ".conoce .titulo3",
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
+        },
+        {
+          scale: 2,
+          opacity: 0,
+          x: "-30%",
+          duration: rapido,
+        },
+
+        "<"
+      );
+      tl.fromTo(
+        ".conoce .titulo1",
+        { opacity: 0, scale: 0.5, x: "0%" },
+        {
+          opacity: 1,
+          scale: 1,
+          x: "0%",
+          duration: rapido,
+        },
+        "<"
+      );
+      tl.to(
+        ".m4",
+
+        { opacity: 1, scale: 1.3, x: "0%", duration: normal }
+      );
+      tl.to(
+        ".m2",
+
+        { opacity: 0, width: "30%", duration: normal },
+        "<"
+      );
+      if (isMobile) {
+        tl.to(".BoxConoceText", { height: "50%" }, "<").addLabel("hide");
+      } else {
+        tl.to(".BoxConoceText", { width: "50%" }, "<").addLabel("hide");
+      }
+      if (isMobile) {
+        tl.to(".BoxConoceImg", { height: "50%" }, "hide");
+      } else {
+        tl.to(".BoxConoceImg", { width: "50%" }, "<");
+      }
+
+      tl.to(
+        ".moveTwo",
+        {
+          display: "none",
+        },
+        "hide"
+      );
+
+      tl.to(
+        ".moveTwo",
+        {
+          display: "none",
+        },
+        "hide"
+      );
+      tl.to(".blurParamos", { opacity: 0, duration: rapido }, "<-=1");
+      tl.to(
+        ".m3",
+        { opacity: 0 },
+
+        "<-=1"
+      );
+      tl.to(
+        ".circulos",
+        { opacity: 0, pointerEvents: "none" },
+
+        "<-=1"
+      );
+    }
+    if (itemActive == 1) {
+      const tl = gsap.timeline();
+      if (isMobile) {
+        tl.to(".BoxConoceText", { height: "0", duration: rapido });
+      } else {
+        tl.to(".BoxConoceText", { width: "0", duration: rapido });
+      }
+      if (isMobile) {
+        tl.to(".BoxConoceImg", { height: "100%", duration: rapido }, "<");
+      } else {
+        tl.to(".BoxConoceImg", { width: "100%", duration: rapido }, "<");
+      }
+
+      tl.to(".slideBtn", {
+        display: "block",
+        opacity: 1,
+      });
+      tl.to(".circulos.circulo1", {
+        display: "block",
+        opacity: 1,
+        pointerEvents: "all",
+      });
+      tl.to(".moveTwo", {
+        display: "block",
+        duration: 1,
+      });
+      tl.to(".blurParamos", { opacity: 1, duration: rapido }, "<-=1");
+
+      tl.to(".conoce", { padding: 0, duration: rapido }, "<");
+
+      tl.to(".moveTwo", {
+        display: "none",
+        duration: 1,
+        delay: 6,
+      });
+    }
+    if (itemActive == 2) {
+      const tl = gsap.timeline();
+
+      tl.to(".m4", {
+        scale: 1,
+        opacity: 1,
+        x: "0%",
+        duration: rapido,
+      }).addLabel("m4");
+
+      tl.to(
+        ".m1",
+        { opacity: 0.3, width: "30%" },
+
+        "m4-=0.5"
+      );
+
+      tl.to(
+        ".conoce .titulo1",
+        { scale: 1, opacity: 1, x: "0%", duration: rapido },
+        "m4-=0.5"
+      );
+      tl.to(
+        ".conoce .titulo2",
+        { scale: 0.5, opacity: 0, duration: rapido },
+        "<"
+      );
+      tl.to(
+        ".conoce .titulo2",
+        {
+          scale: 0.5,
+          opacity: 0,
+          x: "-10%",
+          duration: rapido,
+        },
+        "<+=0.5"
+      );
+      tl.to(".circulo2", { display: "none", duration: normal }, "<-=2");
+      tl.to(".circulo3", { display: "none", duration: normal }, "<-=2");
+      tl.to(".circulo1", {
+        display: "block",
+        pointerEvents: "all",
+        duration: rapido,
+      });
+    }
+    if (itemActive == 3) {
+      const tl = gsap.timeline();
+      tl.to(
+        ".moveTwo",
+        {
+          display: "none",
+        },
+        "<-=1"
+      );
+      tl.to(".m4", {
+        scale: 1.5,
+        opacity: 0,
+        x: "-30%",
+        duration: rapido,
+      });
+
+      tl.fromTo(
+        ".m1",
+        { opacity: 0.3, width: "30%", x: "0%" },
+        { opacity: 1, width: "100%", x: "0%", duration: normal },
+        "<-=0.5"
+      );
+      tl.to(
+        ".conoce .titulo1",
+        {
+          scale: 2,
+          opacity: 0,
+          x: "-80%",
+          duration: rapido,
+        },
+        "<"
+      );
+
+      tl.fromTo(
+        ".conoce .titulo2",
+        {
+          scale: 0.5,
+          opacity: 0,
+          x: "-20%",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
+          duration: rapido,
+        },
+        "<+=0.5"
+      );
+      tl.to(".circulo1", { display: "none", duration: normal }, "<-=2");
+      tl.to(".circulo2", {
+        display: "block",
+        opacity: 1,
+        pointerEvents: "all",
+        duration: normal,
+      });
+      tl.to(
+        ".circulo3",
+        {
+          display: "block",
+          opacity: 1,
+          pointerEvents: "all",
+          duration: normal,
+        },
+        "<"
+      );
+    }
+    if (itemActive == 4) {
+      const tl = gsap.timeline();
+
+      tl.fromTo(
+        ".m1",
+        {
+          scale: 2,
+          opacity: 0,
+          x: "-80%",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
+          duration: rapido,
+        }
+      );
+      tl.to(
+        ".conoce .titulo2",
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
+          duration: rapido,
+        },
+        "<"
+      );
+
+      tl.fromTo(
+        ".m2",
+        { opacity: 1, width: "100%" },
+        { opacity: 0.3, width: "30%" },
+        "<"
+      );
+
+      tl.fromTo(
+        ".conoce .titulo3",
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
+        },
+        {
+          scale: 0.5,
+          opacity: 0,
+          x: "-20%",
+          duration: rapido,
+        },
+        "<"
+      );
+      tl.to(".circulo4", { display: "none", duration: rapido }, "<-=2");
+      tl.to(".circulo5", { display: "none", duration: rapido }, "<-=2");
+      tl.to(".circulo2", {
+        display: "block",
+        pointerEvents: "all",
+        opacity: 1,
+        duration: normal,
+      });
+      tl.to(
+        ".circulo3",
+        {
+          display: "block",
+          pointerEvents: "all",
+          opacity: 1,
+          duration: normal,
+        },
+        "<"
+      );
+    }
+
+    if (itemActive == 5) {
+      const tl = gsap.timeline();
+
+      tl.to(".m1", {
+        scale: 1.5,
+        opacity: 0,
+        x: "-30%",
+        duration: rapido,
+      });
+
+      tl.fromTo(
+        ".m2",
+        { opacity: 0.3, width: "30%" },
+        { opacity: 1, width: "100%", duration: normal },
+        "<-=0.2"
+      );
+      tl.to(
+        ".conoce .titulo2",
+        {
+          scale: 2,
+          opacity: 0,
+          x: "-80%",
+          duration: rapido,
+        },
+        "<"
+      );
+      tl.fromTo(
+        ".conoce .titulo3",
+        {
+          scale: 0.5,
+          opacity: 0,
+          x: "-20%",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
+          duration: rapido,
+        },
+        "<+=0.5"
+      );
+
+      tl.to(".circulo2", { display: "none", duration: normal }, "<-=2");
+      tl.to(".circulo3", { display: "none", duration: normal }, "<-=2");
+      tl.to(".circulo4", {
+        display: "block",
+        pointerEvents: "all",
+        opacity: 1,
+        duration: rapido,
+      });
+      tl.to(
+        ".circulo5",
+        {
+          display: "block",
+          pointerEvents: "all",
+          opacity: 1,
+          duration: rapido,
+        },
+        "<"
+      );
+    }
+  }, [itemActive]);
   return (
-    <div className="conoce absolute w-full h-full z-[1] flex">
-      <div className=" responsiveReverse  relative w-full h-full paddingComponentes">
+    //<div className="conoce absolute w-full h-full z-[1] flex">
+    <div className="conoce w-full h-full flex">
+      <div className=" responsiveReverse ocultarEnOrigen relative w-full h-full paddingComponentes">
         <div
           style={{ backgroundImage: "url(/Conoce/fondoConoce.webp)" }}
-          className="BoxConoceImg BoxesImgStart bg-center"
+          className="anchoInicialPrimario BoxConoceImg BoxesImgStart bg-center"
         >
           <div className="montaña hidden w-full h-full relative  sm:bg-gradient-to-r bg-gradient-to-b from-[#0073ab] to-[#b0f8f5]">
             <img
@@ -73,7 +448,7 @@ const Conocelosparamos = () => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo1 absolute top-[40%] left-[65%] w-[25px] cursor-pointer z-[70]"
+              className="circulo1 circulos absolute opacity-0 top-[40%] left-[65%] w-[25px] cursor-pointer z-[70]"
             />
             <img
               src="/Conoce/lineapunteaguda1.svg"
@@ -87,7 +462,7 @@ const Conocelosparamos = () => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo2 hidden absolute top-[57%] left-[42%] w-[25px] cursor-pointer z-[60]"
+              className="circulo2 circulos hidden absolute top-[57%] left-[42%] w-[25px] cursor-pointer z-[60]"
             />
             <img
               src="/Conoce/lineapunteaguda2.svg"
@@ -104,7 +479,7 @@ const Conocelosparamos = () => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo3 hidden absolute top-[80%] left-[70%] w-[25px] cursor-pointer z-[60]"
+              className="circulo3 circulos hidden absolute top-[80%] left-[70%] w-[25px] cursor-pointer z-[60]"
             />
             <img
               src="/Conoce/lineapunteaguda3.svg"
@@ -123,10 +498,10 @@ const Conocelosparamos = () => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo4 hidden absolute top-[55%] left-[70%] w-[25px] cursor-pointer z-50"
+              className="circulo4 circulos hidden absolute top-[55%] left-[70%] w-[25px] cursor-pointer z-50"
             />
             <HandScroll
-              customstyle={`moveTwo absolute w-12 z-[100] top-[44%] left-[64%] `}
+              customstyle={`moveTwo hidden absolute w-12 z-[100] top-[44%] left-[63%] `}
             />
 
             <img
@@ -146,7 +521,7 @@ const Conocelosparamos = () => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo5 hidden absolute top-[73%] left-[43%] w-[25px] cursor-pointer z-[70]"
+              className="circulo5 circulos hidden absolute top-[73%] left-[43%] w-[25px] cursor-pointer z-[70]"
             />
             <img
               src="/Conoce/lineapunteagudaCinco.svg"
@@ -163,7 +538,7 @@ const Conocelosparamos = () => {
             </p>
             <img
               src="/Conoce/circulo1.png"
-              className="circulo6 hidden absolute top-[42%] left-[33%] w-[25px] cursor-pointer z-50"
+              className="circulo6 circulos hidden absolute top-[42%] left-[33%] w-[25px] cursor-pointer z-50"
             />
             <img
               src="/Conoce/lineapunteaguda6.svg"
@@ -181,7 +556,7 @@ const Conocelosparamos = () => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo7 hidden absolute top-[70%] left-[70%] w-[25px] cursor-pointer z-[60]"
+              className="circulo7 circulos hidden absolute top-[70%] left-[70%] w-[25px] cursor-pointer z-[60]"
             />
             <img
               src="/Conoce/lineapunteaguda7.svg"
@@ -196,9 +571,41 @@ const Conocelosparamos = () => {
               <br />
               valiosos para el equilibrio ecológico.
             </p>
+            <span
+              onClick={() => {
+                if (itemActive == 1 || itemActive == 2) {
+                  setItemActive(3);
+                }
+                if (itemActive == 3 || itemActive == 4) {
+                  setItemActive(5);
+                }
+                if (itemActive == 5) {
+                  setItemActive(0);
+                }
+              }}
+              className="next slideBtn hidden cursor-pointer absolute right-0 top-1/4 z-50"
+            >
+              SIGUIENTE MONTAÑA
+            </span>
+            <span
+              onClick={() => {
+                if (itemActive == 1 || itemActive == 2) {
+                  setItemActive(0);
+                }
+                if (itemActive == 3 || itemActive == 4) {
+                  setItemActive(2);
+                }
+                if (itemActive == 5) {
+                  setItemActive(4);
+                }
+              }}
+              className="back slideBtn  hidden cursor-pointer absolute right-0 translate-x-[-110%] top-1/4 z-50"
+            >
+              ANTERIOR MONTAÑA
+            </span>
           </div>
         </div>
-        <div className="BoxConoceText BoxesTextEnd flex-center">
+        <div className="anchoInicialPrimario BoxConoceText BoxesTextEnd flex flex-col items-center justify-center">
           <p className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             PÁRAMOS,
             <br />
@@ -212,6 +619,13 @@ const Conocelosparamos = () => {
             <br />
             VOLCÁNICOS.
           </p>
+          <span
+            onClick={handleClick}
+            className="btnconoce absolute translate-y-[250%] m-8 w-24 h-24 p-2 flex-center-col rounded-full text-center text-xs bg-black text-white"
+          >
+            <img className="w-10" src="/svg/frailejon.svg" alt="" /> Conoce los
+            paramos
+          </span>
         </div>
       </div>
     </div>
