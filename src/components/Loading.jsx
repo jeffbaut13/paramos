@@ -21,6 +21,7 @@ const Loading = () => {
     <div className="loading-container w-full h-full relative bg-black flex justify-center items-center">
       <div className="loading-text text-white text-3xl absolute top-[48%] translate-y-[-50%]">{percentage}%</div>
       <div className="line-loading absolute bottom-[40%] w-full h-5 overflow-hidden"></div>
+      <img src="/lineaCarga-03.svg" className="line-image" alt="linea de carga"/>
     </div>
   );
 };
