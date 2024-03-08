@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { primerEfecto2, reverseAction } from "../animations/travesia";
 import gsap from "gsap";
+import Button from "./Button";
 
 const isMobile = window.innerWidth <= 1024;
 const rapido = 0.5;
@@ -317,17 +318,12 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         </div>
         <div className="BoxTravesiaTexto   BoxesTextEnd flex-center">
           <p className="origenTexto textoUno font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-          los páramos <br />
-            en los que<br/>
+            los páramos <br />
+            en los que
+            <br />
             vamos <br /> a sembrar.
           </p>
-
-          <span
-            onClick={handleGspa}
-            className="btnVermas btnTravesia cursor-pointer rounded-md min-w-[200px] absolute translate-y-44 tracking-[0.5em] py-4 border border-black text-center"
-          >
-            Explorar
-          </span>
+          <Button handleClick={handleGspa} text={"EXPLORAR"} />
         </div>
       </div>
     </div>

@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import DescripcionFrailejones from "./DescripcionFrailejones";
 
 import gsap from "gsap";
+import Button from "./Button";
+import IconSlideNextPrev from "./IconSlideNextPrev";
 
 const isMobile = window.innerWidth <= 1024;
 const rapido = 0.5;
@@ -45,6 +47,21 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         },
         "<-=0.5"
       );
+      tl5.to(
+        ".dosmilFrailejones .btnconoce",
+        {
+          display: "flex",
+        },
+        "<-=0.5"
+      );
+      tl5.to(
+        ".btnSlide",
+        {
+          opacity: 0,
+          duration: 2,
+        },
+        "<-=0.5"
+      );
     }
     if (numFrailejon == 1) {
       const tl7 = gsap.timeline();
@@ -60,6 +77,21 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           "<-=0.5"
         )
         .addLabel("titulo1");
+      tl7.to(
+        ".btnSlide",
+        {
+          opacity: 1,
+          duration: 2,
+        },
+        "titulo1<-=0.5"
+      );
+      tl7.to(
+        ".dosmilFrailejones .btnconoce",
+        {
+          display: "none",
+        },
+        "titulo1<-=0.5"
+      );
 
       tl7.from(
         ".SegundoTextoDosmil",
@@ -190,6 +222,31 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
     //<div className="dosmilFrailejones absolute w-full h-full z-[1] flex">
     <div className="dosmilFrailejones ocultarEnOrigen w-full h-full z-[1] flex">
       <div className=" flex responsiveReverse relative w-full h-full paddingComponentes">
+        <span
+          onClick={() => {
+            if (numFrailejon >= 3) {
+              setNumFrailejon(1);
+            } else {
+              setNumFrailejon(numFrailejon + 1);
+            }
+          }}
+          className="btnSlide opacity-0 cursor-pointer absolute right-4 top-1/2 z-50"
+        >
+          <IconSlideNextPrev />
+        </span>
+
+        <span
+          onClick={() => {
+            if (numFrailejon <= 1) {
+              setNumFrailejon(3);
+            } else {
+              setNumFrailejon(numFrailejon - 1);
+            }
+          }}
+          className="btnSlide opacity-0 cursor-pointer absolute left-4 top-1/2 z-50"
+        >
+          <IconSlideNextPrev reverse={true} />
+        </span>
         <div
           className={`BoxDosmilImage   bg-center BoxesImgStart flex-center z-10 relative ${
             numFrailejon >= 1 ? "Frailejonactivo" : ""
@@ -253,49 +310,32 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           )}
         </div>
         <div className="BoxDosmilTexto BoxesTextEnd flex-center z-0 relative">
-          <span
-            onClick={() => {
-              if (numFrailejon >= 3) {
-                setNumFrailejon(1);
-              } else {
-                setNumFrailejon(numFrailejon + 1);
-              }
-            }}
-            className="  cursor-pointer absolute right-0 top-1/4 z-50"
-          >
-            SIGUIENTE frailejon
-          </span>
-
-          <span
-            onClick={() => {
-              if (numFrailejon <= 1) {
-                setNumFrailejon(3);
-              } else {
-                setNumFrailejon(numFrailejon - 1);
-              }
-            }}
-            className="   cursor-pointer absolute right-0 translate-x-[-110%] top-1/4 z-50"
-          >
-            ANTERIOR MONTAÑA
-          </span>
           <p className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            son 3 especies<br/>nativas que <br/> sembraremos<br/> en los páramos.
+            son 3 especies
+            <br />
+            nativas que <br /> sembraremos
+            <br /> en los páramos.
           </p>
+          <Button handleClick={() => setNumFrailejon(1)} text={"CONOCELAS"} />
           <p className="SegundoTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             {numFrailejon == 1 && (
               <span ref={parrafoFrailejon}>
-                frailejon<br/> espeletia<br/> sp.
+                frailejon
+                <br /> espeletia
+                <br /> sp.
               </span>
             )}
             {numFrailejon == 2 && (
               <span ref={parrafoFrailejon}>
-                FRAILEJON AMARILLO<br/>
+                FRAILEJON AMARILLO
+                <br />
                 ESPELETIA LOPEZII
               </span>
             )}
             {numFrailejon == 3 && (
               <span ref={parrafoFrailejon}>
-               FRAILEJON BLANCO<br/>
+                FRAILEJON BLANCO
+                <br />
                 ESPELETIA INCANA.
               </span>
             )}

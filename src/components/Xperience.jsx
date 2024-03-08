@@ -1,22 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import gsap from "gsap";
 
 const Xperience = ({ videoActive, setvideoActive }) => {
-  useEffect(() => {
-    const tl = gsap.timeline();
-
-   
-    
-      tl.to(".BoxMoisesText", { width: "100%", duration: 1 });
-      tl.to(".BoxConoceImg", { width: "0%", duration: 1 }, "<");
-    
-      // Segundo scroll: Reducir BoxMoisesText a 0% y mostrar el video al 100%
-      tl.to(".BoxMoisesText", { width: "0%", duration: 1 });
-      tl.to(".videoContainer", { width: "100%", height: "100%", duration: 1 }, "<");
-    
-    // Ajusta este efecto según cómo se actualice `videoActive` en tu componente
-  }, [videoActive]);
-
   return (
     <div className="documental w-full h-full flex">
       <div className="experienciaInicial relative w-full h-full paddingComponentes flex">
@@ -44,7 +29,7 @@ const Xperience = ({ videoActive, setvideoActive }) => {
         >
           <iframe
             src="https://player.vimeo.com/video/921261787"
-            style={{ width: "100%", height: "100%",   }}
+            style={{ width: "100%", height: "100%" }}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen

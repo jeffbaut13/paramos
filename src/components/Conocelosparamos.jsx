@@ -1,6 +1,8 @@
 import gsap from "gsap";
 import HandScroll from "./HandScroll";
 import { useEffect } from "react";
+import Button from "./Button";
+import IconSlideNextPrev from "./IconSlideNextPrev";
 
 const isMobile = window.innerWidth <= 1024;
 const rapido = 0.5;
@@ -429,19 +431,19 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             </p>
 
             <p className=" titulo2 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
-            LA IMPORTANCIA
+              LA IMPORTANCIA
               <br />
               DE SEMBRAR
-              <br/>
+              <br />
               FRAILEJONES
             </p>
             <p className=" titulo3 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
-            ¿CÓMO
+              ¿CÓMO
               <br />
               SEMBRAREMOS
-              <br/>
+              <br />
               NUESTRAS
-              <br/>
+              <br />
               SEMILLAS?
             </p>
             <p className=" titulo4 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
@@ -480,7 +482,8 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               Los frailejones son una especie emblemática de los páramos,
               <br />
               un ecosistema único y vital que alberga una gran biodiversidad
-              <br /> y son fundamentales en la regulación del ciclo del agua y el clima.
+              <br /> y son fundamentales en la regulación del ciclo del agua y
+              el clima.
             </p>
 
             <img
@@ -494,8 +497,8 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoTresLosParamos  text-[13px] absolute top-[35vh] left-[52vw] text-white w-[500px] z-50`}
             >
-              Sus hojas absorben la humedad de la neblina<br /> 
-              y liberan el agua en las quebradas y ríos.
+              Sus hojas absorben la humedad de la neblina
+              <br />y liberan el agua en las quebradas y ríos.
             </p>
 
             <img
@@ -518,7 +521,6 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               junto a voluntarios que previamente se registraron
               <br />
               para sembrar en los mágicos páramos de Boyacá.
-            
             </p>
 
             <img
@@ -583,9 +585,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   setItemActive(0);
                 }
               }}
-              className="next slideBtn hidden cursor-pointer absolute right-0 top-1/4 z-50"
+              className="next slideBtn hidden cursor-pointer absolute right-4 top-1/2 z-50"
             >
-              SIGUIENTE MONTAÑA
+              <IconSlideNextPrev />
             </span>
             <span
               onClick={() => {
@@ -599,9 +601,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   setItemActive(4);
                 }
               }}
-              className="back slideBtn  hidden cursor-pointer absolute right-0 translate-x-[-110%] top-1/4 z-50"
+              className="back slideBtn  hidden cursor-pointer absolute left-4 top-1/2 z-50"
             >
-              ANTERIOR MONTAÑA
+              <IconSlideNextPrev reverse={true} />
             </span>
           </div>
         </div>
@@ -618,13 +620,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <br />
             con tu ayuda.
           </p>
-          <span
-            onClick={handleClick}
-            className="btnconoce absolute translate-y-[250%] m-8 w-24 h-24 p-2 flex-center-col rounded-full text-center text-xs bg-black text-white"
-          >
-            <img className="w-10" src="/svg/frailejon.svg" alt="" /> Conoce los
-            paramos
-          </span>
+          <Button handleClick={handleClick} text={"ENTÉRATE CÓMO"} />
         </div>
       </div>
     </div>
