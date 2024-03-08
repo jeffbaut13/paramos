@@ -222,3 +222,19 @@ svg {
     -100%
   ); /* Mueve hacia arriba los elementos cuando el primero es visible */
 }
+@keyframes slide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.line-loading {
+  width: 100%; /* Esto debería ser el ancho total de la barra de carga */
+  height: 100px; /* O la altura que desees */
+  background-image: url('/lineaCarga-03.svg'); /* Ruta a tu imagen */
+  background-repeat: repeat-x; /* Esto hará que la imagen se repita a lo largo del eje X */
+  animation: slide 2s linear infinite; /* Ajusta la duración según sea necesario */
+}

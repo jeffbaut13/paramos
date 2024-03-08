@@ -30,21 +30,24 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
       );
     }
 
+    if (numFrailejon == null) {
+      const tl5 = gsap.timeline();
+      tl5.to(".Blanco", { opacity: 0 }, "<");
+      tl5.to(".amarillo", { opacity: 0 }, "<-=0.5");
+      tl5.to(".Espeletia", { opacity: 0 }, "<-=0.5");
+      tl5.to(
+        ".PrimerTextoDosmil",
+        {
+          opacity: 1,
+          y: "0%",
+          display: "block",
+          duration: rapido,
+        },
+        "<-=0.5"
+      );
+    }
     if (numFrailejon == 1) {
       const tl7 = gsap.timeline();
-
-      tl7
-        .to(".bgvid", { opacity: 1, duration: normal }, "<")
-        .addLabel("niebla");
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "0%" });
-        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "0%" });
-        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
-      }
-
-      tl7.to(".bgvid", { opacity: 0, duration: rapido });
       tl7
         .to(
           ".PrimerTextoDosmil",
@@ -63,6 +66,19 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         { display: "none", opacity: 0, y: "0%", duration: rapido },
         "titulo1-=0.5"
       );
+      tl7
+        .to(".bgvid", { opacity: 1, duration: normal }, "<")
+        .addLabel("niebla");
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "0%" }, "<-=4");
+        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "0%" }, "<-=4");
+        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
+      }
+
+      tl7.to(".bgvid", { opacity: 0, duration: rapido });
+
       if (isMobile) {
         tl7.to(".BoxDosmilImage", { height: "50%" });
         tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
@@ -70,26 +86,14 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         tl7.to(".BoxDosmilImage", { width: "50%" });
         tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
       }
-      tl7.to(".Espeletia", { display: "block" }, "<-=0.5");
+      tl7.to(".Blanco", { opacity: 0 }, "<");
+      tl7.to(".amarillo", { opacity: 0 }, "<-=0.5");
+      tl7.to(".Espeletia", { opacity: 1 }, "<-=0.5");
       tl7.to(".TituloFrailejon", { display: "block" }, "<");
       tl7.to(".punto", { display: "block" }, "<");
     }
-
     if (numFrailejon == 2) {
       const tl7 = gsap.timeline();
-
-      tl7
-        .to(".bgvid", { opacity: 1, duration: normal }, "<")
-        .addLabel("niebla");
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "0%" });
-        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "0%" });
-        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
-      }
-
-      tl7.to(".bgvid", { opacity: 0, duration: rapido });
       tl7
         .to(
           ".PrimerTextoDosmil",
@@ -108,6 +112,19 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         { display: "none", opacity: 0, y: "0%", duration: rapido },
         "titulo1-=0.5"
       );
+      tl7
+        .to(".bgvid", { opacity: 1, duration: normal }, "<")
+        .addLabel("niebla");
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "0%" }, "<-=4");
+        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "0%" }, "<-=4");
+        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
+      }
+
+      tl7.to(".bgvid", { opacity: 0, duration: rapido });
+
       if (isMobile) {
         tl7.to(".BoxDosmilImage", { height: "50%" });
         tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
@@ -115,25 +132,14 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         tl7.to(".BoxDosmilImage", { width: "50%" });
         tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
       }
-      tl7.to(".amarillo", { display: "block" }, "<-=0.5");
+      tl7.to(".Blanco", { opacity: 0 }, "<");
+      tl7.to(".amarillo", { opacity: 1 }, "<-=0.5");
+      tl7.to(".Espeletia", { opacity: 0 }, "<-=0.5");
       tl7.to(".TituloFrailejon", { display: "block" }, "<");
       tl7.to(".punto", { display: "block" }, "<");
     }
     if (numFrailejon == 3) {
       const tl7 = gsap.timeline();
-
-      tl7
-        .to(".bgvid", { opacity: 1, duration: normal }, "<")
-        .addLabel("niebla");
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "0%" });
-        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "0%" });
-        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
-      }
-
-      tl7.to(".bgvid", { opacity: 0, duration: rapido });
       tl7
         .to(
           ".PrimerTextoDosmil",
@@ -152,6 +158,19 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         { display: "none", opacity: 0, y: "0%", duration: rapido },
         "titulo1-=0.5"
       );
+      tl7
+        .to(".bgvid", { opacity: 1, duration: normal }, "<")
+        .addLabel("niebla");
+      if (isMobile) {
+        tl7.to(".BoxDosmilImage", { height: "0%" }, "<-=4");
+        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
+      } else {
+        tl7.to(".BoxDosmilImage", { width: "0%" }, "<-=4");
+        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
+      }
+
+      tl7.to(".bgvid", { opacity: 0, duration: rapido });
+
       if (isMobile) {
         tl7.to(".BoxDosmilImage", { height: "50%" });
         tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
@@ -159,7 +178,9 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         tl7.to(".BoxDosmilImage", { width: "50%" });
         tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
       }
-      tl7.to(".Blanco", { display: "block" }, "<-=0.5");
+      tl7.to(".Blanco", { opacity: 1 }, "<");
+      tl7.to(".amarillo", { opacity: 0 }, "<-=0.5");
+      tl7.to(".Espeletia", { opacity: 0 }, "<-=0.5");
       tl7.to(".TituloFrailejon", { display: "block" }, "<");
       tl7.to(".punto", { display: "block" }, "<");
     }
@@ -175,9 +196,23 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           } `}
           style={{ backgroundImage: "url(/bgParamos/Bg20mil.webp)" }}
         >
+          <img
+            className={`Espeletia imgFrailejon"`}
+            src={`/imgFrailejones/Espeletia.webp`}
+            alt=""
+          />
+          <img
+            className={`amarillo imgFrailejon"`}
+            src={`/imgFrailejones/amarillo.webp`}
+            alt=""
+          />
+          <img
+            className={`Blanco imgFrailejon"`}
+            src={`/imgFrailejones/Blanco.webp`}
+            alt=""
+          />
           {numFrailejon == 1 && (
             <DescripcionFrailejones
-              tituloFrailejon={"FRAILEJÓN ESPELETIA SP"}
               claseFrailejon={"Espeletia"}
               primerParrafo={"Crece entre 5 y 20 cm por año."}
               segundoParrafo={
@@ -190,7 +225,6 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           )}
           {numFrailejon == 2 && (
             <DescripcionFrailejones
-              tituloFrailejon={"FRAILEJON AMARILLO <br/>ESPELETIA LOPEZII"}
               claseFrailejon={"amarillo"}
               primerParrafo={
                 "Es capaz de resistir las heladas de la noche y fuertes rayos del sol."
@@ -205,7 +239,6 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           )}
           {numFrailejon == 3 && (
             <DescripcionFrailejones
-              tituloFrailejon={"FRAILEJON BLANCO <br/>ESPELETIA INCANA"}
               claseFrailejon={"Blanco"}
               primerParrafo={
                 "Ayuda a regular la temperatura y la humedad del páramo."
@@ -235,46 +268,35 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
 
           <span
             onClick={() => {
-              setNumFrailejon(0);
+              if (numFrailejon <= 1) {
+                setNumFrailejon(3);
+              } else {
+                setNumFrailejon(numFrailejon - 1);
+              }
             }}
             className="   cursor-pointer absolute right-0 translate-x-[-110%] top-1/4 z-50"
           >
             ANTERIOR MONTAÑA
           </span>
           <p className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            Llevaremos <br /> <span className="font-black">2,000 </span> <br />
-            frailejones <br />
-            al corazón <br />
-            de nuestros
-            <br /> páramos.
+            son 3 especies<br/>nativas que <br/> sembraremos<br/> en los páramos.
           </p>
           <p className="SegundoTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             {numFrailejon == 1 && (
               <span ref={parrafoFrailejon}>
-                Gracias <br />a los viveros <br />
-                de Ocetá, <br />
-                logramos <br />
-                germinar <br />
-                especies nativas.
+                frailejon<br/> espeletia<br/> sp.
               </span>
             )}
             {numFrailejon == 2 && (
               <span ref={parrafoFrailejon}>
-                Haremos un <br />
-                seguimiento <br />
-                permanente <br />a cada <br />
-                frailejón <br />
-                sembrado.
+                FRAILEJON AMARILLO<br/>
+                ESPELETIA LOPEZII
               </span>
             )}
             {numFrailejon == 3 && (
               <span ref={parrafoFrailejon}>
-                Este es un <br />
-                proyecto <br />
-                pensado y <br />
-                construido <br />
-                para los <br />
-                próximos <br />4 años.
+               FRAILEJON BLANCO<br/>
+                ESPELETIA INCANA.
               </span>
             )}
           </p>

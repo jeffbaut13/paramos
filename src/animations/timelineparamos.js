@@ -59,4 +59,32 @@ export const timeLine = (
     tl3.fromTo(".BoxDosmilImage", { width: "0%" }, { width: "50%" }, "<");
   }
   tl3.to(".blurParamos", { opacity: 1, duration: rapido }, "<");
+  tl3.add(() => {
+    setNumFrailejon(null);
+  }, "<");
+
+  const tl11 = scrollEffects(main, 49);
+
+  tl11.add(() => {
+    setNumFrailejon(null);
+  });
+  tl11.add(() => {
+    setTravesiaReverse(false);
+  });
+  tl11.add(() => {
+    setTravesiaReverse(true);
+  });
+
+  if (isMobile) {
+    tl11.fromTo(".BoxTravesiaCards", { height: "0%" }, { height: "50%" });
+    tl11.fromTo(
+      ".BoxTravesiaTexto",
+      { height: "100%" },
+      { height: "50%" },
+      "<"
+    );
+  } else {
+    tl11.fromTo(".BoxTravesiaCards", { width: "0%" }, { width: "50%" });
+    tl11.fromTo(".BoxTravesiaTexto", { width: "100%" }, { width: "50%" }, "<");
+  }
 };

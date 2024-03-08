@@ -2,7 +2,13 @@ import React, { useEffect, useRef } from "react";
 import { primerEfecto2, reverseAction } from "../animations/travesia";
 import gsap from "gsap";
 
-const Travesia = ({ travesiaReverse }) => {
+const isMobile = window.innerWidth <= 1024;
+const rapido = 0.5;
+const normal = 1;
+const medio = 1.5;
+const lento = 2;
+
+const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
   const padre = useRef(null);
 
   useEffect(() => {
@@ -10,6 +16,64 @@ const Travesia = ({ travesiaReverse }) => {
       reverseAction(padre);
     }
   }, [travesiaReverse]);
+
+  console.log(travesiaReverse);
+
+  const handleGspa = () => {
+    const tl = gsap.timeline();
+    if (isMobile) {
+    } else {
+      tl.fromTo(".BoxTravesiaCards", { width: "50%" }, { width: "0%" });
+      tl.fromTo(
+        ".BoxTravesiaTexto",
+        { width: "50%" },
+        { width: "100%" },
+        "<"
+      ).addLabel("cambioTravesia-=1");
+    }
+
+    tl.add(() => {
+      primerEfecto2(padre, "cards1", "cards2", "cards3");
+    });
+
+    gsap.to(
+      ".cards2 .iconoCaminante",
+      {
+        display: "none",
+      },
+      "cambioTravesia"
+    );
+
+    tl.to(".travesia > div", { padding: 0, duration: 1 }, "cambioTravesia");
+    if (isMobile) {
+      tl.fromTo(
+        ".cards1",
+        { display: "none", opacity: 0 },
+        { display: "block", opacity: 1, duration: rapido },
+        "cambioTravesia"
+      );
+    } else {
+      tl.fromTo(
+        ".cards",
+        { display: "none", opacity: 0 },
+        { display: "block", opacity: 1, duration: rapido },
+        "cambioTravesia"
+      );
+    }
+    tl.to(".textoUno", { opacity: 0, y: "-20%" });
+    tl.to(".textoUno", { display: "none" });
+    tl.to(".btnTravesia", { opacity: 0 }, "<-=0.5");
+    if (isMobile) {
+    } else {
+      tl.to(".BoxTravesiaCards", { width: "100%" });
+      tl.to(
+        ".BoxTravesiaTexto",
+
+        { width: "0%" },
+        "<"
+      );
+    }
+  };
 
   return (
     //<div className="travesia absolute w-full h-full z-[1] flex">
@@ -46,7 +110,7 @@ const Travesia = ({ travesiaReverse }) => {
                 <div className="w-full h-full flex flex-col justify-between">
                   <div className="cajaTitulos">
                     <h2 className="titulo text-black">
-                      PÁRAMO DE OCETÁ <br />
+                      PÁRAMO <br /> DE OCETÁ <br />
                       <span className="titulo2 hidden">Monguí, Boyaca</span>
                     </h2>
                     <p className="parrafo">
@@ -92,7 +156,7 @@ const Travesia = ({ travesiaReverse }) => {
 
                 <span
                   onClick={() => {
-                    primerEfecto2(padre, ".cards1", ".cards2", ".cards3");
+                    primerEfecto2(padre, "cards1", "cards2", "cards3");
                   }}
                   className="punto"
                 ></span>
@@ -120,7 +184,7 @@ const Travesia = ({ travesiaReverse }) => {
                 <div className="w-full h-full flex flex-col justify-between">
                   <div className="cajaTitulos">
                     <h2 className="titulo text-black">
-                      PÁRAMO DE MONGUÁ <br />
+                      PÁRAMO <br /> DE MONGUÁ <br />
                       <span className="titulo2 hidden">Monguí, Boyaca</span>
                     </h2>
                     <p className="parrafo">
@@ -162,7 +226,7 @@ const Travesia = ({ travesiaReverse }) => {
 
                 <span
                   onClick={() => {
-                    primerEfecto2(padre, ".cards2", ".cards3", ".cards1");
+                    primerEfecto2(padre, "cards2", "cards3", "cards1");
                   }}
                   className="punto"
                 ></span>
@@ -190,7 +254,7 @@ const Travesia = ({ travesiaReverse }) => {
                 <div className="w-full h-full flex flex-col justify-between">
                   <div className="cajaTitulos">
                     <h2 className="titulo text-black">
-                      PÁRAMO DE SISCUNSÍ
+                      PÁRAMO <br /> DE SISCUNSÍ
                       <br />
                       <span className="titulo2 hidden">Sogamoso, Boyacá</span>
                     </h2>
@@ -233,7 +297,7 @@ const Travesia = ({ travesiaReverse }) => {
 
                 <span
                   onClick={() => {
-                    primerEfecto2(padre, ".cards3", ".cards1", ".cards2");
+                    primerEfecto2(padre, "cards3", "cards1", "cards2");
                   }}
                   className="punto"
                 ></span>
@@ -252,11 +316,18 @@ const Travesia = ({ travesiaReverse }) => {
           </div>
         </div>
         <div className="BoxTravesiaTexto   BoxesTextEnd flex-center">
-          <p className="origenTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            La travesía <br />
-            por los <br /> páramos <br />
-            del país.
+          <p className="origenTexto textoUno font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
+          los páramos <br />
+            en los que<br/>
+            vamos <br /> a sembrar.
           </p>
+
+          <span
+            onClick={handleGspa}
+            className="btnVermas btnTravesia cursor-pointer rounded-md min-w-[200px] absolute translate-y-44 tracking-[0.5em] py-4 border border-black text-center"
+          >
+            Explorar
+          </span>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export const primerEfecto2 = (
   let ctx = gsap.context(() => {
     const tl = gsap.timeline();
 
-    tl.to(`${cardInicial}`, {
+    tl.to(`.${cardInicial}`, {
       x: "-50%",
       left: "50%",
 
@@ -24,30 +24,38 @@ export const primerEfecto2 = (
     }).addLabel("first");
 
     tl.to(
-      `${cardInicial}`,
+      `.${cardInicial}`,
       {
         zIndex: 3,
+        className: `cards ${cardInicial} max-lg:hidden `,
+        pointerEvents: "all",
       },
       "first-=1"
     );
     tl.to(
-      `${cardSecundaria}`,
+      `.${cardSecundaria}`,
       {
         zIndex: 4,
+        className: `hoverCard ${cardSecundaria} cards max-lg:hidden `,
+        pointerEvents: "none",
       },
       "first-=1"
     );
+
     tl.to(
-      `${cardTerciaria}`,
+      `.${cardTerciaria}`,
       {
         zIndex: 2,
+        className: `cards ${cardTerciaria} max-lg:hidden `,
+        pointerEvents: "all",
       },
       "first-=1"
     );
+
     tl.to(
-      `${cardSecundaria}`,
+      `.${cardSecundaria}`,
       {
-        x: "-70%",
+        x: "-30%",
         zIndex: 4,
         left: "100%",
         opacity: 1,
@@ -61,7 +69,7 @@ export const primerEfecto2 = (
     /**********ampliacion de caja */
 
     tl.to(
-      `${cardInicial}`,
+      `.${cardInicial}`,
       {
         x: "0",
         y: "0",
@@ -76,7 +84,7 @@ export const primerEfecto2 = (
     );
 
     tl.to(
-      `${cardInicial} .imgpasto`,
+      `.${cardInicial} .imgpasto`,
       {
         opacity: 0,
         ease: "power1.in",
@@ -92,7 +100,14 @@ export const primerEfecto2 = (
       "first-=1"
     );
     tl.to(
-      `${cardTerciaria}`,
+      `.${cardSecundaria} .imgComplete`,
+      {
+        opacity: 0.5,
+      },
+      "first-=1"
+    );
+    tl.to(
+      `.${cardTerciaria}`,
       {
         opacity: 0,
         duration: 1,
@@ -100,7 +115,7 @@ export const primerEfecto2 = (
       "first-=1"
     );
     tl.to(
-      `${cardTerciaria}`,
+      `.${cardTerciaria}`,
       {
         opacity: 0,
         x: "105%",
@@ -114,7 +129,7 @@ export const primerEfecto2 = (
     );
     /************titulos y punto */
     tl.to(
-      `${cardTerciaria} .cajaTitulos .titulo`,
+      `.${cardTerciaria} .cajaTitulos .titulo`,
       {
         color: "#ffffff",
         textAlign: "start",
@@ -124,14 +139,14 @@ export const primerEfecto2 = (
       "first+=1.2"
     );
     tl.to(
-      `${cardTerciaria} .punto`,
+      `.${cardTerciaria} .punto`,
       {
         opacity: 1,
       },
       "first+=1.2"
     );
     tl.to(
-      `${cardTerciaria} .cajaTitulos .titulo2`,
+      `.${cardTerciaria} .cajaTitulos .titulo2`,
       {
         display: "none",
         padding: "0",
@@ -139,7 +154,7 @@ export const primerEfecto2 = (
       "first+=1.2"
     );
     tl.to(
-      `${cardTerciaria} .cajaTitulos .parrafo`,
+      `.${cardTerciaria} .cajaTitulos .parrafo`,
       {
         display: "none",
         opacity: 0,
@@ -148,7 +163,7 @@ export const primerEfecto2 = (
     );
 
     tl.fromTo(
-      `${cardTerciaria} .bg-degradadoTravesia `,
+      `.${cardTerciaria} .bg-degradadoTravesia `,
       {
         opacity: 1,
       },
@@ -159,7 +174,7 @@ export const primerEfecto2 = (
     );
 
     tl.fromTo(
-      `${cardTerciaria} .cajaIconos`,
+      `.${cardTerciaria} .cajaIconos`,
       {
         opacity: 1,
       },
@@ -173,7 +188,7 @@ export const primerEfecto2 = (
     /************ Imagenes */
 
     tl.to(
-      `${cardInicial} .punto`,
+      `.${cardInicial} .punto`,
       {
         opacity: 0,
         ease: "power1.in",
@@ -182,21 +197,21 @@ export const primerEfecto2 = (
       "first"
     );
     tl.to(
-      `${cardInicial} .caminante2`,
+      `.${cardInicial} .caminante2`,
       {
         display: "block",
       },
       "first+=0.2"
     );
     tl.to(
-      `${cardTerciaria} .caminante2`,
+      `.${cardTerciaria} .caminante2`,
       {
         display: "none",
       },
       "first+=0.2"
     );
     tl.fromTo(
-      `${cardInicial} .caminante2`,
+      `.${cardInicial} .caminante2`,
       {
         opacity: 0,
         zIndex: 1,
@@ -224,7 +239,7 @@ export const primerEfecto2 = (
       "first+=0.7"
     );
     tl.fromTo(
-      `${cardInicial} .bg-degradadoTravesia `,
+      `.${cardInicial} .bg-degradadoTravesia `,
       {
         opacity: 0,
         zIndex: 2,
@@ -240,7 +255,7 @@ export const primerEfecto2 = (
     /***************************titulos */
 
     tl.to(
-      `${cardInicial} .cajaTitulos .titulo`,
+      `.${cardInicial} .cajaTitulos .titulo`,
       {
         opacity: 0,
         ease: "power1.in",
@@ -249,7 +264,7 @@ export const primerEfecto2 = (
       "first-=0.7"
     );
     tl.to(
-      `${cardInicial} .cajaTitulos .titulo`,
+      `.${cardInicial} .cajaTitulos .titulo`,
       {
         color: "#ffffff",
         textAlign: "start",
@@ -258,11 +273,12 @@ export const primerEfecto2 = (
       "first"
     );
     tl.to(
-      `${cardSecundaria} .cajaTitulos .titulo`,
+      `.${cardSecundaria} .cajaTitulos .titulo`,
       {
         color: "#ffffff",
         fontSize: `${(full && "1.875rem") || (laptop && "1.5rem")}`,
         lineHeight: `${(full && "2.25rem") || (laptop && "2rem")}`,
+        textAlign: "start",
         paddingLeft: "6%",
         ease: "power1.in",
         marginRight: 0,
@@ -272,9 +288,18 @@ export const primerEfecto2 = (
       },
       "first"
     );
+    tl.to(
+      `.${cardTerciaria} .cajaTitulos .titulo`,
+      {
+        textAlign: "start",
+        fontSize: `${(full && "1.875rem") || (laptop && "1.5rem")}`,
+        lineHeight: `${(full && "2.25rem") || (laptop && "2rem")}`,
+      },
+      "first"
+    );
     if (full) {
       tl.to(
-        `${cardInicial} .cajaTitulos`,
+        `.${cardInicial} .cajaTitulos`,
         {
           padding: "6% 0 0 16%",
         },
@@ -282,14 +307,14 @@ export const primerEfecto2 = (
       );
     }
     tl.to(
-      `${cardSecundaria} .cajaTitulos`,
+      `.${cardSecundaria} .cajaTitulos`,
       {
         padding: "0",
       },
       "first+=0.1"
     );
     tl.to(
-      `${cardTerciaria} .cajaTitulos`,
+      `.${cardTerciaria} .cajaTitulos`,
       {
         padding: "0",
       },
@@ -297,7 +322,7 @@ export const primerEfecto2 = (
     );
 
     tl.to(
-      `${cardInicial} .cajaTitulos .titulo `,
+      `.${cardInicial} .cajaTitulos .titulo `,
       {
         opacity: 1,
         zIndex: 5,
@@ -320,7 +345,7 @@ export const primerEfecto2 = (
       "first+=0.3"
     );
     tl.to(
-      `${cardInicial} .cajaTitulos .titulo2`,
+      `.${cardInicial} .cajaTitulos .titulo2`,
       {
         display: "block",
         opacity: 1,
@@ -330,14 +355,14 @@ export const primerEfecto2 = (
       "first+=0.3"
     );
     tl.to(
-      `${cardInicial} .cajaTitulos .parrafo`,
+      `.${cardInicial} .cajaTitulos .parrafo`,
       {
         display: "block",
       },
       "first+=1.5"
     );
     tl.to(
-      `${cardInicial} .cajaTitulos .parrafo`,
+      `.${cardInicial} .cajaTitulos .parrafo`,
       {
         opacity: 1,
         ease: "power1.in",
@@ -348,7 +373,7 @@ export const primerEfecto2 = (
 
     /*****************Caja de iconos */
     tl.to(
-      `${cardInicial} .cajaIconos `,
+      `.${cardInicial} .cajaIconos `,
       {
         opacity: 1,
         display: "flex",
@@ -357,7 +382,7 @@ export const primerEfecto2 = (
     );
 
     tl.fromTo(
-      `${cardInicial} .cajaIconos .svgIcono1`,
+      `.${cardInicial} .cajaIconos .svgIcono1`,
       {
         y: 100,
       },
@@ -369,7 +394,7 @@ export const primerEfecto2 = (
       "first+=0.9"
     );
     tl.fromTo(
-      `${cardInicial} .cajaIconos .svgIcono2`,
+      `.${cardInicial} .cajaIconos .svgIcono2`,
       {
         y: 100,
       },
@@ -381,7 +406,7 @@ export const primerEfecto2 = (
       "first+=1.1"
     );
     tl.fromTo(
-      `${cardInicial} .cajaIconos .svgIcono3`,
+      `.${cardInicial} .cajaIconos .svgIcono3`,
       {
         y: 100,
       },
@@ -398,162 +423,76 @@ export const primerEfecto2 = (
 
 export const reverseAction = (padre) => {
   let ctx = gsap.context(() => {
-    const tl = gsap.timeline();
+    gsap.to(".textoUno", { display: "block", opacity: 1 });
+    gsap.to(".btnTravesia", { opacity: 1 });
+    gsap.to(".cards", {
+      display: "none",
+    });
+    gsap.to(".iconoCaminante", {
+      display: "block",
+      opacity: 1,
+    });
+
     if (full) {
-      tl.to(".cards1", {
+      gsap.to(".cards1", {
         width: "25%",
         height: "50%",
         top: "50%",
-        left: "8%",
+        left: "50%",
+        y: "-70%",
+        x: "-50%",
+        opacity: 0,
+      });
+
+      gsap.to(".cards2", {
+        width: "25%",
+        height: "50%",
+        top: "50%",
+        left: "50%",
+        y: "-70%",
+        x: "-50%",
+
+        opacity: 0,
+      });
+      gsap.to(".cards3", {
+        width: "25%",
+        height: "50%",
+        top: "50%",
+        left: "unset",
+        right: "8%",
         y: "-70%",
         x: "0%",
-        opacity: 1,
-      }).addLabel("first");
-
-      tl.to(
-        ".cards2",
-        {
-          width: "25%",
-          height: "50%",
-          top: "50%",
-          left: "50%",
-          y: "-70%",
-          x: "-50%",
-
-          opacity: 1,
-        },
-        "first"
-      );
-      tl.to(
-        ".cards3",
-        {
-          width: "25%",
-          height: "50%",
-          top: "50%",
-          left: "unset",
-          right: "8%",
-          y: "-70%",
-          x: "0%",
-          opacity: 1,
-        },
-        "first"
-      );
+        opacity: 0,
+      });
     } else if (Mobile) {
-      tl.to(".cards1", {
+      gsap.to(".cards1", {
         width: "90%",
         height: "60%",
         top: "60%",
         left: "50%",
         y: "-80%",
         x: "-50%",
-        opacity: 1,
-      }).addLabel("first");
-      tl.to(
-        ".cards2",
-        {
-          width: "90%",
-          height: "60%",
-          top: "60%",
-          left: "50%",
-          y: "-80%",
-          x: "-50%",
-          opacity: 1,
-        },
-        "first"
-      );
-      tl.to(
-        ".cards3",
-        {
-          width: "90%",
-          height: "60%",
-          top: "60%",
-          left: "50%",
-          y: "-80%",
-          x: "-50%",
-          opacity: 1,
-        },
-        "first"
-      );
-    }
-
-    tl.to(
-      ".caminante2",
-      {
-        display: "none",
-      },
-      "first"
-    );
-
-    tl.to(
-      ".punto",
-      {
-        opacity: 1,
-      },
-      "first"
-    );
-    tl.to(
-      ".imgpasto",
-      {
-        opacity: 1,
-      },
-      "first"
-    );
-    tl.to(
-      ".imgComplete",
-      {
-        opacity: 0.5,
-      },
-      "first"
-    );
-    tl.to(
-      ".bg-degradadoTravesia",
-      {
         opacity: 0,
-      },
-      "first"
-    );
-    tl.to(
-      ".titulo2",
-      {
-        display: "none",
-      },
-      "first"
-    );
-    tl.to(
-      ".cajaIconos",
-      {
-        display: "none",
-      },
-      "first"
-    );
-    tl.to(
-      ".cajaTitulos .titulo",
-      {
-        color: "#000000",
-        textAlign: "center",
-        fontSize: "1.875rem",
-        lineHeight: "2.25rem",
-        width: "100%",
-        marginRight: "0",
-        padding: "0",
-        y: "100%",
-      },
-      "first"
-    );
-    tl.to(
-      ".cajaTitulos .parrafo",
-      {
-        display: "none",
-      },
-      "first"
-    );
-    tl.to(
-      ".cajaTitulos",
-      {
-        padding: "0",
-      },
-      "first"
-    );
+      });
+      gsap.to(".cards2", {
+        width: "90%",
+        height: "60%",
+        top: "60%",
+        left: "50%",
+        y: "-80%",
+        x: "-50%",
+        opacity: 0,
+      });
+      gsap.to(".cards3", {
+        width: "90%",
+        height: "60%",
+        top: "60%",
+        left: "50%",
+        y: "-80%",
+        x: "-50%",
+        opacity: 0,
+      });
+    }
   }, padre);
   return () => ctx.revert();
 };

@@ -14,11 +14,14 @@ import VideoComponent from "../components/videclud";
 import { switchProcentageZindex } from "../helpers/switchs";
 import NavBar from "../components/NavBar";
 import { transitionSection } from "../animations/gsap";
+import Xperience from "../components/Xperience";
+import DocumentalMoises from "../components/DocumentalMoises";
+
 
 function App() {
   const main = useRef(null);
   const [imageBg, setImageBg] = useState("/Conoce/fondoConoce.webp");
-  const [numFrailejon, setNumFrailejon] = useState(0);
+  const [numFrailejon, setNumFrailejon] = useState(null);
   const [travesiaReverse, setTravesiaReverse] = useState(false);
   const [active360, setActive360] = useState(1);
   const [translate, setTranslate] = useState(0);
@@ -209,7 +212,12 @@ function App() {
               setNumFrailejon={setNumFrailejon}
             />
             <CapituloMoises />
-            <Travesia travesiaReverse={travesiaReverse} />
+            <Travesia
+              travesiaReverse={travesiaReverse}
+              setTravesiaReverse={setTravesiaReverse}
+            />
+            <Xperience/>
+            <DocumentalMoises />
             <Contacto />
             <Descargable />
           </div>

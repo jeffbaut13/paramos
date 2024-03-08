@@ -420,23 +420,29 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className=" m3 scale-[1.3] opacity-0  left-0 h-auto absolute bottom-0 lg:hidden xl:hidden 2xl:hidden"
             />
 
-            <p className=" titulo1 z-40 tracking-widest font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
-              EL ORIGEN
+            <p className=" titulo1 z-40 tracking-widest uppercase font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
+              ¿por qué
               <br />
-              DE LOS
+              decidimos
               <br />
-              PÁRAMOS
+              hacerlo?
             </p>
 
             <p className=" titulo2 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
-              EL MUNDO ELEVADO
+            LA IMPORTANCIA
               <br />
-              DE LOS PÁRAMOS
+              DE SEMBRAR
+              <br/>
+              FRAILEJONES
             </p>
             <p className=" titulo3 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
-              EL CICLO VITAL
+            ¿CÓMO
               <br />
-              DEL AGUA
+              SEMBRAREMOS
+              <br/>
+              NUESTRAS
+              <br/>
+              SEMILLAS?
             </p>
             <p className=" titulo4 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
               GUARDIANES
@@ -455,9 +461,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className="LineaUnoMontaña absolute top-[14%] left-[6%] w-[57%] z-50"
             />
             <p className="textoUnoLosParamos text-[13px] absolute top-[10vh] left-[38vw] text-white w-[500px] z-50">
-              Es resultado de complejas interacciones geológicas y climáticas,
-              <br /> incluyendo actividad volcánica y extensos ciclos glaciales
-              e<br /> interglaciales durante el Pleistoceno.
+              En enero de 2024, una intensa ola de calor arrasó con miles
+              <br /> de hectáreas de páramo y frailejones centenarios.
+              <br /> Quisimos hacer algo para recuperar parte de lo perdido.
             </p>
 
             <img
@@ -471,10 +477,10 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoDosLosParamos text-[13px] absolute top-[10vh] left-[35vw] text-white w-[500px] z-50`}
             >
-              Los páramos se encuentran
+              Los frailejones son una especie emblemática de los páramos,
               <br />
-              generalmente entre 3,000 y 4,000
-              <br /> metros sobre el nivel del mar.
+              un ecosistema único y vital que alberga una gran biodiversidad
+              <br /> y son fundamentales en la regulación del ciclo del agua y el clima.
             </p>
 
             <img
@@ -488,12 +494,8 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoTresLosParamos  text-[13px] absolute top-[35vh] left-[52vw] text-white w-[500px] z-50`}
             >
-              Son un ecosistema montañoso
-              <br />
-              intertropical y se caracterizan por
-              <br /> su clima frío y su importante
-              <br />
-              biodiversidad y recursos hídricos.
+              Sus hojas absorben la humedad de la neblina<br /> 
+              y liberan el agua en las quebradas y ríos.
             </p>
 
             <img
@@ -511,12 +513,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoCuatroLosParamos  text-[13px] absolute top-[10vh] left-[30vw] text-white w-[500px] z-50`}
             >
-              Los páramos actúan como esponjas
+              Lo haremos en varias jornadas; la primera será en marzo,
               <br />
-              naturales, regulando el flujo de ríos
+              junto a voluntarios que previamente se registraron
               <br />
-              y quebradas que son esenciales
-              <br /> para la vida.
+              para sembrar en los mágicos páramos de Boyacá.
+            
             </p>
 
             <img
@@ -530,11 +532,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoCincoLosParamos  text-1xl absolute top-[52vh] left-[9vw] text-white w-[500px] z-50`}
             >
-              El 70% del agua de las
+              El terreno ha sido previamente verificado por expertos
               <br />
-              grandes ciudades, proviene
-              <br />
-              de este lugar sagrado.
+              para asegurar el éxito de la siembra.
             </p>
             <img
               src="/Conoce/circulo1.png"
@@ -607,17 +607,16 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         </div>
         <div className="anchoInicialPrimario BoxConoceText BoxesTextEnd flex flex-col items-center justify-center">
           <p className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            PÁRAMOS,
+            Vamos a sembrar
             <br />
-            EL MILAGRO DE
+            2,000 frailejones.
             <br />
-            LOS GLACIALES
             <br />
-            Y LOS
+            Un reto
             <br />
-            MOVIMIENTOS
+            que lograremos
             <br />
-            VOLCÁNICOS.
+            con tu ayuda.
           </p>
           <span
             onClick={handleClick}

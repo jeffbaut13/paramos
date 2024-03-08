@@ -69,13 +69,6 @@ const DescripcionFrailejones = ({
       >
         {tercerparrafo}
       </span>
-
-      {/* Resto del código */}
-      <img
-        className={`${claseFrailejon} imgFrailejon hidden absolute"`}
-        src={`/imgFrailejones/${claseFrailejon}.webp`}
-        alt=""
-      />
     </>
   );
 };

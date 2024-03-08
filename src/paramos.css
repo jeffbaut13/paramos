@@ -39,7 +39,7 @@
   @apply rounded-3xl;
 }
 .dosmilFrailejones img {
-  @apply object-cover w-full h-full;
+  @apply object-cover w-full h-full absolute top-0 left-0;
 }
 .punto {
   @apply absolute z-50  rounded-full bg-white;
@@ -92,7 +92,7 @@
   @apply flex relative z-[4] p-[6%] max-lg:flex-col max-lg:items-center;
 }
 .titulo {
-  @apply lg:font-bold xs:font-light text-3xl text-center lg:max-w-[340px] w-full translate-y-[100%] xs:tracking-[5px] lg:tracking-[3px] max-lg:mt-8;
+  @apply lg:font-bold xs:font-light text-3xl text-center lg:max-w-[500px] w-full translate-y-[100%] xs:tracking-[5px] lg:tracking-[3px] max-lg:mt-8;
 }
 .titulo2 {
   @apply lg:font-bold xs:font-light uppercase text-white 2xl:text-2xl lg:text-lg;
@@ -296,4 +296,18 @@
 .navVertical {
   @apply z-[60] xs:w-full xs:h-auto rounded-xl fixed max-lg:left-0 max-lg:bottom-0 max-lg:translate-y-[300%] flex justify-center 
   lg:w-[17px] lg:right-0 lg:top-0 lg:h-full lg:translate-x-[160%];
+}
+.imgFrailejon {
+  display: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+
+.hoverCard:hover {
+  transform: translate(-80%, -70%) !important;
+}
+
+.hoverCard {
+  transition: all 1s ease;
 }
