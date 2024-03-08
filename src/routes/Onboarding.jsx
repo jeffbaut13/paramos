@@ -88,6 +88,18 @@ const Onboarding = () => {
     Opacidad(barra, 1);
   }, [inicio]);
 
+  useEffect(() => {
+    const precargarImagenes = () => {
+      for (let i = 1; i <= 144; i++) {
+        const img = new Image();
+        img.src = `/frames/capa${i}.jpg`;
+      }
+    };
+  
+    precargarImagenes();
+  }, []);
+
+
   const containerClass = getContainerClass(inicio, Mobile);
 
   return (
