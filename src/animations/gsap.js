@@ -57,3 +57,70 @@ export const scrollEffects = (component, time, istrue, Function) => {
   });
   return tl;
 };
+
+export const frailejon = (
+  espelitia,
+  amarillo,
+  blanco,
+  rapido,
+  normal,
+  isMobile
+) => {
+  const tl7 = gsap.timeline();
+  tl7.to(".bgvid", { opacity: 1, duration: rapido });
+  if (isMobile) {
+    tl7.to(".BoxDosmilTexto", { height: "100%" }).addLabel("titulo1");
+    tl7.to(".BoxDosmilImage", { height: "0%" }, "<");
+  } else {
+    tl7.to(".BoxDosmilTexto", { width: "100%" }).addLabel("titulo1");
+    tl7.to(".BoxDosmilImage", { width: "0%" }, "<");
+  }
+  tl7.to(
+    ".PrimerTextoDosmil",
+    {
+      opacity: 0,
+      y: "-100%",
+      display: "none",
+      duration: rapido,
+    },
+    "titulo1-=0.5"
+  );
+
+  tl7.to(
+    ".btnSlide",
+    {
+      opacity: 1,
+      duration: 2,
+    },
+    "titulo1-=0.5"
+  );
+  tl7.to(
+    ".dosmilFrailejones .btnconoce",
+    {
+      display: "none",
+    },
+    "titulo1-=0.5"
+  );
+
+  tl7.fromTo(
+    ".SegundoTextoDosmil",
+    { display: "none", opacity: 0, y: "20%" },
+    { display: "block", opacity: 1, y: "0%" },
+    "titulo1"
+  );
+
+  tl7.to(".bgvid", { opacity: 0, duration: normal }, "<");
+
+  if (isMobile) {
+    tl7.to(".BoxDosmilImage", { height: "50%" }, "titulo1+=0.2");
+    tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
+  } else {
+    tl7.to(".BoxDosmilImage", { width: "50%" }, "titulo1+=0.2");
+    tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
+  }
+  tl7.to(".Blanco", { opacity: blanco }, "titulo1");
+  tl7.to(".amarillo", { opacity: amarillo }, "titulo1");
+  tl7.to(".Espeletia", { opacity: espelitia }, "titulo1");
+
+  tl7.to(".punto", { display: "block", opacity: 1 }, "titulo1");
+};

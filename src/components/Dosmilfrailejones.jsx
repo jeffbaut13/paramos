@@ -4,6 +4,7 @@ import DescripcionFrailejones from "./DescripcionFrailejones";
 import gsap from "gsap";
 import Button from "./Button";
 import IconSlideNextPrev from "./IconSlideNextPrev";
+import { frailejon } from "../animations/gsap";
 
 const isMobile = window.innerWidth <= 1024;
 const rapido = 0.5;
@@ -64,157 +65,13 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
       );
     }
     if (numFrailejon == 1) {
-      const tl7 = gsap.timeline();
-      tl7
-        .to(
-          ".PrimerTextoDosmil",
-          {
-            opacity: 0,
-            y: "-100%",
-            display: "none",
-            duration: rapido,
-          },
-          "<-=0.5"
-        )
-        .addLabel("titulo1");
-      tl7.to(
-        ".btnSlide",
-        {
-          opacity: 1,
-          duration: 2,
-        },
-        "titulo1<-=0.5"
-      );
-      tl7.to(
-        ".dosmilFrailejones .btnconoce",
-        {
-          display: "none",
-        },
-        "titulo1<-=0.5"
-      );
-
-      tl7.from(
-        ".SegundoTextoDosmil",
-        { display: "none", opacity: 0, y: "0%", duration: rapido },
-        "titulo1-=0.5"
-      );
-      tl7
-        .to(".bgvid", { opacity: 1, duration: normal }, "<")
-        .addLabel("niebla");
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "0%" }, "<-=4");
-        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "0%" }, "<-=4");
-        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
-      }
-
-      tl7.to(".bgvid", { opacity: 0, duration: rapido });
-
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "50%" });
-        tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "50%" });
-        tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
-      }
-      tl7.to(".Blanco", { opacity: 0 }, "<");
-      tl7.to(".amarillo", { opacity: 0 }, "<-=0.5");
-      tl7.to(".Espeletia", { opacity: 1 }, "<-=0.5");
-      tl7.to(".TituloFrailejon", { display: "block" }, "<");
-      tl7.to(".punto", { display: "block" }, "<");
+      frailejon(1, 0, 0, rapido, normal, isMobile);
     }
     if (numFrailejon == 2) {
-      const tl7 = gsap.timeline();
-      tl7
-        .to(
-          ".PrimerTextoDosmil",
-          {
-            opacity: 0,
-            y: "-100%",
-            display: "none",
-            duration: rapido,
-          },
-          "<-=0.5"
-        )
-        .addLabel("titulo1");
-
-      tl7.from(
-        ".SegundoTextoDosmil",
-        { display: "none", opacity: 0, y: "0%", duration: rapido },
-        "titulo1-=0.5"
-      );
-      tl7
-        .to(".bgvid", { opacity: 1, duration: normal }, "<")
-        .addLabel("niebla");
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "0%" }, "<-=4");
-        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "0%" }, "<-=4");
-        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
-      }
-
-      tl7.to(".bgvid", { opacity: 0, duration: rapido });
-
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "50%" });
-        tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "50%" });
-        tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
-      }
-      tl7.to(".Blanco", { opacity: 0 }, "<");
-      tl7.to(".amarillo", { opacity: 1 }, "<-=0.5");
-      tl7.to(".Espeletia", { opacity: 0 }, "<-=0.5");
-      tl7.to(".TituloFrailejon", { display: "block" }, "<");
-      tl7.to(".punto", { display: "block" }, "<");
+      frailejon(0, 0, 1, rapido, normal, isMobile);
     }
     if (numFrailejon == 3) {
-      const tl7 = gsap.timeline();
-      tl7
-        .to(
-          ".PrimerTextoDosmil",
-          {
-            opacity: 0,
-            y: "-100%",
-            display: "none",
-            duration: rapido,
-          },
-          "<-=0.5"
-        )
-        .addLabel("titulo1");
-
-      tl7.from(
-        ".SegundoTextoDosmil",
-        { display: "none", opacity: 0, y: "0%", duration: rapido },
-        "titulo1-=0.5"
-      );
-      tl7
-        .to(".bgvid", { opacity: 1, duration: normal }, "<")
-        .addLabel("niebla");
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "0%" }, "<-=4");
-        tl7.to(".BoxDosmilTexto", { height: "100%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "0%" }, "<-=4");
-        tl7.to(".BoxDosmilTexto", { width: "100%" }, "<");
-      }
-
-      tl7.to(".bgvid", { opacity: 0, duration: rapido });
-
-      if (isMobile) {
-        tl7.to(".BoxDosmilImage", { height: "50%" });
-        tl7.to(".BoxDosmilTexto", { height: "50%" }, "<");
-      } else {
-        tl7.to(".BoxDosmilImage", { width: "50%" });
-        tl7.to(".BoxDosmilTexto", { width: "50%" }, "<");
-      }
-      tl7.to(".Blanco", { opacity: 1 }, "<");
-      tl7.to(".amarillo", { opacity: 0 }, "<-=0.5");
-      tl7.to(".Espeletia", { opacity: 0 }, "<-=0.5");
-      tl7.to(".TituloFrailejon", { display: "block" }, "<");
-      tl7.to(".punto", { display: "block" }, "<");
+      frailejon(0, 1, 0, rapido, normal, isMobile);
     }
   }, [numFrailejon]);
 

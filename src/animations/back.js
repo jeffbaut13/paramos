@@ -475,3 +475,67 @@ if (isMobile) {
   tl9.to(".BoxDosmilImage", { width: "50%" });
   tl9.to(".BoxDosmilTexto", { width: "50%" }, "<");
 }
+
+/****************************scroll */
+
+useEffect(() => {
+  gsap.to(main.current, {
+    scrollTrigger: {
+      trigger: main.current,
+      start: "top top", // Comienza en la parte superior del contenedor
+      end: "bottom bottom", // Termina en la parte inferior del contenedor
+
+      onUpdate: (self) => {
+        const scroll = self.progress * 100;
+        setScrollPercentageTwo(scroll);
+        //console.log("scroll Padre " + scroll);
+        //switchProcentageZindex(scrollPercentage);
+
+        if (scroll >= 0 && scroll < 14.28) {
+          setActiveButton("Origen");
+          setScrollPercentage(1);
+        } else if (scroll >= 14.28 && scroll < 28.56) {
+          setItemActive(0);
+          setActiveButton("Nuestro propósito");
+          setScrollPercentage(2);
+        } else if (scroll >= 28.56 && scroll < 42.84) {
+          setActiveButton("2.000 Frailejones");
+          setScrollPercentage(3);
+        } else if (scroll >= 42.84 && scroll < 57.12) {
+          setActiveButton("Los páramos");
+          setScrollPercentage(4);
+        } else if (scroll >= 57.12 && scroll < 71.4) {
+          setActiveButton("Contacto");
+          setScrollPercentage(5);
+        } else if (scroll >= 71.4 && scroll < 85.68) {
+          setScrollPercentage(6);
+        } else if (scroll >= 85.68) {
+          setActiveButton("Cuéntale a todos");
+          setScrollPercentage(7);
+        }
+      },
+    },
+  });
+  if (scrollPercentage == 1) {
+    transitionSection(".contenedor", 0, 1);
+  }
+  if (scrollPercentage == 2) {
+    transitionSection(".contenedor", 100, 1);
+    setItemActive(false);
+  }
+  if (scrollPercentage == 3) {
+    transitionSection(".contenedor", 200, 1);
+  }
+  if (scrollPercentage == 4) {
+    transitionSection(".contenedor", 300, 1);
+  }
+  if (scrollPercentage == 5) {
+    transitionSection(".contenedor", 400, 1);
+  }
+  if (scrollPercentage == 6) {
+    transitionSection(".contenedor", 500, 1);
+  }
+  if (scrollPercentage == 7) {
+    transitionSection(".contenedor", 600, 1);
+  }
+}, [main, activeButton, numFrailejon, scrollPercentage]);

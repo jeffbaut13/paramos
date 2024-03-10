@@ -6,10 +6,90 @@ import HandScroll from "./HandScroll";
 const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
   const isMobile = window.innerWidth <= 1024;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuDestopk, setIsMenuDestopk] = useState(null);
   const menuMobile = useRef(null);
   const bntMobile = useRef(null);
   const buton = useRef(null);
+  console.log(isMenuDestopk);
+  const openNav = () => {
+    if (isMenuDestopk) {
+      const tl = gsap.timeline();
 
+      tl.fromTo(
+        ".cajaMenu",
+        {
+          width: "10%",
+          pointerEvents: "all",
+          opacity: 0,
+        },
+        {
+          width: "95%",
+          opacity: 1,
+          duration: 0.2,
+          ease: "power1.inOut",
+        },
+        "<"
+      );
+      tl.fromTo(
+        ".menuHover",
+        {
+          opacity: 0,
+          y: "15%",
+        },
+        {
+          opacity: 1,
+          y: "0%",
+          stagger: 0.1,
+          duration: 0.1,
+          ease: "power1.inOut",
+        },
+        "<+=0.2"
+      );
+    } else if (isMenuDestopk == false) {
+      const tl = gsap.timeline();
+      tl.fromTo(
+        ".menuHover",
+        {
+          opacity: 1,
+          y: "0%",
+        },
+        {
+          opacity: 0,
+          y: "-50%",
+          stagger: 0.1,
+          duration: 0.1,
+          ease: "power1.inOut",
+        }
+      );
+      tl.fromTo(
+        ".cajaMenu",
+        {
+          width: "95%",
+          pointerEvents: "none",
+        },
+        {
+          width: "5%",
+
+          ease: "power1.inOut",
+        },
+        "<+=0.2"
+      );
+      tl.fromTo(
+        ".cajaMenu",
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+
+          ease: "power1.inOut",
+        }
+      );
+    }
+  };
+  useEffect(() => {
+    openNav();
+  }, [isMenuDestopk]);
   useEffect(() => {
     gsap.fromTo(
       buton.current,
@@ -65,17 +145,19 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
 
   const buttons = [
     { id: 1, text: "Origen", percentage: 0 },
-    { id: 2, text: "Nuestro propósito", percentage: 33 },
-    { id: 3, text: "2.000 Frailejones", percentage: 39 },
-    { id: 4, text: "Los páramos", percentage: 60 },
-    { id: 5, text: "Contacto", percentage: 84 },
-    { id: 6, text: "Cuéntale a todos", percentage: 90 },
+    { id: 2, text: "Nuestro propósito", percentage: 11.11 },
+    { id: 3, text: "2.000 Frailejones", percentage: 22.22 },
+    { id: 4, text: "Los páramos", percentage: 33.33 },
+    { id: 5, text: "Más allá de la siembra", percentage: 55.55 },
+    { id: 6, text: "Primer guardián", percentage: 66 },
+    { id: 7, text: "Contacto", percentage: 66.66 },
+    { id: 8, text: "Cuéntale a todos", percentage: 88 },
   ];
 
   return (
     <>
       <nav className="text-black maxW w-full fixed flex items-center justify-center z-20 font-semibold m-0 px-6 top-0 left-1/2 min-h-[7vh] translate-x-[-50%] translate-y-[-130%]">
-        <div className="flex justify-between items-center w-full">
+        <div className="flex justify-between items-center w-full relative">
           <div className="w-[10%]">
             <img
               src="/logoFrailejones.png"
@@ -98,36 +180,61 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
               }
             })}
           </div>
-          <div className="max-lg:hidden w-[10%]"></div>
-          <button className="lg:hidden " onClick={() => setIsMenuOpen(true)}>
-            <img src="/menuMobile.webp" alt="Menu" className="menuMobile" />
-          </button>
+          <div
+            onClick={() => {
+              if (isMobile) {
+                setIsMenuOpen(true);
+              }
+            }}
+            className="flex justify-end items-center w-[10%]"
+          >
+            <button
+              onClick={() => {
+                if (
+                  (!isMobile && isMenuDestopk == null) ||
+                  isMenuDestopk == false
+                ) {
+                  setIsMenuDestopk(true);
+                } else {
+                  setIsMenuDestopk(false);
+                }
+              }}
+              className="relative inline-block z-20 toggleEvent"
+            >
+              {(!isMobile && isMenuDestopk == null) ||
+              isMenuDestopk == false ? (
+                <img src="/menuMobile.webp" alt="Menu" className="menuMobile" />
+              ) : (
+                <img
+                  src="/svg/close.svg"
+                  alt="Menu"
+                  className="menuMobile w-4"
+                />
+              )}
+            </button>
+
+            {isMenuDestopk != null && !isMobile && (
+              <div className="cajaMenu overflow-hidden whitespace-nowrap absolute flex w-[95%] translate-x-6 justify-evenly bg-[#d4d4d4] rounded-full">
+                {buttons.map((button) => (
+                  <button
+                    key={button.text}
+                    onClick={() => handleScrollToPercentage(button.percentage)}
+                    className={`${
+                      activeButton === button.text
+                        ? "bg-[#1d1d1b] text-white"
+                        : "hover:bg-[#1d1d1b] hover:text-white"
+                    } menuHover text-sm rounded-3xl py-1 px-3 transition-all ease-in-out duration-300`}
+                  >
+                    {button.text}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </nav>
-      {/* {!isMobile && (
-        <div className="navVertical z-[60] w-[4.4vw] h-auto rounded-xl fixed right-0 top-1/2 translate-y-[-50%] translate-x-[110%] flex-col">
-          <MouseScroll
-            customStyle={
-              "mouseScroll 2xl:w-10 lg:w-9 fixed rigth-0 top-1/2 2xl:translate-x-[210%] lg:translate-x-[120%] translate-y-[-50%] "
-            }
-          />
-          {buttons.map((button) => (
-            <button key={button.id}>
-              <img
-                src={`/navVertical/menu-lateral-${button.id}.webp`}
-                alt=""
-                className={` cursor-default m-auto ${
-                  scrollPercentage >= button.id
-                    ? "opacity-100 wave"
-                    : "opacity-35"
-                }  `}
-              />
-            </button>
-          ))}
-        </div>
-      )} */}
 
-      {isMobile && (
+      {isMobile ? (
         <HandScroll
           customstyle={
             "mouseScroll scrollMobile w-10 fixed left-1/2 top-6 z-[200]"
@@ -135,11 +242,17 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
           black={true}
           visible={true}
         />
+      ) : (
+        <MouseScroll
+          customStyle={
+            "mouseScroll w-10 absolute right-0 top-1/2 translate-x-[200%] translate-y-[-50%] z-[200]"
+          }
+        />
       )}
       <div className="navVertical">
-        <span className="fixed lg:top-0 right-0 xs:translate-y-[-20px] lg:translate-y-[-50px] text-white">
+        {/* <span className="fixed lg:top-0 right-0 xs:translate-y-[-20px] lg:translate-y-[-50px] text-white">
           {scrollPercentageTwo}
-        </span>
+        </span> */}
         <div className="barra overflow-hidden rounded-3xl w-full xs:h-[17px] lg:h-full relative">
           <div className="maskChild bg-white opacity-35"></div>
           {isMobile ? (

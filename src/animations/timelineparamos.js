@@ -23,60 +23,55 @@ export const timeLine = (
   tl.to(".montaña", { display: "block" });
   tl.to(".BoxConoceText", { width: "50%" }, "<");
   tl.to(".BoxConoceImg", { width: "50%" }, "<");
-  tl.from(".btnconoce", {
+  tl.from(".BoxConoceText .btnconoce", {
     opacity: 0,
     duration: 1,
   });
 
-  const tl2 = scrollEffects(main, 14.28);
-  tl2.to(".blurParamos", { opacity: 0, duration: rapido }, "<");
+  const tl2 = scrollEffects(main, 9.5);
+
   if (isMobile) {
-    tl2.fromTo(".BoxOrigenText", { height: "100%" }, { height: "50%" });
+    tl2.fromTo(".BoxOrigenText", { height: "100%" }, { height: "50%" }, "<+=1");
     tl2.fromTo(".BoxOrigenImg", { height: "0%" }, { height: "50%" }, "<");
   } else {
-    tl2.fromTo(".BoxOrigenText", { width: "100%" }, { width: "50%" });
+    tl2.fromTo(".BoxOrigenText", { width: "100%" }, { width: "50%" }, "<+=1");
     tl2.fromTo(".BoxOrigenImg", { width: "0%" }, { width: "50%" }, "<");
   }
 
-  const tl3 = scrollEffects(main, 25.4);
-  tl3.to(".blurParamos", { opacity: 0, duration: rapido }, "<");
+  const tl3 = scrollEffects(main, 19);
 
   if (isMobile) {
     tl3.fromTo(
       ".BoxDosmilTexto",
       { height: "100%" },
       { height: "50%" },
-      "dosMil"
+      "<+=1"
     );
     tl3.fromTo(".BoxDosmilImage", { height: "0%" }, { height: "50%" }, "<");
   } else {
-    tl3.fromTo(
-      ".BoxDosmilTexto",
-      { width: "100%" },
-      { width: "50%" },
-      "dosMil"
-    );
+    tl3.fromTo(".BoxDosmilTexto", { width: "100%" }, { width: "50%" }, "<+=1");
     tl3.fromTo(".BoxDosmilImage", { width: "0%" }, { width: "50%" }, "<");
   }
-  tl3.to(".blurParamos", { opacity: 1, duration: rapido }, "<");
-  tl3.add(() => {
-    setNumFrailejon(null);
-  }, "<");
+  // tl3.to(".blurParamos", { opacity: 1, duration: rapido }, "<");
 
-  const tl11 = scrollEffects(main, 49);
+  tl3.from(
+    ".BoxDosmilTexto .btnconoce",
+    {
+      opacity: 0,
+      duration: 1,
+    },
+    "<+=0.5"
+  );
 
-  tl11.add(() => {
-    setNumFrailejon(null);
-  });
-  tl11.add(() => {
-    setTravesiaReverse(false);
-  });
-  tl11.add(() => {
-    setTravesiaReverse(true);
-  });
+  const tl11 = scrollEffects(main, 38.5);
 
   if (isMobile) {
-    tl11.fromTo(".BoxTravesiaCards", { height: "0%" }, { height: "50%" });
+    tl11.fromTo(
+      ".BoxTravesiaCards",
+      { height: "0%" },
+      { height: "50%" },
+      "<+=1"
+    );
     tl11.fromTo(
       ".BoxTravesiaTexto",
       { height: "100%" },
@@ -84,7 +79,107 @@ export const timeLine = (
       "<"
     );
   } else {
-    tl11.fromTo(".BoxTravesiaCards", { width: "0%" }, { width: "50%" });
+    tl11.fromTo(".BoxTravesiaCards", { width: "0%" }, { width: "50%" }, "<+=1");
     tl11.fromTo(".BoxTravesiaTexto", { width: "100%" }, { width: "50%" }, "<");
   }
+
+  tl11.from(
+    ".travesia .btnconoce",
+    {
+      opacity: 0,
+      duration: 1,
+    },
+    "<+=0.5"
+  );
+
+  const tl14 = scrollEffects(main, 47.5);
+  if (isMobile) {
+    tl14.fromTo(
+      ".experienciaTextoBox",
+      {
+        height: "100%",
+      },
+      {
+        height: "50%",
+      },
+      "<+=1"
+    );
+    tl14.fromTo(
+      ".experienciaImagen",
+      {
+        height: "0%",
+      },
+      {
+        height: "50%",
+      },
+      "<"
+    );
+  } else {
+    tl14.fromTo(
+      ".experienciaTextoBox",
+      {
+        width: "100%",
+      },
+      {
+        width: "50%",
+      },
+      "<+=1"
+    );
+    tl14.fromTo(
+      ".experienciaImagen",
+      {
+        width: "0%",
+      },
+      {
+        width: "50%",
+      },
+      "<"
+    );
+  }
+  const tl19 = scrollEffects(main, 58.2);
+  if (isMobile) {
+    tl19.fromTo(
+      ".BoxMoisesText",
+      {
+        height: "100%",
+      },
+      {
+        height: "50%",
+      },
+      "<+=1"
+    );
+    tl19.fromTo(
+      ".BoxMoisesImg",
+      {
+        width: "0%",
+      },
+      {
+        width: "50%",
+      },
+      "<"
+    );
+  } else {
+    tl19.fromTo(
+      ".BoxMoisesText",
+      {
+        width: "100%",
+      },
+      {
+        width: "50%",
+      },
+      "<+=1"
+    );
+    tl19.fromTo(
+      ".BoxMoisesImg",
+      {
+        width: "0%",
+      },
+      {
+        width: "50%",
+      },
+      "<"
+    );
+  }
+  const tl30 = scrollEffects(main, 76);
+  tl30.to(".blurParamos", { opacity: 1, duration: 1 });
 };

@@ -11,18 +11,23 @@ const lento = 2;
 
 const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
   const padre = useRef(null);
-
+  //console.log(travesiaReverse);
   useEffect(() => {
     if (!travesiaReverse) {
       reverseAction(padre);
     }
   }, [travesiaReverse]);
 
-  console.log(travesiaReverse);
-
   const handleGspa = () => {
     const tl = gsap.timeline();
     if (isMobile) {
+      tl.fromTo(".BoxTravesiaCards", { height: "50%" }, { height: "0%" });
+      tl.fromTo(
+        ".BoxTravesiaTexto",
+        { height: "50%" },
+        { height: "100%" },
+        "<"
+      ).addLabel("cambioTravesia");
     } else {
       tl.fromTo(".BoxTravesiaCards", { width: "50%" }, { width: "0%" });
       tl.fromTo(
@@ -30,12 +35,21 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         { width: "50%" },
         { width: "100%" },
         "<"
-      ).addLabel("cambioTravesia-=1");
+      ).addLabel("cambioTravesia");
     }
+    tl.to(".blurParamos", { opacity: 1, duration: 1 }, "cambioTravesia-=0.5");
 
     tl.add(() => {
       primerEfecto2(padre, "cards1", "cards2", "cards3");
     });
+    tl.to(
+      ".travesia .btnconoce",
+      {
+        opacity: 0,
+        duration: 0,
+      },
+      "cambioTravesia-=0.5"
+    );
 
     gsap.to(
       ".cards2 .iconoCaminante",
@@ -61,17 +75,24 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         "cambioTravesia"
       );
     }
-    tl.to(".textoUno", { opacity: 0, y: "-20%" });
-    tl.to(".textoUno", { display: "none" });
+    tl.to(".textoUno", { opacity: 0, y: "-20%" }, "cambioTravesia");
+    tl.to(".textoUno", { display: "none" }, "cambioTravesia");
     tl.to(".btnTravesia", { opacity: 0 }, "<-=0.5");
     if (isMobile) {
+      tl.to(".BoxTravesiaCards", { height: "100%" }, "cambioTravesia+=1");
+      tl.to(
+        ".BoxTravesiaTexto",
+
+        { height: "0%" },
+        "cambioTravesia+=1"
+      );
     } else {
-      tl.to(".BoxTravesiaCards", { width: "100%" });
+      tl.to(".BoxTravesiaCards", { width: "100%" }, "cambioTravesia+=1");
       tl.to(
         ".BoxTravesiaTexto",
 
         { width: "0%" },
-        "<"
+        "cambioTravesia+=1"
       );
     }
   };
@@ -191,7 +212,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                     <p className="parrafo">
                       Considerado uno de los más bellos del mundo, con una
                       diversidad única de flora y fauna. Ascenderemos el próximo
-                      <span className="font-black">Jueves 14 de marzo.</span>
+                      <span className="font-black"> Jueves 14 de marzo.</span>
                     </p>
                   </div>
                   <div className="cajaIconos">

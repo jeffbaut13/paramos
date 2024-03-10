@@ -17,7 +17,6 @@ import { transitionSection } from "../animations/gsap";
 import Xperience from "../components/Xperience";
 import DocumentalMoises from "../components/DocumentalMoises";
 
-
 function App() {
   const main = useRef(null);
   const [imageBg, setImageBg] = useState("/Conoce/fondoConoce.webp");
@@ -26,7 +25,8 @@ function App() {
   const [active360, setActive360] = useState(1);
   const [translate, setTranslate] = useState(0);
   const [activeButton, setActiveButton] = useState("Origen");
-
+  const [play, setPlay] = useState(false);
+  const [playMoises, setPlayMoises] = useState(false);
   const [altura, setAltura] = useState(null);
   const [itemActive, setItemActive] = useState(0);
   const [scrollPercentage, setScrollPercentage] = useState(1);
@@ -44,27 +44,47 @@ function App() {
           //console.log("scroll Padre " + scroll);
           //switchProcentageZindex(scrollPercentage);
 
-          if (scroll >= 0 && scroll < 14.28) {
+          if (scroll >= 0 && scroll < 11.11) {
             setActiveButton("Origen");
             setScrollPercentage(1);
-          } else if (scroll >= 14.28 && scroll < 28.56) {
+          } else if (scroll >= 11.11 && scroll < 22.22) {
             setItemActive(0);
             setActiveButton("Nuestro propósito");
             setScrollPercentage(2);
-          } else if (scroll >= 28.56 && scroll < 42.84) {
+            setNumFrailejon(null);
+            gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+          } else if (scroll >= 22.22 && scroll < 33.33) {
             setActiveButton("2.000 Frailejones");
             setScrollPercentage(3);
-          } else if (scroll >= 42.84 && scroll < 57.12) {
+            gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+          } else if (scroll >= 33.33 && scroll < 44.44) {
             setActiveButton("Los páramos");
             setScrollPercentage(4);
-          } else if (scroll >= 57.12 && scroll < 71.4) {
-            setActiveButton("Contacto");
+            setTravesiaReverse(false);
+            gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+          } else if (scroll >= 44.44 && scroll < 55.55) {
             setScrollPercentage(5);
-          } else if (scroll >= 71.4 && scroll < 85.68) {
+            setTravesiaReverse(true);
+            setPlay(false);
+            gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+          } else if (scroll >= 55.55 && scroll < 66.66) {
+            setActiveButton("Más allá de la siembra");
             setScrollPercentage(6);
-          } else if (scroll >= 85.68) {
-            setActiveButton("Cuéntale a todos");
+            setPlayMoises(false);
+            gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+          } else if (scroll >= 66.66 && scroll < 77.77) {
+            setActiveButton("Primer guardián");
             setScrollPercentage(7);
+            setPlay(false);
+            gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+          } else if (scroll >= 77.77 && scroll < 88.88) {
+            setActiveButton("Contacto");
+            setScrollPercentage(8);
+            setPlayMoises(false);
+            gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+          } else if (scroll >= 88.88) {
+            setActiveButton("Cuéntale a todos");
+            setScrollPercentage(9);
           }
         },
       },
@@ -90,6 +110,12 @@ function App() {
     }
     if (scrollPercentage == 7) {
       transitionSection(".contenedor", 600, 1);
+    }
+    if (scrollPercentage == 8) {
+      transitionSection(".contenedor", 700, 1);
+    }
+    if (scrollPercentage == 9) {
+      transitionSection(".contenedor", 800, 1);
     }
   }, [main, activeButton, numFrailejon, scrollPercentage]);
   //console.log(scrollPercentage);
@@ -216,8 +242,11 @@ function App() {
               travesiaReverse={travesiaReverse}
               setTravesiaReverse={setTravesiaReverse}
             />
-            <Xperience/>
-            <DocumentalMoises />
+            <Xperience play={play} setPlay={setPlay} />
+            <DocumentalMoises
+              playMoises={playMoises}
+              setPlayMoises={setPlayMoises}
+            />
             <Contacto />
             <Descargable />
           </div>

@@ -37,6 +37,22 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         "<"
       );
       tl.fromTo(
+        ".conoce .titulo2",
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
+        },
+        {
+          scale: 2,
+          opacity: 0,
+          x: "-30%",
+          duration: rapido,
+        },
+
+        "<"
+      );
+      tl.fromTo(
         ".conoce .titulo1",
         { opacity: 0, scale: 0.5, x: "0%" },
         {
