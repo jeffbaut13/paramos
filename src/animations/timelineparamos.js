@@ -18,11 +18,21 @@ export const timeLine = (
 ) => {
   const tl = scrollEffects(main, 3);
 
-  tl.fromTo(".BoxConoceText", { width: "50%" }, { width: "100%" });
-  tl.fromTo(".BoxConoceImg", { width: "50%" }, { width: "0%" }, "<");
+  if (isMobile) {
+    tl.fromTo(".BoxConoceText", { height: "50%" }, { height: "100%" });
+    tl.fromTo(".BoxConoceImg", { height: "50%" }, { height: "0%" }, "<");
+  } else {
+    tl.fromTo(".BoxConoceText", { width: "50%" }, { width: "100%" });
+    tl.fromTo(".BoxConoceImg", { width: "50%" }, { width: "0%" }, "<");
+  }
   tl.to(".montaña", { display: "block" });
-  tl.to(".BoxConoceText", { width: "50%" }, "<");
-  tl.to(".BoxConoceImg", { width: "50%" }, "<");
+  if (isMobile) {
+    tl.to(".BoxConoceText", { height: "50%" }, "<");
+    tl.to(".BoxConoceImg", { height: "50%" }, "<");
+  } else {
+    tl.to(".BoxConoceText", { width: "50%" }, "<");
+    tl.to(".BoxConoceImg", { width: "50%" }, "<");
+  }
   tl.from(".BoxConoceText .btnconoce", {
     opacity: 0,
     duration: 1,

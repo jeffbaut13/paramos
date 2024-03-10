@@ -438,7 +438,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className=" m3 scale-[1.3] opacity-0  left-0 h-auto absolute bottom-0 lg:hidden xl:hidden 2xl:hidden"
             />
 
-            <p className=" titulo1 z-40 tracking-widest uppercase font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
+            <p className=" titulo1 tituloConoce">
               ¿por qué
               <br />
               decidimos
@@ -446,14 +446,14 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               hacerlo?
             </p>
 
-            <p className=" titulo2 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
+            <p className=" titulo2 tituloConoce opacity-0">
               LA IMPORTANCIA
               <br />
               DE SEMBRAR
               <br />
               FRAILEJONES
             </p>
-            <p className=" titulo3 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
+            <p className=" titulo3 tituloConoce opacity-0">
               ¿CÓMO
               <br />
               SEMBRAREMOS
@@ -462,7 +462,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               <br />
               SEMILLAS?
             </p>
-            <p className=" titulo4 z-40 tracking-widest opacity-0 font-bold text-4xl absolute top-[7vh] left-[7vw] text-white">
+            <p className=" titulo4 tituloConoce opacity-0">
               GUARDIANES
               <br />
               DE LA
