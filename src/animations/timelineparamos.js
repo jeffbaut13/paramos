@@ -20,10 +20,20 @@ export const timeLine = (
 
   if (isMobile) {
     tl.fromTo(".BoxConoceText", { height: "50%" }, { height: "100%" });
-    tl.fromTo(".BoxConoceImg", { height: "50%" }, { height: "0%" }, "<");
+    tl.fromTo(
+      ".BoxConoceImg",
+      { height: "50%", borderRadius: "0 0 1.5rem 1.5rem" },
+      { height: "0%" },
+      "<"
+    );
   } else {
     tl.fromTo(".BoxConoceText", { width: "50%" }, { width: "100%" });
-    tl.fromTo(".BoxConoceImg", { width: "50%" }, { width: "0%" }, "<");
+    tl.fromTo(
+      ".BoxConoceImg",
+      { width: "50%", borderRadius: "0 1.5rem 1.5rem 0" },
+      { width: "0%" },
+      "<"
+    );
   }
   tl.to(".montaña", { display: "block" });
   if (isMobile) {

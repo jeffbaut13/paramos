@@ -80,9 +80,17 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         tl.to(".BoxConoceText", { width: "50%" }, "<").addLabel("hide");
       }
       if (isMobile) {
-        tl.to(".BoxConoceImg", { height: "50%" }, "hide");
+        tl.to(
+          ".BoxConoceImg",
+          { height: "50%", borderRadius: "0 0 1.5rem 1.5rem" },
+          "hide"
+        );
       } else {
-        tl.to(".BoxConoceImg", { width: "50%" }, "<");
+        tl.to(
+          ".BoxConoceImg",
+          { width: "50%", borderRadius: "0 1.5rem 1.5rem 0" },
+          "<"
+        );
       }
 
       tl.to(
@@ -122,9 +130,17 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         tl.to(".BoxConoceText", { width: "0", duration: rapido });
       }
       if (isMobile) {
-        tl.to(".BoxConoceImg", { height: "100%", duration: rapido }, "<");
+        tl.to(
+          ".BoxConoceImg",
+          { height: "100%", borderRadius: "1.5rem", duration: rapido },
+          "<"
+        );
       } else {
-        tl.to(".BoxConoceImg", { width: "100%", duration: rapido }, "<");
+        tl.to(
+          ".BoxConoceImg",
+          { width: "100%", borderRadius: "1.5rem", duration: rapido },
+          "<"
+        );
       }
 
       tl.to(".slideBtn", {
