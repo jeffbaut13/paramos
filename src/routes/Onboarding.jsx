@@ -7,7 +7,6 @@ import Grilla from "../components/Grilla";
 import { Link } from "react-router-dom";
 import { Opacidad, scrolltrigerFunction } from "../animations/gsap";
 import { getContainerClass, switchProcentage } from "../helpers/switchs";
-import Loading from "../components/Loading"; // Asegúrate de tener este componente o reemplázalo por tu componente de carga real.
 gsap.registerPlugin(ScrollTrigger);
 
 const Onboarding = () => {
@@ -25,7 +24,6 @@ const Onboarding = () => {
   const TextEfect = useRef(null);
   const videobg = useRef(null);
   const [numero, setNumero] = useState(10);
-  const [mostrarLoading, setMostrarLoading] = useState(true); // Estado para el componente de carga
 
   useEffect(() => {
     setinicio(1);
@@ -85,7 +83,7 @@ const Onboarding = () => {
     const precargarImagenes = () => {
       for (let i = 1; i <= 144; i++) {
         const img = new Image();
-        img.src = `/frames/capa${i}.jpg`;
+        img.src = `/frames/capa${i}.webp`;
       }
     };
 
@@ -109,10 +107,6 @@ const Onboarding = () => {
       return () => clearInterval(interval); // Limpieza al desmontar o cambiar de estado 'inicio'
     }
   }, [inicio]);
-
-  if (mostrarLoading) {
-    return <Loading />; // Muestra el componente de carga mientras `mostrarLoading` es true
-  }
 
   // A continuación, el contenido principal del componente Onboarding...
   // Asegúrate de incluir el resto de tu código aquí.

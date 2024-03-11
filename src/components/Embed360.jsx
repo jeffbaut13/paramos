@@ -20,7 +20,7 @@ const EmbeddedIframe = ({ customStyle, node360 }) => {
         allow="xr-spatial-tracking; gyroscope; accelerometer"
         allowFullScreen
         scrolling="no"
-        src="https://kuula.co/share/collection/7clb5?logo=1&info=0&logosize=76&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es"
+        src="https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es"
       ></iframe>
     </div>
   );
