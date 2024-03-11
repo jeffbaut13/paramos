@@ -51,7 +51,7 @@ export const switchProcentage = (setinicio, scrollPercentage) => {
     case scrollPercentage >= 11:
       setinicio(4);
       break;
-    case scrollPercentage >= 0:
+    case scrollPercentage >= 10 && scrollPercentage < 11:
       setinicio(3);
 
       break;
