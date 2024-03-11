@@ -7,6 +7,7 @@ import Grilla from "../components/Grilla";
 import { Link } from "react-router-dom";
 import { Opacidad, scrolltrigerFunction } from "../animations/gsap";
 import { getContainerClass, switchProcentage } from "../helpers/switchs";
+import Loading from "../components/Loading"; // Asegúrate de tener este componente o reemplázalo por tu componente de carga real.
 gsap.registerPlugin(ScrollTrigger);
 
 const Onboarding = () => {
@@ -24,47 +25,37 @@ const Onboarding = () => {
   const TextEfect = useRef(null);
   const videobg = useRef(null);
   const [numero, setNumero] = useState(10);
+  const [mostrarLoading, setMostrarLoading] = useState(true); // Estado para el componente de carga
 
   useEffect(() => {
     setinicio(1);
-    // Obtener la URL actual
     const url = window.location.href;
-
-    // Verificar si la URL termina con "/onboarding"
     if (url.endsWith("/onboarding")) {
-      // Aplicar el estilo al cuerpo de la página
       document.body.style.overflow = "hidden";
     }
-
-    // Limpiar el estilo cuando el componente se desmonta
     return () => {
       document.body.style.overflow = "auto";
     };
   }, []);
 
   useEffect(() => {
-    // Configuración de ScrollTrigger para los estados de 'inicio'
     scrolltrigerFunction(padre, (self) => {
       const scrollPercentage = self.progress * 100;
-
       switchProcentage(setinicio, scrollPercentage);
     });
   }, [inicio]);
 
   useEffect(() => {
+    const timer = setTimeout(() => setMostrarLoading(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     if (inicio >= 3) {
       gsap.fromTo(
         border.current,
-        {
-          backgroundPosition: "center",
-          backgroundSize: `${Tablet ? "cover" : "102%"} `,
-        },
-        {
-          backgroundPosition: "center",
-          backgroundSize: `${Tablet ? "cover" : "100%"} `,
-          ease: "power2.inOut",
-          duration: 1,
-        }
+        { backgroundPosition: "center", backgroundSize: `${Tablet ? "cover" : "102%"} ` },
+        { backgroundPosition: "center", backgroundSize: `${Tablet ? "cover" : "100%"} `, ease: "power2.inOut", duration: 1 }
       );
     }
 
@@ -75,14 +66,8 @@ const Onboarding = () => {
     }
     gsap.fromTo(
       imagen2.current,
-      {
-        scale: 1,
-      },
-      {
-        scale: 1.05,
-        ease: "power2.out",
-        duration: 1,
-      }
+      { scale: 1 },
+      { scale: 1.05, ease: "power2.out", duration: 1 }
     );
 
     Opacidad(barra, 1);
@@ -99,7 +84,30 @@ const Onboarding = () => {
     precargarImagenes();
   }, []);
 
+  useEffect(() => {
+    if (inicio >= 2) {
+      const interval = setInterval(() => {
+        setNumero((prevNumero) => {
+          if (prevNumero < 144) {
+            return prevNumero + 1;
+          } else {
+            clearInterval(interval);
+            return prevNumero; // Mantenemos el último número para evitar reiniciar o ir más allá de 144.
+          }
+        });
+        console.log("frames donde estaba el video " + numero);
+      }, 42);
 
+      return () => clearInterval(interval); // Limpieza al desmontar o cambiar de estado 'inicio'
+    }
+  }, [inicio]);
+
+  if (mostrarLoading) {
+    return <Loading />; // Muestra el componente de carga mientras `mostrarLoading` es true
+  }
+
+  // A continuación, el contenido principal del componente Onboarding...
+  // Asegúrate de incluir el resto de tu código aquí.
   const containerClass = getContainerClass(inicio, Mobile);
 
   return (
@@ -133,9 +141,7 @@ const Onboarding = () => {
       >
         {inicio >= 2 && (
           <div ref={videobg} className="videobg absolute w-full h-full">
-            <video className="Moisesbgvid" playsInline autoPlay muted loop>
-              <source src={"/videoIntro.mp4"} type="video/mp4" />
-            </video>
+            <img src={`/frames/capa${numero}.webp`} alt="" className="w-full h-full" />
           </div>
         )}
 

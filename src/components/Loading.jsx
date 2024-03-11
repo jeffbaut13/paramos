@@ -23,7 +23,7 @@ const Loading = () => {
   return (
     <div className="loading-container w-full h-full relative bg-white flex justify-center items-center">
       <div className="loading-text text-black text-3xl absolute top-[48%] translate-y-[-50%]">{percentage}%</div>
-     <div className=" w-[20%]">
+     <div className=" md:w-[50%] xs:w-[60%] sm:w-[60%] lg:w-[20%]">
       <AnimatedSVG />
       </div>
     </div>

@@ -1,34 +1,41 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
-import "./index.css";
-import "./onboarding.css";
-import "./paramos.css";
-import "./conoceParamos.css";
-import router from "./routes/Rutas";
-import Loading from "./components/Loading"; // Importa tu componente de carga aquí
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
+import './index.css';
+import './onboarding.css';
+import './paramos.css';
+import './conoceParamos.css';
+import router from './routes/Rutas';
+import Loading from './components/Loading'; // Importa tu componente de carga aquí
 
 // Define tu componente principal
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
+  // Agrega estados adicionales aquí si es necesario para gestionar la carga de datos para otros componentes
 
-  // Simula alguna operación asincrónica, como una llamada a una API
+  // useEffect para simular la carga de otros datos o preparaciones mientras se muestra el Loading
   React.useEffect(() => {
-    // Simulando una operación asincrónica con un timeout
+    // Aquí puedes realizar llamadas a APIs, cargar recursos adicionales, etc.
+    // Este es un buen lugar para preparar todo lo que tus componentes necesiten antes de mostrarse.
+    // Por ejemplo, cargar datos de una API:
+    // fetch('tuAPI.com/datos')
+    //   .then(respuesta => respuesta.json())
+    //   .then(datos => setTuEstado(datos));
+
     const timeout = setTimeout(() => {
-      setIsLoading(false);
+      setIsLoading(false); // Esto ocurre después de 5 segundos, indicando que el Loading ha terminado.
     }, 5000);
 
-    // Limpieza del timeout si el componente se desmonta antes de que termine la operación
+    // Limpieza: cancela el timeout si el componente se desmonta antes de que se complete
     return () => clearTimeout(timeout);
   }, []);
 
   return (
     <React.StrictMode>
-      {/* Muestra el componente de carga mientras isLoading sea true */}
       {isLoading ? (
-        <Loading />
+        <Loading /> // Muestra el componente Loading mientras isLoading sea true
       ) : (
+        // Cuando isLoading es false, tus componentes están listos para mostrarse inmediatamente.
         <RouterProvider router={router} />
       )}
     </React.StrictMode>
@@ -36,4 +43,5 @@ const App = () => {
 };
 
 // Renderiza el componente principal en el DOM
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
