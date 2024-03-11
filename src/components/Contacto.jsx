@@ -10,7 +10,7 @@ const Contacto = () => {
           style={{ backgroundImage: "url(/contacto/contacto.webp)" }}
           className=" overflow-hidden  bg-no-repeat bg-cover w-full rounded-3xl flex "
         >
-          <div className=" w-full h-auto bg2 flex">
+          <div className=" w-full h-auto bg2 flex xs:flex-col lg:flex-row">
             <div className=" w-[50%] h-full flex flex-col justify-center p-32">
               <p className="tamanoTitulos textoContacto font-bold text-white  tracking-widest whitespace-wrap relative">
                 ESTAMOS PARA

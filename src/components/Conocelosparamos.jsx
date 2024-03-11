@@ -88,7 +88,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
       } else {
         tl.to(
           ".BoxConoceImg",
-          { width: "50%", borderRadius: "0 1.5rem 1.5rem 0" },
+          { width: "50%", borderRadius: "1.5rem 0 0 1.5rem" },
           "<"
         );
       }

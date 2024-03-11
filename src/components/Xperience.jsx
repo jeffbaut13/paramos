@@ -78,8 +78,8 @@ const Xperience = ({ play, setPlay }) => {
   }, [play]);
 
   return (
-    <div className="documental w-full h-full flex">
-      <div className="experienciaInicial relative w-full h-full paddingComponentes flex">
+    <div className="documental w-full h-full flex ">
+      <div className="relative w-full h-full paddingComponentes flex xs:flex-col lg:flex-row">
         <div className="experienciaTextoBox BoxesTextStart flex flex-col items-center justify-center">
           <p className="experienciaTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Más allá

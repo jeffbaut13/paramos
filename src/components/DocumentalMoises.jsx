@@ -73,7 +73,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
   }, [playMoises]);
   return (
     <div className=" documental w-full h-full flex">
-      <div className="moises relative w-full h-full paddingComponentes flex">
+      <div className="moises relative w-full h-full paddingComponentes flex xs:flex-col-reverse lg:flex-row">
         <div className="BoxMoisesImg bg-black BoxesImgStart bg-center">
           <div className="player-wrapper">
             <img

@@ -12,8 +12,11 @@ const DigitarFecha = ({ setInputNumber, inputNumber, handleNextClick }) => {
 
       setDigits(newDigits);
 
+      // Modificación aquí: uso de setTimeout para el cambio de foco
       if (value !== "" && index < 3) {
-        inputRefs.current[index + 1].focus();
+        setTimeout(() => {
+          inputRefs.current[index + 1].focus();
+        }, 10); // Retraso de 10 ms antes de enfocar el siguiente input
       }
     }
   };

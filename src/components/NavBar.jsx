@@ -180,35 +180,32 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
               }
             })}
           </div>
-          <div
-            onClick={() => {
-              if (isMobile) {
-                setIsMenuOpen(true);
-              }
-            }}
-            className="flex justify-end items-center w-[10%]"
-          >
+          <div className="flex justify-end items-center w-[10%]">
             <button
               onClick={() => {
-                if (
-                  (!isMobile && isMenuDestopk == null) ||
-                  isMenuDestopk == false
-                ) {
-                  setIsMenuDestopk(true);
+                if (isMenuDestopk == null || isMenuDestopk == false) {
+                  if (isMobile) {
+                    setIsMenuOpen(true);
+                  } else {
+                    setIsMenuDestopk(true);
+                  }
                 } else {
-                  setIsMenuDestopk(false);
+                  if (isMobile) {
+                    setIsMenuOpen(true);
+                  } else {
+                    setIsMenuDestopk(false);
+                  }
                 }
               }}
               className="relative inline-block z-20 toggleEvent"
             >
-              {(!isMobile && isMenuDestopk == null) ||
-              isMenuDestopk == false ? (
+              {isMenuDestopk == null || isMenuDestopk == false ? (
                 <img src="/menuMobile.webp" alt="Menu" className="menuMobile" />
               ) : (
                 <img
                   src="/svg/close.svg"
                   alt="Menu"
-                  className="menuMobile w-4"
+                  className="menuMobile max-lg:hidden w-4"
                 />
               )}
             </button>

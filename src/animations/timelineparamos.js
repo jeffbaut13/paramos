@@ -23,15 +23,15 @@ export const timeLine = (
     tl.fromTo(
       ".BoxConoceImg",
       { height: "50%", borderRadius: "0 0 1.5rem 1.5rem" },
-      { height: "0%" },
+      { height: "0%", borderRadius: "0 0 1.5rem 1.5rem" },
       "<"
     );
   } else {
     tl.fromTo(".BoxConoceText", { width: "50%" }, { width: "100%" });
     tl.fromTo(
       ".BoxConoceImg",
-      { width: "50%", borderRadius: "0 1.5rem 1.5rem 0" },
-      { width: "0%" },
+      { width: "50%", borderRadius: "1.5rem 0 0 1.5rem" },
+      { width: "0%", borderRadius: "1.5rem 0 0 1.5rem" },
       "<"
     );
   }
@@ -171,10 +171,10 @@ export const timeLine = (
     tl19.fromTo(
       ".BoxMoisesImg",
       {
-        width: "0%",
+        height: "0%",
       },
       {
-        width: "50%",
+        height: "50%",
       },
       "<"
     );
