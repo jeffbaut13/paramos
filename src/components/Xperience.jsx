@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import ReactPlayer from "react-player";
 import Button from "./Button";
-const isMobile = window.innerWidth <= 1024;
+const isMobile = window.innerWidth < 640;
+const tablet = window.innerWidth >= 640 && window.innerWidth < 1280;
+const full = window.innerWidth >= 1500;
+const laptop = window.innerWidth >= 1280 && window.innerWidth < 1500;
 const rapido = 0.5;
 const normal = 1;
 const medio = 1.5;
@@ -11,7 +14,7 @@ const Xperience = ({ play, setPlay }) => {
   useEffect(() => {
     if (play) {
       const tl = gsap.timeline();
-      if (isMobile) {
+      if (isMobile || tablet) {
         tl.fromTo(
           ".experienciaTextoBox",
           {
@@ -60,7 +63,7 @@ const Xperience = ({ play, setPlay }) => {
         },
         "<-=0.5"
       );
-      tl.to(".experienciaInicial", {
+      tl.to(".documental .paddingComponentes", {
         padding: 0,
         duration: 1,
       });
@@ -105,8 +108,16 @@ const Xperience = ({ play, setPlay }) => {
                 playing={play == true ? true : false}
                 url="https://vimeo.com/921261787"
                 className="react-player"
-                width="1420px"
-                height="655px"
+                width={
+                  isMobile
+                    ? "350px"
+                    : full
+                    ? "1400px"
+                    : laptop
+                    ? "1000px"
+                    : "100%" // Otra condición por defecto si ninguna de las anteriores se cumple
+                }
+                height={`100%`}
                 controls
               />
             )}

@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { TextOnboarding } from "./TextOnboarding";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { TextoAbajoArriba } from "../animations/gsap";
+import MouseScroll from "./MouseScroll";
 
 const Fecha = ({
   videobg,
@@ -124,7 +125,11 @@ const Fecha = ({
               TextEfect={TextEfect}
               parrafo={`El año en que naciste nuestros páramos se veían así:`}
             />
-            <ScrollAnimation />
+            <MouseScroll
+              customStyle={
+                "fadeIn mouseScroll w-10 absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[50%] z-[200]"
+              }
+            />
           </>
         )}
         {inicio == 4 && (
@@ -168,25 +173,23 @@ const Fecha = ({
         {inicio == 9 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`De seguir deforestando nuestros páramos, en ${
-              inputNumber + 60
-            } tendremos grandes deslizamientos y tragedias ambientales.`}
-          />
-        )}
-        {inicio == 10 && (
-          <TextOnboarding
-            TextEfect={TextEfect}
             parrafo={`En el ${
               inputNumber + 70
             } habremos perdido el 20% de todos nuestros páramos, trayendo un desequilibrio irreparable.`}
           />
         )}
-        {inicio == 11 && (
+        {inicio == 10 && (
           <TextOnboarding
             TextEfect={TextEfect}
             parrafo={`Nuestro presente es el mejor momento para cambiar esta realidad. <br/><br/> Salvemos nuestros páramos.`}
           />
         )}
+        {/*  {inicio == 11 && (
+          <TextOnboarding
+            TextEfect={TextEfect}
+            parrafo={`Nuestro presente es el mejor momento para cambiar esta realidad. <br/><br/> Salvemos nuestros páramos.`}
+          />
+        )} */}
       </div>
     </>
   );

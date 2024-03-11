@@ -10,18 +10,18 @@ const Descargable = () => {
           className=" overflow-hidden  bg-no-repeat bg-cover w-full rounded-3xl flex-col justify-center align-middle font-bold flex-center text-white text-2xl tracking-widest whitespace-wrap text-center "
         >
           <div>
-            <p className="textoContacto">
+            <p className="textoContacto xs:text-base lg:text-2xl">
               LA NATURALEZA TARDA 150 AÑOS
               <br /> EN CREAR ESTE FRAILEJÓN.
             </p>
-            <p className="textoContacto2 pt-10 mb-10">
+            <p className="textoContacto2 pt-10 mb-10 xs:text-base lg:text-2xl">
               A TI TE TOMA 10 SEGUNDOS COMPARTIRLO
               <br /> Y AYUDARNOS A CUIDARLOS.
             </p>
             <a
               href="/contacto/descargable.webp"
               download
-              className="BotonContacto w-[280px] bg-white hover:bg-black text-black hover:text-white font-bold py-1 px-4 rounded-xl"
+              className="BotonContacto lg:text-2xl xs:text-xs w-fit bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-6 rounded-xl"
               style={{
                 display: "block",
                 margin: "20px auto",

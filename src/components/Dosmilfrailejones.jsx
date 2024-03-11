@@ -173,7 +173,7 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
             nativas que <br /> sembraremos
             <br /> en los páramos.
           </p>
-          <Button handleClick={() => setNumFrailejon(1)} text={"CONOCELAS"} />
+          <Button handleClick={() => setNumFrailejon(1)} text={"CONÓCELAS"} />
           <p className="SegundoTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             {numFrailejon == 1 && (
               <span ref={parrafoFrailejon}>

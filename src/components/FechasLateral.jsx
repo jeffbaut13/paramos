@@ -66,16 +66,16 @@ const FechasLateral = ({ inputNumber, barra, inicio }) => {
       />
       <ItemFecha
         active={inicio == 10 ? true : false}
-        inputNumber={inputNumber}
-        aumento={70}
+        inputNumber={2024}
+        aumento={0}
         color={"#fff"}
       />
-      <ItemFecha
+      {/*  <ItemFecha
         active={inicio == 11 ? true : false}
         inputNumber={inputNumber}
         aumento={80}
         color={"#fff"}
-      />
+      /> */}
     </div>
   );
 };

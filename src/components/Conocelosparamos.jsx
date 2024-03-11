@@ -75,22 +75,19 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         "<"
       );
       if (isMobile) {
-        tl.to(".BoxConoceText", { height: "50%" }, "<").addLabel("hide");
-      } else {
-        tl.to(".BoxConoceText", { width: "50%" }, "<").addLabel("hide");
-      }
-      if (isMobile) {
+        tl.to(".BoxConoceText", { height: "50%" }).addLabel("hide");
         tl.to(
           ".BoxConoceImg",
           { height: "50%", borderRadius: "0 0 1.5rem 1.5rem" },
-          "hide"
+          "<"
         );
       } else {
+        tl.to(".BoxConoceText", { width: "50%" });
         tl.to(
           ".BoxConoceImg",
           { width: "50%", borderRadius: "1.5rem 0 0 1.5rem" },
           "<"
-        );
+        ).addLabel("hide");
       }
 
       tl.to(
@@ -454,7 +451,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className=" m3 scale-[1.3] opacity-0  left-0 h-auto absolute bottom-0 lg:hidden xl:hidden 2xl:hidden"
             />
 
-            <p className=" titulo1 tituloConoce">
+            <p className=" titulo1 tituloConoce xs:font-thin lg:font-bold ">
               ¿por qué
               <br />
               decidimos
@@ -462,14 +459,14 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               hacerlo?
             </p>
 
-            <p className=" titulo2 tituloConoce opacity-0">
+            <p className=" titulo2 tituloConoce opacity-0 xs:font-thin lg:font-bold">
               LA IMPORTANCIA
               <br />
               DE SEMBRAR
               <br />
               FRAILEJONES
             </p>
-            <p className=" titulo3 tituloConoce opacity-0">
+            <p className=" titulo3 tituloConoce opacity-0 xs:font-thin lg:font-bold">
               ¿CÓMO
               <br />
               SEMBRAREMOS
@@ -488,13 +485,13 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo1 circulos absolute opacity-0 top-[40%] left-[65%] w-[25px] cursor-pointer z-[70]"
+              className="circulo1 circulos absolute opacity-0 lg:top-[40%] lg:left-[65%] xs:top-[50%] xs:left-[50%] sm:top-[30%] w-[25px] cursor-pointer z-[70]"
             />
             <img
               src="/Conoce/lineapunteaguda1.svg"
               className="LineaUnoMontaña absolute top-[14%] left-[6%] w-[57%] z-50"
             />
-            <p className="textoUnoLosParamos text-[13px] absolute top-[10vh] left-[38vw] text-white w-[500px] z-50">
+            <p className="textoUnoLosParamos text-[14px] absolute lg:top-[10vh] lg:left-[38vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50">
               En enero de 2024, una intensa ola de calor arrasó con miles
               <br /> de hectáreas de páramo y frailejones centenarios.
               <br /> Quisimos hacer algo para recuperar parte de lo perdido.
@@ -502,14 +499,14 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo2 circulos hidden absolute top-[57%] left-[42%] w-[25px] cursor-pointer z-[60]"
+              className="circulo2 circulos hidden absolute lg:top-[60%] lg:left-[42%] xs:top-[59%] xs:left-[55%] md:top-[41%] w-[25px] cursor-pointer z-[60]"
             />
             <img
               src="/Conoce/lineapunteaguda2.svg"
               className={` LineaDosMontaña absolute top-[14%] left-[7%] w-[38%] z-20`}
             />
             <p
-              className={`textoDosLosParamos text-[13px] absolute top-[10vh] left-[35vw] text-white w-[500px] z-50`}
+              className={`textoDosLosParamos text-[14px] absolute lg:top-[10vh] lg:left-[35vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
             >
               Los frailejones son una especie emblemática de los páramos,
               <br />
@@ -527,7 +524,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className={` LineaTresMontaña absolute top-[53%] left-[73%] w-[15%] z-50`}
             />
             <p
-              className={`textoTresLosParamos  text-[13px] absolute top-[35vh] left-[52vw] text-white w-[500px] z-50`}
+              className={`textoTresLosParamos  text-[14px] absolute lg:top-[35vh] lg:left-[52vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
             >
               Sus hojas absorben la humedad de la neblina
               <br />y liberan el agua en las quebradas y ríos.
@@ -535,7 +532,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
             <img
               src="/Conoce/circulo1.png"
-              className="circulo4 circulos hidden absolute top-[55%] left-[70%] w-[25px] cursor-pointer z-50"
+              className="circulo4 circulos hidden absolute lg:top-[55%] lg:left-[70%] xs:top-[57%] xs:left-[53%] sm:top-[32%] w-[25px] cursor-pointer z-50"
             />
             <HandScroll
               customstyle={`moveTwo hidden absolute w-12 z-[100] top-[44%] left-[63%] `}
@@ -546,7 +543,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className={` LineaCuatroMontaña absolute top-[10%] left-[7%] w-[57%] z-10`}
             />
             <p
-              className={`textoCuatroLosParamos  text-[13px] absolute top-[10vh] left-[30vw] text-white w-[500px] z-50`}
+              className={`textoCuatroLosParamos  text-[14px] absolute lg:top-[10vh] lg:left-[30vw] xs:top-[21vh] xs:left-[15vw]  text-white w-[500px] xs:w-[200px] z-50`}
             >
               Lo haremos en varias jornadas; la primera será en marzo,
               <br />
@@ -564,7 +561,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className={` LineaCincoMontaña absolute top-[74%] left-[32%] w-[12%] z-50`}
             />
             <p
-              className={`textoCincoLosParamos  text-1xl absolute top-[52vh] left-[9vw] text-white w-[500px] z-50`}
+              className={`textoCincoLosParamos  text-1xl absolute lg:top-[52vh] lg:left-[9vw] xs:top-[21vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
             >
               El terreno ha sido previamente verificado por expertos
               <br />

@@ -49,19 +49,19 @@ const DigitarFecha = ({ setInputNumber, inputNumber, handleNextClick }) => {
 
   return (
     <>
-      <div className="fadeIn camposFecha">
-        <form action="">
-        {digits.map((digit, index) => (
-          <input
-            key={index}
-            type="text"
-            maxLength="1"
-            value={digit}
-            onChange={(e) => handleChange(index, e.target.value)}
-            onKeyDown={(e) => handleKeyDown(index, e)}
-            ref={(input) => (inputRefs.current[index] = input)}
-          />
-        ))}
+      <div className="">
+        <form className="fadeIn camposFecha" action="">
+          {digits.map((digit, index) => (
+            <input
+              key={index}
+              type="text"
+              maxLength="1"
+              value={digit}
+              onChange={(e) => handleChange(index, e.target.value)}
+              onKeyDown={(e) => handleKeyDown(index, e)}
+              ref={(input) => (inputRefs.current[index] = input)}
+            />
+          ))}
         </form>
       </div>
       <button className="btn fadeIn" onClick={handleSubmit}>

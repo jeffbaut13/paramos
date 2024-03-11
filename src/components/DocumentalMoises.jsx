@@ -1,12 +1,15 @@
 import gsap from "gsap";
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-const isMobile = window.innerWidth <= 1024;
+const isMobile = window.innerWidth < 640;
+const tablet = window.innerWidth >= 640 && window.innerWidth < 1280;
+const full = window.innerWidth >= 1500;
+const laptop = window.innerWidth >= 1280 && window.innerWidth < 1500;
 const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
   useEffect(() => {
     if (playMoises) {
       const tl = gsap.timeline();
-      if (isMobile) {
+      if (isMobile || tablet) {
         tl.fromTo(
           ".BoxMoisesText",
           {
@@ -86,8 +89,16 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
                 playing={playMoises == true ? true : false}
                 url="https://vimeo.com/921262445"
                 className="react-player"
-                width="1420px"
-                height="655px"
+                width={
+                  isMobile
+                    ? "350px"
+                    : full
+                    ? "1400px"
+                    : laptop
+                    ? "1000px"
+                    : "100%" // Otra condición por defecto si ninguna de las anteriores se cumple
+                }
+                height={`100%`}
                 controls
               />
             )}

@@ -15,11 +15,11 @@ export const getContainerClass = (inicio, isMobile) => {
     case 8:
       return `bg${isMobile ? "8m" : "8"}`;
     case 9:
-      return `bg${isMobile ? "9m" : "9"}`;
-    case 10:
       return `bg${isMobile ? "10m" : "10"}`;
-    case 11:
+    case 10:
       return `bg${isMobile ? "11m" : "11"}`;
+    /* case 11:
+      return `bg${isMobile ? "11m" : "11"}`; */
     default:
       return "";
   }
@@ -27,9 +27,9 @@ export const getContainerClass = (inicio, isMobile) => {
 
 export const switchProcentage = (setinicio, scrollPercentage) => {
   switch (true) {
-    case scrollPercentage >= 88:
+    /*  case scrollPercentage >= 88:
       setinicio(11);
-      break;
+      break; */
     case scrollPercentage >= 77:
       setinicio(10);
       break;

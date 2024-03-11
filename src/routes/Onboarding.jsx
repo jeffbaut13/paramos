@@ -54,8 +54,16 @@ const Onboarding = () => {
     if (inicio >= 3) {
       gsap.fromTo(
         border.current,
-        { backgroundPosition: "center", backgroundSize: `${Tablet ? "cover" : "102%"} ` },
-        { backgroundPosition: "center", backgroundSize: `${Tablet ? "cover" : "100%"} `, ease: "power2.inOut", duration: 1 }
+        {
+          backgroundPosition: "center",
+          backgroundSize: `${Tablet ? "cover" : "102%"} `,
+        },
+        {
+          backgroundPosition: "center",
+          backgroundSize: `${Tablet ? "cover" : "100%"} `,
+          ease: "power2.inOut",
+          duration: 1,
+        }
       );
     }
 
@@ -80,7 +88,7 @@ const Onboarding = () => {
         img.src = `/frames/capa${i}.jpg`;
       }
     };
-  
+
     precargarImagenes();
   }, []);
 
@@ -141,7 +149,11 @@ const Onboarding = () => {
       >
         {inicio >= 2 && (
           <div ref={videobg} className="videobg absolute w-full h-full">
-            <img src={`/frames/capa${numero}.webp`} alt="" className="w-full h-full" />
+            <img
+              src={`/frames/capa${numero}.webp`}
+              alt=""
+              className="w-full h-full"
+            />
           </div>
         )}
 
@@ -171,7 +183,7 @@ const Onboarding = () => {
               ref={barra}
               className={`fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing`}
             >
-              {inicio < 11 ? "OMITIR" : "SIGUIENTE"}
+              {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
             </Link>
           </>
         )}

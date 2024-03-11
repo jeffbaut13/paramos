@@ -234,7 +234,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
       {isMobile ? (
         <HandScroll
           customstyle={
-            "mouseScroll scrollMobile w-10 fixed left-1/2 top-6 z-[200]"
+            "mouseScroll hidden scrollMobile w-10 fixed left-1/2 top-6 z-[200]"
           }
           black={true}
           visible={true}
@@ -277,7 +277,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
                 ref={bntMobile}
                 key={button.text}
                 onClick={() => handleScrollToPercentage(button.percentage)}
-                className={`btnMobile block w-full px-4 py-7 transition-colors rounded-3xl cursor-pointer uppercase ${
+                className={`btnMobile block max-lg:text-base w-full p-3 transition-colors rounded-3xl cursor-pointer uppercase ${
                   activeButton === button.text
                     ? "bg-black text-white"
                     : "hover:bg-black hover:text-white"
