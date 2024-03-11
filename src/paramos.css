@@ -330,3 +330,7 @@
 .tituloConoce {
   @apply z-40 uppercase tracking-widest font-bold lg:text-4xl xs:text-lg absolute top-[7vh] left-[7vw] text-white;
 }
+
+.parrafotooltip {
+  @apply pointer-events-none;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DescripcionFrailejones from "./DescripcionFrailejones";
 
 import gsap from "gsap";
@@ -14,8 +14,11 @@ const lento = 2;
 
 const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
   const parrafoFrailejon = useRef(null);
+  const [limpiar, setLimpiar] = useState(false);
+  const limiarPuntos = () => {
+    setLimpiar(true);
+  };
 
-  console.log(numFrailejon);
   useEffect(() => {
     if (parrafoFrailejon) {
       gsap.fromTo(
@@ -111,22 +114,27 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           style={{ backgroundImage: "url(/bgParamos/Bg20mil.webp)" }}
         >
           <img
+            onClick={limiarPuntos}
             className={`Espeletia imgFrailejon"`}
             src={`/imgFrailejones/Espeletia.webp`}
             alt=""
           />
           <img
+            onClick={limiarPuntos}
             className={`amarillo imgFrailejon"`}
             src={`/imgFrailejones/amarillo.webp`}
             alt=""
           />
           <img
+            onClick={limiarPuntos}
             className={`Blanco imgFrailejon"`}
             src={`/imgFrailejones/Blanco.webp`}
             alt=""
           />
           {numFrailejon == 1 && (
             <DescripcionFrailejones
+              limpiar={limpiar}
+              setLimpiar={setLimpiar}
               claseFrailejon={"Espeletia"}
               primerParrafo={"Crece entre 5 y 20 cm por año."}
               segundoParrafo={
@@ -139,6 +147,8 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           )}
           {numFrailejon == 2 && (
             <DescripcionFrailejones
+              limpiar={limpiar}
+              setLimpiar={setLimpiar}
               claseFrailejon={"amarillo"}
               primerParrafo={
                 "Es capaz de resistir las heladas de la noche y fuertes rayos del sol."
@@ -153,6 +163,8 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           )}
           {numFrailejon == 3 && (
             <DescripcionFrailejones
+              limpiar={limpiar}
+              setLimpiar={setLimpiar}
               claseFrailejon={"Blanco"}
               primerParrafo={
                 "Ayuda a regular la temperatura y la humedad del páramo."
