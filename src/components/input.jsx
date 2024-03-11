@@ -54,7 +54,7 @@ const DigitarFecha = ({ setInputNumber, inputNumber, handleNextClick }) => {
           {digits.map((digit, index) => (
             <input
               key={index}
-              type="text"
+              type="number"
               maxLength="1"
               value={digit}
               onChange={(e) => handleChange(index, e.target.value)}
