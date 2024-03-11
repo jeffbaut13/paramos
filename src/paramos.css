@@ -324,6 +324,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.capituloMoises .react-player {
+  opacity: 1;
+}
 .tituloConoce {
   @apply z-40 uppercase tracking-widest font-bold lg:text-4xl xs:text-lg absolute top-[7vh] left-[7vw] text-white;
 }

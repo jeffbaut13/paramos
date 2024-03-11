@@ -9,8 +9,8 @@ const laptop = window.innerWidth >= 1280 && window.innerWidth < 1500;
 export const CapituloMoises = ({ playCapitulo, setPlayCapitulo }) => {
   return (
     //<div className="capituloMoises absolute w-full h-full z-[1] flex">
-    <div className="capituloMoises ocultarEnOrigen w-full h-full z-[1] flex">
-      <div className="opacity-1 relative w-full h-full paddingComponentes">
+    <div className="capituloMoises relative ocultarEnOrigen w-full h-full z-[1] flex">
+      <div className="opacity-1 relative w-full h-full p-0 bg-black">
         <ReactPlayer
           playing={playCapitulo == true ? true : false}
           url="https://vimeo.com/921261787"
