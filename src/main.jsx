@@ -26,8 +26,11 @@ const App = () => {
   return (
     <React.StrictMode>
       {/* Muestra el componente de carga mientras isLoading sea true */}
-
-      <RouterProvider router={router} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <RouterProvider router={router} />
+      )}
     </React.StrictMode>
   );
 };
