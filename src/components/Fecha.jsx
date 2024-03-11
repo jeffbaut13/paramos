@@ -127,7 +127,7 @@ const Fecha = ({
             />
             <MouseScroll
               customStyle={
-                "fadeIn mouseScroll w-10 absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[50%] z-[200]"
+                "fadeIn mouseScroll lg:w-8 xs:w-6 absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[50%] z-[200]"
               }
             />
           </>
