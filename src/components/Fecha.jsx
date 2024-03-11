@@ -135,47 +135,38 @@ const Fecha = ({
         {inicio == 4 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`En promedio, cada diez años perdemos 500,000 hectáreas de vegetación.`}
+            parrafo={`En promedio, cada diez años perdemos 877,000 hectáreas de páramo.
+            `}
           />
         )}
         {inicio == 5 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`Para el año ${
-              inputNumber + 20
-            }, esta pérdida será de más de 670,000 canchas de fútbol.`}
+            parrafo={`Desde la década de los 2,000, perdimos el 79% de área de páramo entre Cundinamarca y Boyacá.`}
           />
         )}
         {inicio == 6 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`En el ${
-              inputNumber + 30
-            }, los incendios forestales arrasaron un 30% de la vegetación.`}
+            parrafo={`Tristemente, entre el 2,000 y el 2,015 se quemó el 18% del área total del páramo de Sumapaz.`}
           />
         )}
         {inicio == 7 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`Con la desaparición acelerada de frailejones, en el ${
-              inputNumber + 40
-            } tuvimos una reducción considerable del agua potable`}
+            parrafo={`Entre el 2,015 y el 2,030, perderemos 32% de nuestros páramos de la Cordillera Oriental.`}
           />
         )}
         {inicio == 8 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`Para el ${
-              inputNumber + 50
-            }, más de 4,000 especies de plantas y animales se extinguirían.`}
+            parrafo={`Si no hacemos nada, para el 2030, el complejo Tota-Bijagual-Mamapacha habrá perdido 35% de vegetación.`}
           />
         )}
         {inicio == 9 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`En el ${
-              inputNumber + 70
-            } habremos perdido el 20% de todos nuestros páramos, trayendo un desequilibrio irreparable.`}
+            parrafo={`La pérdida de páramos en las próximas décadas traerá consigo deslizamientos y tragedias ambientales.`}
           />
         )}
         {inicio == 10 && (

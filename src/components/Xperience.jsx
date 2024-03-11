@@ -106,7 +106,7 @@ const Xperience = ({ play, setPlay }) => {
             {play && (
               <ReactPlayer
                 playing={play == true ? true : false}
-                url="https://vimeo.com/921261787"
+                url="https://vimeo.com/922212934"
                 className="react-player"
                 width={
                   isMobile

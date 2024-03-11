@@ -150,7 +150,7 @@ const Onboarding = () => {
         />
         {inicio > 2 && (
           <>
-            <div className="absolute top-0 left-0 bg-gradient-to-r from-[#000000ad] to-[#00000029] w-full h-full z-[-1]"></div>
+            <div className="absolute top-0 left-0 lg:bg-gradient-to-r lg:from-[#000000ad] max-lg:bg-[#000000ad] lg:to-[#00000029] w-full h-full z-[-1]"></div>
 
             <FechasLateral
               inicio={inicio}
@@ -164,7 +164,7 @@ const Onboarding = () => {
               ref={barra}
               className={`fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing`}
             >
-              {inicio < 11 ? "OMITIR" : "SIGUIENTE"}
+              {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
             </Link>
           </>
         )}

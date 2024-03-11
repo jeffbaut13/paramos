@@ -34,10 +34,14 @@ const DigitarFecha = ({ setInputNumber, inputNumber, handleNextClick }) => {
   const handleSubmit = () => {
     const result = digits.join("");
     const resultado = parseInt(result);
-    if (result >= 1960 && result <= 2014) {
+    if (result >= 1960 && result < 2006) {
       setInputNumber(resultado);
-    } else {
-      alert("No eres apto para este experiemiento");
+    } else if (result >= 2006) {
+      alert("Eres demasiado joven para esta experiencia.");
+    } else if (result < 1960) {
+      alert(
+        "Solo tenemos registro desde 1960. Intenta con una fecha más reciente."
+      );
     }
     // Aquí puedes realizar la acción que desees con el código de 4 dígitos.
   };
