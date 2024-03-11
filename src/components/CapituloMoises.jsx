@@ -15,6 +15,7 @@ export const CapituloMoises = ({ playCapitulo, setPlayCapitulo }) => {
           playing={playCapitulo == true ? true : false}
           url="https://vimeo.com/921261787"
           className="react-player"
+          loop
           width={
             isMobile ? "350px" : full ? "1400px" : laptop ? "1000px" : "100%" // Otra condición por defecto si ninguna de las anteriores se cumple
           }
