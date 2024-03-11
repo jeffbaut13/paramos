@@ -27,26 +27,29 @@ const Onboarding = () => {
 
   useEffect(() => {
     setinicio(1);
+    // Obtener la URL actual
     const url = window.location.href;
+
+    // Verificar si la URL termina con "/onboarding"
     if (url.endsWith("/onboarding")) {
+      // Aplicar el estilo al cuerpo de la página
       document.body.style.overflow = "hidden";
     }
+
+    // Limpiar el estilo cuando el componente se desmonta
     return () => {
       document.body.style.overflow = "auto";
     };
   }, []);
 
   useEffect(() => {
+    // Configuración de ScrollTrigger para los estados de 'inicio'
     scrolltrigerFunction(padre, (self) => {
       const scrollPercentage = self.progress * 100;
+
       switchProcentage(setinicio, scrollPercentage);
     });
   }, [inicio]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setMostrarLoading(false), 5000);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     if (inicio >= 3) {
@@ -72,8 +75,14 @@ const Onboarding = () => {
     }
     gsap.fromTo(
       imagen2.current,
-      { scale: 1 },
-      { scale: 1.05, ease: "power2.out", duration: 1 }
+      {
+        scale: 1,
+      },
+      {
+        scale: 1.05,
+        ease: "power2.out",
+        duration: 1,
+      }
     );
 
     Opacidad(barra, 1);
@@ -90,26 +99,6 @@ const Onboarding = () => {
     precargarImagenes();
   }, []);
 
-  useEffect(() => {
-    if (inicio >= 2) {
-      const interval = setInterval(() => {
-        setNumero((prevNumero) => {
-          if (prevNumero < 144) {
-            return prevNumero + 1;
-          } else {
-            clearInterval(interval);
-            return prevNumero; // Mantenemos el último número para evitar reiniciar o ir más allá de 144.
-          }
-        });
-        console.log("frames donde estaba el video " + numero);
-      }, 42);
-
-      return () => clearInterval(interval); // Limpieza al desmontar o cambiar de estado 'inicio'
-    }
-  }, [inicio]);
-
-  // A continuación, el contenido principal del componente Onboarding...
-  // Asegúrate de incluir el resto de tu código aquí.
   const containerClass = getContainerClass(inicio, Mobile);
 
   return (
@@ -143,11 +132,9 @@ const Onboarding = () => {
       >
         {inicio >= 2 && (
           <div ref={videobg} className="videobg absolute w-full h-full">
-            <img
-              src={`/frames/capa${numero}.webp`}
-              alt=""
-              className="w-full h-full"
-            />
+            <video className="Moisesbgvid" playsInline autoPlay muted loop>
+              <source src={"/videoIntro.mp4"} type="video/mp4" />
+            </video>
           </div>
         )}
 
@@ -177,7 +164,7 @@ const Onboarding = () => {
               ref={barra}
               className={`fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing`}
             >
-              {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
+              {inicio < 11 ? "OMITIR" : "SIGUIENTE"}
             </Link>
           </>
         )}
