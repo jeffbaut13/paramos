@@ -15,8 +15,8 @@ const EmbeddedIframe = ({ customStyle, node360 }) => {
     >
       <iframe
         style={iframeStyle}
-        title="Embedded Kuula"
         frameBorder="0"
+        title="Embedded Kuula"
         allow="xr-spatial-tracking; gyroscope; accelerometer"
         allowFullScreen
         scrolling="no"

@@ -26,6 +26,7 @@ function App() {
   const [translate, setTranslate] = useState(0);
   const [activeButton, setActiveButton] = useState("Origen");
   const [play, setPlay] = useState(false);
+  const [playCapitulo, setPlayCapitulo] = useState(false);
   const [playMoises, setPlayMoises] = useState(false);
   const [altura, setAltura] = useState(null);
   const [itemActive, setItemActive] = useState(0);
@@ -56,13 +57,16 @@ function App() {
           } else if (scroll >= 22.22 && scroll < 33.33) {
             setActiveButton("2.000 Frailejones");
             setScrollPercentage(3);
+            setPlayCapitulo(false);
             gsap.to(".blurParamos", { opacity: 0, duration: 1 });
           } else if (scroll >= 33.33 && scroll < 44.44) {
             setActiveButton("Los páramos");
+            setPlayCapitulo(true);
             setScrollPercentage(4);
             setTravesiaReverse(false);
             gsap.to(".blurParamos", { opacity: 0, duration: 1 });
           } else if (scroll >= 44.44 && scroll < 55.55) {
+            setPlayCapitulo(false);
             setScrollPercentage(5);
             setTravesiaReverse(true);
             setPlay(false);
@@ -237,7 +241,10 @@ function App() {
               numFrailejon={numFrailejon}
               setNumFrailejon={setNumFrailejon}
             />
-            <CapituloMoises />
+            <CapituloMoises
+              playCapitulo={playCapitulo}
+              setPlayCapitulo={setPlayCapitulo}
+            />
             <Travesia
               travesiaReverse={travesiaReverse}
               setTravesiaReverse={setTravesiaReverse}

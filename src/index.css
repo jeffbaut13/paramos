@@ -43,7 +43,7 @@ html {
 }
 .parrafoOnboarding {
   @apply text-center m-auto letterSpacing uppercase font-bold text-[#ffffff] leading-normal;
-  @apply 2xl:text-4xl xl:text-2xl sm:text-sm xs:text-xs lg:w-4/5 xs:w-4/6;
+  @apply 2xl:text-4xl xl:text-2xl sm:text-sm xs:text-sm lg:w-4/5 xs:w-[70%];
 }
 body {
   @apply m-0 p-0 amenti box-content;

@@ -205,7 +205,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
                 <img
                   src="/svg/close.svg"
                   alt="Menu"
-                  className="menuMobile max-lg:hidden w-4"
+                  className="menuMobile max-lg:hidden inline-block w-3"
                 />
               )}
             </button>

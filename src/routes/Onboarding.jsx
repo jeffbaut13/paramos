@@ -150,7 +150,7 @@ const Onboarding = () => {
         />
         {inicio > 2 && (
           <>
-            <div className="absolute top-0 left-0 bg-gradient-to-r from-[#000000ad] w-1/4 h-full"></div>
+            <div className="absolute top-0 left-0 bg-gradient-to-r from-[#000000ad] to-[#00000029] w-full h-full z-[-1]"></div>
 
             <FechasLateral
               inicio={inicio}
