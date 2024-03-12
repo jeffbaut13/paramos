@@ -21,8 +21,8 @@ const Loading = () => {
   }, []);
 
   return (
-    <div className="loading-container w-full h-full relative bg-white flex justify-center items-center">
-      <div className="loading-text text-black xs:text-xs tracking-[0.6em] lg:text-3xl absolute top-[49%] left-1/2 translate-x-[-48%] translate-y-[-50%]">
+    <div className="loading-container relative top-0 left-0 z-[200] w-full h-full  bg-white flex justify-center items-center">
+      <div className="loading-text text-black xs:text-xs tracking-[0.6em] lg:text-3xl absolute top-[49%] left-1/2 translate-x-[-42%] translate-y-[-50%]">
         {percentage}%
       </div>
       <div className=" md:w-[50%] xs:w-[40%] sm:w-[60%] lg:w-[20%]">
