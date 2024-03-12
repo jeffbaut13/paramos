@@ -16,6 +16,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
   useEffect(() => {
     if (itemActive == 0) {
+      gsap.to(".montaña", { display: "none" });
       const tl = gsap.timeline();
       tl.to(".slideBtn", {
         display: "none",
@@ -120,6 +121,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
       );
     }
     if (itemActive == 1) {
+      gsap.to(".montaña", { display: "block" });
       const tl = gsap.timeline();
       if (isMobile) {
         tl.to(".BoxConoceText", { height: "0", duration: rapido });

@@ -12,7 +12,6 @@ export const timeLine = () => {
   const tl = gsap.timeline();
   tl.delay(rapido);
 
-  tl.to(".montaña", { display: "block" });
   if (isMobile) {
     tl.fromTo(".BoxConoceText", { height: "100%" }, { height: "50%" }, "<");
     tl.fromTo(".BoxConoceImg", { height: "0%" }, { height: "50%" }, "<");
