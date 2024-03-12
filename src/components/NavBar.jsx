@@ -244,33 +244,18 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
           </div>
         </div>
       </nav>
-      {isMobile && (
-        <>
-          <IconSlideNextPrev
-            handleClick={scroller}
-            customStyle={`iconoSlideInicial rotate-90 fixed right-[-1.25rem] bottom-0 opacity-1 z-[100]`}
-          />
-          <IconSlideNextPrev
-            handleClick={scrollerResta}
-            customStyle={`iconoSlideInicial rotate-[-90deg] fixed right-[-1.25rem] bottom-[3rem] opacity-1 z-[100]`}
-          />
-        </>
-      )}
-      {isMobile ? (
-        <HandScroll
-          customstyle={
-            "mouseScroll hidden scrollMobile w-10 fixed left-1/2 top-6 z-[200]"
-          }
-          black={true}
-          visible={true}
+
+      <>
+        <IconSlideNextPrev
+          handleClick={scroller}
+          customStyle={`iconoSlideInicial rotate-90 fixed right-0 bottom-0 opacity-1 z-[100]`}
         />
-      ) : (
-        <MouseScroll
-          customStyle={
-            "mouseScroll w-10 absolute right-0 top-1/2 translate-x-[200%] translate-y-[-50%] z-[200]"
-          }
+        <IconSlideNextPrev
+          handleClick={scrollerResta}
+          customStyle={`iconoSlideInicial rotate-[-90deg] fixed right-0 bottom-[3rem] opacity-1 z-[100]`}
         />
-      )}
+      </>
+
       <div className="navVertical">
         {/* <span className="fixed lg:top-0 right-0 xs:translate-y-[-20px] lg:translate-y-[-50px] text-white">
           {scrollPercentageTwo}
