@@ -2,6 +2,7 @@ import gsap from "gsap";
 import React, { useState, useEffect, useRef } from "react";
 import MouseScroll from "./MouseScroll";
 import HandScroll from "./HandScroll";
+import IconSlideNextPrev from "./IconSlideNextPrev";
 
 const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
   const isMobile = window.innerWidth <= 1024;
@@ -10,7 +11,7 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
   const menuMobile = useRef(null);
   const bntMobile = useRef(null);
   const buton = useRef(null);
-  console.log(isMenuDestopk);
+  //console.log(isMenuDestopk);
   const openNav = () => {
     if (isMenuDestopk) {
       const tl = gsap.timeline();
@@ -139,8 +140,21 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
 
   const handleScrollToPercentage = (percentage) => {
     const position = document.documentElement.scrollHeight * (percentage / 100);
-    window.scrollTo({ top: position, behavior: "smooth" });
+    window.scrollTo({ top: position });
     setIsMenuOpen(false); // Cierra el menú después de hacer scroll
+  };
+
+  let resta = "";
+  const scrollBtn = [0, 11.11, 22.22, 33.33, 44.44, 55.55, 66, 70, 88.88];
+
+  const scroller = () => {
+    console.log(scrollBtn[scrollPercentage]);
+    handleScrollToPercentage(scrollBtn[scrollPercentage]);
+  };
+  const scrollerResta = () => {
+    resta = scrollPercentage - 2;
+    //console.log(resta);
+    handleScrollToPercentage(scrollBtn[resta]);
   };
 
   const buttons = [
@@ -230,7 +244,18 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
           </div>
         </div>
       </nav>
-
+      {isMobile && (
+        <>
+          <IconSlideNextPrev
+            handleClick={scroller}
+            customStyle={`iconoSlideInicial rotate-90 fixed right-[-1.25rem] bottom-0 opacity-1 z-[100]`}
+          />
+          <IconSlideNextPrev
+            handleClick={scrollerResta}
+            customStyle={`iconoSlideInicial rotate-[-90deg] fixed right-[-1.25rem] bottom-[3rem] opacity-1 z-[100]`}
+          />
+        </>
+      )}
       {isMobile ? (
         <HandScroll
           customstyle={

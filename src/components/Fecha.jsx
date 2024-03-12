@@ -154,7 +154,7 @@ const Fecha = ({
         {inicio == 7 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`Entre el 2,015 y el 2,030, perderemos 32% de nuestros páramos de la Cordillera Oriental.`}
+            parrafo={`Entre el 2,015 y el 2,020, perderemos 20% de nuestros páramos de la Cordillera Oriental.`}
           />
         )}
         {inicio == 8 && (

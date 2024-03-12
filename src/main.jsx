@@ -1,12 +1,12 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import './index.css';
-import './onboarding.css';
-import './paramos.css';
-import './conoceParamos.css';
-import router from './routes/Rutas';
-import Loading from './components/Loading'; // Importa tu componente de carga aquí
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import "./index.css";
+import "./onboarding.css";
+import "./paramos.css";
+import "./conoceParamos.css";
+import router from "./routes/Rutas";
+import Loading from "./components/Loading"; // Importa tu componente de carga aquí
 
 // Define tu componente principal
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
 
     const timeout = setTimeout(() => {
       setIsLoading(false); // Esto ocurre después de 5 segundos, indicando que el Loading ha terminado.
-    }, 5000);
+    }, 4000);
 
     // Limpieza: cancela el timeout si el componente se desmonta antes de que se complete
     return () => clearTimeout(timeout);
@@ -43,5 +43,5 @@ const App = () => {
 };
 
 // Renderiza el componente principal en el DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);

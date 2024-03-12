@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { primerEfecto2, reverseAction } from "../animations/travesia";
 import gsap from "gsap";
 import Button from "./Button";
+import { space } from "postcss/lib/list";
+import IconSlideNextPrev from "./IconSlideNextPrev";
 
 const isMobile = window.innerWidth <= 1024;
 const rapido = 0.5;
@@ -10,11 +12,26 @@ const medio = 1.5;
 const lento = 2;
 
 const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
+  const [posicion, setPosicion] = useState(1);
   const padre = useRef(null);
-  //console.log(travesiaReverse);
+  //console.log(posicion);
+
+  useEffect(() => {
+    if (posicion == 2) {
+      primerEfecto2(padre, "cards2", "cards3", "cards1");
+    }
+    if (posicion == 3) {
+      primerEfecto2(padre, "cards3", "cards1", "cards2");
+    }
+    if (posicion == 4) {
+      primerEfecto2(padre, "cards1", "cards2", "cards3");
+    }
+  }, [posicion]);
+
   useEffect(() => {
     if (!travesiaReverse) {
       reverseAction(padre);
+      setPosicion(1);
     }
   }, [travesiaReverse]);
 
@@ -95,6 +112,11 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         "cambioTravesia+=1"
       );
     }
+    tl.to(
+      ".travesia .iconContinue",
+
+      { opacity: 1, right: "0", duration: lento }
+    );
   };
 
   return (
@@ -104,8 +126,23 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         ref={padre}
         className=" flex relative w-full h-full responsiveReverse  paddingComponentes bg-white"
       >
-        <div className="BoxTravesiaCards    BoxesImgStart">
-          <div className="card w-full h-full relative">
+        <div className="BoxTravesiaCards    BoxesImgStart ">
+          <div className="card w-full h-full relative ">
+            {isMobile && (
+              <IconSlideNextPrev
+                handleClick={() => {
+                  if (posicion == 4) {
+                    setPosicion(2);
+                  } else {
+                    setPosicion(posicion + 1);
+                  }
+                }}
+                customStyle={
+                  "opacity-1 absolute right-[-2.5rem] top-1/2 translate-y-[-50%] z-50"
+                }
+                reverse={false}
+              />
+            )}
             <img
               className="caminante iconoCaminante"
               src="/travesia/caminante.png"
@@ -180,7 +217,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                   onClick={() => {
                     primerEfecto2(padre, "cards1", "cards2", "cards3");
                   }}
-                  className="punto"
+                  className="punto max-lg:hidden"
                 ></span>
                 <img
                   className="imgComplete z-[-1] top-0 w-full h-full absolute"
@@ -250,7 +287,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                   onClick={() => {
                     primerEfecto2(padre, "cards2", "cards3", "cards1");
                   }}
-                  className="punto"
+                  className="punto max-lg:hidden"
                 ></span>
                 <img
                   className="imgComplete z-[-1] top-0 w-full h-full absolute"
@@ -321,7 +358,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                   onClick={() => {
                     primerEfecto2(padre, "cards3", "cards1", "cards2");
                   }}
-                  className="punto"
+                  className="punto max-lg:hidden"
                 ></span>
                 <img
                   className="imgComplete z-[-1] top-0 w-full h-full absolute "

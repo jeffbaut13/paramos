@@ -13,15 +13,22 @@ export const primerEfecto2 = (
 ) => {
   let ctx = gsap.context(() => {
     const tl = gsap.timeline();
-
-    tl.to(`.${cardInicial}`, {
-      x: "-50%",
-      left: "50%",
-
-      duration: 1,
-      transformOrigin: "50% 50%",
-      ease: "power1.inOut",
-    }).addLabel("first");
+    if (full || laptop) {
+      tl.to(`.${cardInicial}`, {
+        x: "-50%",
+        left: "50%",
+        duration: 1,
+        transformOrigin: "50% 50%",
+        ease: "power1.inOut",
+      }).addLabel("first");
+    } else if (Mobile || Tablet) {
+      tl.to(`.${cardInicial}`, {
+        display: "block",
+        opacity: 1,
+        duration: 1,
+        ease: "power1.inOut",
+      }).addLabel("first");
+    }
 
     tl.to(
       `.${cardInicial}`,
@@ -52,36 +59,86 @@ export const primerEfecto2 = (
       "first-=1"
     );
 
-    tl.to(
-      `.${cardSecundaria}`,
-      {
-        x: "-30%",
-        zIndex: 4,
-        left: "100%",
-        opacity: 1,
-        pointerEvents: "all",
-        duration: 1,
-        ease: "power1.inOut",
-      },
-      "first-=0.7"
-    );
-
     /**********ampliacion de caja */
+    if (full || laptop) {
+      tl.to(
+        `.${cardSecundaria}`,
+        {
+          x: "-30%",
+          zIndex: 4,
+          left: "100%",
+          opacity: 1,
+          pointerEvents: "all",
+          duration: 1,
+          ease: "power1.inOut",
+        },
+        "first-=0.7"
+      );
+    } else if (Mobile || Tablet) {
+      tl.to(
+        `.${cardSecundaria}`,
+        {
+          display: "none",
+          opacity: 0,
+          duration: 1,
+          ease: "power1.inOut",
+        },
+        "first-=0.7"
+      );
+    }
 
-    tl.to(
-      `.${cardInicial}`,
-      {
-        x: "0",
-        y: "0",
-        top: "0",
-        left: "0",
-        width: "100%",
-        height: "100%",
-        ease: "power1.inOut",
-        duration: 0.4,
-      },
-      "first"
-    );
+    if (full || laptop) {
+      tl.to(
+        `.${cardInicial}`,
+        {
+          x: "0",
+          y: "0",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          ease: "power1.inOut",
+          duration: 0.4,
+        },
+        "first"
+      );
+      tl.to(
+        `.${cardTerciaria}`,
+        {
+          opacity: 0,
+          x: "105%",
+          y: "-70%",
+          top: "50%",
+          left: "100%",
+          width: "20%",
+          height: "50%",
+        },
+        "first+=1.2"
+      );
+    } else if (Mobile || Tablet) {
+      tl.to(
+        `.${cardInicial}`,
+        {
+          x: "0",
+          y: "0",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          ease: "power1.inOut",
+          duration: 0.4,
+        },
+        "first"
+      );
+      tl.to(
+        `.${cardTerciaria}`,
+        {
+          opacity: 0,
+          display: "none",
+        },
+        "first+=1.2"
+      );
+    }
 
     tl.to(
       `.${cardInicial} .imgpasto`,
@@ -114,19 +171,7 @@ export const primerEfecto2 = (
       },
       "first-=1"
     );
-    tl.to(
-      `.${cardTerciaria}`,
-      {
-        opacity: 0,
-        x: "105%",
-        y: "-70%",
-        top: "50%",
-        left: "100%",
-        width: "20%",
-        height: "50%",
-      },
-      "first+=1.2"
-    );
+
     /************titulos y punto */
     tl.to(
       `.${cardTerciaria} .cajaTitulos .titulo`,
@@ -423,6 +468,11 @@ export const primerEfecto2 = (
 
 export const reverseAction = (padre) => {
   let ctx = gsap.context(() => {
+    gsap.to(
+      ".travesia .iconContinue",
+
+      { opacity: 0, right: "-2.5rem", duration: 1 }
+    );
     gsap.to(".textoUno", { display: "block", opacity: 1 });
     gsap.to(".btnTravesia", { opacity: 1 });
     gsap.to(".cards", {
@@ -433,7 +483,7 @@ export const reverseAction = (padre) => {
       opacity: 1,
     });
 
-    if (full) {
+    if (full || laptop) {
       gsap.to(".cards1", {
         width: "25%",
         height: "50%",
@@ -464,32 +514,32 @@ export const reverseAction = (padre) => {
         x: "0%",
         opacity: 0,
       });
-    } else if (Mobile) {
+    } else if (Mobile || Tablet) {
       gsap.to(".cards1", {
-        width: "90%",
-        height: "60%",
-        top: "60%",
-        left: "50%",
-        y: "-80%",
-        x: "-50%",
+        width: "100%",
+        height: "100%",
+        top: "0%",
+        left: "0%",
+        y: "0%",
+        x: "0%",
         opacity: 0,
       });
       gsap.to(".cards2", {
-        width: "90%",
-        height: "60%",
-        top: "60%",
-        left: "50%",
-        y: "-80%",
-        x: "-50%",
+        width: "100%",
+        height: "100%",
+        top: "0%",
+        left: "0%",
+        y: "0%",
+        x: "0%",
         opacity: 0,
       });
       gsap.to(".cards3", {
-        width: "90%",
-        height: "60%",
-        top: "60%",
-        left: "50%",
-        y: "-80%",
-        x: "-50%",
+        width: "100%",
+        height: "100%",
+        top: "0%",
+        left: "0%",
+        y: "0%",
+        x: "0%",
         opacity: 0,
       });
     }

@@ -81,7 +81,7 @@
 }
 
 .travesia .cards {
-  @apply hidden absolute w-1/4 h-2/4 rounded-3xl overflow-hidden;
+  @apply hidden absolute lg:w-1/4 lg:h-2/4 xs:w-full xs:h-full rounded-3xl overflow-hidden;
 }
 .travesia .cards.active {
   @apply w-full h-full left-0 top-0 translate-y-[0%] translate-x-[0%];

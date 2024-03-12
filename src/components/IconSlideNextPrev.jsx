@@ -1,8 +1,11 @@
 import React from "react";
 
-const IconSlideNextPrev = ({ reverse }) => {
+const IconSlideNextPrev = ({ reverse, customStyle, handleClick }) => {
   return (
-    <span className="inline-block w-10 bg-white rounded-full bg-opacity-50">
+    <span
+      className={`${customStyle} cursor-pointer iconContinue inline-block w-10 bg-white rounded-full bg-opacity-50`}
+      onClick={handleClick}
+    >
       <svg
         style={{ transform: `${reverse ? "rotate(0deg)" : "rotate(180deg)"}` }}
         id="uuid-5eb2189d-3c62-4695-bd8e-998ad113d87b"

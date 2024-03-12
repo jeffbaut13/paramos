@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Fecha from "../components/Fecha";
 import FechasLateral from "../components/FechasLateral";
-import Grilla from "../components/Grilla";
+// import Grilla from "../components/Grilla"; // Comentado, pero puedes descomentar si es necesario
 import { Link } from "react-router-dom";
 import { Opacidad, scrolltrigerFunction } from "../animations/gsap";
 import { getContainerClass, switchProcentage } from "../helpers/switchs";
@@ -23,30 +23,21 @@ const Onboarding = () => {
   const fechaRef = useRef(null);
   const TextEfect = useRef(null);
   const videobg = useRef(null);
-  const [numero, setNumero] = useState(10);
 
   useEffect(() => {
     setinicio(1);
-    // Obtener la URL actual
     const url = window.location.href;
-
-    // Verificar si la URL termina con "/onboarding"
     if (url.endsWith("/onboarding")) {
-      // Aplicar el estilo al cuerpo de la página
       document.body.style.overflow = "hidden";
     }
-
-    // Limpiar el estilo cuando el componente se desmonta
     return () => {
       document.body.style.overflow = "auto";
     };
   }, []);
 
   useEffect(() => {
-    // Configuración de ScrollTrigger para los estados de 'inicio'
     scrolltrigerFunction(padre, (self) => {
       const scrollPercentage = self.progress * 100;
-
       switchProcentage(setinicio, scrollPercentage);
     });
   }, [inicio]);
@@ -89,18 +80,37 @@ const Onboarding = () => {
   }, [inicio]);
 
   useEffect(() => {
-    const precargarVideo = () => {
+    const precargarRecursos = () => {
+      // Precargar el video
       const video = document.createElement('video');
-      video.src = '/videoIntro.mp4'; // Asegúrate de reemplazar esto con la ruta real de tu video
-      video.type = 'video/mp4'; // Especifica el tipo de archivo
-      video.preload = 'auto'; // Indica al navegador que precargue el video tan pronto como sea posible
-      document.body.appendChild(video); // Añade el video al body para asegurar la precarga (puede ser opcional y depende de tu caso de uso)
-      video.style.display = 'none'; // Hace el video invisible si no quieres mostrarlo inmediatamente
+      video.src = '/videoIntro.mp4';
+      video.type = 'video/mp4';
+      video.preload = 'auto';
+      document.body.appendChild(video);
+      video.style.display = 'none';
+
+      // Precargar las imágenes de fondo
+      const imagenesDeFondo = [
+        '/OnboardingBgBack/HOME-FRAILEJONES-1T.webp',
+        '/OnboardingBgBack/HOME-FRAILEJONES-2T.webp',
+        '/OnboardingBgBack/HOME-FRAILEJONES-3T.webp',
+        '/OnboardingBgBack/HOME-FRAILEJONES-4T.webp',
+      ];
+
+      imagenesDeFondo.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+
+      // Asegúrate de limpiar el video del DOM al desmontar
+      return () => {
+        document.body.removeChild(video);
+      };
     };
-  
-    precargarVideo();
+
+    precargarRecursos();
   }, []);
-  
+
   const containerClass = getContainerClass(inicio, Mobile);
 
   return (

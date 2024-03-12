@@ -15,16 +15,18 @@ const Loading = () => {
         // Incrementamos 1% cada 50 ms
         return oldPercentage + 1;
       });
-    }, 50); // Ajustamos a 50 ms para cumplir con el tiempo deseado
+    }, 40); // Ajustamos a 50 ms para cumplir con el tiempo deseado
 
     return () => clearInterval(interval); // Limpieza al desmontar
   }, []);
 
   return (
     <div className="loading-container w-full h-full relative bg-white flex justify-center items-center">
-      <div className="loading-text text-black text-3xl absolute top-[48%] translate-y-[-50%]">{percentage}%</div>
-     <div className=" md:w-[50%] xs:w-[60%] sm:w-[60%] lg:w-[20%]">
-      <AnimatedSVG />
+      <div className="loading-text text-black xs:text-lg lg:text-3xl absolute top-[49%] translate-y-[-50%]">
+        {percentage}%
+      </div>
+      <div className=" md:w-[50%] xs:w-[40%] sm:w-[60%] lg:w-[20%]">
+        <AnimatedSVG />
       </div>
     </div>
   );
