@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { Opacidad, scrolltrigerFunction } from "../animations/gsap";
 import { getContainerClass, switchProcentage } from "../helpers/switchs";
 import Loading from "../components/Loading";
+import IconSlideOnboarding from "../components/IconSlideOnboarding";
 gsap.registerPlugin(ScrollTrigger);
 
 const Onboarding = () => {
@@ -43,13 +44,20 @@ const Onboarding = () => {
     };
   }, []);
 
-  useEffect(() => {
-    scrolltrigerFunction(padre, (self) => {
-      const scrollPercentage = self.progress * 100;
-      switchProcentage(setinicio, scrollPercentage);
+  const handleNextClick = () => {
+    setinicio((prevInicio) => {
+      // Incrementa solo si es menor que 10
+      return prevInicio < 10 ? prevInicio + 1 : prevInicio;
     });
-  }, [inicio]);
+  };
 
+  const handlePrevClick = () => {
+    setinicio((prevInicio) => {
+      // Decrementa solo si es mayor que 3
+      return prevInicio > 3 ? prevInicio - 1 : prevInicio;
+    });
+  };
+  console.log(inicio);
   useEffect(() => {
     if (inicio >= 3) {
       gsap.fromTo(
@@ -189,6 +197,16 @@ const Onboarding = () => {
                 >
                   {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
                 </Link>
+                <>
+                  <IconSlideOnboarding
+                    onClick={handleNextClick}
+                    customStyle={`iconoSlideInicial rotate-90 fixed traslate-[-50%] bottom-0 opacity-1 z-[100]`}
+                  />
+                  <IconSlideOnboarding
+                    onClick={handlePrevClick}
+                    customStyle={`iconoSlideInicial rotate-[-90deg] fixed traslate-[-50%] top-[2rem] opacity-1 z-[100]`}
+                  />
+                </>
               </>
             )}
           </div>

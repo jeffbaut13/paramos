@@ -84,7 +84,6 @@ const Fecha = ({
 
     setTimeout(() => {
       setinicio(3);
-      document.body.style.overflowY = "visible";
     }, 5000);
   };
 

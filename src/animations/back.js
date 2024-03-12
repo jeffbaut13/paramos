@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { scrollEffects } from "./gsap";
+import { scrollEffects, transitionSection } from "./gsap";
 import gsap from "gsap";
 
 const isMobile = window.innerWidth <= 1024;
@@ -539,3 +539,101 @@ useEffect(() => {
     transitionSection(".contenedor", 600, 1);
   }
 }, [main, activeButton, numFrailejon, scrollPercentage]);
+
+useEffect(() => {
+  gsap.to(main.current, {
+    scrollTrigger: {
+      trigger: main.current,
+      start: "top top", // Comienza en la parte superior del contenedor
+      end: "bottom bottom", // Termina en la parte inferior del contenedor
+
+      onUpdate: (self) => {
+        const scroll = self.progress * 100;
+        setScrollPercentageTwo(scroll);
+        //console.log("scroll Padre " + scroll);
+        //switchProcentageZindex(scrollPercentage);
+
+        if (scroll >= 1 && scroll < 11.11) {
+          setActiveButton("Origen");
+          setScrollPercentage(1);
+        } else if (scroll >= 11.11 && scroll < 22.22) {
+          setItemActive(0);
+          setActiveButton("Nuestro propósito");
+          setScrollPercentage(2);
+          setNumFrailejon(null);
+          gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+        } else if (scroll >= 22.22 && scroll < 33.33) {
+          setActiveButton("2.000 Frailejones");
+          setScrollPercentage(3);
+          setPlayCapitulo(false);
+          gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+        } else if (scroll >= 33.33 && scroll < 44.44) {
+          setActiveButton("Los páramos");
+          setPlayCapitulo(true);
+          setScrollPercentage(4);
+          setTravesiaReverse(false);
+          gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+        } else if (scroll >= 44.44 && scroll < 55.55) {
+          setPlayCapitulo(false);
+          setScrollPercentage(5);
+          setTravesiaReverse(true);
+          setPlay(false);
+          gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+        } else if (scroll >= 55.55 && scroll < 66.66) {
+          setActiveButton("Más allá de la siembra");
+          setScrollPercentage(6);
+          setPlayMoises(false);
+          gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+        } else if (scroll >= 66.66 && scroll < 77.77) {
+          setActiveButton("Primer guardián");
+          setScrollPercentage(7);
+          setPlay(false);
+          gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+        } else if (scroll >= 77.77 && scroll < 88.88) {
+          setActiveButton("Contacto");
+          setScrollPercentage(8);
+          setPlayMoises(false);
+          gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+        } else if (scroll >= 88.88) {
+          setActiveButton("Cuéntale a todos");
+          setScrollPercentage(9);
+        }
+      },
+    },
+  });
+  if (scrollPercentage == 1) {
+    transitionSection(".contenedor", 0, 1);
+  }
+  if (scrollPercentage == 2) {
+    transitionSection(".contenedor", 100, 1);
+    setItemActive(false);
+  }
+  if (scrollPercentage == 3) {
+    transitionSection(".contenedor", 200, 1);
+  }
+  if (scrollPercentage == 4) {
+    transitionSection(".contenedor", 300, 1);
+  }
+  if (scrollPercentage == 5) {
+    transitionSection(".contenedor", 400, 1);
+  }
+  if (scrollPercentage == 6) {
+    transitionSection(".contenedor", 500, 1);
+  }
+  if (scrollPercentage == 7) {
+    transitionSection(".contenedor", 600, 1);
+  }
+  if (scrollPercentage == 8) {
+    transitionSection(".contenedor", 700, 1);
+  }
+  if (scrollPercentage == 9) {
+    transitionSection(".contenedor", 800, 1);
+  }
+}, [main, activeButton, numFrailejon, scrollPercentage]);
+
+useEffect(() => {
+  let ctx = gsap.context(() => {
+    timeLine(main);
+  }, main);
+  return () => ctx.revert(); // cleanup!
+}, [main]);

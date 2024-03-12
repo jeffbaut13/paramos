@@ -145,8 +145,7 @@ const NavBar = ({
   }, [menuMobile, bntMobile, isMenuOpen]);
 
   const handleScrollToPercentage = (percentage) => {
-    const position = document.documentElement.scrollHeight * (percentage / 100);
-    window.scrollTo({ top: position });
+    setTrasladar(percentage);
     setIsMenuOpen(false); // Cierra el menú después de hacer scroll
   };
 
@@ -167,13 +166,13 @@ const NavBar = ({
   console.log(trasladar);
   const buttons = [
     { id: 1, text: "Origen", percentage: 0 },
-    { id: 2, text: "Nuestro propósito", percentage: 11.11 },
-    { id: 3, text: "2.000 Frailejones", percentage: 22.22 },
-    { id: 4, text: "Los páramos", percentage: 33.33 },
-    { id: 5, text: "Más allá de la siembra", percentage: 55.55 },
-    { id: 6, text: "Primer guardián", percentage: 66 },
-    { id: 7, text: "Contacto", percentage: 66.66 },
-    { id: 8, text: "Cuéntale a todos", percentage: 88 },
+    { id: 2, text: "Nuestro propósito", percentage: 1 },
+    { id: 3, text: "2.000 Frailejones", percentage: 2 },
+    { id: 4, text: "Los páramos", percentage: 3 },
+    { id: 5, text: "Más allá de la siembra", percentage: 5 },
+    { id: 6, text: "Primer guardián", percentage: 6 },
+    { id: 7, text: "Contacto", percentage: 7 },
+    { id: 8, text: "Cuéntale a todos", percentage: 8 },
   ];
 
   return (
@@ -255,12 +254,13 @@ const NavBar = ({
 
       <>
         <IconSlideNextPrev
-          handleClick={scroller}
-          customStyle={`iconoSlideInicial rotate-90 fixed right-0 bottom-0 opacity-1 z-[100]`}
-        />
-        <IconSlideNextPrev
           handleClick={scrollerResta}
-          customStyle={`iconoSlideInicial rotate-[-90deg] fixed right-0 bottom-[3rem] opacity-1 z-[100]`}
+          customStyle={`iconoSlideInicial rotate-[-90deg] fixed right-0 top-1/2 translate-x-[150%] translate-y-[-200%] opacity-1 z-[100]`}
+        />
+
+        <IconSlideNextPrev
+          handleClick={scroller}
+          customStyle={`iconoSlideInicial rotate-90 fixed right-0 translate-x-[150%] translate-y-[200%] bottom-1/2  opacity-1 z-[100]`}
         />
       </>
 
@@ -268,19 +268,13 @@ const NavBar = ({
         {/* <span className="fixed lg:top-0 right-0 xs:translate-y-[-20px] lg:translate-y-[-50px] text-white">
           {scrollPercentageTwo}
         </span> */}
-        <div className="barra overflow-hidden rounded-3xl w-full xs:h-[17px] lg:h-full relative">
+        <div className="barra overflow-hidden rounded-3xl w-full h-[17px] relative">
           <div className="maskChild bg-white opacity-35"></div>
-          {isMobile ? (
-            <div
-              style={{ width: `${scrollPercentageTwo}%` }}
-              className=" lg:rounded-b-3xl xs:rounded-e-3xl transition-all ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
-            ></div>
-          ) : (
-            <div
-              style={{ height: `${scrollPercentageTwo}%` }}
-              className=" lg:rounded-b-3xl xs:rounded-e-3xl transition-all w-full ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
-            ></div>
-          )}
+
+          <div
+            style={{ width: `${scrollPercentageTwo}%` }}
+            className=" rounded-e-3xl transition-all ease-out duration-1000 absolute z-50 top-0 left-0 inline-block h-full  bg-white "
+          ></div>
         </div>
       </div>
 
