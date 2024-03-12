@@ -89,16 +89,18 @@ const Onboarding = () => {
   }, [inicio]);
 
   useEffect(() => {
-    const precargarImagenes = () => {
-      for (let i = 1; i <= 144; i++) {
-        const img = new Image();
-        img.src = `/frames/capa${i}.webp`;
-      }
+    const precargarVideo = () => {
+      const video = document.createElement('video');
+      video.src = '/videoIntro.mp4'; // Asegúrate de reemplazar esto con la ruta real de tu video
+      video.type = 'video/mp4'; // Especifica el tipo de archivo
+      video.preload = 'auto'; // Indica al navegador que precargue el video tan pronto como sea posible
+      document.body.appendChild(video); // Añade el video al body para asegurar la precarga (puede ser opcional y depende de tu caso de uso)
+      video.style.display = 'none'; // Hace el video invisible si no quieres mostrarlo inmediatamente
     };
-
-    precargarImagenes();
+  
+    precargarVideo();
   }, []);
-
+  
   const containerClass = getContainerClass(inicio, Mobile);
 
   return (
