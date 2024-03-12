@@ -19,20 +19,18 @@ import DocumentalMoises from "../components/DocumentalMoises";
 
 function App() {
   const main = useRef(null);
-  const [imageBg, setImageBg] = useState("/Conoce/fondoConoce.webp");
   const [numFrailejon, setNumFrailejon] = useState(null);
   const [travesiaReverse, setTravesiaReverse] = useState(false);
   const [active360, setActive360] = useState(1);
-  const [translate, setTranslate] = useState(0);
   const [activeButton, setActiveButton] = useState("Origen");
   const [play, setPlay] = useState(false);
   const [playCapitulo, setPlayCapitulo] = useState(false);
   const [playMoises, setPlayMoises] = useState(false);
-  const [altura, setAltura] = useState(null);
   const [itemActive, setItemActive] = useState(0);
   const [scrollPercentage, setScrollPercentage] = useState(1);
   const [scrollPercentageTwo, setScrollPercentageTwo] = useState(0);
-  useEffect(() => {
+
+  /*  useEffect(() => {
     gsap.to(main.current, {
       scrollTrigger: {
         trigger: main.current,
@@ -45,7 +43,7 @@ function App() {
           //console.log("scroll Padre " + scroll);
           //switchProcentageZindex(scrollPercentage);
 
-          if (scroll >= 0 && scroll < 11.11) {
+          if (scroll >= 1 && scroll < 11.11) {
             setActiveButton("Origen");
             setScrollPercentage(1);
           } else if (scroll >= 11.11 && scroll < 22.22) {
@@ -122,90 +120,28 @@ function App() {
       transitionSection(".contenedor", 800, 1);
     }
   }, [main, activeButton, numFrailejon, scrollPercentage]);
-  //console.log(scrollPercentage);
-  function getScrollDistance() {
-    // Obtén la posición actual de desplazamiento vertical
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    // Puedes usar scrollTop directamente si no te importa la compatibilidad con IE
-    // const scrollTop = window.scrollY;
-
-    return scrollTop;
-  }
-
-  // Ejemplo de cómo usar la función
-  window.addEventListener("scroll", () => {
-    const scrollDistance = getScrollDistance();
-    // console.log("Recorrido vertical:", scrollDistance);
-  });
-  const handleScroll = () => {
-    const scrolled = window.scrollY;
-    const alturaContenedor = main.current.clientHeight;
-    const division = alturaContenedor / 7;
-
-    /* const one = division;
-    const two = division + 400;
-    const three = division * 3;
-    const four = division * 4;
-    const five = division * 5;
-    const six = division * 6;
-    const seven = division * 7;
-
-    if (scrolled >= one < two) {
-      setTranslate(translate + 1);
-    }
-    if (scrolled < one) {
-      setTranslate(0);
-    }
-    if (scrolled >= two) {
-      setTranslate(translate + 1);
-    } */
-  };
-
-  //console.log(altura + " " + pixelsScrolled);
-  useEffect(() => {
-    // Agregamos el evento de scroll cuando el componente se monta
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup: removemos el evento al desmontar el componente
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [translate]);
-
-  const avanza = () => {
-    alert("hola");
-  };
-  const retrocede = () => {
-    setMostrarElementos((prev) => prev - 1);
-  };
 
   useEffect(() => {
-    if (main.current) {
-      const alturaContenedor = main.current.clientHeight;
-      const division = alturaContenedor;
-      setAltura(division);
-    }
-  }, [main]);
-  //  console.log("la altura d emain es " + altura);
-
-  useEffect(() => {
-    let ctx = gsap.context(
-      () => {
-        timeLine(
-          main,
-          setTranslate,
-          translate,
-          setNumFrailejon,
-          numFrailejon,
-          setTravesiaReverse
-        );
-      },
-      main,
-      translate
-    );
+    let ctx = gsap.context(() => {
+      timeLine(main);
+    }, main);
     return () => ctx.revert(); // cleanup!
-  }, [main]);
+  }, [main]); */
+
+  const [trasladar, setTrasladar] = useState(0);
+
+  useEffect(() => {
+    if (trasladar == 0) {
+      gsap.to(".contenedor", {
+        y: "-0",
+      });
+    } else if (trasladar == 1) {
+      gsap.to(".contenedor", {
+        y: "-100%",
+      });
+    }
+  }, [trasladar]);
+
   return (
     <div ref={main} className="maxW h-[700vh] relative">
       <div className=" bg-gradient-to-t from-transparent from-85% to-[#0000009e] w-full h-full fixed left-0  z-[5]"></div>
@@ -226,6 +162,8 @@ function App() {
           activeButton={activeButton}
           scrollPercentage={scrollPercentage}
           scrollPercentageTwo={scrollPercentageTwo}
+          trasladar={trasladar}
+          setTrasladar={setTrasladar}
         />
         <VideoComponent />
         <VideoComponent />

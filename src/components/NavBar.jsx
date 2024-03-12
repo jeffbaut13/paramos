@@ -4,7 +4,13 @@ import MouseScroll from "./MouseScroll";
 import HandScroll from "./HandScroll";
 import IconSlideNextPrev from "./IconSlideNextPrev";
 
-const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
+const NavBar = ({
+  activeButton,
+  scrollPercentage,
+  scrollPercentageTwo,
+  trasladar,
+  setTrasladar,
+}) => {
   const isMobile = window.innerWidth <= 1024;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuDestopk, setIsMenuDestopk] = useState(null);
@@ -144,19 +150,21 @@ const NavBar = ({ activeButton, scrollPercentage, scrollPercentageTwo }) => {
     setIsMenuOpen(false); // Cierra el menú después de hacer scroll
   };
 
-  let resta = "";
-  const scrollBtn = [0, 11.11, 22.22, 33.33, 44.44, 55.55, 66, 70, 88.88];
-
   const scroller = () => {
-    console.log(scrollBtn[scrollPercentage]);
-    handleScrollToPercentage(scrollBtn[scrollPercentage]);
+    if (trasladar == 8) {
+      setTrasladar(8);
+    } else {
+      setTrasladar(trasladar + 1);
+    }
   };
   const scrollerResta = () => {
-    resta = scrollPercentage - 2;
-    //console.log(resta);
-    handleScrollToPercentage(scrollBtn[resta]);
+    if (trasladar == 0) {
+      setTrasladar(0);
+    } else {
+      setTrasladar(trasladar - 1);
+    }
   };
-
+  console.log(trasladar);
   const buttons = [
     { id: 1, text: "Origen", percentage: 0 },
     { id: 2, text: "Nuestro propósito", percentage: 11.11 },

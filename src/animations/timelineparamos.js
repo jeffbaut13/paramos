@@ -8,14 +8,7 @@ const normal = 1;
 const medio = 1.5;
 const lento = 2;
 
-export const timeLine = (
-  main,
-  setTranslate,
-  translate,
-  setNumFrailejon,
-  numFrailejon,
-  setTravesiaReverse
-) => {
+export const timeLine = (main) => {
   const tl = scrollEffects(main, 3);
 
   if (isMobile) {
