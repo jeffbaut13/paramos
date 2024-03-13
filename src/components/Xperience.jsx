@@ -85,15 +85,11 @@ const Xperience = ({ play, setPlay }) => {
       <div className="relative w-full h-full paddingComponentes flex xs:flex-col lg:flex-row">
         <div className="experienciaTextoBox BoxesTextStart flex flex-col items-center justify-center">
           <p className="experienciaTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            Más allá
-            <br />
-            de la siembra
-            <br />
-            de frailejones,
-            <br />
-            conectamos con
-            <br />
-            la naturaleza
+            Juntos <br />
+            cambiaremos <br />
+            el destino <br />
+            de nuestros <br />
+            Páramos
           </p>
         </div>
         <div className="bg-black experienciaImagen relative BoxesImgEnd">

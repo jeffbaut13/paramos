@@ -180,32 +180,35 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         </div>
         <div className="BoxDosmilTexto BoxesTextEnd flex-center z-0 relative">
           <p className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            son 3 especies
-            <br />
-            nativas que <br /> sembraremos
-            <br /> en los páramos.
+            CADA FRAILEJÓN <br />
+            SEMBRADO <br />
+            ES UN LEGADO <br /> QUE TRASCIENDE <br />
+            EN EL TIEMPO.
           </p>
-          <Button handleClick={() => setNumFrailejon(1)} text={"CONÓCELAS"} />
+          <Button handleClick={() => setNumFrailejon(1)} text={"CONÓCELOS"} />
           <p className="SegundoTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             {numFrailejon == 1 && (
               <span ref={parrafoFrailejon}>
-                frailejon
+                Sembraremos <br />
+                frailejón
                 <br /> espeletia
                 <br /> sp.
               </span>
             )}
             {numFrailejon == 2 && (
               <span ref={parrafoFrailejon}>
-                FRAILEJON AMARILLO
+                Sembraremos <br />
+                Frailejón Amarillo
                 <br />
-                ESPELETIA LOPEZII
+                espeletia lopezii
               </span>
             )}
             {numFrailejon == 3 && (
               <span ref={parrafoFrailejon}>
-                FRAILEJON BLANCO
+                y el endémico <br />
+                Frailejón Blanco
                 <br />
-                ESPELETIA INCANA.
+                espeletia Incana.
               </span>
             )}
           </p>

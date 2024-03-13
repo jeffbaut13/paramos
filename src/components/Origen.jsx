@@ -122,7 +122,12 @@ const Origen = ({ active360, setActive360 }) => {
       <div className=" responsive flex relative w-full h-full paddingComponentes ">
         <div className="BoxOrigenText  BoxesTextStart flex-center">
           <p className="origenTexto  font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-           ¿quiénes<br/>están detrás<br/>de esta<br/>hazaña?         </p>
+            DETRÁS <br /> CADA SEMILLA, <br />
+            HAY UNA <br />
+            HISTORIA DE <br />
+            AMOR POR LA <br />
+            TIERRA.
+          </p>
         </div>
         <div
           style={{ backgroundImage: "url(/bgParamos/360.webp)" }}

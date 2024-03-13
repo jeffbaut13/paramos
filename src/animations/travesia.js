@@ -468,6 +468,16 @@ export const primerEfecto2 = (
 
 export const reverseAction = (padre) => {
   let ctx = gsap.context(() => {
+    gsap.to(`.punto`, {
+      opacity: 1,
+    });
+    gsap.to(`.cards2 .cajaTitulos .parrafo`, {
+      display: "none",
+      opacity: 0,
+    });
+    gsap.to(".cajaIconos", {
+      opacity: 0,
+    });
     gsap.to(
       ".travesia .iconContinue",
 

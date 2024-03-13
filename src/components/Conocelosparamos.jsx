@@ -494,9 +494,11 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className="LineaUnoMontaña absolute top-[14%] left-[6%] w-[57%] z-50"
             />
             <p className="textoUnoLosParamos text-[14px] absolute lg:top-[10vh] lg:left-[38vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50">
-              En enero de 2024, una intensa ola de calor arrasó con miles
-              <br /> de hectáreas de páramo y frailejones centenarios.
-              <br /> Quisimos hacer algo para recuperar parte de lo perdido.
+              En enero de 2024, una ola de calor arrasó con nuestros páramos,
+              dejando tras de sí un paisaje desolador y el eco de un desafío
+              inmenso. Pero en lugar de ser espectadores de la destrucción,
+              elegimos ser agentes de cambio, sembrando semillas de esperanza en
+              estas tierras.
             </p>
 
             <img
@@ -510,11 +512,10 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoDosLosParamos text-[14px] absolute lg:top-[10vh] lg:left-[35vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
             >
-              Los frailejones son una especie emblemática de los páramos,
-              <br />
-              un ecosistema único y vital que alberga una gran biodiversidad
-              <br /> y son fundamentales en la regulación del ciclo del agua y
-              el clima.
+              Imagina un mundo donde cada hoja es un susurro de vida, donde cada
+              flor es un faro de esperanza. Eso son los frailejones para
+              nuestros páramos: guardianes silenciosos que sostienen el
+              equilibrio de un ecosistema único.
             </p>
 
             <img
@@ -528,8 +529,8 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoTresLosParamos  text-[14px] absolute lg:top-[35vh] lg:left-[52vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
             >
-              Sus hojas absorben la humedad de la neblina
-              <br />y liberan el agua en las quebradas y ríos.
+              Desde las alturas, absorben la humedad de la neblina y la
+              transforman en agua, que alimenta arroyos y ríos.
             </p>
 
             <img
@@ -547,11 +548,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoCuatroLosParamos  text-[14px] absolute lg:top-[10vh] lg:left-[30vw] xs:top-[21vh] xs:left-[15vw]  text-white w-[500px] xs:w-[200px] z-50`}
             >
-              Lo haremos en varias jornadas; la primera será en marzo,
-              <br />
-              junto a voluntarios que previamente se registraron
-              <br />
-              para sembrar en los mágicos páramos de Boyacá.
+              Nuestro viaje comienza en marzo, cuando nos uniremos en las
+              cumbres mágicas de Boyacá. Allí, entre los susurros del viento y
+              la quietud de la montaña, conectaremos almas con frailejones.
             </p>
 
             <img
@@ -565,9 +564,8 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             <p
               className={`textoCincoLosParamos  text-1xl absolute lg:top-[52vh] lg:left-[9vw] xs:top-[21vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
             >
-              El terreno ha sido previamente verificado por expertos
-              <br />
-              para asegurar el éxito de la siembra.
+              Expertos guiarán nuestros pasos, asegurando que cada gesto sea un
+              paso firme hacia el éxito en la siembra.
             </p>
             <img
               src="/Conoce/circulo1.png"
@@ -640,18 +638,13 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         </div>
         <div className="anchoInicialPrimario BoxConoceText BoxesTextEnd flex flex-col items-center justify-center">
           <p className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            Vamos a sembrar
-            <br />
-            2,000 frailejones.
-            <br />
-            <br />
-            Un reto
-            <br />
-            que lograremos
-            <br />
-            con tu ayuda.
+            Sembraremos <br />
+            2,000 frailejones <br />
+            en el corazón <br />
+            de nuestros <br />
+            páramos.
           </p>
-          <Button handleClick={handleClick} text={"ENTÉRATE CÓMO"} />
+          <Button handleClick={handleClick} text={"Empecemos"} />
         </div>
       </div>
     </div>

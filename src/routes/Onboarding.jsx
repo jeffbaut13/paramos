@@ -28,6 +28,99 @@ const Onboarding = () => {
 
   const [isRouterReady, setIsRouterReady] = useState(false);
   const [isLoadingVisible, setIsLoadingVisible] = useState(true);
+  const [scrollEnabled, setScrollEnabled] = useState(true);
+
+  useEffect(() => {
+    // Función para capturar eventos de desplazamiento del mouse
+    function handleMouseWheel(event) {
+      if (!scrollEnabled) return;
+
+      const delta = Math.max(-1, Math.min(1, event.deltaY || -event.detail));
+      if (delta > 0) {
+        handleNextClick();
+      } else {
+        handlePrevClick();
+      }
+
+      disableScrollTemporarily();
+    }
+
+    function handleTouchpadScroll(event) {
+      if (!scrollEnabled) return;
+
+      const delta = event.deltaY;
+      if (delta > 0) {
+        handleNextClick();
+      } else {
+        handlePrevClick();
+      }
+
+      disableScrollTemporarily();
+    }
+
+    // Función para capturar eventos de desplazamiento táctil en dispositivos móviles
+    function handleTouchScroll(event) {
+      if (!scrollEnabled) return;
+
+      const delta = event.changedTouches[0].clientY - event.touches[0].clientY;
+      if (delta > 0) {
+        handleNextClick();
+      } else {
+        handlePrevClick();
+      }
+
+      disableScrollTemporarily();
+    }
+
+    function disableScrollTemporarily() {
+      setScrollEnabled(false);
+      setTimeout(() => {
+        setScrollEnabled(true);
+      }, 2000);
+    }
+
+    // Agregar event listeners
+    document.addEventListener("wheel", handleMouseWheel);
+    document.addEventListener("mousewheel", handleMouseWheel);
+    document.addEventListener("DOMMouseScroll", handleMouseWheel);
+    document.addEventListener("wheel", handleTouchpadScroll);
+    document.addEventListener(
+      "touchstart",
+      function (event) {
+        startY = event.touches[0].clientY;
+      },
+      false
+    );
+    document.addEventListener(
+      "touchend",
+      function (event) {
+        handleTouchScroll(event);
+      },
+      false
+    );
+
+    // Cleanup
+    return () => {
+      document.removeEventListener("wheel", handleMouseWheel);
+      document.removeEventListener("mousewheel", handleMouseWheel);
+      document.removeEventListener("DOMMouseScroll", handleMouseWheel);
+      document.removeEventListener("wheel", handleTouchpadScroll);
+      document.removeEventListener(
+        "touchstart",
+        function (event) {
+          startY = event.touches[0].clientY;
+        },
+        false
+      );
+      document.removeEventListener(
+        "touchend",
+        function (event) {
+          handleTouchScroll(event);
+        },
+        false
+      );
+    };
+  }, [scrollEnabled, inicio]);
 
   useEffect(() => {
     const routerTimeout = setTimeout(() => {
@@ -45,17 +138,19 @@ const Onboarding = () => {
   }, []);
 
   const handleNextClick = () => {
-    setinicio((prevInicio) => {
-      // Incrementa solo si es menor que 10
-      return prevInicio < 10 ? prevInicio + 1 : prevInicio;
-    });
+    if (inicio == 10) {
+      setinicio(10);
+    } else if (inicio >= 3) {
+      setinicio(inicio + 1);
+    }
   };
 
   const handlePrevClick = () => {
-    setinicio((prevInicio) => {
-      // Decrementa solo si es mayor que 3
-      return prevInicio > 3 ? prevInicio - 1 : prevInicio;
-    });
+    if (inicio == 3) {
+      setinicio(3);
+    } else {
+      setinicio(inicio - 1);
+    }
   };
   console.log(inicio);
   useEffect(() => {
@@ -135,11 +230,29 @@ const Onboarding = () => {
       {isRouterReady && (
         <div ref={padre} className="h-[600vh] onBoarding">
           {/* <Grilla /> */}
-          <div className="fixed top-0 left-0 bg-black bg-opacity-40 z-10 w-full h-full"></div>
+          <div className="fixed pointer-events-none top-0 left-0 bg-black bg-opacity-40 z-10 w-full h-full"></div>
+
           <div
             ref={bgOverlay}
             className="overflow-hidden backgroundImage fixed w-full h-full z-0 flex-center-col "
           >
+            {inicio >= 3 && inicio <= 10 && (
+              <div className="botonesOnboarding flex items-center maxW w-full justify-center h-screen relative">
+                <div className="absolute left-[0] translate-x-[-130%] z-[10000]">
+                  <IconSlideOnboarding
+                    onClick={handlePrevClick}
+                    customStyle="iconoSlideInicial rotate-[-180deg] opacity-1 z-[10000]"
+                  />
+                </div>
+                <div className="absolute right-[0] translate-x-[130%] z-[10000]">
+                  <IconSlideOnboarding
+                    onClick={handleNextClick}
+                    customStyle="iconoSlideInicial opacity-1 z-[100]"
+                  />
+                </div>
+              </div>
+            )}
+
             <img
               className="absoluteImg w-full h-full"
               ref={imagen2}
@@ -197,16 +310,7 @@ const Onboarding = () => {
                 >
                   {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
                 </Link>
-                <>
-                  <IconSlideOnboarding
-                    onClick={handleNextClick}
-                    customStyle={`iconoSlideInicial rotate-90 fixed traslate-[-50%] bottom-0 opacity-1 z-[100]`}
-                  />
-                  <IconSlideOnboarding
-                    onClick={handlePrevClick}
-                    customStyle={`iconoSlideInicial rotate-[-90deg] fixed traslate-[-50%] top-[2rem] opacity-1 z-[100]`}
-                  />
-                </>
+                <></>
               </>
             )}
           </div>

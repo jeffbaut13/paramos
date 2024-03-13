@@ -165,14 +165,14 @@ const NavBar = ({
   };
   console.log(trasladar);
   const buttons = [
-    { id: 1, text: "Origen", percentage: 0 },
-    { id: 2, text: "Nuestro propósito", percentage: 1 },
-    { id: 3, text: "2.000 Frailejones", percentage: 2 },
-    { id: 4, text: "Los páramos", percentage: 3 },
-    { id: 5, text: "Más allá de la siembra", percentage: 5 },
-    { id: 6, text: "Primer guardián", percentage: 6 },
-    { id: 7, text: "Contacto", percentage: 7 },
-    { id: 8, text: "Cuéntale a todos", percentage: 8 },
+    { id: 1, text: "2,000 Frailejones", percentage: 0 },
+    { id: 2, text: "los expertos", percentage: 1 },
+    { id: 3, text: "Las especies", percentage: 2 },
+    { id: 4, text: "Primera siembra", percentage: 3 },
+    { id: 5, text: "Campamento", percentage: 5 },
+    { id: 6, text: "Moisés Moreno", percentage: 6 },
+    { id: 7, text: "¿Preguntas?", percentage: 7 },
+    { id: 8, text: "Descargable", percentage: 8 },
   ];
 
   return (

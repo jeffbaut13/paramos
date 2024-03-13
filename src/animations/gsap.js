@@ -66,8 +66,8 @@ export const frailejon = (
   normal,
   isMobile
 ) => {
-  const tl7 = gsap.timeline();
-  tl7.to(".bgvid", { opacity: 1, duration: rapido });
+  const tl7 = gsap.timeline({ ease: "power1.inOut" });
+  tl7.fromTo(".bgvid", { opacity: 0 }, { opacity: 1, duration: rapido });
   if (isMobile) {
     tl7.to(".BoxDosmilTexto", { height: "100%" }).addLabel("titulo1");
     tl7.to(".BoxDosmilImage", { height: "0%" }, "<");
@@ -109,7 +109,7 @@ export const frailejon = (
     "titulo1"
   );
 
-  tl7.to(".bgvid", { opacity: 0, duration: normal }, "<");
+  tl7.fromTo(".bgvid", { opacity: 1 }, { opacity: 0, duration: normal }, "<");
 
   if (isMobile) {
     tl7.to(".BoxDosmilImage", { height: "50%" }, "titulo1+=0.2");

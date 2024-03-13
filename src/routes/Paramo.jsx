@@ -16,6 +16,7 @@ import NavBar from "../components/NavBar";
 import { transitionSection } from "../animations/gsap";
 import Xperience from "../components/Xperience";
 import DocumentalMoises from "../components/DocumentalMoises";
+import { handleScrollEvent } from "../helpers/scrollEvents";
 
 function App() {
   const main = useRef(null);
@@ -31,19 +32,132 @@ function App() {
   const [scrollPercentageTwo, setScrollPercentageTwo] = useState(0);
 
   const [trasladar, setTrasladar] = useState(0);
+
+  const [scrollEnabled, setScrollEnabled] = useState(true);
+
+  const scroller = () => {
+    if (trasladar == 8) {
+      setTrasladar(8);
+    } else {
+      setTrasladar(trasladar + 1);
+      console.log("avance abajo");
+    }
+  };
+  const scrollerResta = () => {
+    if (trasladar == 0) {
+      setTrasladar(0);
+    } else {
+      setTrasladar(trasladar - 1);
+      console.log("avance arriba");
+    }
+  };
+
+  useEffect(() => {
+    // Función para capturar eventos de desplazamiento del mouse
+    function handleMouseWheel(event) {
+      if (!scrollEnabled) return;
+
+      const delta = Math.max(-1, Math.min(1, event.deltaY || -event.detail));
+      if (delta > 0) {
+        scroller();
+      } else {
+        scrollerResta();
+      }
+
+      disableScrollTemporarily();
+    }
+
+    function handleTouchpadScroll(event) {
+      if (!scrollEnabled) return;
+
+      const delta = event.deltaY;
+      if (delta > 0) {
+        scroller();
+      } else {
+        scrollerResta();
+      }
+
+      disableScrollTemporarily();
+    }
+
+    // Función para capturar eventos de desplazamiento táctil en dispositivos móviles
+    function handleTouchScroll(event) {
+      if (!scrollEnabled) return;
+
+      const delta = event.changedTouches[0].clientY - event.touches[0].clientY;
+      if (delta > 0) {
+        scroller();
+      } else {
+        scrollerResta();
+      }
+
+      disableScrollTemporarily();
+    }
+
+    function disableScrollTemporarily() {
+      setScrollEnabled(false);
+      setTimeout(() => {
+        setScrollEnabled(true);
+      }, 2000);
+    }
+
+    // Agregar event listeners
+    document.addEventListener("wheel", handleMouseWheel);
+    document.addEventListener("mousewheel", handleMouseWheel);
+    document.addEventListener("DOMMouseScroll", handleMouseWheel);
+    document.addEventListener("wheel", handleTouchpadScroll);
+    document.addEventListener(
+      "touchstart",
+      function (event) {
+        startY = event.touches[0].clientY;
+      },
+      false
+    );
+    document.addEventListener(
+      "touchend",
+      function (event) {
+        handleTouchScroll(event);
+      },
+      false
+    );
+
+    // Cleanup
+    return () => {
+      document.removeEventListener("wheel", handleMouseWheel);
+      document.removeEventListener("mousewheel", handleMouseWheel);
+      document.removeEventListener("DOMMouseScroll", handleMouseWheel);
+      document.removeEventListener("wheel", handleTouchpadScroll);
+      document.removeEventListener(
+        "touchstart",
+        function (event) {
+          startY = event.touches[0].clientY;
+        },
+        false
+      );
+      document.removeEventListener(
+        "touchend",
+        function (event) {
+          handleTouchScroll(event);
+        },
+        false
+      );
+    };
+  }, [scrollEnabled, trasladar]);
+
   let porcentaje = 12.5;
   let velocidadTransicion = 0.3;
+
   useEffect(() => {
     if (trasladar == 0) {
+      timeLine();
       gsap.to(".contenedor", {
         y: "-0",
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
       setScrollPercentageTwo(0);
-      setActiveButton("Origen");
+      setActiveButton("2,000 Frailejones");
       setScrollPercentage(1);
-      timeLine();
     } else if (trasladar == 1) {
       gsap.to(".contenedor", {
         y: "-100%",
@@ -52,10 +166,10 @@ function App() {
       });
       setScrollPercentageTwo(porcentaje);
       setItemActive(0);
-      setActiveButton("Nuestro propósito");
+      setActiveButton("los expertos");
       setScrollPercentage(2);
       setNumFrailejon(null);
-      timeLine();
+
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 2) {
       gsap.to(".contenedor", {
@@ -64,10 +178,10 @@ function App() {
         duration: velocidadTransicion,
       });
       setScrollPercentageTwo(porcentaje * 2);
-      setActiveButton("2.000 Frailejones");
+      setActiveButton("Las especies");
       setScrollPercentage(3);
       setPlayCapitulo(false);
-      timeLine();
+
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 3) {
       gsap.to(".contenedor", {
@@ -76,7 +190,7 @@ function App() {
         duration: velocidadTransicion,
       });
       setScrollPercentageTwo(porcentaje * 3);
-      setActiveButton("Los páramos");
+      setActiveButton("Primera siembra");
       setPlayCapitulo(true);
       setScrollPercentage(4);
       setTravesiaReverse(false);
@@ -93,7 +207,7 @@ function App() {
       setScrollPercentage(5);
       setTravesiaReverse(true);
       setPlay(false);
-      timeLine();
+
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 5) {
       gsap.to(".contenedor", {
@@ -101,11 +215,11 @@ function App() {
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
-      setActiveButton("Más allá de la siembra");
+      setActiveButton("Campamento");
       setScrollPercentageTwo(porcentaje * 5);
       setScrollPercentage(6);
       setPlayMoises(false);
-      timeLine();
+
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 6) {
       gsap.to(".contenedor", {
@@ -113,11 +227,11 @@ function App() {
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
-      setActiveButton("Primer guardián");
+      setActiveButton("Moisés Moreno");
       setScrollPercentageTwo(porcentaje * 6);
       setScrollPercentage(7);
       setPlay(false);
-      timeLine();
+
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 7) {
       gsap.to(".contenedor", {
@@ -125,7 +239,7 @@ function App() {
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
-      setActiveButton("Contacto");
+      setActiveButton("¿Preguntas?");
       setScrollPercentageTwo(porcentaje * 7);
       setScrollPercentage(8);
       setPlayMoises(false);
@@ -137,7 +251,7 @@ function App() {
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
-      setActiveButton("Cuéntale a todos");
+      setActiveButton("Descargable");
       setScrollPercentageTwo(porcentaje * 8);
       setScrollPercentage(9);
       gsap.fromTo(".blurParamos", { opacity: 0 }, { opacity: 1, duration: 1 });

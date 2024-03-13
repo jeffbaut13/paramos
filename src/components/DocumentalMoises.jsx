@@ -137,15 +137,12 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
         </div>
         <div className="BoxMoisesText BoxesTextEnd flex flex-col items-center justify-center">
           <p className=" moisesTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            En boyacá
+            Nuestro primer <br />
+            guardián del <br /> Páramo. <br />
             <br />
-            nace la historia
-            <br />
-            de nuestro
-            <br />
-            primer guardián
-            <br />
-            del páramo.
+            Un hombre que ha <br />
+            dedicado su vida <br />a cultivar <br />
+            frailejones.
           </p>
         </div>
       </div>

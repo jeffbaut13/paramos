@@ -29,7 +29,39 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
   }, [posicion]);
 
   useEffect(() => {
-    if (!travesiaReverse) {
+    if (travesiaReverse == false) {
+      const tl = gsap.timeline();
+      if (isMobile) {
+        tl.fromTo(".BoxTravesiaCards", { height: "0%" }, { height: "50%" });
+        tl.fromTo(
+          ".BoxTravesiaTexto",
+          { height: "100%" },
+          { height: "50%" },
+          "<"
+        ).addLabel("cambioTravesia2");
+      } else {
+        tl.fromTo(".BoxTravesiaCards", { width: "0%" }, { width: "50%" });
+        tl.fromTo(
+          ".BoxTravesiaTexto",
+          { width: "100%" },
+          { width: "50%" },
+          "<"
+        ).addLabel("cambioTravesia2");
+      }
+      tl.to(
+        ".blurParamos",
+        { opacity: 0, duration: 1 },
+        "cambioTravesia2-=0.5"
+      );
+
+      tl.to(
+        ".travesia .btnconoce",
+        {
+          opacity: 1,
+          duration: 0,
+        },
+        "cambioTravesia2-=0.5"
+      );
       reverseAction(padre);
       setPosicion(1);
     }
@@ -58,7 +90,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
 
     tl.add(() => {
       primerEfecto2(padre, "cards1", "cards2", "cards3");
-    });
+    }, "cambioTravesia-=0.5");
     tl.to(
       ".travesia .btnconoce",
       {
@@ -197,8 +229,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
+                        Ascenderás a una altura máxima de 4,000 MSNM
                       </h6>
                     </div>
                     <div className="svgIcono svgIcono3">
@@ -206,8 +237,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img className="w-[80%]" src="/svg/reloj.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
+                        La caminata puede durar entre 8 - 10 horas.
                       </h6>
                     </div>
                   </div>
@@ -259,7 +289,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                       </span>
                       <h6 className="subtitulo">
                         La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
+                        <span className="font-black">16 a 18 km.</span>
                       </h6>
                     </div>
                     <div className="svgIcono svgIcono2">
@@ -267,8 +297,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
+                        Ascenderás a una altura máxima de 3,950 MSNM
                       </h6>
                     </div>
                     <div className="svgIcono svgIcono3">
@@ -276,8 +305,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img className="w-[80%]" src="/svg/reloj.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
+                        La caminata puede durar entre 9 - 11 horas.
                       </h6>
                     </div>
                   </div>
@@ -338,8 +366,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
+                        Ascenderás a una altura máxima de 4,000 MSNM
                       </h6>
                     </div>
                     <div className="svgIcono svgIcono3">
@@ -347,8 +374,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img className="w-[80%]" src="/svg/reloj.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
+                        La caminata puede durar entre 8 - 10 horas.
                       </h6>
                     </div>
                   </div>
@@ -376,10 +402,12 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         </div>
         <div className="BoxTravesiaTexto   BoxesTextEnd flex-center">
           <p className="origenTexto textoUno font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            los páramos <br />
-            en los que
+            Boyacá <br />
+            será nuestro
             <br />
-            vamos <br /> a sembrar.
+            Punto de
+            <br />
+            partida.
           </p>
           <Button handleClick={handleGspa} text={"EXPLORAR"} />
         </div>
