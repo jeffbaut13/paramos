@@ -284,7 +284,7 @@ const Onboarding = () => {
                 <Link
                   to={"/paramo"}
                   ref={barra}
-                  className={`fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing ${
+                  className={`fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing z-[300] ${
                     inicio >= 10 ? "claseAdicional" : ""
                   }`}
                 >

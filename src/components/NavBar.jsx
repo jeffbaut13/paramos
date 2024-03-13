@@ -156,6 +156,7 @@ const NavBar = ({
       setTrasladar(trasladar + 1);
     }
   };
+
   const scrollerResta = () => {
     if (trasladar == 0) {
       setTrasladar(0);
@@ -163,7 +164,7 @@ const NavBar = ({
       setTrasladar(trasladar - 1);
     }
   };
-  console.log(trasladar);
+
   const buttons = [
     { id: 1, text: "2,000 Frailejones", percentage: 0 },
     { id: 2, text: "los expertos", percentage: 1 },
@@ -255,7 +256,7 @@ const NavBar = ({
       <>
         <IconSlideNextPrev
           handleClick={scrollerResta}
-          customStyle={`iconoSlideInicial rotate-[-90deg] fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 max-lg:right-3 lg:translate-x-[150%] xs:translate-y-[-200%] lg:translate-y-[-150%] opacity-1 z-[100]`}
+          customStyle={`iconoSlideInicial btn1 rotate-[-90deg] fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 max-lg:right-3 lg:translate-x-[150%] xs:translate-y-[-200%] lg:translate-y-[-150%] opacity-1 z-[100]`}
         />
 
         <IconSlideNextPrev

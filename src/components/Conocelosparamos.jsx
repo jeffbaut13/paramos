@@ -38,49 +38,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
       tl.to(".slideBtn", {
         display: "none",
       });
-      tl.fromTo(
-        ".conoce .titulo3",
-        {
-          scale: 1,
-          opacity: 1,
-          x: "0%",
-        },
-        {
-          scale: 2,
-          opacity: 0,
-          x: "-30%",
-          duration: rapido,
-        },
 
-        "<"
-      );
-      tl.fromTo(
-        ".conoce .titulo2",
-        {
-          scale: 1,
-          opacity: 1,
-          x: "0%",
-        },
-        {
-          scale: 2,
-          opacity: 0,
-          x: "-30%",
-          duration: rapido,
-        },
-
-        "<"
-      );
-      tl.fromTo(
-        ".conoce .titulo1",
-        { opacity: 0, scale: 0.5, x: "0%" },
-        {
-          opacity: 1,
-          scale: 1,
-          x: "0%",
-          duration: rapido,
-        },
-        "<"
-      );
       tl.to(
         ".m4",
 
@@ -129,13 +87,6 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         { opacity: 0 },
 
         "<-=1"
-      );
-      tl.fromTo(
-        ".conoce .punto",
-        {
-          opacity: 0,
-        },
-        { opacity: 1, duration: rapido }
       );
     }
     if (itemActive == 1) {
@@ -467,8 +418,6 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             {(itemActive == 3 || itemActive == 4) && (
               <div className="titulo2 titulosGenral">
                 <h2 className="tituloConoce">
-               
-
                   la importancia
                   <br />
                   de sembrar
@@ -536,7 +485,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             {itemActive == 5 && (
               <div className="titulo4 titulosGenral">
                 <h2 className="tituloConoce">
-                ¿CÓMO
+                  ¿CÓMO
                   <br />
                   SEMBRAREMOS
                   <br />

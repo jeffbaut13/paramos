@@ -637,3 +637,44 @@ useEffect(() => {
   }, main);
   return () => ctx.revert(); // cleanup!
 }, [main]);
+
+import React, { useState } from "react";
+
+const TouchDetector = () => {
+  const [startTouchY, setStartTouchY] = useState(0);
+
+  const handleTouchStart = (e) => {
+    // Guarda la posición inicial del toque en Y
+    setStartTouchY(e.touches[0].clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    // Opcional: Aquí podrías manejar la lógica mientras el usuario está deslizando el dedo
+  };
+
+  const handleTouchEnd = (e) => {
+    // Calcula la diferencia entre la posición inicial y final del toque
+    const endTouchY = e.changedTouches[0].clientY;
+    const diff = startTouchY - endTouchY;
+
+    // Determina la dirección del deslizamiento y muestra un mensaje
+    if (diff > 0) {
+      console.log("Deslizó hacia arriba");
+    } else if (diff < 0) {
+      console.log("Deslizó hacia abajo");
+    }
+  };
+
+  return (
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      style={{ height: "100vh", width: "100%", backgroundColor: "#f0f0f0" }}
+    >
+      Desliza hacia arriba o hacia abajo en esta área
+    </div>
+  );
+};
+
+export default TouchDetector;

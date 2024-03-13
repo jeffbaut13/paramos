@@ -29,8 +29,6 @@ const Origen = ({ active360, setActive360 }) => {
         duration: 0.5,
       }).addLabel("origen");
 
-      tl.to(".handScroll", { display: "none" }, "origen-=0.5");
-
       tl.to("body", { overflowX: "visible" }, "origen-=0.5");
       tl.to(
         ".blurParamos",
@@ -72,7 +70,7 @@ const Origen = ({ active360, setActive360 }) => {
 
           { height: "50%", borderRadius: "1.25rem 1.25rem 0 0", duration: 0.5 }
         ).addLabel("reverse");
-        tl.to(".handScroll", { display: "none" }, "reverse-=0.5");
+
         tl.to(
           ".BoxOrigenText",
 

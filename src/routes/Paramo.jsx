@@ -33,6 +33,7 @@ function App() {
 
   const [trasladar, setTrasladar] = useState(0);
 
+  const [startTouchY, setStartTouchY] = useState(0);
   const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const scroller = () => {
@@ -40,7 +41,6 @@ function App() {
       setTrasladar(8);
     } else {
       setTrasladar(trasladar + 1);
-      console.log("avance abajo");
     }
   };
   const scrollerResta = () => {
@@ -48,7 +48,28 @@ function App() {
       setTrasladar(0);
     } else {
       setTrasladar(trasladar - 1);
-      console.log("avance arriba");
+    }
+  };
+
+  const handleTouchStart = (e) => {
+    // Guarda la posición inicial del toque en Y
+    setStartTouchY(e.touches[0].clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    // Opcional: Aquí podrías manejar la lógica mientras el usuario está deslizando el dedo
+  };
+
+  const handleTouchEnd = (e) => {
+    // Calcula la diferencia entre la posición inicial y final del toque
+    const endTouchY = e.changedTouches[0].clientY;
+    const diff = startTouchY - endTouchY;
+
+    // Determina la dirección del deslizamiento y muestra un mensaje
+    if (diff > 0) {
+      scroller();
+    } else if (diff < 0) {
+      scrollerResta();
     }
   };
 
@@ -81,22 +102,6 @@ function App() {
       disableScrollTemporarily();
     }
 
-    // Función para capturar eventos de desplazamiento táctil en dispositivos móviles
-    function handleTouchStart(event) {
-      startY = event.touches[0].clientY; // Almacenar la posición inicial del toque
-    }
-    function handleTouchEnd(event) {
-      const deltaY = event.changedTouches[0].clientY - startY;
-      if (deltaY < 0) {
-        scroller();
-        // Realiza acciones cuando se desplaza hacia abajo
-      } else {
-        scrollerResta();
-        // Realiza acciones cuando se desplaza hacia arriba
-      }
-
-      disableScrollTemporarily();
-    }
     function disableScrollTemporarily() {
       setScrollEnabled(false);
       setTimeout(() => {
@@ -108,8 +113,8 @@ function App() {
     document.addEventListener("mousewheel", handleMouseWheel); // Para navegadores antiguos
     document.addEventListener("DOMMouseScroll", handleMouseWheel); // Para Firefox
     document.addEventListener("wheel", handleTouchpadScroll); // Evento de desplazamiento del touchpad en portátiles
-    document.addEventListener("touchstart", handleTouchStart, false); // Escucha el evento touchstart
-    document.addEventListener("touchend", handleTouchEnd, false); // Escucha el evento touchend
+    //document.addEventListener("touchstart", handleTouchStart, false); // Escucha el evento touchstart
+    // document.addEventListener("touchend", handleTouchpadScroll, false); // Escucha el evento touchend
 
     // Cleanup
     return () => {
@@ -117,8 +122,8 @@ function App() {
       document.removeEventListener("mousewheel", handleMouseWheel);
       document.removeEventListener("DOMMouseScroll", handleMouseWheel);
       document.removeEventListener("wheel", handleTouchpadScroll);
-      document.removeEventListener("touchstart", handleTouchStart, false);
-      document.removeEventListener("touchend", handleTouchEnd, false);
+      //document.removeEventListener("touchstart", handleTouchStart, false);
+      //document.removeEventListener("touchend", handleTouchMove, false);
     };
   }, [scrollEnabled, trasladar]);
 
@@ -240,7 +245,13 @@ function App() {
   }, [trasladar, main, activeButton, numFrailejon, scrollPercentage]);
 
   return (
-    <div ref={main} className="maxW h-[700vh] relative">
+    <div
+      ref={main}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      className="maxW h-[700vh] relative"
+    >
       <div className=" bg-gradient-to-t from-transparent from-85% to-[#0000009e] w-full h-full fixed left-0  z-[5]"></div>
       {/* <Grilla /> */}
 
