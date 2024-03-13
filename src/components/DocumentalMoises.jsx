@@ -87,7 +87,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
             {playMoises && (
               <ReactPlayer
                 playing={playMoises == true ? true : false}
-                url="https://vimeo.com/921262445"
+                url="https://youtu.be/hU4TeVmUWGs"
                 className="react-player"
                 width={
                   isMobile

@@ -105,7 +105,7 @@ const Onboarding = () => {
 
     const loadingTimeout = setTimeout(() => {
       setIsLoadingVisible(false); // Después de 4 segundos, oculta el componente de carga.
-    }, 3000);
+    }, 4000);
 
     return () => {
       clearTimeout(routerTimeout);

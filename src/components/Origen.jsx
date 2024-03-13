@@ -29,6 +29,8 @@ const Origen = ({ active360, setActive360 }) => {
         duration: 0.5,
       }).addLabel("origen");
 
+      tl.to(".handScroll", { display: "none" }, "origen-=0.5");
+
       tl.to("body", { overflowX: "visible" }, "origen-=0.5");
       tl.to(
         ".blurParamos",
@@ -63,6 +65,7 @@ const Origen = ({ active360, setActive360 }) => {
         );
       }
       tl.to(".origen", { padding: 0 }, "origen-=0.5");
+      tl.to(".paddingComponentes", { padding: 0 }, "origen-=0.5");
     } else if (active360 == 3) {
       if (isMobile) {
         tl.to(
@@ -70,7 +73,7 @@ const Origen = ({ active360, setActive360 }) => {
 
           { height: "50%", borderRadius: "1.25rem 1.25rem 0 0", duration: 0.5 }
         ).addLabel("reverse");
-
+        tl.to(".handScroll", { display: "none" }, "reverse-=0.5");
         tl.to(
           ".BoxOrigenText",
 
@@ -143,7 +146,12 @@ const Origen = ({ active360, setActive360 }) => {
             </span>
           )}
 
-          <EmbeddedIframe node360={node360} customStyle={"embeded opacity-0"} />
+          <EmbeddedIframe
+            node360={node360}
+            customStyle={`embeded opacity-0 ${
+              active360 == 2 ? "pointer-events-auto" : "pointer-events-none"
+            }`}
+          />
         </div>
       </div>
     </div>

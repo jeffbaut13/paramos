@@ -13,7 +13,7 @@ export const CapituloMoises = ({ playCapitulo, setPlayCapitulo }) => {
       <div className="opacity-1 relative w-full h-full p-0 bg-black">
         <ReactPlayer
           playing={playCapitulo == true ? true : false}
-          url="https://vimeo.com/922212934"
+          url="https://youtu.be/CAsd4cpIru0"
           className="react-player"
           loop
           width={
