@@ -410,7 +410,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveOne(false);
                   }}
-                  customStyles={`punto lg:w-5 lg:h-5 xs:w-3 xs:h-3 left-[65%] top-[40%]`}
+                  customStyles={`punto w-5 h-5  lg:left-[65%] lg:top-[40%] xs:left-[55%] xs:top-[52%]`}
                 />
               </div>
             )}
@@ -460,7 +460,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveOne(false);
                   }}
-                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[55%] left-[43%] `}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[43%] xs:top-[60%] xs:left-[65%] `}
                 />
 
                 <BtnHover
@@ -477,7 +477,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveTwo(false);
                   }}
-                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3  top-[75%] left-[63%]`}
+                  customStyles={`punto top-0 w-5 h-5   lg:top-[75%] lg:left-[63%] xs:top-[75%] xs:left-[58%]`}
                 />
               </div>
             )}
@@ -529,7 +529,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveOne(false);
                   }}
-                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[55%] left-[70%]`}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[70%] xs:top-[58%] xs:left-[50%]`}
                 />
 
                 <BtnHover
@@ -546,7 +546,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveTwo(false);
                   }}
-                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[75%] left-[42%]`}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[75%] lg:left-[42%] xs:top-[72%] xs:left-[25%]`}
                 />
               </div>
             )}

@@ -56,10 +56,6 @@ function App() {
     setStartTouchY(e.touches[0].clientY);
   };
 
-  const handleTouchMove = (e) => {
-    // Opcional: Aquí podrías manejar la lógica mientras el usuario está deslizando el dedo
-  };
-
   const handleTouchEnd = (e) => {
     // Calcula la diferencia entre la posición inicial y final del toque
     const endTouchY = e.changedTouches[0].clientY;
@@ -248,7 +244,6 @@ function App() {
     <div
       ref={main}
       onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       className="maxW h-[700vh] relative"
     >

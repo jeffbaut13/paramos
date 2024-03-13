@@ -124,11 +124,6 @@ const Fecha = ({
               TextEfect={TextEfect}
               parrafo={`El año en que naciste nuestros páramos se veían así:`}
             />
-            <MouseScroll
-              customStyle={
-                "fadeIn mouseScroll lg:w-8 xs:w-6 absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[50%] z-[200]"
-              }
-            />
           </>
         )}
         {inicio == 4 && (

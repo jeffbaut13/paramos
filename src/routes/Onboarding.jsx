@@ -29,9 +29,27 @@ const Onboarding = () => {
   const [isRouterReady, setIsRouterReady] = useState(false);
   const [isLoadingVisible, setIsLoadingVisible] = useState(true);
   const [scrollEnabled, setScrollEnabled] = useState(true);
+  const [startTouchY, setStartTouchY] = useState(0);
+
+  const handleTouchStart = (e) => {
+    // Guarda la posición inicial del toque en Y
+    setStartTouchY(e.touches[0].clientY);
+  };
+
+  const handleTouchEnd = (e) => {
+    // Calcula la diferencia entre la posición inicial y final del toque
+    const endTouchY = e.changedTouches[0].clientY;
+    const diff = startTouchY - endTouchY;
+
+    // Determina la dirección del deslizamiento y muestra un mensaje
+    if (diff > 0) {
+      handleNextClick();
+    } else if (diff < 0) {
+      handlePrevClick();
+    }
+  };
 
   useEffect(() => {
-    let startY;
     // Función para capturar eventos de desplazamiento del mouse
     function handleMouseWheel(event) {
       if (!scrollEnabled) return;
@@ -59,22 +77,6 @@ const Onboarding = () => {
       disableScrollTemporarily();
     }
 
-    // Función para capturar eventos de desplazamiento táctil en dispositivos móviles
-    function handleTouchStart(event) {
-      startY = event.touches[0].clientY; // Almacenar la posición inicial del toque
-    }
-    function handleTouchEnd(event) {
-      const deltaY = event.changedTouches[0].clientY - startY;
-      if (deltaY > 0) {
-        scroller();
-        // Realiza acciones cuando se desplaza hacia abajo
-      } else {
-        scrollerResta();
-        // Realiza acciones cuando se desplaza hacia arriba
-      }
-
-      disableScrollTemporarily();
-    }
     function disableScrollTemporarily() {
       setScrollEnabled(false);
       setTimeout(() => {
@@ -86,8 +88,6 @@ const Onboarding = () => {
     document.addEventListener("mousewheel", handleMouseWheel); // Para navegadores antiguos
     document.addEventListener("DOMMouseScroll", handleMouseWheel); // Para Firefox
     document.addEventListener("wheel", handleTouchpadScroll); // Evento de desplazamiento del touchpad en portátiles
-    document.addEventListener("touchstart", handleTouchStart, false); // Escucha el evento touchstart
-    document.addEventListener("touchend", handleTouchEnd, false); // Escucha el evento touchend
 
     // Cleanup
     return () => {
@@ -95,8 +95,6 @@ const Onboarding = () => {
       document.removeEventListener("mousewheel", handleMouseWheel);
       document.removeEventListener("DOMMouseScroll", handleMouseWheel);
       document.removeEventListener("wheel", handleTouchpadScroll);
-      document.removeEventListener("touchstart", handleTouchStart, false);
-      document.removeEventListener("touchend", handleTouchEnd, false);
     };
   }, [scrollEnabled, inicio]);
 
@@ -107,7 +105,7 @@ const Onboarding = () => {
 
     const loadingTimeout = setTimeout(() => {
       setIsLoadingVisible(false); // Después de 4 segundos, oculta el componente de carga.
-    }, 4000);
+    }, 3000);
 
     return () => {
       clearTimeout(routerTimeout);
@@ -206,7 +204,12 @@ const Onboarding = () => {
     <>
       {isLoadingVisible && <Loading />}
       {isRouterReady && (
-        <div ref={padre} className="h-[600vh] onBoarding">
+        <div
+          ref={padre}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="h-[600vh] onBoarding"
+        >
           {/* <Grilla /> */}
           <div className="fixed pointer-events-none top-0 left-0 bg-black bg-opacity-40 z-10 w-full h-full"></div>
 

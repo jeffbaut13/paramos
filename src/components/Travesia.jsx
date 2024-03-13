@@ -207,10 +207,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                     <p className="parrafo">
                       Hogar de “la ciudad de piedra”, una formación rocosa con
                       callejones y paredes cubiertas de musgos.
-                      <span className="font-black">
-                        {" "}
-                        
-                      </span>
+                      <span className="font-black"> </span>
                     </p>
                   </div>
                   <div className="cajaIconos">
@@ -227,9 +224,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                       <span className="icono">
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
-                      <h6 className="subtitulo">
-                        Altura máxima de 4,000 MSNM
-                      </h6>
+                      <h6 className="subtitulo">Altura máxima de 4,000 MSNM</h6>
                     </div>
                     <div className="svgIcono svgIcono3">
                       <span className="icono">
@@ -242,12 +237,15 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                   </div>
                 </div>
 
-                <span
-                  onClick={() => {
-                    primerEfecto2(padre, "cards1", "cards2", "cards3");
-                  }}
-                  className="punto max-lg:hidden"
-                ></span>
+                {!isMobile && (
+                  <span
+                    onClick={() => {
+                      primerEfecto2(padre, "cards1", "cards2", "cards3");
+                    }}
+                    className="punto max-lg:hidden"
+                  ></span>
+                )}
+
                 <img
                   className="imgComplete z-[-1] top-0 w-full h-full absolute"
                   src="/travesia/bg-travesia2.webp"
@@ -294,9 +292,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                       <span className="icono">
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
-                      <h6 className="subtitulo">
-                        Altura máxima de 3,950 MSNM
-                      </h6>
+                      <h6 className="subtitulo">Altura máxima de 3,950 MSNM</h6>
                     </div>
                     <div className="svgIcono svgIcono3">
                       <span className="icono">
@@ -308,13 +304,14 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                     </div>
                   </div>
                 </div>
-
-                <span
-                  onClick={() => {
-                    primerEfecto2(padre, "cards2", "cards3", "cards1");
-                  }}
-                  className="punto max-lg:hidden"
-                ></span>
+                {!isMobile && (
+                  <span
+                    onClick={() => {
+                      primerEfecto2(padre, "cards2", "cards3", "cards1");
+                    }}
+                    className="punto max-lg:hidden"
+                  ></span>
+                )}
                 <img
                   className="imgComplete z-[-1] top-0 w-full h-full absolute"
                   src="/travesia/bg-travesia3.webp"
@@ -362,9 +359,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                       <span className="icono">
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
-                      <h6 className="subtitulo">
-                        Altura máxima de 4,000 MSNM
-                      </h6>
+                      <h6 className="subtitulo">Altura máxima de 4,000 MSNM</h6>
                     </div>
                     <div className="svgIcono svgIcono3">
                       <span className="icono">
@@ -376,13 +371,14 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                     </div>
                   </div>
                 </div>
-
-                <span
-                  onClick={() => {
-                    primerEfecto2(padre, "cards3", "cards1", "cards2");
-                  }}
-                  className="punto max-lg:hidden"
-                ></span>
+                {!isMobile && (
+                  <span
+                    onClick={() => {
+                      primerEfecto2(padre, "cards3", "cards1", "cards2");
+                    }}
+                    className="punto max-lg:hidden"
+                  ></span>
+                )}
                 <img
                   className="imgComplete z-[-1] top-0 w-full h-full absolute "
                   src="/travesia/bg-travesia4.webp"
