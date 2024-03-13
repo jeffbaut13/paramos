@@ -467,13 +467,13 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             {(itemActive == 3 || itemActive == 4) && (
               <div className="titulo2 titulosGenral">
                 <h2 className="tituloConoce">
-                  ¿CÓMO
+               
+
+                  la importancia
                   <br />
-                  SEMBRAREMOS
+                  de sembrar
                   <br />
-                  NUESTRAS
-                  <br />
-                  SEMILLAS?
+                  frailejones
                 </h2>
 
                 <div className="cajaTitu">
@@ -511,7 +511,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveOne(false);
                   }}
-                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[75%] left-[63%]`}
+                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[55%] left-[43%] `}
                 />
 
                 <BtnHover
@@ -528,7 +528,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveTwo(false);
                   }}
-                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[55%] left-[43%]`}
+                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3  top-[75%] left-[63%]`}
                 />
               </div>
             )}
@@ -536,11 +536,13 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             {itemActive == 5 && (
               <div className="titulo4 titulosGenral">
                 <h2 className="tituloConoce">
-                  GUARDIANES
+                ¿CÓMO
                   <br />
-                  DE LA
+                  SEMBRAREMOS
                   <br />
-                  BIODIVERSIDAD
+                  NUESTRAS
+                  <br />
+                  SEMILLAS?
                 </h2>
 
                 <div className="cajaTitu">

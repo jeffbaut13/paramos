@@ -206,11 +206,10 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                     </h2>
                     <p className="parrafo">
                       Hogar de “la ciudad de piedra”, una formación rocosa con
-                      callejones y paredes cubiertas de musgos. ascenderemos el
-                      próximo
+                      callejones y paredes cubiertas de musgos.
                       <span className="font-black">
                         {" "}
-                        miércoles 13 de marzo.
+                        
                       </span>
                     </p>
                   </div>
@@ -229,7 +228,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        Ascenderás a una altura máxima de 4,000 MSNM
+                        Altura máxima de 4,000 MSNM
                       </h6>
                     </div>
                     <div className="svgIcono svgIcono3">
@@ -278,8 +277,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                     </h2>
                     <p className="parrafo">
                       Considerado uno de los más bellos del mundo, con una
-                      diversidad única de flora y fauna. Ascenderemos el próximo
-                      <span className="font-black"> Jueves 14 de marzo.</span>
+                      diversidad única de flora y fauna.
                     </p>
                   </div>
                   <div className="cajaIconos">
@@ -297,7 +295,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        Ascenderás a una altura máxima de 3,950 MSNM
+                        Altura máxima de 3,950 MSNM
                       </h6>
                     </div>
                     <div className="svgIcono svgIcono3">
@@ -347,8 +345,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                     </h2>
                     <p className="parrafo">
                       En este lugar se han llevado a cabo programas de
-                      repoblamiento del cóndor andino. Ascenderemos el próximo
-                      <span className="font-black">Viernes 15 de marzo.</span>
+                      repoblamiento del cóndor andino.
                     </p>
                   </div>
                   <div className="cajaIconos">
@@ -366,7 +363,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                         <img src="/svg/montanas.svg" alt="" />
                       </span>
                       <h6 className="subtitulo">
-                        Ascenderás a una altura máxima de 4,000 MSNM
+                        Altura máxima de 4,000 MSNM
                       </h6>
                     </div>
                     <div className="svgIcono svgIcono3">
