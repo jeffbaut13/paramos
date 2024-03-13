@@ -87,7 +87,7 @@ function App() {
     }
     function handleTouchEnd(event) {
       const deltaY = event.changedTouches[0].clientY - startY;
-      if (deltaY > 0) {
+      if (deltaY < 0) {
         scroller();
         // Realiza acciones cuando se desplaza hacia abajo
       } else {

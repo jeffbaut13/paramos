@@ -10,13 +10,13 @@ const Descargable = () => {
           className=" overflow-hidden  bg-no-repeat bg-cover w-full rounded-3xl flex-col justify-center align-middle font-bold flex-center text-white text-2xl tracking-widest whitespace-wrap text-center "
         >
           <div>
-            <p className="textoContacto xs:text-base lg:text-2xl">
-              LA NATURALEZA TARDA 150 AÑOS
-              <br /> EN CREAR ESTE FRAILEJÓN.
+            <p className="textoContacto xs:text-base lg:text-2xl uppercase">
+              Hacer parte del cambio, <br />
+              solo te tomará unos segundos.
             </p>
-            <p className="textoContacto2 pt-10 mb-10 xs:text-base lg:text-2xl">
-              A TI TE TOMA 10 SEGUNDOS COMPARTIRLO
-              <br /> Y AYUDARNOS A CUIDARLOS.
+            <p className="textoContacto2 pt-10 mb-10 xs:text-base lg:text-2xl uppercase">
+              Descarga el video, compártelo con todos tus contactos <br />y no
+              olvides etiquetarnos @interrapidisimo_co.
             </p>
             <a
               href="/contacto/comparte.mp4"
@@ -28,7 +28,7 @@ const Descargable = () => {
                 textDecoration: "none",
               }}
             >
-              COMPÁRTELO
+              Descargar video
             </a>
           </div>
         </div>
