@@ -317,7 +317,7 @@
 
 .react-player {
   opacity: 0;
-  pointer-events: "none";
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -327,9 +327,19 @@
   opacity: 1;
 }
 .tituloConoce {
-  @apply z-40 uppercase tracking-widest font-bold lg:text-4xl xs:text-lg absolute top-[7vh] left-[7vw] text-white;
+  @apply z-40 uppercase tracking-widest font-bold lg:text-5xl xs:text-3xl text-white;
 }
 
 .parrafotooltip {
   @apply pointer-events-none;
+}
+.titulosGenral {
+  @apply max-lg:px-6 relative w-full h-full lg:pt-16 xs:pt-10 flex lg:justify-evenly lg:flex-row xs:flex-col z-[45];
+}
+
+.parrafoConoce {
+  @apply text-white lg:text-lg xs:text-sm max-lg:mt-4 font-medium normal-case text-start inline-block;
+}
+.cajaTitu {
+  @apply inline-block lg:w-[600px] xs:w-full;
 }

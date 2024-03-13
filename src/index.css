@@ -237,3 +237,7 @@ svg {
   background-repeat: repeat-x; /* Esto hará que la imagen se repita a lo largo del eje X */
   animation: slide 2s linear infinite; /* Ajusta la duración según sea necesario */
 }
+.claseAdicional {
+  @apply text-white xl:text-lg sm:text-sm xs:text-xs w-fit;
+  @apply transicion_200 px-6 bg-white bg-opacity-60 hover:bg-black text-[#000000] hover:text-white hover:bg-opacity-70  rounded-lg uppercase py-2 letterSpacing hover:shadow-none;
+}

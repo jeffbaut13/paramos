@@ -31,6 +31,7 @@ const Onboarding = () => {
   const [scrollEnabled, setScrollEnabled] = useState(true);
 
   useEffect(() => {
+    let startY;
     // Función para capturar eventos de desplazamiento del mouse
     function handleMouseWheel(event) {
       if (!scrollEnabled) return;
@@ -59,45 +60,34 @@ const Onboarding = () => {
     }
 
     // Función para capturar eventos de desplazamiento táctil en dispositivos móviles
-    function handleTouchScroll(event) {
-      if (!scrollEnabled) return;
-
-      const delta = event.changedTouches[0].clientY - event.touches[0].clientY;
-      if (delta > 0) {
-        handleNextClick();
+    function handleTouchStart(event) {
+      startY = event.touches[0].clientY; // Almacenar la posición inicial del toque
+    }
+    function handleTouchEnd(event) {
+      const deltaY = event.changedTouches[0].clientY - startY;
+      if (deltaY > 0) {
+        scroller();
+        // Realiza acciones cuando se desplaza hacia abajo
       } else {
-        handlePrevClick();
+        scrollerResta();
+        // Realiza acciones cuando se desplaza hacia arriba
       }
 
       disableScrollTemporarily();
     }
-
     function disableScrollTemporarily() {
       setScrollEnabled(false);
       setTimeout(() => {
         setScrollEnabled(true);
-      }, 2000);
+      }, 1500);
     }
 
-    // Agregar event listeners
     document.addEventListener("wheel", handleMouseWheel);
-    document.addEventListener("mousewheel", handleMouseWheel);
-    document.addEventListener("DOMMouseScroll", handleMouseWheel);
-    document.addEventListener("wheel", handleTouchpadScroll);
-    document.addEventListener(
-      "touchstart",
-      function (event) {
-        startY = event.touches[0].clientY;
-      },
-      false
-    );
-    document.addEventListener(
-      "touchend",
-      function (event) {
-        handleTouchScroll(event);
-      },
-      false
-    );
+    document.addEventListener("mousewheel", handleMouseWheel); // Para navegadores antiguos
+    document.addEventListener("DOMMouseScroll", handleMouseWheel); // Para Firefox
+    document.addEventListener("wheel", handleTouchpadScroll); // Evento de desplazamiento del touchpad en portátiles
+    document.addEventListener("touchstart", handleTouchStart, false); // Escucha el evento touchstart
+    document.addEventListener("touchend", handleTouchEnd, false); // Escucha el evento touchend
 
     // Cleanup
     return () => {
@@ -105,20 +95,8 @@ const Onboarding = () => {
       document.removeEventListener("mousewheel", handleMouseWheel);
       document.removeEventListener("DOMMouseScroll", handleMouseWheel);
       document.removeEventListener("wheel", handleTouchpadScroll);
-      document.removeEventListener(
-        "touchstart",
-        function (event) {
-          startY = event.touches[0].clientY;
-        },
-        false
-      );
-      document.removeEventListener(
-        "touchend",
-        function (event) {
-          handleTouchScroll(event);
-        },
-        false
-      );
+      document.removeEventListener("touchstart", handleTouchStart, false);
+      document.removeEventListener("touchend", handleTouchEnd, false);
     };
   }, [scrollEnabled, inicio]);
 
@@ -236,15 +214,15 @@ const Onboarding = () => {
             ref={bgOverlay}
             className="overflow-hidden backgroundImage fixed w-full h-full z-0 flex-center-col "
           >
-            {inicio >= 3 && inicio <= 10 && (
-              <div className="botonesOnboarding flex items-center maxW w-full justify-center h-screen relative">
-                <div className="absolute left-[0] translate-x-[-130%] z-[10000]">
+            {inicio >= 3 && inicio < 10 && !Mobile && (
+              <div className="botonesOnboarding flex items-center maxW w-full justify-center h-full relative">
+                <div className="absolute left-0 translate-x-[-120%]  z-[10000]">
                   <IconSlideOnboarding
                     onClick={handlePrevClick}
                     customStyle="iconoSlideInicial rotate-[-180deg] opacity-1 z-[10000]"
                   />
                 </div>
-                <div className="absolute right-[0] translate-x-[130%] z-[10000]">
+                <div className="absolute right-0 translate-x-[120%] z-[10000]">
                   <IconSlideOnboarding
                     onClick={handleNextClick}
                     customStyle="iconoSlideInicial opacity-1 z-[100]"
@@ -306,12 +284,30 @@ const Onboarding = () => {
                 <Link
                   to={"/paramo"}
                   ref={barra}
-                  className={`fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing`}
+                  className={`fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing ${
+                    inicio >= 10 ? "claseAdicional" : ""
+                  }`}
                 >
                   {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
                 </Link>
                 <></>
               </>
+            )}
+            {inicio >= 3 && inicio <= 10 && Mobile && (
+              <div className="botonesOnboarding2 flex items-center maxW w-full justify-center h-screen absolute bottom-10 right-11 ">
+                <div className="absolute right-[-10%] bottom-10 sm:hidden z-[10000]">
+                  <IconSlideOnboarding
+                    onClick={handlePrevClick}
+                    customStyle="iconoSlideInicial rotate-[-90deg] opacity-1 z-[10000]"
+                  />
+                </div>
+                <div className="absolute right-[-10%] bottom-0 sm:hidden translate-y-[50%] z-[10000]">
+                  <IconSlideOnboarding
+                    onClick={handleNextClick}
+                    customStyle="iconoSlideInicial rotate-90 opacity-1 z-[100]"
+                  />
+                </div>
+              </div>
             )}
           </div>
         </div>

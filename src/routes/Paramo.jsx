@@ -53,6 +53,7 @@ function App() {
   };
 
   useEffect(() => {
+    let startY;
     // Función para capturar eventos de desplazamiento del mouse
     function handleMouseWheel(event) {
       if (!scrollEnabled) return;
@@ -81,45 +82,34 @@ function App() {
     }
 
     // Función para capturar eventos de desplazamiento táctil en dispositivos móviles
-    function handleTouchScroll(event) {
-      if (!scrollEnabled) return;
-
-      const delta = event.changedTouches[0].clientY - event.touches[0].clientY;
-      if (delta > 0) {
+    function handleTouchStart(event) {
+      startY = event.touches[0].clientY; // Almacenar la posición inicial del toque
+    }
+    function handleTouchEnd(event) {
+      const deltaY = event.changedTouches[0].clientY - startY;
+      if (deltaY > 0) {
         scroller();
+        // Realiza acciones cuando se desplaza hacia abajo
       } else {
         scrollerResta();
+        // Realiza acciones cuando se desplaza hacia arriba
       }
 
       disableScrollTemporarily();
     }
-
     function disableScrollTemporarily() {
       setScrollEnabled(false);
       setTimeout(() => {
         setScrollEnabled(true);
-      }, 2000);
+      }, 1500);
     }
 
-    // Agregar event listeners
     document.addEventListener("wheel", handleMouseWheel);
-    document.addEventListener("mousewheel", handleMouseWheel);
-    document.addEventListener("DOMMouseScroll", handleMouseWheel);
-    document.addEventListener("wheel", handleTouchpadScroll);
-    document.addEventListener(
-      "touchstart",
-      function (event) {
-        startY = event.touches[0].clientY;
-      },
-      false
-    );
-    document.addEventListener(
-      "touchend",
-      function (event) {
-        handleTouchScroll(event);
-      },
-      false
-    );
+    document.addEventListener("mousewheel", handleMouseWheel); // Para navegadores antiguos
+    document.addEventListener("DOMMouseScroll", handleMouseWheel); // Para Firefox
+    document.addEventListener("wheel", handleTouchpadScroll); // Evento de desplazamiento del touchpad en portátiles
+    document.addEventListener("touchstart", handleTouchStart, false); // Escucha el evento touchstart
+    document.addEventListener("touchend", handleTouchEnd, false); // Escucha el evento touchend
 
     // Cleanup
     return () => {
@@ -127,20 +117,8 @@ function App() {
       document.removeEventListener("mousewheel", handleMouseWheel);
       document.removeEventListener("DOMMouseScroll", handleMouseWheel);
       document.removeEventListener("wheel", handleTouchpadScroll);
-      document.removeEventListener(
-        "touchstart",
-        function (event) {
-          startY = event.touches[0].clientY;
-        },
-        false
-      );
-      document.removeEventListener(
-        "touchend",
-        function (event) {
-          handleTouchScroll(event);
-        },
-        false
-      );
+      document.removeEventListener("touchstart", handleTouchStart, false);
+      document.removeEventListener("touchend", handleTouchEnd, false);
     };
   }, [scrollEnabled, trasladar]);
 
@@ -256,6 +234,9 @@ function App() {
       setScrollPercentage(9);
       gsap.fromTo(".blurParamos", { opacity: 0 }, { opacity: 1, duration: 1 });
     }
+    if (active360 === 2) {
+      setActive360(3);
+    }
   }, [trasladar, main, activeButton, numFrailejon, scrollPercentage]);
 
   return (
@@ -264,16 +245,17 @@ function App() {
       {/* <Grilla /> */}
 
       <BackgroundTransition />
-      {active360 == 2 && (
-        <span
-          onClick={() => setActive360(3)}
-          className="close cursor-pointer fixed top-[7%] right-[12%] w-4 z-[60]"
-        >
-          <img src="/svg/close.svg" alt="" />
-        </span>
-      )}
+
       <div className="blurParamos  fixed top-0 left-0 bg2 z-10 w-full h-full opacity-0"></div>
       <div className="cajaParaelementos maxW fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[85%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%]">
+        {active360 == 2 && (
+          <span
+            onClick={() => setActive360(3)}
+            className="close cursor-pointer fixed top-[-4%] right-[2%] w-4 z-[60]"
+          >
+            <img src="/svg/close.svg" alt="" />
+          </span>
+        )}
         <NavBar
           activeButton={activeButton}
           scrollPercentage={scrollPercentage}

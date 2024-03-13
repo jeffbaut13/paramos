@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BtnHover } from "./BtnHover";
 
 const DescripcionFrailejones = ({
   primerParrafo,
@@ -33,31 +34,25 @@ const DescripcionFrailejones = ({
         dangerouslySetInnerHTML={{ __html: tituloFrailejon }}
       ></h2>
 
-      {isMobile || tablet ? (
-        <span
-          onClick={() => {
-            if (activeOne) {
-              setActiveOne(false);
-            } else {
-              setActiveOne(true);
-              setActiveTwo(false);
-              setActiveThree(false);
-              setLimpiar(false);
-            }
-          }}
-          className={`punto hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} lg:top-[30%] xs:top-[40%]`}
-        ></span>
-      ) : (
-        <span
-          onMouseEnter={() => {
-            setActiveOne(true);
-          }}
-          onMouseLeave={() => {
+      <BtnHover
+        handleClick={() => {
+          if (activeOne) {
             setActiveOne(false);
-          }}
-          className={`punto hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} lg:top-[30%] xs:top-[40%]`}
-        ></span>
-      )}
+          } else {
+            setActiveOne(true);
+            setActiveTwo(false);
+            setActiveThree(false);
+            setLimpiar(false);
+          }
+        }}
+        handleMouseEnter={() => {
+          setActiveOne(true);
+        }}
+        handleMouseLeave={() => {
+          setActiveOne(false);
+        }}
+        customStyles={`hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} lg:top-[30%] xs:top-[40%]`}
+      />
 
       <span
         className={`${
@@ -68,31 +63,26 @@ const DescripcionFrailejones = ({
       </span>
 
       {/* Punto 2 */}
-      {isMobile || tablet ? (
-        <span
-          onClick={() => {
-            if (activeTwo) {
-              setActiveTwo(false);
-            } else {
-              setActiveTwo(true);
-              setActiveOne(false);
-              setActiveThree(false);
-              setLimpiar(false);
-            }
-          }}
-          className={`punto hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} left-[30%] lg:top-[52%] xs:top-[62%]`}
-        ></span>
-      ) : (
-        <span
-          onMouseEnter={() => {
-            setActiveTwo(true);
-          }}
-          onMouseLeave={() => {
+
+      <BtnHover
+        handleClick={() => {
+          if (activeTwo) {
             setActiveTwo(false);
-          }}
-          className={`punto hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} left-[30%] lg:top-[52%] xs:top-[62%]`}
-        ></span>
-      )}
+          } else {
+            setActiveTwo(true);
+            setActiveOne(false);
+            setActiveThree(false);
+            setLimpiar(false);
+          }
+        }}
+        handleMouseEnter={() => {
+          setActiveTwo(true);
+        }}
+        handleMouseLeave={() => {
+          setActiveTwo(false);
+        }}
+        customStyles={`hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} left-[30%] lg:top-[52%] xs:top-[62%]`}
+      />
 
       <span
         className={`${
@@ -104,31 +94,25 @@ const DescripcionFrailejones = ({
 
       {/* Punto 3 */}
 
-      {isMobile || tablet ? (
-        <span
-          onClick={() => {
-            if (activeThree) {
-              setActiveThree(false);
-            } else {
-              setActiveThree(true);
-              setActiveTwo(false);
-              setActiveOne(false);
-              setLimpiar(false);
-            }
-          }}
-          className={`punto hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} left-[80%] lg:top-[55%] xs:top-[65%]`}
-        ></span>
-      ) : (
-        <span
-          onMouseEnter={() => {
-            setActiveThree(true);
-          }}
-          onMouseLeave={() => {
+      <BtnHover
+        handleClick={() => {
+          if (activeThree) {
             setActiveThree(false);
-          }}
-          className={`punto hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} left-[80%] lg:top-[55%] xs:top-[65%]`}
-        ></span>
-      )}
+          } else {
+            setActiveThree(true);
+            setActiveTwo(false);
+            setActiveOne(false);
+            setLimpiar(false);
+          }
+        }}
+        handleMouseEnter={() => {
+          setActiveThree(true);
+        }}
+        handleMouseLeave={() => {
+          setActiveThree(false);
+        }}
+        customStyles={`hidden lg:w-5 lg:h-5 xs:w-3 xs:h-3 ${claseFrailejon} left-[80%] lg:top-[55%] xs:top-[65%]`}
+      />
 
       <span
         className={`${

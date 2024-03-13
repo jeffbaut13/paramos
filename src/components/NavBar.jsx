@@ -255,12 +255,12 @@ const NavBar = ({
       <>
         <IconSlideNextPrev
           handleClick={scrollerResta}
-          customStyle={`iconoSlideInicial rotate-[-90deg] fixed right-0 top-1/2 translate-x-[150%] translate-y-[-200%] opacity-1 z-[100]`}
+          customStyle={`iconoSlideInicial rotate-[-90deg] fixed lg:right-0 xs:right-5 lg:top-1/2 lg:translate-x-[150%] lg:translate-y-[-200%] lg:bottom-[auto] xs:bottom-[14%] opacity-1 z-[100]`}
         />
 
         <IconSlideNextPrev
           handleClick={scroller}
-          customStyle={`iconoSlideInicial rotate-90 fixed right-0 translate-x-[150%] translate-y-[200%] bottom-1/2  opacity-1 z-[100]`}
+          customStyle={`iconoSlideInicial rotate-90 fixed lg:right-0 xs:right-5 lg:translate-x-[150%] lg:translate-y-[200%] lg:bottom-1/2 xs:bottom-[4%]  opacity-1 z-[100]`}
         />
       </>
 

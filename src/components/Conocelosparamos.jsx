@@ -1,18 +1,35 @@
 import gsap from "gsap";
 import HandScroll from "./HandScroll";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import IconSlideNextPrev from "./IconSlideNextPrev";
+import { BtnHover } from "./BtnHover";
 
 const isMobile = window.innerWidth <= 1024;
+
 const rapido = 0.5;
 const normal = 1;
 const medio = 1.5;
 const lento = 2;
 const Conocelosparamos = ({ itemActive, setItemActive }) => {
+  const [activeOne, setActiveOne] = useState(false);
+  const [activeTwo, setActiveTwo] = useState(false);
+  const parrafo = useRef(null);
+  const parrafo2 = useRef(null);
   const handleClick = () => {
     setItemActive(1);
   };
+
+  useEffect(() => {
+    gsap.fromTo(
+      ".parrafoConoce",
+      {
+        y: "20%",
+        opacity: 0,
+      },
+      { y: "0%", opacity: 1, duration: 0.3, ease: "power1.inOut" }
+    );
+  }, [activeOne, activeTwo]);
 
   useEffect(() => {
     if (itemActive == 0) {
@@ -113,11 +130,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
         "<-=1"
       );
-      tl.to(
-        ".circulos",
-        { opacity: 0, pointerEvents: "none" },
-
-        "<-=1"
+      tl.fromTo(
+        ".conoce .punto",
+        {
+          opacity: 0,
+        },
+        { opacity: 1, duration: rapido }
       );
     }
     if (itemActive == 1) {
@@ -141,15 +159,31 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
           "<"
         );
       }
-
+      tl.fromTo(
+        ".tituloConoce",
+        {
+          scale: 0.5,
+          opacity: 0,
+          x: "-20%",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
+          duration: rapido,
+        },
+        "<"
+      );
+      tl.fromTo(
+        ".conoce .punto",
+        {
+          opacity: 0,
+        },
+        { opacity: 1, duration: rapido }
+      );
       tl.to(".slideBtn", {
         display: "block",
         opacity: 1,
-      });
-      tl.to(".circulos.circulo1", {
-        display: "block",
-        opacity: 1,
-        pointerEvents: "all",
       });
       tl.to(".moveTwo", {
         display: "block",
@@ -182,33 +216,28 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         "m4-=0.5"
       );
 
-      tl.to(
-        ".conoce .titulo1",
-        { scale: 1, opacity: 1, x: "0%", duration: rapido },
-        "m4-=0.5"
-      );
-      tl.to(
-        ".conoce .titulo2",
-        { scale: 0.5, opacity: 0, duration: rapido },
-        "<"
-      );
-      tl.to(
-        ".conoce .titulo2",
+      tl.fromTo(
+        ".tituloConoce",
         {
           scale: 0.5,
           opacity: 0,
-          x: "-10%",
+          x: "-20%",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          x: "0%",
           duration: rapido,
         },
-        "<+=0.5"
+        "<"
       );
-      tl.to(".circulo2", { display: "none", duration: normal }, "<-=2");
-      tl.to(".circulo3", { display: "none", duration: normal }, "<-=2");
-      tl.to(".circulo1", {
-        display: "block",
-        pointerEvents: "all",
-        duration: rapido,
-      });
+      tl.fromTo(
+        ".conoce .punto",
+        {
+          opacity: 0,
+        },
+        { opacity: 1, duration: rapido }
+      );
     }
     if (itemActive == 3) {
       const tl = gsap.timeline();
@@ -232,19 +261,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         { opacity: 1, width: "100%", x: "0%", duration: normal },
         "<-=0.5"
       );
-      tl.to(
-        ".conoce .titulo1",
-        {
-          scale: 2,
-          opacity: 0,
-          x: "-80%",
-          duration: rapido,
-        },
-        "<"
-      );
 
       tl.fromTo(
-        ".conoce .titulo2",
+        ".tituloConoce",
         {
           scale: 0.5,
           opacity: 0,
@@ -258,22 +277,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         },
         "<+=0.5"
       );
-      tl.to(".circulo1", { display: "none", duration: normal }, "<-=2");
-      tl.to(".circulo2", {
-        display: "block",
-        opacity: 1,
-        pointerEvents: "all",
-        duration: normal,
-      });
-      tl.to(
-        ".circulo3",
+      tl.fromTo(
+        ".conoce .punto",
         {
-          display: "block",
-          opacity: 1,
-          pointerEvents: "all",
-          duration: normal,
+          opacity: 0,
         },
-        "<"
+        { opacity: 1, duration: rapido }
       );
     }
     if (itemActive == 4) {
@@ -293,8 +302,13 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
           duration: rapido,
         }
       );
-      tl.to(
-        ".conoce .titulo2",
+      tl.fromTo(
+        ".tituloConoce",
+        {
+          scale: 0.5,
+          opacity: 0,
+          x: "-20%",
+        },
         {
           scale: 1,
           opacity: 1,
@@ -310,39 +324,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         { opacity: 0.3, width: "30%" },
         "<"
       );
-
       tl.fromTo(
-        ".conoce .titulo3",
+        ".conoce .punto",
         {
-          scale: 1,
-          opacity: 1,
-          x: "0%",
-        },
-        {
-          scale: 0.5,
           opacity: 0,
-          x: "-20%",
-          duration: rapido,
         },
-        "<"
-      );
-      tl.to(".circulo4", { display: "none", duration: rapido }, "<-=2");
-      tl.to(".circulo5", { display: "none", duration: rapido }, "<-=2");
-      tl.to(".circulo2", {
-        display: "block",
-        pointerEvents: "all",
-        opacity: 1,
-        duration: normal,
-      });
-      tl.to(
-        ".circulo3",
-        {
-          display: "block",
-          pointerEvents: "all",
-          opacity: 1,
-          duration: normal,
-        },
-        "<"
+        { opacity: 1, duration: rapido }
       );
     }
 
@@ -362,18 +349,8 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
         { opacity: 1, width: "100%", duration: normal },
         "<-=0.2"
       );
-      tl.to(
-        ".conoce .titulo2",
-        {
-          scale: 2,
-          opacity: 0,
-          x: "-80%",
-          duration: rapido,
-        },
-        "<"
-      );
       tl.fromTo(
-        ".conoce .titulo3",
+        ".tituloConoce",
         {
           scale: 0.5,
           opacity: 0,
@@ -385,26 +362,14 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
           x: "0%",
           duration: rapido,
         },
-        "<+=0.5"
-      );
-
-      tl.to(".circulo2", { display: "none", duration: normal }, "<-=2");
-      tl.to(".circulo3", { display: "none", duration: normal }, "<-=2");
-      tl.to(".circulo4", {
-        display: "block",
-        pointerEvents: "all",
-        opacity: 1,
-        duration: rapido,
-      });
-      tl.to(
-        ".circulo5",
-        {
-          display: "block",
-          pointerEvents: "all",
-          opacity: 1,
-          duration: rapido,
-        },
         "<"
+      );
+      tl.fromTo(
+        ".conoce .punto",
+        {
+          opacity: 0,
+        },
+        { opacity: 1, duration: rapido }
       );
     }
   }, [itemActive]);
@@ -453,187 +418,231 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               className=" m3 scale-[1.3] opacity-0  left-0 h-auto absolute bottom-0 lg:hidden xl:hidden 2xl:hidden"
             />
 
-            <p className=" titulo1 tituloConoce xs:font-thin lg:font-bold ">
-              ¿por qué
-              <br />
-              decidimos
-              <br />
-              hacerlo?
-            </p>
+            {(itemActive == 1 || itemActive == 2) && (
+              <div className="titulo1 titulosGenral ">
+                <h2 className="tituloConoce">
+                  ¿por qué
+                  <br />
+                  decidimos
+                  <br />
+                  hacerlo?
+                </h2>
 
-            <p className=" titulo2 tituloConoce opacity-0 xs:font-thin lg:font-bold">
-              LA IMPORTANCIA
-              <br />
-              DE SEMBRAR
-              <br />
-              FRAILEJONES
-            </p>
-            <p className=" titulo3 tituloConoce opacity-0 xs:font-thin lg:font-bold">
-              ¿CÓMO
-              <br />
-              SEMBRAREMOS
-              <br />
-              NUESTRAS
-              <br />
-              SEMILLAS?
-            </p>
-            <p className=" titulo4 tituloConoce opacity-0">
-              GUARDIANES
-              <br />
-              DE LA
-              <br />
-              BIODIVERSIDAD
-            </p>
+                <div className="cajaTitu ">
+                  <span
+                    onClick={() => {
+                      setActiveOne(false);
+                    }}
+                    className={`${
+                      activeOne ? "block" : "hidden"
+                    } parrafoConoce  `}
+                  >
+                    En enero de 2024, una ola de calor arrasó con nuestros
+                    páramos, dejando tras de sí un paisaje desolador y el eco de
+                    un desafío inmenso. Pero en lugar de ser espectadores de la
+                    destrucción, elegimos ser agentes de cambio, sembrando
+                    semillas de esperanza en estas tierras.
+                  </span>
+                </div>
 
-            <img
-              src="/Conoce/circulo1.png"
-              className="circulo1 circulos absolute opacity-0 lg:top-[40%] lg:left-[65%] xs:top-[50%] xs:left-[50%] sm:top-[30%] w-[25px] cursor-pointer z-[70]"
-            />
-            <img
-              src="/Conoce/lineapunteaguda1.svg"
-              className="LineaUnoMontaña absolute top-[14%] left-[6%] w-[57%] z-50"
-            />
-            <p className="textoUnoLosParamos text-[14px] absolute lg:top-[10vh] lg:left-[38vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50">
-              En enero de 2024, una ola de calor arrasó con nuestros páramos,
-              dejando tras de sí un paisaje desolador y el eco de un desafío
-              inmenso. Pero en lugar de ser espectadores de la destrucción,
-              elegimos ser agentes de cambio, sembrando semillas de esperanza en
-              estas tierras.
-            </p>
+                <BtnHover
+                  handleClick={() => {
+                    if (activeOne) {
+                      setActiveOne(false);
+                    } else {
+                      setActiveOne(true);
+                    }
+                  }}
+                  handleMouseEnter={() => {
+                    setActiveOne(true);
+                  }}
+                  handleMouseLeave={() => {
+                    setActiveOne(false);
+                  }}
+                  customStyles={`punto lg:w-5 lg:h-5 xs:w-3 xs:h-3 left-[65%] top-[40%]`}
+                />
+              </div>
+            )}
 
-            <img
-              src="/Conoce/circulo1.png"
-              className="circulo2 circulos hidden absolute lg:top-[60%] lg:left-[42%] xs:top-[59%] xs:left-[55%] md:top-[41%] w-[25px] cursor-pointer z-[60]"
-            />
-            <img
-              src="/Conoce/lineapunteaguda2.svg"
-              className={` LineaDosMontaña absolute top-[14%] left-[7%] w-[38%] z-20`}
-            />
-            <p
-              className={`textoDosLosParamos text-[14px] absolute lg:top-[10vh] lg:left-[35vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
-            >
-              Imagina un mundo donde cada hoja es un susurro de vida, donde cada
-              flor es un faro de esperanza. Eso son los frailejones para
-              nuestros páramos: guardianes silenciosos que sostienen el
-              equilibrio de un ecosistema único.
-            </p>
+            {(itemActive == 3 || itemActive == 4) && (
+              <div className="titulo2 titulosGenral">
+                <h2 className="tituloConoce">
+                  ¿CÓMO
+                  <br />
+                  SEMBRAREMOS
+                  <br />
+                  NUESTRAS
+                  <br />
+                  SEMILLAS?
+                </h2>
 
-            <img
-              src="/Conoce/circulo1.png"
-              className="circulo3 circulos hidden absolute top-[80%] left-[70%] w-[25px] cursor-pointer z-[60]"
-            />
-            <img
-              src="/Conoce/lineapunteaguda3.svg"
-              className={` LineaTresMontaña absolute top-[53%] left-[73%] w-[15%] z-50`}
-            />
-            <p
-              className={`textoTresLosParamos  text-[14px] absolute lg:top-[35vh] lg:left-[52vw] xs:top-[20vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
-            >
-              Desde las alturas, absorben la humedad de la neblina y la
-              transforman en agua, que alimenta arroyos y ríos.
-            </p>
+                <div className="cajaTitu">
+                  <span
+                    className={`${
+                      activeOne ? "block" : "hidden"
+                    } parrafoConoce`}
+                  >
+                    Imagina un mundo donde cada hoja es un susurro de vida,
+                    donde cada flor es un faro de esperanza. Eso son los
+                    frailejones para nuestros páramos: guardianes silenciosos
+                    que sostienen el equilibrio de un ecosistema único.
+                  </span>
+                  <span
+                    className={`${
+                      activeTwo ? "block" : "hidden"
+                    } parrafoConoce`}
+                  >
+                    Desde las alturas, absorben la humedad de la neblina y la
+                    transforman en agua, que alimenta arroyos y ríos.
+                  </span>
+                </div>
 
-            <img
-              src="/Conoce/circulo1.png"
-              className="circulo4 circulos hidden absolute lg:top-[55%] lg:left-[70%] xs:top-[57%] xs:left-[53%] sm:top-[32%] w-[25px] cursor-pointer z-50"
-            />
+                <BtnHover
+                  handleClick={() => {
+                    if (activeOne) {
+                      setActiveOne(false);
+                    } else {
+                      setActiveOne(true);
+                    }
+                  }}
+                  handleMouseEnter={() => {
+                    setActiveOne(true);
+                  }}
+                  handleMouseLeave={() => {
+                    setActiveOne(false);
+                  }}
+                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[75%] left-[63%]`}
+                />
+
+                <BtnHover
+                  handleClick={() => {
+                    if (activeOne) {
+                      setActiveTwo(false);
+                    } else {
+                      setActiveTwo(true);
+                    }
+                  }}
+                  handleMouseEnter={() => {
+                    setActiveTwo(true);
+                  }}
+                  handleMouseLeave={() => {
+                    setActiveTwo(false);
+                  }}
+                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[55%] left-[43%]`}
+                />
+              </div>
+            )}
+
+            {itemActive == 5 && (
+              <div className="titulo4 titulosGenral">
+                <h2 className="tituloConoce">
+                  GUARDIANES
+                  <br />
+                  DE LA
+                  <br />
+                  BIODIVERSIDAD
+                </h2>
+
+                <div className="cajaTitu">
+                  <span
+                    className={`${
+                      activeOne ? "block" : "hidden"
+                    } parrafoConoce`}
+                  >
+                    Nuestro viaje comienza en marzo, cuando nos uniremos en las
+                    cumbres mágicas de Boyacá. Allí, entre los susurros del
+                    viento y la quietud de la montaña, conectaremos almas con
+                    frailejones.
+                  </span>
+                  <span
+                    className={`${
+                      activeTwo ? "block" : "hidden"
+                    } parrafoConoce`}
+                  >
+                    Expertos guiarán nuestros pasos, asegurando que cada gesto
+                    sea un paso firme hacia el éxito en la siembra.
+                  </span>
+                </div>
+
+                <BtnHover
+                  handleClick={() => {
+                    if (activeOne) {
+                      setActiveOne(false);
+                    } else {
+                      setActiveOne(true);
+                    }
+                  }}
+                  handleMouseEnter={() => {
+                    setActiveOne(true);
+                  }}
+                  handleMouseLeave={() => {
+                    setActiveOne(false);
+                  }}
+                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[55%] left-[70%]`}
+                />
+
+                <BtnHover
+                  handleClick={() => {
+                    if (activeOne) {
+                      setActiveTwo(false);
+                    } else {
+                      setActiveTwo(true);
+                    }
+                  }}
+                  handleMouseEnter={() => {
+                    setActiveTwo(true);
+                  }}
+                  handleMouseLeave={() => {
+                    setActiveTwo(false);
+                  }}
+                  customStyles={`punto top-0 lg:w-5 lg:h-5 xs:w-3 xs:h-3 top-[75%] left-[42%]`}
+                />
+              </div>
+            )}
+
             <HandScroll
               customstyle={`moveTwo hidden absolute w-12 z-[100] top-[44%] left-[63%] `}
             />
-
-            <img
-              src="/Conoce/lneapunteaguda4.svg"
-              className={` LineaCuatroMontaña absolute top-[10%] left-[7%] w-[57%] z-10`}
-            />
-            <p
-              className={`textoCuatroLosParamos  text-[14px] absolute lg:top-[10vh] lg:left-[30vw] xs:top-[21vh] xs:left-[15vw]  text-white w-[500px] xs:w-[200px] z-50`}
-            >
-              Nuestro viaje comienza en marzo, cuando nos uniremos en las
-              cumbres mágicas de Boyacá. Allí, entre los susurros del viento y
-              la quietud de la montaña, conectaremos almas con frailejones.
-            </p>
-
-            <img
-              src="/Conoce/circulo1.png"
-              className="circulo5 circulos hidden absolute top-[73%] left-[43%] w-[25px] cursor-pointer z-[70]"
-            />
-            <img
-              src="/Conoce/lineapunteagudaCinco.svg"
-              className={` LineaCincoMontaña absolute top-[74%] left-[32%] w-[12%] z-50`}
-            />
-            <p
-              className={`textoCincoLosParamos  text-1xl absolute lg:top-[52vh] lg:left-[9vw] xs:top-[21vh] xs:left-[15vw] text-white w-[500px] xs:w-[200px] z-50`}
-            >
-              Expertos guiarán nuestros pasos, asegurando que cada gesto sea un
-              paso firme hacia el éxito en la siembra.
-            </p>
-            <img
-              src="/Conoce/circulo1.png"
-              className="circulo6 circulos hidden absolute top-[42%] left-[33%] w-[25px] cursor-pointer z-50"
-            />
-            <img
-              src="/Conoce/lineapunteaguda6.svg"
-              className={` LineaSeisMontaña absolute top-[18%] left-[6%] w-[25%] z-10`}
-            />
-            <p
-              className={`textoSeisLosParamos  text-[13px] absolute top-[12vh] left-[32vw] text-white w-[500px] z-50`}
-            >
-              Los páramos son sagrados para las
-              <br />
-              comunidades indígenas y locales por
-              <br />
-              sus recursos y belleza.
-            </p>
-
-            <img
-              src="/Conoce/circulo1.png"
-              className="circulo7 circulos hidden absolute top-[70%] left-[70%] w-[25px] cursor-pointer z-[60]"
-            />
-            <img
-              src="/Conoce/lineapunteaguda7.svg"
-              className={` LineaSieteMontaña absolute top-[35%] left-[57%] w-[12%] z-50`}
-            />
-            <p
-              className={`textoSieteLosParamos  text-[13px] absolute top-[22vh] left-[34vw] text-white w-[500px] z-50`}
-            >
-              Alberga plantas y animales
-              <br />
-              adaptados al frío que terminan siendo
-              <br />
-              valiosos para el equilibrio ecológico.
-            </p>
-            <span
-              onClick={() => {
-                if (itemActive == 1 || itemActive == 2) {
-                  setItemActive(3);
-                }
-                if (itemActive == 3 || itemActive == 4) {
-                  setItemActive(5);
-                }
-                if (itemActive == 5) {
-                  setItemActive(0);
-                }
-              }}
-              className="next slideBtn hidden cursor-pointer absolute right-4 top-1/2 z-50"
-            >
-              <IconSlideNextPrev />
-            </span>
-            <span
-              onClick={() => {
-                if (itemActive == 1 || itemActive == 2) {
-                  setItemActive(0);
-                }
-                if (itemActive == 3 || itemActive == 4) {
-                  setItemActive(2);
-                }
-                if (itemActive == 5) {
-                  setItemActive(4);
-                }
-              }}
-              className="back slideBtn  hidden cursor-pointer absolute left-4 top-1/2 z-50"
-            >
-              <IconSlideNextPrev reverse={true} />
-            </span>
+            {itemActive < 5 && (
+              <span
+                onClick={() => {
+                  setActiveOne(false);
+                  setActiveTwo(false);
+                  if (itemActive == 1 || itemActive == 2) {
+                    setItemActive(3);
+                  }
+                  if (itemActive == 3 || itemActive == 4) {
+                    setItemActive(5);
+                  }
+                  if (itemActive == 5) {
+                    setItemActive(0);
+                  }
+                }}
+                className="next slideBtn cursor-pointer absolute right-4 top-1/2 z-50"
+              >
+                <IconSlideNextPrev />
+              </span>
+            )}
+            {itemActive > 2 && (
+              <span
+                onClick={() => {
+                  setActiveOne(false);
+                  setActiveTwo(false);
+                  if (itemActive == 1 || itemActive == 2) {
+                    setItemActive(0);
+                  }
+                  if (itemActive == 3 || itemActive == 4) {
+                    setItemActive(2);
+                  }
+                  if (itemActive == 5) {
+                    setItemActive(4);
+                  }
+                }}
+                className="back slideBtn cursor-pointer absolute left-4 top-1/2 z-50"
+              >
+                <IconSlideNextPrev reverse={true} />
+              </span>
+            )}
           </div>
         </div>
         <div className="anchoInicialPrimario BoxConoceText BoxesTextEnd flex flex-col items-center justify-center">

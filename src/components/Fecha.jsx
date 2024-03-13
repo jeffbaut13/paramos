@@ -141,19 +141,19 @@ const Fecha = ({
         {inicio == 5 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`Desde la década de los 2,000, perdimos el 79% de área de páramo entre Cundinamarca y Boyacá.`}
+            parrafo={`Desde la década de los 2000, perdimos el 79% de área de páramo entre Cundinamarca y Boyacá.`}
           />
         )}
         {inicio == 6 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`Tristemente, entre el 2,000 y el 2,015 se quemó el 18% del área total del páramo de Sumapaz.`}
+            parrafo={`Tristemente, entre el 2000 y el 2015 se quemó el 18% del área total del páramo de Sumapaz.`}
           />
         )}
         {inicio == 7 && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`Entre el 2,015 y el 2,020, perderemos 20% de nuestros páramos de la Cordillera Oriental.`}
+            parrafo={`Entre el 2015 y el 2020, perdimos 20% de nuestros páramos de la Cordillera Oriental.`}
           />
         )}
         {inicio == 8 && (

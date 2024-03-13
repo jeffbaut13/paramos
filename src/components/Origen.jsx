@@ -122,11 +122,9 @@ const Origen = ({ active360, setActive360 }) => {
       <div className=" responsive flex relative w-full h-full paddingComponentes ">
         <div className="BoxOrigenText  BoxesTextStart flex-center">
           <p className="origenTexto  font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            DETRÁS <br /> CADA SEMILLA, <br />
-            HAY UNA <br />
-            HISTORIA DE <br />
-            AMOR POR LA <br />
-            TIERRA.
+            DETRÁS <br /> De CADA SEMILLA, <br />
+            HAY UNA HISTORIA <br />
+            DE AMOR <br /> POR LA TIERRA.
           </p>
         </div>
         <div
