@@ -33,18 +33,22 @@ export const CapituloMoises = ({ playCapitulo, setPlayCapitulo }) => {
     //<div className="capituloMoises absolute w-full h-full z-[1] flex">
     <div className="capituloMoises relative ocultarEnOrigen w-full h-full z-[1] flex">
       <div className="opacity-1 relative w-full h-full p-0 bg-black">
-        {isMobile ? (
-          <img
-            className="xperiaimgBg w-full h-full object-cover"
-            src="/experiencia/experiencia.webp"
-            alt=""
-          />
-        ) : (
-          <img
-            className="xperiaimgBg w-full h-full object-cover"
-            src="/experiencia/experiencia.webp"
-            alt=""
-          />
+        {!playCapitulo && (
+          <>
+            {isMobile ? (
+              <img
+                className="xperiaimgBg w-full h-full object-cover"
+                src="/experiencia/experiencia.webp"
+                alt=""
+              />
+            ) : (
+              <img
+                className="xperiaimgBg w-full h-full object-cover"
+                src="/experiencia/experiencia.webp"
+                alt=""
+              />
+            )}
+          </>
         )}
 
         {!playCapitulo && (
