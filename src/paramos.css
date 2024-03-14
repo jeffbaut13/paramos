@@ -343,3 +343,6 @@
 .cajaTitu {
   @apply inline-block lg:w-[600px] xs:w-full;
 }
+.gradiente {
+  @apply w-full h-full flex items-center justify-center;
+}

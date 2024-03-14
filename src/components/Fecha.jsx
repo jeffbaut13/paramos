@@ -5,6 +5,7 @@ import { TextOnboarding } from "./TextOnboarding";
 import { ScrollAnimation } from "./ScrollAnimation";
 import { TextoAbajoArriba } from "../animations/gsap";
 import MouseScroll from "./MouseScroll";
+import EmbeddedIframe from "./Embed360";
 
 const Fecha = ({
   videobg,
@@ -91,7 +92,7 @@ const Fecha = ({
     <>
       {inicio == 1 && (
         <>
-          <div className="fadeIn gradiente">
+          <div className="fadeIn">
             <h1 className="2xl:text-4xl xl:text-2xl xs:text-base font-semibold letterSpacing">
               Queremos que entiendas el daño causado
             </h1>
@@ -117,65 +118,79 @@ const Fecha = ({
         </p>
       )}
 
-      <div className="gradiente">
-        {inicio == 3 && (
-          <>
-            <TextOnboarding
-              TextEfect={TextEfect}
-              parrafo={`El año en que naciste nuestros páramos se veían así:`}
-            />
-          </>
-        )}
-        {inicio == 4 && (
+      {inicio == 3 && (
+        <div className="gradiente">
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`En promedio, cada diez años perdemos 877,000 hectáreas de páramo.
-            `}
+            parrafo={`El año en que naciste nuestros páramos se veían así:`}
           />
-        )}
-        {inicio == 5 && (
+        </div>
+      )}
+      {inicio == 4 && (
+        <div className="gradiente">
+          <TextOnboarding
+            TextEfect={TextEfect}
+            parrafo={`En promedio, cada diez años perdemos 877,000 hectáreas de páramo.`}
+          />
+          <span className="absolute w-full h-full left-0 top-0 z-[-1]">
+            <EmbeddedIframe />
+          </span>
+        </div>
+      )}
+      {inicio == 5 && (
+        <div className="gradiente">
           <TextOnboarding
             TextEfect={TextEfect}
             parrafo={`Desde la década de los 2000, perdimos el 79% de área de páramo entre Cundinamarca y Boyacá.`}
           />
-        )}
-        {inicio == 6 && (
+        </div>
+      )}
+      {inicio == 6 && (
+        <div className="gradiente">
           <TextOnboarding
             TextEfect={TextEfect}
             parrafo={`Tristemente, entre el 2000 y el 2015 se quemó el 18% del área total del páramo de Sumapaz.`}
           />
-        )}
-        {inicio == 7 && (
+        </div>
+      )}
+      {inicio == 7 && (
+        <div className="gradiente">
           <TextOnboarding
             TextEfect={TextEfect}
             parrafo={`Entre el 2015 y el 2020, perdimos 20% de nuestros páramos de la Cordillera Oriental.`}
           />
-        )}
-        {inicio == 8 && (
+        </div>
+      )}
+      {inicio == 8 && (
+        <div className="gradiente">
           <TextOnboarding
             TextEfect={TextEfect}
             parrafo={`Si no hacemos nada, para el 2030, el complejo Tota-Bijagual-Mamapacha habrá perdido 35% de vegetación.`}
           />
-        )}
-        {inicio == 9 && (
+        </div>
+      )}
+      {inicio == 9 && (
+        <div className="gradiente">
           <TextOnboarding
             TextEfect={TextEfect}
             parrafo={`La pérdida de páramos en las próximas décadas traerá consigo deslizamientos y tragedias ambientales.`}
           />
-        )}
-        {inicio == 10 && (
+        </div>
+      )}
+      {inicio == 10 && (
+        <div className="gradiente">
           <TextOnboarding
             TextEfect={TextEfect}
             parrafo={`Nuestro presente es el mejor momento para cambiar esta realidad. <br/><br/> Salvemos nuestros páramos.`}
           />
-        )}
-        {/*  {inicio == 11 && (
+        </div>
+      )}
+      {/*  {inicio == 11 && (
           <TextOnboarding
             TextEfect={TextEfect}
             parrafo={`Nuestro presente es el mejor momento para cambiar esta realidad. <br/><br/> Salvemos nuestros páramos.`}
           />
         )} */}
-      </div>
     </>
   );
 };
