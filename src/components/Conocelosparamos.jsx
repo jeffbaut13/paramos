@@ -14,8 +14,10 @@ const lento = 2;
 const Conocelosparamos = ({ itemActive, setItemActive }) => {
   const [activeOne, setActiveOne] = useState(false);
   const [activeTwo, setActiveTwo] = useState(false);
-  const parrafo = useRef(null);
-  const parrafo2 = useRef(null);
+  const [activeTree, setActiveTree] = useState(false);
+  const [activefour, setActivefour] = useState(false);
+  const [activeFive, setActiveFive] = useState(false);
+
   const handleClick = () => {
     setItemActive(1);
   };
@@ -427,8 +429,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
                 <div className="cajaTitu">
                   <span
+                    onClick={() => {
+                      setActiveTwo(false);
+                      setActiveTree(false);
+                    }}
                     className={`${
-                      activeOne ? "block" : "hidden"
+                      activeTwo ? "block" : "hidden"
                     } parrafoConoce`}
                   >
                     Imagina un mundo donde cada hoja es un susurro de vida,
@@ -437,8 +443,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                     que sostienen el equilibrio de un ecosistema único.
                   </span>
                   <span
+                    onClick={() => {
+                      setActiveTwo(false);
+                      setActiveTree(false);
+                    }}
                     className={`${
-                      activeTwo ? "block" : "hidden"
+                      activeTree ? "block" : "hidden"
                     } parrafoConoce`}
                   >
                     Desde las alturas, absorben la humedad de la neblina y la
@@ -448,27 +458,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
                 <BtnHover
                   handleClick={() => {
-                    if (activeOne) {
-                      setActiveOne(false);
-                    } else {
-                      setActiveOne(true);
-                    }
-                  }}
-                  handleMouseEnter={() => {
-                    setActiveOne(true);
-                  }}
-                  handleMouseLeave={() => {
-                    setActiveOne(false);
-                  }}
-                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[43%] xs:top-[73%] xs:left-[65%] `}
-                />
-
-                <BtnHover
-                  handleClick={() => {
-                    if (activeOne) {
+                    if (activeTwo) {
                       setActiveTwo(false);
+                      setActiveTree(false);
                     } else {
                       setActiveTwo(true);
+                      setActiveTree(false);
                     }
                   }}
                   handleMouseEnter={() => {
@@ -476,6 +471,25 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   }}
                   handleMouseLeave={() => {
                     setActiveTwo(false);
+                  }}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[43%] xs:top-[73%] xs:left-[65%] `}
+                />
+
+                <BtnHover
+                  handleClick={() => {
+                    if (activeTree) {
+                      setActiveTree(false);
+                      setActiveTwo(false);
+                    } else {
+                      setActiveTree(true);
+                      setActiveTwo(false);
+                    }
+                  }}
+                  handleMouseEnter={() => {
+                    setActiveTree(true);
+                  }}
+                  handleMouseLeave={() => {
+                    setActiveTree(false);
                   }}
                   customStyles={`punto top-0 w-5 h-5   lg:top-[75%] lg:left-[63%] xs:top-[85%] xs:left-[38%]`}
                 />
@@ -496,8 +510,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
                 <div className="cajaTitu">
                   <span
+                    onClick={() => {
+                      setActivefour(false);
+                      setActiveFive(false);
+                    }}
                     className={`${
-                      activeOne ? "block" : "hidden"
+                      activefour ? "block" : "hidden"
                     } parrafoConoce`}
                   >
                     Nuestro viaje comienza en marzo, cuando nos uniremos en las
@@ -506,8 +524,12 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                     frailejones.
                   </span>
                   <span
+                    onClick={() => {
+                      setActivefour(false);
+                      setActiveFive(false);
+                    }}
                     className={`${
-                      activeTwo ? "block" : "hidden"
+                      activeFive ? "block" : "hidden"
                     } parrafoConoce`}
                   >
                     Expertos guiarán nuestros pasos, asegurando que cada gesto
@@ -517,34 +539,38 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
                 <BtnHover
                   handleClick={() => {
-                    if (activeOne) {
-                      setActiveOne(false);
+                    if (activefour) {
+                      setActivefour(false);
+                      setActiveFive(false);
                     } else {
-                      setActiveOne(true);
+                      setActivefour(true);
+                      setActiveFive(false);
                     }
                   }}
                   handleMouseEnter={() => {
-                    setActiveOne(true);
+                    setActivefour(true);
                   }}
                   handleMouseLeave={() => {
-                    setActiveOne(false);
+                    setActivefour(false);
                   }}
                   customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[70%] xs:top-[75%] xs:left-[50%]`}
                 />
 
                 <BtnHover
                   handleClick={() => {
-                    if (activeOne) {
-                      setActiveTwo(false);
+                    if (activeFive) {
+                      setActiveFive(false);
+                      setActivefour(false);
                     } else {
-                      setActiveTwo(true);
+                      setActiveFive(true);
+                      setActivefour(false);
                     }
                   }}
                   handleMouseEnter={() => {
-                    setActiveTwo(true);
+                    setActiveFive(true);
                   }}
                   handleMouseLeave={() => {
-                    setActiveTwo(false);
+                    setActiveFive(false);
                   }}
                   customStyles={`punto top-0 w-5 h-5  lg:top-[75%] lg:left-[42%] xs:top-[82%] xs:left-[25%]`}
                 />
@@ -560,6 +586,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               onClick={() => {
                 setActiveOne(false);
                 setActiveTwo(false);
+                setActiveTree(false);
+                setActiveFive(false);
+                setActivefour(false);
                 if (itemActive == 1 || itemActive == 2) {
                   setItemActive(3);
                 }
@@ -583,6 +612,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               onClick={() => {
                 setActiveOne(false);
                 setActiveTwo(false);
+                setActiveTree(false);
+                setActiveFive(false);
+                setActivefour(false);
                 if (itemActive == 1 || itemActive == 2) {
                   setItemActive(0);
                 }

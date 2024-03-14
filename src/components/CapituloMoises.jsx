@@ -65,7 +65,7 @@ export const CapituloMoises = ({ playCapitulo, setPlayCapitulo }) => {
             onPause={() => setPause(true)}
             onPlay={() => setPause(false)}
             playing={playCapitulo == true ? true : false}
-            url="https://youtu.be/CAsd4cpIru0"
+            url="https://youtu.be/wP18CMcPoro"
             className="react-player"
             loop
             width={

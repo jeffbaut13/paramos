@@ -110,7 +110,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
                 onPause={() => setPause(true)}
                 onPlay={() => setPause(false)}
                 playing={playMoises == true ? true : false}
-                url="https://youtu.be/hU4TeVmUWGs"
+                url="https://youtu.be/CAsd4cpIru0"
                 className="react-player"
                 width={
                   isMobile
