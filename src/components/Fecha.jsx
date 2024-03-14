@@ -132,7 +132,7 @@ const Fecha = ({
             TextEfect={TextEfect}
             parrafo={`En promedio, cada diez años perdemos 877,000 hectáreas de páramo.`}
           />
-          <span className="absolute w-full h-full left-0 top-0 z-[-1]">
+          <span className="absolute w-full h-full left-0 top-0 z-[1] ">
             <EmbeddedIframe
               urlKuala={
                 "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es"

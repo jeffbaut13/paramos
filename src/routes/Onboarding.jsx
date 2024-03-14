@@ -277,7 +277,7 @@ const Onboarding = () => {
             />
             {inicio > 2 && (
               <>
-                <div className=" pointer-events-none absolute top-0 left-0 lg:bg-gradient-to-r lg:from-[#000000ad] max-lg:bg-[#000000ad] lg:to-[#00000029] w-full h-full z-[-1]"></div>
+                <div className=" pointer-events-none absolute top-0 left-0 lg:bg-gradient-to-r lg:from-[#000000ad] max-lg:bg-[#000000ad] lg:to-[#00000029] w-full h-full z-[2]"></div>
 
                 <FechasLateral
                   inicio={inicio}
