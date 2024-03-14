@@ -73,7 +73,7 @@ const DigitarFecha = ({ setInputNumber, inputNumber, handleNextClick }) => {
       </button>
       <Link
         to={"/paramo"}
-        className="btn-cards fadeIn absolute bottom-12 text-center letterSpacing"
+        className="btn-cards fadeIn mt-8 text-center letterSpacing"
       >
         Omitir
       </Link>

@@ -35,16 +35,16 @@ const Onboarding = () => {
     // Guarda la posición inicial del toque en Y
     setStartTouchY(e.touches[0].clientY);
   };
-
+  console.log(inicio);
   const handleTouchEnd = (e) => {
     // Calcula la diferencia entre la posición inicial y final del toque
     const endTouchY = e.changedTouches[0].clientY;
     const diff = startTouchY - endTouchY;
 
     // Determina la dirección del deslizamiento y muestra un mensaje
-    if (diff > 0) {
+    if (diff > 0 && inicio >= 3) {
       handleNextClick();
-    } else if (diff < 0) {
+    } else if (diff < 0 && inicio >= 3) {
       handlePrevClick();
     }
   };
@@ -55,12 +55,11 @@ const Onboarding = () => {
       if (!scrollEnabled) return;
 
       const delta = Math.max(-1, Math.min(1, event.deltaY || -event.detail));
-      if (delta > 0) {
+      if (delta > 0 && inicio >= 3) {
         handleNextClick();
-      } else {
+      } else if (delta < 0 && inicio >= 3) {
         handlePrevClick();
       }
-
       disableScrollTemporarily();
     }
 
@@ -68,9 +67,9 @@ const Onboarding = () => {
       if (!scrollEnabled) return;
 
       const delta = event.deltaY;
-      if (delta > 0) {
+      if (delta > 0 && inicio >= 3) {
         handleNextClick();
-      } else {
+      } else if (delta < 0 && inicio >= 3) {
         handlePrevClick();
       }
 
@@ -293,7 +292,6 @@ const Onboarding = () => {
                 >
                   {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
                 </Link>
-                <></>
               </>
             )}
             {inicio >= 3 && inicio <= 10 && Mobile && (

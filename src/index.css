@@ -88,7 +88,7 @@ svg {
 }
 .btn-cards {
   @apply text-white xl:text-lg sm:text-sm xs:text-xs w-fit;
-  @apply transicion_200 px-6 bg-black bg-opacity-60 hover:bg-white text-white hover:text-[#000000] hover:bg-opacity-70  rounded-lg uppercase py-2 letterSpacing hover:shadow-none;
+  @apply transicion_200 px-6 bg-black bg-opacity-60 min-w-[180px] hover:bg-white text-white hover:text-[#000000] hover:bg-opacity-70  rounded-lg uppercase py-3 letterSpacing hover:shadow-none;
 }
 .gradiente {
   @apply bg-black bg-opacity-0 rounded-full;
