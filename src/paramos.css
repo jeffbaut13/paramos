@@ -338,7 +338,7 @@
 }
 
 .parrafoConoce {
-  @apply text-white lg:text-lg xs:text-sm max-lg:mt-4 font-medium normal-case text-start inline-block;
+  @apply text-white lg:text-lg xs:text-xs max-lg:mt-4 font-medium normal-case text-start inline-block;
 }
 .cajaTitu {
   @apply inline-block lg:w-[600px] xs:w-full;

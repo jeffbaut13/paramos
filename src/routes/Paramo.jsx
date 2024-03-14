@@ -170,7 +170,7 @@ function App() {
       });
       setScrollPercentageTwo(porcentaje * 3);
       setActiveButton("Primera siembra");
-      setPlayCapitulo(true);
+
       setScrollPercentage(4);
       setTravesiaReverse(false);
 
@@ -253,7 +253,7 @@ function App() {
       <BackgroundTransition />
 
       <div className="blurParamos  fixed top-0 left-0 bg2 z-10 w-full h-full opacity-0"></div>
-      <div className="cajaParaelementos maxW fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[85%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%]">
+      <div className="cajaParaelementos maxW fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[80%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%]">
         {active360 == 2 && (
           <span
             onClick={() => setActive360(3)}

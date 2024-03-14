@@ -194,7 +194,7 @@ const NavBar = ({
                   <button
                     ref={buton}
                     key={button.text}
-                    className={`cursor-default px-4 py-1 transition-colors lg:text-xl xs:text-sm tracking-[0.8em] rounded-3xl uppercase text-white`}
+                    className={`cursor-default px-4 py-1 transition-colors lg:text-xl xs:text-xs tracking-[0.5em] rounded-3xl uppercase text-white`}
                   >
                     {button.text}
                   </button>
@@ -256,12 +256,12 @@ const NavBar = ({
       <>
         <IconSlideNextPrev
           handleClick={scrollerResta}
-          customStyle={`iconoSlideInicial btn1 rotate-[-90deg] fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 max-lg:right-3 lg:translate-x-[150%] xs:translate-y-[-200%] lg:translate-y-[-150%] opacity-1 z-[100]`}
+          customStyle={`iconoSlideInicial btn1 rotate-[-90deg] fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 max-lg:right-0 lg:translate-x-[150%] xs:translate-x-[100%] xs:translate-y-[-300%] lg:translate-y-[-150%] opacity-1 z-[100]`}
         />
 
         <IconSlideNextPrev
           handleClick={scroller}
-          customStyle={`iconoSlideInicial rotate-90 fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 lg:translate-x-[150%] max-lg:right-3 xs:translate-y-[-50%] lg:translate-y-[150%]  opacity-1 z-[100]`}
+          customStyle={`iconoSlideInicial rotate-90 fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 lg:translate-x-[150%] xs:translate-x-[100%] max-lg:right-0 xs:translate-y-[-150%] lg:translate-y-[150%]  opacity-1 z-[100]`}
         />
       </>
 

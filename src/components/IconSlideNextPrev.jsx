@@ -3,7 +3,9 @@ import React from "react";
 const IconSlideNextPrev = ({ reverse, customStyle, handleClick }) => {
   return (
     <span
-      className={`${customStyle} cursor-pointer iconContinue inline-block w-10 bg-white rounded-full bg-opacity-50`}
+      className={`${
+        customStyle ? customStyle : ""
+      } cursor-pointer iconContinue inline-block w-10 bg-white rounded-full bg-opacity-50`}
       onClick={handleClick}
     >
       <svg

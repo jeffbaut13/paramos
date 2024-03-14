@@ -45,7 +45,7 @@ function ContactForm() {
       <form onSubmit={handleSubmit} className=" flex-col">
         <div className="form-group">
           <input
-            className="bg-transparent border-b-[1px] py-2 lg:w-[60%] xs:w-full cajasFormMobile placeholder-white text-white"
+            className="bg-transparent border-b-[1px] lg:py-2 lg:w-[60%] xs:w-full max-lg:text-xs cajasFormMobile placeholder-white text-white"
             type="text"
             placeholder="NOMBRE"
             value={name}
@@ -54,7 +54,7 @@ function ContactForm() {
         </div>
         <div className="form-group ">
           <input
-            className="bg-transparent border-b-[1px] py-2 my-8 margenFormMobile lg:w-[60%] xs:w-full cajasFormMobile placeholder-white text-white"
+            className="bg-transparent border-b-[1px] lg:py-2 my-8 margenFormMobile max-lg:text-xs lg:w-[60%] xs:w-full cajasFormMobile placeholder-white text-white"
             type="text"
             placeholder="NÚMERO DE WHATSAPP"
             value={whatsapp}
@@ -63,7 +63,7 @@ function ContactForm() {
         </div>
         <div className="form-group">
           <input
-            className="bg-transparent border-b-[1px] py-2 lg:w-[60%] xs:w-full cajasFormMobile placeholder-white text-white"
+            className="bg-transparent border-b-[1px] lg:py-2 lg:w-[60%] max-lg:text-xs xs:w-full cajasFormMobile placeholder-white text-white"
             type="email"
             placeholder="CORREO ELECTRÓNICO"
             value={email}
@@ -73,17 +73,14 @@ function ContactForm() {
         <div className="form-group">
           <textarea
             value={message}
-            className=" bg-[#ffffff1c] rounded-lg pb-14 lg:w-[60%] xs:w-full my-8 cajasFormMobile text-white"
+            className=" bg-[#ffffff1c] max-lg:text-xs rounded-lg xl:pb-14 xs:pb-6 lg:w-[60%] xs:w-full my-8 cajasFormMobile text-white"
             placeholder="Máximo 1800 caracteres"
             onChange={(e) => setMessage(e.target.value)}
             maxLength="1800"
           />
         </div>
         <div className=" lg:w-[60%] xs:w-full flex justify-center">
-          <button
-            className=" bg-white hover:bg-black hover:text-white w-[50%] font-bold rounded-lg justify-center items-center"
-            type="submit"
-          >
+          <button className="btnWhite bg-white" type="submit">
             ENVIAR
           </button>
         </div>

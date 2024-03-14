@@ -339,7 +339,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             />
             <img
               src="/Conoce/m-1Mobile.webp"
-              className=" m4 scale-[1.3] right-0 h-auto absolute bottom-0 z-40 lg:hidden xl:hidden 2xl:hidden"
+              className=" m4 scale-[1.3] right-0 h-auto absolute bottom-[-25%] z-40 lg:hidden xl:hidden 2xl:hidden"
             />
 
             <img
@@ -348,7 +348,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             />
             <img
               src="/Conoce/m-2Mobile.webp"
-              className=" m1 h-auto absolute bottom-0 z-30 lg:hidden xl:hidden 2xl:hidden"
+              className=" m1 h-auto absolute bottom-[-25%] z-30 lg:hidden xl:hidden 2xl:hidden"
             />
 
             <img
@@ -357,7 +357,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             />
             <img
               src="/Conoce/m-3Mobile.webp"
-              className=" m2 right-0 h-auto opacity-0 absolute bottom-0 z-20 lg:hidden xl:hidden 2xl:hidden"
+              className=" m2 right-0 h-auto opacity-0 absolute bottom-[-25%] z-20 lg:hidden xl:hidden 2xl:hidden"
             />
 
             <img
@@ -410,7 +410,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveOne(false);
                   }}
-                  customStyles={`punto w-5 h-5  lg:left-[65%] lg:top-[40%] xs:left-[55%] xs:top-[52%]`}
+                  customStyles={`punto w-5 h-5  lg:left-[65%] lg:top-[40%] xs:left-[55%] xs:top-[72%]`}
                 />
               </div>
             )}
@@ -460,7 +460,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveOne(false);
                   }}
-                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[43%] xs:top-[60%] xs:left-[65%] `}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[43%] xs:top-[73%] xs:left-[65%] `}
                 />
 
                 <BtnHover
@@ -477,7 +477,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveTwo(false);
                   }}
-                  customStyles={`punto top-0 w-5 h-5   lg:top-[75%] lg:left-[63%] xs:top-[75%] xs:left-[58%]`}
+                  customStyles={`punto top-0 w-5 h-5   lg:top-[75%] lg:left-[63%] xs:top-[85%] xs:left-[38%]`}
                 />
               </div>
             )}
@@ -529,7 +529,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveOne(false);
                   }}
-                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[70%] xs:top-[58%] xs:left-[50%]`}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[70%] xs:top-[75%] xs:left-[50%]`}
                 />
 
                 <BtnHover
@@ -546,57 +546,64 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveTwo(false);
                   }}
-                  customStyles={`punto top-0 w-5 h-5  lg:top-[75%] lg:left-[42%] xs:top-[72%] xs:left-[25%]`}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[75%] lg:left-[42%] xs:top-[82%] xs:left-[25%]`}
                 />
               </div>
             )}
+            {!isMobile && (
+              <HandScroll
+                customstyle={`moveTwo hidden absolute w-12 z-[100] lg:top-[44%] lg:left-[63%] max-lg:hidden `}
+              />
+            )}
 
-            <HandScroll
-              customstyle={`moveTwo hidden absolute w-12 z-[100] top-[44%] left-[63%] `}
-            />
-            {itemActive < 5 && (
-              <span
-                onClick={() => {
-                  setActiveOne(false);
-                  setActiveTwo(false);
-                  if (itemActive == 1 || itemActive == 2) {
-                    setItemActive(3);
-                  }
-                  if (itemActive == 3 || itemActive == 4) {
-                    setItemActive(5);
-                  }
-                  if (itemActive == 5) {
-                    setItemActive(0);
-                  }
-                }}
-                className="next slideBtn cursor-pointer absolute right-4 top-1/2 z-50"
-              >
-                <IconSlideNextPrev />
-              </span>
-            )}
-            {itemActive > 2 && (
-              <span
-                onClick={() => {
-                  setActiveOne(false);
-                  setActiveTwo(false);
-                  if (itemActive == 1 || itemActive == 2) {
-                    setItemActive(0);
-                  }
-                  if (itemActive == 3 || itemActive == 4) {
-                    setItemActive(2);
-                  }
-                  if (itemActive == 5) {
-                    setItemActive(4);
-                  }
-                }}
-                className="back slideBtn cursor-pointer absolute left-4 top-1/2 z-50"
-              >
-                <IconSlideNextPrev reverse={true} />
-              </span>
-            )}
+            <span
+              onClick={() => {
+                setActiveOne(false);
+                setActiveTwo(false);
+                if (itemActive == 1 || itemActive == 2) {
+                  setItemActive(3);
+                }
+                if (itemActive == 3 || itemActive == 4) {
+                  setItemActive(5);
+                }
+                if (itemActive == 5) {
+                  setItemActive(0);
+                }
+              }}
+              className={`${
+                itemActive == 5
+                  ? " ocult  pointer-events-none"
+                  : "sho pointer-events-auto"
+              } next slideBtn cursor-pointer absolute lg:right-4 xs:right-1/2 max-lg:translate-x-[150%] max-lg:bottom-2 lg:top-1/2 z-50`}
+            >
+              <IconSlideNextPrev customStyle={"previw"} />
+            </span>
+
+            <span
+              onClick={() => {
+                setActiveOne(false);
+                setActiveTwo(false);
+                if (itemActive == 1 || itemActive == 2) {
+                  setItemActive(0);
+                }
+                if (itemActive == 3 || itemActive == 4) {
+                  setItemActive(2);
+                }
+                if (itemActive == 5) {
+                  setItemActive(4);
+                }
+              }}
+              className={`${
+                itemActive == 1 || itemActive == 2
+                  ? " ocult pointer-events-none "
+                  : "sho pointer-events-auto"
+              } back slideBtn cursor-pointer absolute lg:left-4 xs:left-1/2 max-lg:translate-x-[-150%] lg:top-1/2 max-lg:bottom-2 z-50`}
+            >
+              <IconSlideNextPrev customStyle={"previw"} reverse={true} />
+            </span>
           </div>
         </div>
-        <div className="anchoInicialPrimario BoxConoceText BoxesTextEnd flex flex-col items-center justify-center">
+        <div className="anchoInicialPrimario BoxConoceText BoxesTextEnd flex flex-col items-center justify-evenly">
           <p className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Sembraremos <br />
             2,000 frailejones <br />

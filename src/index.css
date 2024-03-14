@@ -241,3 +241,13 @@ svg {
   @apply text-white xl:text-lg sm:text-sm xs:text-xs w-fit;
   @apply transicion_200 px-6 bg-white bg-opacity-60 hover:bg-black text-[#000000] hover:text-white hover:bg-opacity-70  rounded-lg uppercase py-2 letterSpacing hover:shadow-none;
 }
+
+.btnWhite {
+  @apply w-fit flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal px-5 py-3 text-center lg:text-2xl xs:text-xs rounded-lg hover:bg-black bg-white  transition-all ease-in-out duration-300 text-black hover:text-white;
+}
+.ocult .previw {
+  @apply opacity-30;
+}
+.sho .previw {
+  @apply opacity-100;
+}

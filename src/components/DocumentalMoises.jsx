@@ -1,11 +1,32 @@
 import gsap from "gsap";
+import { space } from "postcss/lib/list";
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
+import { IconPlay } from "./IconPlay";
 const isMobile = window.innerWidth < 640;
 const tablet = window.innerWidth >= 640 && window.innerWidth < 1280;
 const full = window.innerWidth >= 1500;
 const laptop = window.innerWidth >= 1280 && window.innerWidth < 1500;
 const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
+  const [pause, setPause] = useState(false);
+  useEffect(() => {
+    if (pause) {
+      const tl = gsap.timeline();
+      tl.fromTo(
+        ".BoxMoisesImg .btncloseVideo",
+        { opacity: 0 },
+        { opacity: 1, ease: "power1.inOut" }
+      );
+      tl.add(() => setPause(false));
+    }
+    if (pause == false) {
+      gsap.fromTo(
+        ".BoxMoisesImg .btncloseVideo",
+        { opacity: 1 },
+        { opacity: 0, delay: 2, duration: 2, ease: "power1.inOut" }
+      );
+    }
+  }, [pause]);
   useEffect(() => {
     if (playMoises) {
       const tl = gsap.timeline();
@@ -78,7 +99,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
     <div className=" documental w-full h-full flex">
       <div className="moises relative w-full h-full paddingComponentes flex xs:flex-col-reverse lg:flex-row">
         <div className="BoxMoisesImg bg-black BoxesImgStart bg-center">
-          <div className="player-wrapper">
+          <div onMouseEnter={() => setPause(true)} className="player-wrapper">
             <img
               className="xperiaimgBg w-full h-full object-cover"
               src="/experiencia/moises.webp"
@@ -86,6 +107,8 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
             />
             {playMoises && (
               <ReactPlayer
+                onPause={() => setPause(true)}
+                onPlay={() => setPause(false)}
                 playing={playMoises == true ? true : false}
                 url="https://youtu.be/hU4TeVmUWGs"
                 className="react-player"
@@ -102,35 +125,25 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
                 controls
               />
             )}
+            {playMoises && (
+              <span
+                onClick={() => setPlayMoises(false)}
+                className="btncloseVideo cursor-pointer fadeIn absolute w-8 p-[11px] rounded-full border border-white bottom-16 left-1/2 translate-x-[-50%] iconoCloseMoises"
+              >
+                <img src="/svg/close.svg" alt="" />
+              </span>
+            )}
             {!playMoises && (
               <>
-                <span
-                  onClick={() => {
+                <IconPlay
+                  handleClick={() => {
                     if (playMoises == true) {
                       setPlayMoises(false);
                     } else {
                       setPlayMoises(true);
                     }
                   }}
-                  className="play cursor-pointer flex items-center justify-center font-normal absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-20 px-8 py-2 flex-center-col text-center border-2 rounded-lg hover:bg-[#B78B67] transition-all ease duration-300 border-[#B78B67]"
-                >
-                  <svg
-                    id="uuid-433ace1b-e96f-404f-9ec6-afe6f04d4d5f"
-                    data-name="Capa 2"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16.2 19.06"
-                  >
-                    <g
-                      id="uuid-ed807192-3682-40ea-8a94-a1b5cb9c2e05"
-                      data-name="Capa 1"
-                    >
-                      <path
-                        d="M0,1.46v16.15c0,1.07.92,1.78,1.72,1.31l13.8-8.07c.9-.53.9-2.09,0-2.62L1.72.15C.92-.32,0,.38,0,1.46Z"
-                        style={{ fill: "#fff", strokeWidth: "0px" }}
-                      />
-                    </g>
-                  </svg>
-                </span>
+                />
               </>
             )}
           </div>

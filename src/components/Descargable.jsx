@@ -21,7 +21,7 @@ const Descargable = () => {
             <a
               href="/contacto/comparte.mp4"
               download
-              className="BotonContacto lg:text-2xl xs:text-xs w-fit bg-white hover:bg-black text-black hover:text-white font-bold py-2 px-6 rounded-xl"
+              className="BotonContacto btnWhite"
               style={{
                 display: "block",
                 margin: "20px auto",

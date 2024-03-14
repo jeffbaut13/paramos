@@ -82,34 +82,40 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
     //<div className="dosmilFrailejones absolute w-full h-full z-[1] flex">
     <div className="dosmilFrailejones ocultarEnOrigen w-full h-full z-[1] flex">
       <div className=" flex responsiveReverse relative w-full h-full paddingComponentes">
-        {numFrailejon < 3 && (
-          <span
-            onClick={() => {
-              if (numFrailejon >= 3) {
-                setNumFrailejon(3);
-              } else {
-                setNumFrailejon(numFrailejon + 1);
-              }
-            }}
-            className="btnSlide opacity-0 cursor-pointer absolute right-4 top-1/2 z-50"
-          >
-            <IconSlideNextPrev />
-          </span>
-        )}
-        {numFrailejon > 1 && (
-          <span
-            onClick={() => {
-              if (numFrailejon <= 1) {
-                setNumFrailejon(0);
-              } else {
-                setNumFrailejon(numFrailejon - 1);
-              }
-            }}
-            className="btnSlide opacity-0 cursor-pointer absolute left-4 top-1/2 z-50"
-          >
-            <IconSlideNextPrev reverse={true} />
-          </span>
-        )}
+        <span
+          onClick={() => {
+            if (numFrailejon >= 3) {
+              setNumFrailejon(3);
+            } else {
+              setNumFrailejon(numFrailejon + 1);
+            }
+          }}
+          className={`${
+            numFrailejon == 3
+              ? " ocult pointer-events-none "
+              : "sho pointer-events-auto"
+          } btnSlide opacity-0 cursor-pointer absolute lg:right-4 xs:right-1/2 max-lg:translate-x-[150%] max-lg:bottom-2 lg:top-1/2 z-50`}
+        >
+          <IconSlideNextPrev customStyle={"previw"} />
+        </span>
+
+        <span
+          onClick={() => {
+            if (numFrailejon <= 1) {
+              setNumFrailejon(0);
+            } else {
+              setNumFrailejon(numFrailejon - 1);
+            }
+          }}
+          className={`${
+            numFrailejon == 1
+              ? " ocult pointer-events-none "
+              : "sho pointer-events-auto"
+          } btnSlide opacity-0 cursor-pointer absolute lg:left-4 xs:left-1/2 max-lg:translate-x-[-150%] lg:top-1/2 max-lg:bottom-2 z-50`}
+        >
+          <IconSlideNextPrev customStyle={"previw"} reverse={true} />
+        </span>
+
         <div
           className={`BoxDosmilImage   bg-center BoxesImgStart flex-center z-10 relative ${
             numFrailejon >= 1 ? "Frailejonactivo" : ""
@@ -181,7 +187,7 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
             />
           )}
         </div>
-        <div className="BoxDosmilTexto BoxesTextEnd flex-center z-0 relative">
+        <div className="BoxDosmilTexto BoxesTextEnd flex-center flex-col justify-evenly z-0 relative">
           <p className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             CADA FRAILEJÓN <br />
             SEMBRADO <br />

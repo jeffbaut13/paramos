@@ -393,7 +393,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
             </div>
           </div>
         </div>
-        <div className="BoxTravesiaTexto   BoxesTextEnd flex-center">
+        <div className="BoxTravesiaTexto  flex-col justify-evenly BoxesTextEnd flex-center">
           <p className="origenTexto textoUno font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Boyacá <br />
             será nuestro
