@@ -341,7 +341,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             />
             <img
               src="/Conoce/m-1Mobile.webp"
-              className=" m4 scale-[1.3] right-0 h-auto absolute bottom-[-25%] z-40 lg:hidden xl:hidden 2xl:hidden"
+              className=" m4 scale-[1.3] right-0 h-auto absolute bottom-[-15%] z-40 lg:hidden xl:hidden 2xl:hidden"
             />
 
             <img
@@ -350,7 +350,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             />
             <img
               src="/Conoce/m-2Mobile.webp"
-              className=" m1 h-auto absolute bottom-[-25%] z-30 lg:hidden xl:hidden 2xl:hidden"
+              className=" m1 h-auto absolute bottom-[-15%] z-30 lg:hidden xl:hidden 2xl:hidden"
             />
 
             <img
@@ -359,7 +359,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             />
             <img
               src="/Conoce/m-3Mobile.webp"
-              className=" m2 right-0 h-auto opacity-0 absolute bottom-[-25%] z-20 lg:hidden xl:hidden 2xl:hidden"
+              className=" m2 right-0 h-auto opacity-0 absolute bottom-[-15%] z-20 lg:hidden xl:hidden 2xl:hidden"
             />
 
             <img
@@ -472,7 +472,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveTwo(false);
                   }}
-                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[43%] xs:top-[73%] xs:left-[65%] `}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[43%] xs:top-[70%] xs:left-[65%] `}
                 />
 
                 <BtnHover
@@ -491,7 +491,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveTree(false);
                   }}
-                  customStyles={`punto top-0 w-5 h-5   lg:top-[75%] lg:left-[63%] xs:top-[85%] xs:left-[38%]`}
+                  customStyles={`punto top-0 w-5 h-5   lg:top-[75%] lg:left-[63%] xs:top-[80%] xs:left-[38%]`}
                 />
               </div>
             )}
@@ -553,7 +553,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActivefour(false);
                   }}
-                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[70%] xs:top-[75%] xs:left-[50%]`}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[70%] xs:top-[70%] xs:left-[50%]`}
                 />
 
                 <BtnHover
@@ -572,7 +572,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   handleMouseLeave={() => {
                     setActiveFive(false);
                   }}
-                  customStyles={`punto top-0 w-5 h-5  lg:top-[75%] lg:left-[42%] xs:top-[82%] xs:left-[25%]`}
+                  customStyles={`punto top-0 w-5 h-5  lg:top-[75%] lg:left-[42%] xs:top-[77%] xs:left-[25%]`}
                 />
               </div>
             )}
