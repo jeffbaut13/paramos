@@ -1,56 +1,135 @@
 import React, { useEffect, useRef, useState } from "react";
-import { primerEfecto2, reverseAction } from "../animations/travesia";
+import {
+  EfectoTravesia,
+  primerEfecto2,
+  reverseAction,
+} from "../animations/travesia";
 import gsap from "gsap";
 import Button from "./Button";
 import { space } from "postcss/lib/list";
 import IconSlideNextPrev from "./IconSlideNextPrev";
 
 const isMobile = window.innerWidth <= 1024;
-const rapido = 0.5;
-const normal = 1;
-const medio = 1.5;
-const lento = 2;
 
 const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
   const [posicion, setPosicion] = useState(1);
+  const [activeCaja, setActiveCaja] = useState(false);
   const padre = useRef(null);
-  //console.log(posicion);
+  //console.log(activeCaja);
+  const data = {
+    paramos: [
+      {
+        id: 1,
+        titulo: "PÁRAMO <br /> DE OCETÁ <br />",
+        subtitulo: "Monguí, Boyaca",
+        descripcion:
+          "Hogar de “la ciudad de piedra”, una formación rocosa con callejones y paredes cubiertas de musgos.",
+        item1:
+          "La caminata tiene una distancia de <span class='font-black'>15 a 18 km.</span>",
+        item2: "Altura máxima de 4,000 MSNM",
+        item3: "La caminata puede durar entre 8 - 10 horas.",
+        imagBg: "/travesia/bg-travesia2.webp",
+        imagPiso: "/travesia/camino-bg.webp",
+      },
+      {
+        id: 2,
+        titulo: "PÁRAMO <br /> DE MONGUÁ <br />",
+        subtitulo: "Monguí, Boyaca",
+        descripcion:
+          "Considerado uno de los más bellos del mundo, con una diversidad única de flora y fauna.",
+        item1:
+          "La caminata tiene una distancia de <span class='font-black'>16 a 18 km.</span>",
+        item2: "Altura máxima de 3,950 MSNM",
+        item3: "La caminata puede durar entre 9 - 11 horas.",
+        imagBg: "/travesia/bg-travesia3.webp",
+        imagPiso: "/travesia/camino-bg2.webp",
+      },
+      {
+        id: 3,
+        titulo: "PÁRAMO <br /> DE SISCUNSÍ <br />",
+        subtitulo: "Monguí, Sogamoso",
+        descripcion:
+          "En este lugar se han llevado a cabo programas de repoblamiento del cóndor andino.",
+        item1: "Altura máxima de 4,000 MSNM",
+        item2:
+          "La caminata tiene una distancia de <span class='font-black'>15 a 18 km.</span>",
+        item3: "La caminata puede durar entre 8 - 10 horas.",
+        imagBg: "/travesia/bg-travesia4.webp",
+        imagPiso: "/travesia/camino-bg3.webp",
+      },
+    ],
+  };
 
   useEffect(() => {
-    if (posicion == 2) {
-      primerEfecto2(padre, "cards2", "cards3", "cards1");
-    }
-    if (posicion == 3) {
-      primerEfecto2(padre, "cards3", "cards1", "cards2");
-    }
-    if (posicion == 4) {
-      primerEfecto2(padre, "cards1", "cards2", "cards3");
-    }
-  }, [posicion]);
+    if (activeCaja == false) {
+      setPosicion(1);
+      gsap.to(".bg-degradadoTravesia", {
+        opacity: 0,
+      });
+      gsap.to(".cajaTitulos", {
+        opacity: 0,
+      });
+      gsap.to(".cardsInternas", {
+        opacity: 0,
+      });
+      gsap.to(".travesia .paddingComponentes", {
+        padding: "0.5rem",
+      });
 
-  useEffect(() => {
-    if (travesiaReverse == false) {
+      if (isMobile) {
+        gsap.to(".BoxTravesiaCards", {
+          height: "50%",
+          borderRadius: "0 0 1.5rem 1.5rem",
+        });
+        gsap.to(".BoxTravesiaTexto", { height: "50%" });
+      } else {
+        gsap.to(".BoxTravesiaCards", {
+          width: "50%",
+          borderRadius: "1.5rem 0 0 1.5rem",
+        });
+        gsap.to(".BoxTravesiaTexto", { width: "50%" });
+      }
+    }
+    if (activeCaja == true) {
+      gsap.to(".bg-degradadoTravesia", {
+        opacity: 1,
+      });
+      gsap.to(".cajaTitulos", {
+        opacity: 1,
+      });
+      gsap.to(".cardsInternas", {
+        opacity: 1,
+      });
       const tl = gsap.timeline();
       if (isMobile) {
-        tl.fromTo(".BoxTravesiaCards", { height: "0%" }, { height: "50%" });
+        tl.fromTo(".BoxTravesiaCards", { height: "50%" }, { height: "100%" });
         tl.fromTo(
           ".BoxTravesiaTexto",
-          { height: "100%" },
           { height: "50%" },
+          { height: "0%" },
           "<"
         ).addLabel("cambioTravesia2");
       } else {
-        tl.fromTo(".BoxTravesiaCards", { width: "0%" }, { width: "50%" });
+        tl.fromTo(
+          ".BoxTravesiaCards",
+          { width: "50%" },
+          { width: "100%", borderRadius: "1.5rem" }
+        );
         tl.fromTo(
           ".BoxTravesiaTexto",
-          { width: "100%" },
           { width: "50%" },
+          { width: "0%" },
           "<"
         ).addLabel("cambioTravesia2");
       }
       tl.to(
         ".blurParamos",
-        { opacity: 0, duration: 1 },
+        { opacity: 1, duration: 1 },
+        "cambioTravesia2-=0.5"
+      );
+      tl.to(
+        ".travesia .paddingComponentes",
+        { padding: 0, duration: 1 },
         "cambioTravesia2-=0.5"
       );
 
@@ -62,338 +141,208 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         },
         "cambioTravesia2-=0.5"
       );
-      reverseAction(padre);
+
       setPosicion(1);
     }
-  }, [travesiaReverse]);
+  }, [activeCaja]);
 
-  const handleGspa = () => {
-    const tl = gsap.timeline();
-    if (isMobile) {
-      tl.fromTo(".BoxTravesiaCards", { height: "50%" }, { height: "0%" });
-      tl.fromTo(
-        ".BoxTravesiaTexto",
-        { height: "50%" },
-        { height: "100%" },
-        "<"
-      ).addLabel("cambioTravesia");
-    } else {
-      tl.fromTo(".BoxTravesiaCards", { width: "50%" }, { width: "0%" });
-      tl.fromTo(
-        ".BoxTravesiaTexto",
-        { width: "50%" },
-        { width: "100%" },
-        "<"
-      ).addLabel("cambioTravesia");
+  useEffect(() => {
+    if (posicion == 1) {
+      EfectoTravesia("card2", "card3", "card1");
     }
-    tl.to(".blurParamos", { opacity: 1, duration: 1 }, "cambioTravesia-=0.5");
-
-    tl.add(() => {
-      primerEfecto2(padre, "cards1", "cards2", "cards3");
-    }, "cambioTravesia-=0.5");
-    tl.to(
-      ".travesia .btnconoce",
-      {
-        opacity: 0,
-        duration: 0,
-      },
-      "cambioTravesia-=0.5"
-    );
-
-    gsap.to(
-      ".cards2 .iconoCaminante",
-      {
-        display: "none",
-      },
-      "cambioTravesia"
-    );
-
-    tl.to(".travesia > div", { padding: 0, duration: 1 }, "cambioTravesia");
-    if (isMobile) {
-      tl.fromTo(
-        ".cards1",
-        { display: "none", opacity: 0 },
-        { display: "block", opacity: 1, duration: rapido },
-        "cambioTravesia"
-      );
-    } else {
-      tl.fromTo(
-        ".cards",
-        { display: "none", opacity: 0 },
-        { display: "block", opacity: 1, duration: rapido },
-        "cambioTravesia"
-      );
+    if (posicion == 2) {
+      EfectoTravesia("card3", "card1", "card2");
     }
-    tl.to(".textoUno", { opacity: 0, y: "-20%" }, "cambioTravesia");
-    tl.to(".textoUno", { display: "none" }, "cambioTravesia");
-    tl.to(".btnTravesia", { opacity: 0 }, "<-=0.5");
-    if (isMobile) {
-      tl.to(".BoxTravesiaCards", { height: "100%" }, "cambioTravesia+=1");
-      tl.to(
-        ".BoxTravesiaTexto",
-
-        { height: "0%" },
-        "cambioTravesia+=1"
-      );
-    } else {
-      tl.to(".BoxTravesiaCards", { width: "100%" }, "cambioTravesia+=1");
-      tl.to(
-        ".BoxTravesiaTexto",
-
-        { width: "0%" },
-        "cambioTravesia+=1"
-      );
+    if (posicion == 3) {
+      EfectoTravesia("card1", "card2", "card3");
     }
-    tl.to(
-      ".travesia .iconContinue",
+  }, [posicion]);
 
-      { opacity: 1, right: "0", duration: lento }
-    );
-  };
+  const paramos = data.paramos;
 
   return (
-    //<div className="travesia absolute w-full h-full z-[1] flex">
     <div className="travesia ocultarEnOrigen w-full h-full z-[1] flex">
       <div
         ref={padre}
-        className=" flex relative w-full h-full responsiveReverse  paddingComponentes bg-white"
+        className=" flex relative w-full h-full responsiveReverse  paddingComponentes  "
       >
-        <div className="BoxTravesiaCards    BoxesImgStart ">
+        <div className="BoxTravesiaCards lg:w-1/2 xs:w-full lg:h-full xs:h-1/2 BoxesImgStart ">
           <div className="card w-full h-full relative ">
-            {isMobile && (
-              <IconSlideNextPrev
-                handleClick={() => {
-                  if (posicion == 4) {
-                    setPosicion(2);
-                  } else {
-                    setPosicion(posicion + 1);
-                  }
-                }}
-                customStyle={
-                  "opacity-1 absolute right-[-2.5rem] top-1/2 translate-y-[-50%] z-50"
-                }
-                reverse={false}
-              />
+            {activeCaja == true && (
+              <span
+                className=" cursor-pointer w-3 absolute top-4 right-4 botoncerrar z-20"
+                onClick={() => setActiveCaja(false)}
+              >
+                <img
+                  className="w-full h-full object-cover"
+                  src="/svg/close.svg"
+                  alt=""
+                />
+              </span>
             )}
-            <img
-              className="caminante iconoCaminante"
-              src="/travesia/caminante.png"
-              alt=""
-            />
-            <div className="absolute w-full h-full z-[1]">
-              <div className="relative w-full h-full">
-                <img
-                  className=" w-full h-full absolute object-cover"
-                  src="/travesia/bg-travesFront.webp"
-                  alt=""
-                />
-              </div>
-            </div>
+            <div className="cards z-[3]">
+              {paramos.map(
+                (paramo, i) =>
+                  paramo.id == posicion && (
+                    <div className="relative h-full w-full ">
+                      <div className="bg-degradadoTravesia w-full h-full absolute z-[2]"></div>
 
-            <div className="cards cards1   z-[3]">
-              <div className="relative h-full w-full ">
-                <div className="bg-degradadoTravesia w-full h-full absolute z-[2]"></div>
-                <img
-                  className="caminante2 iconoCaminante"
-                  src="/travesia/caminante.png"
-                  alt=""
-                />
-                <div className="w-full h-full flex flex-col justify-between">
-                  <div className="cajaTitulos">
-                    <h2 className="titulo text-black">
-                      PÁRAMO <br /> DE OCETÁ <br />
-                      <span className="titulo2 hidden">Monguí, Boyaca</span>
-                    </h2>
-                    <p className="parrafo">
-                      Hogar de “la ciudad de piedra”, una formación rocosa con
-                      callejones y paredes cubiertas de musgos.
-                      <span className="font-black"> </span>
-                    </p>
-                  </div>
-                  <div className="cajaIconos">
-                    <div className="svgIcono svgIcono1">
-                      <span className="icono">
-                        <img src="/svg/caminante.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
-                      </h6>
-                    </div>
-                    <div className="svgIcono svgIcono2">
-                      <span className="icono">
-                        <img src="/svg/montanas.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">Altura máxima de 4,000 MSNM</h6>
-                    </div>
-                    <div className="svgIcono svgIcono3">
-                      <span className="icono">
-                        <img className="w-[80%]" src="/svg/reloj.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">
-                        La caminata puede durar entre 8 - 10 horas.
-                      </h6>
-                    </div>
-                  </div>
-                </div>
+                      <img
+                        className="imgCompleteOne z-[-1] top-0 w-full h-full absolute"
+                        src={paramo.imagBg}
+                        alt=""
+                      />
+                      <img
+                        className="caminante iconoCaminante z-[1]"
+                        src="/travesia/caminante.png"
+                        alt=""
+                      />
 
-                {!isMobile && (
-                  <span
-                    onClick={() => {
-                      primerEfecto2(padre, "cards1", "cards2", "cards3");
-                    }}
-                    className="punto max-lg:hidden"
-                  ></span>
-                )}
+                      <div
+                        key={paramo.id}
+                        className="w-full h-full flex flex-col justify-between"
+                      >
+                        <div className="cajaTitulos">
+                          <h2 className="titulo">
+                            <span className="block lg:w-fit xs:w-full relative overflow-hidden">
+                              <span
+                                className="textoTitulo block"
+                                dangerouslySetInnerHTML={{
+                                  __html: paramo.titulo,
+                                }}
+                              ></span>
+                            </span>
+                            <span className="titulo2">{paramo.subtitulo}</span>
+                          </h2>
+                          <div className="cajaParrafo lg:translate-x-[-10%]">
+                            <p className="parrafo">{paramo.descripcion}</p>
+                            <div className="svgIcono svgIcono1">
+                              <span className="icono">
+                                <img src="/svg/caminante.svg" alt="" />
+                              </span>
+                              <h6
+                                className="subtitulo"
+                                dangerouslySetInnerHTML={{
+                                  __html: paramo.item1,
+                                }}
+                              />
+                            </div>
+                            <div className="svgIcono svgIcono2">
+                              <span className="icono">
+                                <img src="/svg/montanas.svg" alt="" />
+                              </span>
 
-                <img
-                  className="imgComplete z-[-1] top-0 w-full h-full absolute"
-                  src="/travesia/bg-travesia2.webp"
-                  alt=""
-                />
-                <img
-                  className="imgpasto z-[-1] bottom-[-70%] w-full h-full absolute"
-                  src="/travesia/camino-bg.webp"
-                  alt=""
-                />
-              </div>
-            </div>
+                              <h6
+                                className="subtitulo"
+                                dangerouslySetInnerHTML={{
+                                  __html: paramo.item2,
+                                }}
+                              />
+                            </div>
+                            <div className="svgIcono svgIcono3">
+                              <span className="icono">
+                                <img src="/svg/reloj.svg" alt="" />
+                              </span>
+                              <h6
+                                className="subtitulo"
+                                dangerouslySetInnerHTML={{
+                                  __html: paramo.item3,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
 
-            <div className="cards cards2 max-lg:hidden z-[4]">
-              <div className="relative h-full w-full">
-                <div className="bg-degradadoTravesia w-full h-full absolute z-[2]"></div>
-                <img
-                  className="caminante2 iconoCaminante"
-                  src="/travesia/caminante.png"
-                  alt=""
-                />
-                <div className="w-full h-full flex flex-col justify-between">
-                  <div className="cajaTitulos">
-                    <h2 className="titulo text-black">
-                      PÁRAMO <br /> DE MONGUÁ <br />
-                      <span className="titulo2 hidden">Monguí, Boyaca</span>
-                    </h2>
-                    <p className="parrafo">
-                      Considerado uno de los más bellos del mundo, con una
-                      diversidad única de flora y fauna.
-                    </p>
-                  </div>
-                  <div className="cajaIconos">
-                    <div className="svgIcono svgIcono1">
-                      <span className="icono">
-                        <img src="/svg/caminante.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">16 a 18 km.</span>
-                      </h6>
-                    </div>
-                    <div className="svgIcono svgIcono2">
-                      <span className="icono">
-                        <img src="/svg/montanas.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">Altura máxima de 3,950 MSNM</h6>
-                    </div>
-                    <div className="svgIcono svgIcono3">
-                      <span className="icono">
-                        <img className="w-[80%]" src="/svg/reloj.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">
-                        La caminata puede durar entre 9 - 11 horas.
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-                {!isMobile && (
-                  <span
-                    onClick={() => {
-                      primerEfecto2(padre, "cards2", "cards3", "cards1");
-                    }}
-                    className="punto max-lg:hidden"
-                  ></span>
-                )}
-                <img
-                  className="imgComplete z-[-1] top-0 w-full h-full absolute"
-                  src="/travesia/bg-travesia3.webp"
-                  alt=""
-                />
-                <img
-                  className="imgpasto z-[-1] bottom-[-70%] w-full h-full absolute"
-                  src="/travesia/camino-bg2.webp"
-                  alt=""
-                />
-              </div>
-            </div>
+                        {isMobile ? (
+                          <div
+                            className={`botones left-1/2 w-fit translate-x-[-50%] absolute bottom-4 z-10`}
+                          >
+                            <span
+                              className={`${
+                                posicion == 1
+                                  ? " pointer-events-none opacity-35"
+                                  : "opacity-100 pointer-events-auto"
+                              }`}
+                            >
+                              <IconSlideNextPrev
+                                handleClick={() => {
+                                  if (posicion == 1) {
+                                    setPosicion(1);
+                                  } else {
+                                    setPosicion(posicion - 1);
+                                  }
+                                }}
+                                reverse={true}
+                                customStyle={"mr-4"}
+                              />
+                            </span>
+                            <span
+                              className={`${
+                                posicion == 3
+                                  ? " pointer-events-none opacity-35"
+                                  : "opacity-100 pointer-events-auto"
+                              }`}
+                            >
+                              <IconSlideNextPrev
+                                className="previw"
+                                handleClick={() => {
+                                  if (posicion == 3) {
+                                    setPosicion(3);
+                                  } else {
+                                    setPosicion(posicion + 1);
+                                  }
+                                }}
+                              />
+                            </span>
+                          </div>
+                        ) : (
+                          <div
+                            className={`cardsInternas translate-x-[-10%] z-[3] flex `}
+                          >
+                            <div className="slideCards">
+                              <div className="slideCard flex w-[166%] h-full pt-4">
+                                {paramos.map((paramo) => (
+                                  <div
+                                    key={paramo.id}
+                                    className={`cardsInterna card${paramo.id} relative`}
+                                  >
+                                    <img
+                                      className="imgComplete z-[-1] top-0 w-full h-full  opacity-30  absolute"
+                                      src={paramo.imagBg}
+                                      alt=""
+                                    />
+                                    <img
+                                      className="imgpasto z-[-1] bottom-[-60%] w-full h-full absolute"
+                                      src={paramo.imagPiso}
+                                      alt=""
+                                    />
+                                    <div className="contenido w-full h-full relative pt-14">
+                                      <h2
+                                        className="Contenidotitulo text-center text-xl font-bold text-white tracking-widest"
+                                        dangerouslySetInnerHTML={{
+                                          __html: paramo.titulo,
+                                        }}
+                                      />
 
-            <div className="cards cards3 max-lg:hidden z-[5]">
-              <div className="relative h-full w-full">
-                <div className="bg-degradadoTravesia w-full h-full absolute z-[2]"></div>
-                <img
-                  className="caminante2 iconoCaminante"
-                  src="/travesia/caminante.png"
-                  alt=""
-                />
-                <div className="w-full h-full flex flex-col justify-between">
-                  <div className="cajaTitulos">
-                    <h2 className="titulo text-black">
-                      PÁRAMO <br /> DE SISCUNSÍ
-                      <br />
-                      <span className="titulo2 hidden">Sogamoso, Boyacá</span>
-                    </h2>
-                    <p className="parrafo">
-                      En este lugar se han llevado a cabo programas de
-                      repoblamiento del cóndor andino.
-                    </p>
-                  </div>
-                  <div className="cajaIconos">
-                    <div className="svgIcono svgIcono1">
-                      <span className="icono">
-                        <img src="/svg/caminante.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">
-                        La caminata tiene una distancia de{" "}
-                        <span className="font-black">15 a 18 km.</span>
-                      </h6>
+                                      <span
+                                        onClick={() => setPosicion(paramo.id)}
+                                        className="punto"
+                                      ></span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <div className="svgIcono svgIcono2">
-                      <span className="icono">
-                        <img src="/svg/montanas.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">Altura máxima de 4,000 MSNM</h6>
-                    </div>
-                    <div className="svgIcono svgIcono3">
-                      <span className="icono">
-                        <img className="w-[80%]" src="/svg/reloj.svg" alt="" />
-                      </span>
-                      <h6 className="subtitulo">
-                        La caminata puede durar entre 8 - 10 horas.
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-                {!isMobile && (
-                  <span
-                    onClick={() => {
-                      primerEfecto2(padre, "cards3", "cards1", "cards2");
-                    }}
-                    className="punto max-lg:hidden"
-                  ></span>
-                )}
-                <img
-                  className="imgComplete z-[-1] top-0 w-full h-full absolute "
-                  src="/travesia/bg-travesia4.webp"
-                  alt=""
-                />
-                <img
-                  className="imgpasto z-[-1] bottom-[-68%] w-full h-full absolute"
-                  src="/travesia/camino-bg3.webp"
-                  alt=""
-                />
-              </div>
+                  )
+              )}
             </div>
           </div>
         </div>
-        <div className="BoxTravesiaTexto  flex-col justify-evenly BoxesTextEnd flex-center">
+        <div className="BoxTravesiaTexto lg:w-1/2 xs:w-full lg:h-full xs:h-1/2 flex-col justify-evenly BoxesTextEnd flex-center">
           <p className="origenTexto textoUno font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Boyacá <br />
             será nuestro
@@ -402,7 +351,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
             <br />
             partida.
           </p>
-          <Button handleClick={handleGspa} text={"EXPLORAR"} />
+          <Button handleClick={() => setActiveCaja(true)} text={"EXPLORAR"} />
         </div>
       </div>
     </div>

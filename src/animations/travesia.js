@@ -556,3 +556,108 @@ export const reverseAction = (padre) => {
   }, padre);
   return () => ctx.revert();
 };
+
+export const EfectoTravesia = (card1, card2, card3) => {
+  const tl = gsap.timeline();
+
+  tl.to(".slideCard", {
+    x: "0%",
+  }).addLabel("cada");
+
+  tl.to(
+    `.slideCard .${card1}`,
+    {
+      order: 1,
+    },
+    "cada-=1"
+  );
+  tl.to(
+    `.slideCard .${card2}`,
+    {
+      order: 2,
+    },
+    "cada-=1"
+  );
+  tl.to(
+    `.slideCard .${card3}`,
+    {
+      order: 3,
+    },
+    "cada-=1"
+  );
+  tl.to(
+    ".slideCard",
+    {
+      x: "30%",
+    },
+    "cada-=1"
+  );
+  tl.fromTo(
+    ".travesia .textoTitulo",
+    {
+      y: "100%",
+    },
+    {
+      y: "0%",
+      duration: 0.5,
+      ease: "power1.inOut",
+    },
+    "cada+=1.5"
+  );
+  tl.fromTo(
+    ".travesia .titulo2",
+    {
+      x: "10%",
+      opacity: 0,
+    },
+    {
+      x: "0%",
+      opacity: 1,
+      duration: 0.5,
+      ease: "power1.inOut",
+    },
+    "<+=0.2"
+  );
+  tl.fromTo(
+    ".travesia .imgCompleteOne",
+    {
+      scale: 1,
+    },
+    {
+      scale: 1.05,
+
+      duration: 0.5,
+      ease: "power1.inOut",
+    },
+    "cada+=1.5"
+  );
+  tl.fromTo(
+    ".travesia .parrafo",
+    {
+      opacity: 0,
+      y: "30%",
+    },
+    {
+      opacity: 1,
+      y: "0%",
+      duration: 1.5,
+      ease: "power1.inOut",
+    },
+    "cada+=1.5"
+  );
+  tl.fromTo(
+    ".travesia .svgIcono ",
+    {
+      opacity: 0,
+      x: "-10%",
+    },
+    {
+      opacity: 1,
+      x: "0%",
+      stagger: 0.1, // El retraso entre cada elemento
+      duration: 1,
+      ease: "power1.inOut",
+    },
+    "cada+=1.5"
+  );
+};

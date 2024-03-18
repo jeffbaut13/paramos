@@ -81,7 +81,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
       );
       tl.to(".moises", {
         padding: 0,
-        duration: 1,
+        duration: 0.1,
       });
 
       tl.to(".BoxMoisesImg .react-player", {
@@ -93,15 +93,63 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
       gsap.to(".BoxMoisesImg .xperiaimgBg", {
         opacity: 1,
       });
+
+      const tl = gsap.timeline();
+      if (isMobile || tablet) {
+        tl.fromTo(
+          ".BoxMoisesText",
+          {
+            height: "0%",
+          },
+          {
+            height: "50%",
+          }
+        );
+        tl.fromTo(
+          ".BoxMoisesImg",
+          {
+            height: "100%",
+          },
+          {
+            height: "50%",
+          },
+          "<"
+        );
+      } else {
+        tl.fromTo(
+          ".BoxMoisesText",
+          {
+            width: "0%",
+          },
+          {
+            width: "50%",
+          }
+        );
+        tl.fromTo(
+          ".BoxMoisesImg",
+          {
+            width: "100%",
+          },
+          {
+            width: "50%",
+          },
+          "<"
+        );
+        tl.to(".moises", {
+          padding: "0.5rem",
+          duration: 0.1,
+        });
+      }
     }
   }, [playMoises]);
   return (
     <div className=" documental w-full h-full flex">
       <div className="moises relative w-full h-full paddingComponentes flex xs:flex-col-reverse lg:flex-row">
-        <div className="BoxMoisesImg bg-black BoxesImgStart bg-center">
+        <div className="BoxMoisesImg lg:w-1/2 max-lg:h-1/2 bg-black BoxesImgStart bg-center">
           <div onMouseEnter={() => setPause(true)} className="player-wrapper">
             <img
-              className="xperiaimgBg w-full h-full object-cover"
+              onClick={() => setPlayMoises(true)}
+              className="cursor-pointer xperiaimgBg w-full h-full object-cover"
               src="/experiencia/moises.webp"
               alt=""
             />
@@ -148,7 +196,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
             )}
           </div>
         </div>
-        <div className="BoxMoisesText BoxesTextEnd flex flex-col items-center justify-center">
+        <div className="BoxMoisesText lg:w-1/2 max-lg:h-1/2 BoxesTextEnd flex flex-col items-center justify-center">
           <p className=" moisesTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Nuestro primer <br />
             guardián del <br /> Páramo. <br />

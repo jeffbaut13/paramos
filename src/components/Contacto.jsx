@@ -23,7 +23,7 @@ const Contacto = () => {
                 <br /> CÓMO PODEMOS AYUDARTE.
               </span>
             </div>
-            <div className=" lg:w-[50%] lg:h-full z-50 flex items-center justify-center">
+            <div className="lg:w-[50%] lg:h-full z-50 flex items-center justify-center">
               <ContactForm />
             </div>
           </div>

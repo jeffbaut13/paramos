@@ -13,7 +13,11 @@ import BackgroundTransition from "../components/BackgroundTransition";
 import VideoComponent from "../components/videclud";
 import { switchProcentageZindex } from "../helpers/switchs";
 import NavBar from "../components/NavBar";
-import { transitionSection } from "../animations/gsap";
+import {
+  Opacidad,
+  TextoAbajoArriba,
+  transitionSection,
+} from "../animations/gsap";
 import Xperience from "../components/Xperience";
 import DocumentalMoises from "../components/DocumentalMoises";
 import { handleScrollEvent } from "../helpers/scrollEvents";
@@ -37,8 +41,8 @@ function App() {
   const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const scroller = () => {
-    if (trasladar == 8) {
-      setTrasladar(8);
+    if (trasladar == 6) {
+      setTrasladar(6);
     } else {
       setTrasladar(trasladar + 1);
     }
@@ -57,6 +61,7 @@ function App() {
   };
 
   const handleTouchEnd = (e) => {
+    if (!scrollEnabled) return;
     // Calcula la diferencia entre la posición inicial y final del toque
     const endTouchY = e.changedTouches[0].clientY;
     const diff = startTouchY - endTouchY;
@@ -67,10 +72,15 @@ function App() {
     } else if (diff < 0) {
       scrollerResta();
     }
+    setScrollEnabled(false);
+    setTimeout(() => {
+      setScrollEnabled(true);
+    }, 1000);
   };
 
+  let porcentaje = 16.66;
+  let velocidadTransicion = 0.3;
   useEffect(() => {
-    let startY;
     // Función para capturar eventos de desplazamiento del mouse
     function handleMouseWheel(event) {
       if (!scrollEnabled) return;
@@ -123,12 +133,9 @@ function App() {
     };
   }, [scrollEnabled, trasladar]);
 
-  let porcentaje = 12.5;
-  let velocidadTransicion = 0.3;
-
   useEffect(() => {
     if (trasladar == 0) {
-      timeLine();
+      //timeLine();
       gsap.to(".contenedor", {
         y: "-0",
         ease: "power1.inOut",
@@ -137,6 +144,9 @@ function App() {
       setScrollPercentageTwo(0);
       setActiveButton("2,000 Frailejones");
       setScrollPercentage(1);
+      setNumFrailejon(null);
+      TextoAbajoArriba(".conoceTexto");
+      Opacidad(".conoce .btnconoce", 0, 1);
     } else if (trasladar == 1) {
       gsap.to(".contenedor", {
         y: "-100%",
@@ -145,11 +155,12 @@ function App() {
       });
       setScrollPercentageTwo(porcentaje);
       setItemActive(0);
-      setActiveButton("los expertos");
+      setActiveButton("Las especies");
       setScrollPercentage(2);
-      setNumFrailejon(null);
-
+      TextoAbajoArriba(".PrimerTextoDosmil");
+      Opacidad(".dosmilFrailejones .btnconoce", 0, 1);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+      //setTravesiaReverse(false);
     } else if (trasladar == 2) {
       gsap.to(".contenedor", {
         y: "-200%",
@@ -157,10 +168,12 @@ function App() {
         duration: velocidadTransicion,
       });
       setScrollPercentageTwo(porcentaje * 2);
-      setActiveButton("Las especies");
+      setActiveButton("Primera siembra");
       setScrollPercentage(3);
-      setPlayCapitulo(false);
-
+      setTravesiaReverse(true);
+      setPlay(false);
+      TextoAbajoArriba(".origenTexto");
+      Opacidad(".travesia .btnconoce", 0, 1);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 3) {
       gsap.to(".contenedor", {
@@ -168,11 +181,12 @@ function App() {
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
-      setScrollPercentageTwo(porcentaje * 3);
-      setActiveButton("Primera siembra");
 
+      setScrollPercentageTwo(porcentaje * 3);
       setScrollPercentage(4);
-      setTravesiaReverse(false);
+      setActiveButton("Campamento");
+      setPlayMoises(false);
+      TextoAbajoArriba(".experienciaTexto");
 
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 4) {
@@ -181,12 +195,12 @@ function App() {
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
-      setPlayCapitulo(false);
+
       setScrollPercentageTwo(porcentaje * 4);
       setScrollPercentage(5);
-      setTravesiaReverse(true);
+      setActiveButton("Moisés Moreno");
       setPlay(false);
-
+      TextoAbajoArriba(".moisesTexto");
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 5) {
       gsap.to(".contenedor", {
@@ -194,10 +208,14 @@ function App() {
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
-      setActiveButton("Campamento");
+
       setScrollPercentageTwo(porcentaje * 5);
       setScrollPercentage(6);
+      setActiveButton("¿Preguntas?");
       setPlayMoises(false);
+      TextoAbajoArriba(".tamanoTitulos");
+      TextoAbajoArriba(".parrafoContacto", 0.2);
+      Opacidad(".contact-form", 0, 1);
 
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 6) {
@@ -206,37 +224,15 @@ function App() {
         ease: "power1.inOut",
         duration: velocidadTransicion,
       });
-      setActiveButton("Moisés Moreno");
+
       setScrollPercentageTwo(porcentaje * 6);
       setScrollPercentage(7);
-      setPlay(false);
-
-      gsap.to(".blurParamos", { opacity: 0, duration: 1 });
-    } else if (trasladar == 7) {
-      gsap.to(".contenedor", {
-        y: "-700%",
-        ease: "power1.inOut",
-        duration: velocidadTransicion,
-      });
-      setActiveButton("¿Preguntas?");
-      setScrollPercentageTwo(porcentaje * 7);
-      setScrollPercentage(8);
-      setPlayMoises(false);
-
-      gsap.to(".blurParamos", { opacity: 0, duration: 1 });
-    } else if (trasladar == 8) {
-      gsap.to(".contenedor", {
-        y: "-800%",
-        ease: "power1.inOut",
-        duration: velocidadTransicion,
-      });
       setActiveButton("Descargable");
-      setScrollPercentageTwo(porcentaje * 8);
-      setScrollPercentage(9);
-      gsap.fromTo(".blurParamos", { opacity: 0 }, { opacity: 1, duration: 1 });
-    }
-    if (active360 === 2) {
-      setActive360(3);
+      TextoAbajoArriba(".textoContacto");
+      TextoAbajoArriba(".textoContacto2", 0.2);
+      Opacidad(".BotonContacto", 0, 1);
+
+      gsap.to(".blurParamos", { opacity: 1, duration: 1 });
     }
   }, [trasladar, main, activeButton, numFrailejon, scrollPercentage]);
 
@@ -253,7 +249,7 @@ function App() {
       <BackgroundTransition />
 
       <div className="blurParamos  fixed top-0 left-0 bg2 z-10 w-full h-full opacity-0"></div>
-      <div className="cajaParaelementos maxW fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[80%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%]">
+      <div className="cajaParaelementos maxW fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[80%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%] ">
         {active360 == 2 && (
           <span
             onClick={() => setActive360(3)}
@@ -272,21 +268,21 @@ function App() {
         <VideoComponent />
         <VideoComponent />
         <VideoComponent />
-        <div className=" mainParamos relative rounded-3xl overflow-hidden bg-white w-full h-full ">
+        <div className=" mainParamos relative rounded-3xl overflow-hidden w-full h-full ">
           <div className="contenedor">
             <Conocelosparamos
               itemActive={itemActive}
               setItemActive={setItemActive}
             />
-            <Origen active360={active360} setActive360={setActive360} />
+            {/* <Origen active360={active360} setActive360={setActive360} /> */}
             <Dosmilfrailejones
               numFrailejon={numFrailejon}
               setNumFrailejon={setNumFrailejon}
             />
-            <CapituloMoises
+            {/* <CapituloMoises
               playCapitulo={playCapitulo}
               setPlayCapitulo={setPlayCapitulo}
-            />
+            /> */}
             <Travesia
               travesiaReverse={travesiaReverse}
               setTravesiaReverse={setTravesiaReverse}

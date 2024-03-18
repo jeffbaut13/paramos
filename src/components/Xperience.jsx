@@ -86,7 +86,7 @@ const Xperience = ({ play, setPlay }) => {
       );
       tl.to(".documental .paddingComponentes", {
         padding: 0,
-        duration: 1,
+        duration: 0.1,
       });
 
       tl.to(".experienciaImagen .react-player", {
@@ -95,6 +95,52 @@ const Xperience = ({ play, setPlay }) => {
         pointerEvents: "all",
       });
     } else {
+      const tl = gsap.timeline();
+      if (isMobile || tablet) {
+        tl.fromTo(
+          ".experienciaTextoBox",
+          {
+            height: "0%",
+          },
+          {
+            height: "50%",
+          }
+        );
+        tl.fromTo(
+          ".experienciaImagen",
+          {
+            height: "100%",
+          },
+          {
+            height: "50%",
+          },
+          "<"
+        );
+      } else {
+        tl.fromTo(
+          ".experienciaImagen",
+          {
+            width: "100%",
+          },
+          {
+            width: "50%",
+          }
+        );
+        tl.fromTo(
+          ".experienciaTextoBox",
+          {
+            width: "0%",
+          },
+          {
+            width: "50%",
+          },
+          "<"
+        );
+      }
+      tl.to(".documental .paddingComponentes", {
+        padding: "0.5rem",
+        duration: 0.1,
+      });
       gsap.to(".experienciaImagen .xperiaimgBg", {
         opacity: 1,
       });
@@ -104,8 +150,8 @@ const Xperience = ({ play, setPlay }) => {
   return (
     <div className="documental w-full h-full flex ">
       <div className="relative w-full h-full paddingComponentes flex xs:flex-col lg:flex-row">
-        <div className="experienciaTextoBox BoxesTextStart flex flex-col items-center justify-center">
-          <p className="experienciaTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
+        <div className="experienciaTextoBox lg:w-1/2 max-lg:h-1/2 BoxesTextStart flex flex-col items-center justify-center">
+          <p className="experienciaTexto  font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Juntos <br />
             cambiaremos <br />
             el destino <br />
@@ -113,10 +159,11 @@ const Xperience = ({ play, setPlay }) => {
             Páramos
           </p>
         </div>
-        <div className="bg-black experienciaImagen relative BoxesImgEnd">
+        <div className="bg-black experienciaImagen lg:w-1/2 max-lg:h-1/2 relative BoxesImgEnd">
           <div onMouseEnter={() => setPause(true)} className="player-wrapper">
             <img
-              className="xperiaimgBg w-full h-full object-cover"
+              onClick={() => setPlay(true)}
+              className="cursor-pointer xperiaimgBg w-full h-full object-cover"
               src="/experiencia/experiencia.webp"
               alt=""
             />

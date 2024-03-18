@@ -13,8 +13,9 @@ export const BtnHover = ({
         <span onClick={handleClick} className={`punto ${customStyles}`}></span>
       ) : (
         <span
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onClick={handleClick}
+          //onMouseEnter={handleMouseEnter}
+          //onMouseLeave={handleMouseLeave}
           className={`punto ${customStyles}`}
         ></span>
       )}

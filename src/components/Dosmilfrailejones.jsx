@@ -82,42 +82,8 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
     //<div className="dosmilFrailejones absolute w-full h-full z-[1] flex">
     <div className="dosmilFrailejones ocultarEnOrigen w-full h-full z-[1] flex">
       <div className=" flex responsiveReverse relative w-full h-full paddingComponentes">
-        <span
-          onClick={() => {
-            if (numFrailejon >= 3) {
-              setNumFrailejon(3);
-            } else {
-              setNumFrailejon(numFrailejon + 1);
-            }
-          }}
-          className={`${
-            numFrailejon == 3
-              ? " ocult pointer-events-none "
-              : "sho pointer-events-auto"
-          } btnSlide opacity-0 cursor-pointer absolute lg:right-4 xs:right-1/2 max-lg:translate-x-[150%] max-lg:bottom-2 lg:top-1/2 z-50`}
-        >
-          <IconSlideNextPrev customStyle={"previw"} />
-        </span>
-
-        <span
-          onClick={() => {
-            if (numFrailejon <= 1) {
-              setNumFrailejon(0);
-            } else {
-              setNumFrailejon(numFrailejon - 1);
-            }
-          }}
-          className={`${
-            numFrailejon == 1
-              ? " ocult pointer-events-none "
-              : "sho pointer-events-auto"
-          } btnSlide opacity-0 cursor-pointer absolute lg:left-4 xs:left-1/2 max-lg:translate-x-[-150%] lg:top-1/2 max-lg:bottom-2 z-50`}
-        >
-          <IconSlideNextPrev customStyle={"previw"} reverse={true} />
-        </span>
-
         <div
-          className={`BoxDosmilImage   bg-center BoxesImgStart flex-center z-10 relative ${
+          className={`BoxDosmilImage lg:w-1/2 max-lg:h-1/2  bg-center BoxesImgStart flex-center z-10 relative ${
             numFrailejon >= 1 ? "Frailejonactivo" : ""
           } `}
           style={{ backgroundImage: "url(/bgParamos/Bg20mil.webp)" }}
@@ -187,7 +153,7 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
             />
           )}
         </div>
-        <div className="BoxDosmilTexto BoxesTextEnd flex-center flex-col justify-evenly z-0 relative">
+        <div className="BoxDosmilTexto lg:w-1/2 max-lg:h-1/2 BoxesTextEnd flex-center flex-col justify-evenly z-0 relative">
           <p className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             CADA FRAILEJÓN <br />
             SEMBRADO <br />
@@ -222,6 +188,46 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
             )}
           </p>
         </div>
+        {numFrailejon >= 1 && (
+          <div className="boxBntSlide lg:w-1/2 xs:w-full min-h-1 absolute lg:bottom-12 xs:bottom-4 right-0 flex justify-evenly z-10">
+            <span
+              onClick={() => {
+                if (numFrailejon <= 1) {
+                  setNumFrailejon(0);
+                } else {
+                  setNumFrailejon(numFrailejon - 1);
+                }
+              }}
+              className={`${
+                numFrailejon == 1
+                  ? " ocult pointer-events-none "
+                  : "sho pointer-events-auto"
+              } btnSlide cursor-pointer`}
+            >
+              <span className="previw lg:min-w-[120px] xs:min-w-[80px] flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal xs:px-4 xs:py-2 lg:px-5 lg:py-3 text-center lg:text-sm xs:text-[0.5rem] rounded-lg hover:bg-white bg-black  transition-all ease-in-out duration-300 text-white hover:text-black border border-white">
+                atras
+              </span>
+            </span>
+            <span
+              onClick={() => {
+                if (numFrailejon >= 3) {
+                  setNumFrailejon(3);
+                } else {
+                  setNumFrailejon(numFrailejon + 1);
+                }
+              }}
+              className={`${
+                numFrailejon == 3
+                  ? " ocult pointer-events-none "
+                  : "sho pointer-events-auto"
+              } btnSlide cursor-pointer`}
+            >
+              <span className="previw lg:min-w-[120px] xs:min-w-[80px] flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal xs:px-4 xs:py-2 lg:px-5 lg:py-3 text-center lg:text-sm xs:text-[0.5rem] rounded-lg hover:bg-white bg-black  transition-all ease-in-out duration-300 text-white hover:text-black border border-white">
+                Siguiente
+              </span>
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

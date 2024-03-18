@@ -39,10 +39,10 @@
   @apply object-cover w-full h-full absolute top-0 left-0;
 }
 .punto {
-  @apply absolute z-50  rounded-full bg-white;
+  @apply absolute z-50 cursor-pointer rounded-full bg-white;
 }
 .travesia .punto {
-  @apply cursor-pointer left-1/2 translate-x-[-50%] lg:bottom-16 xs:bottom-[45%] w-10 h-10;
+  @apply cursor-pointer left-1/2 translate-x-[-50%] lg:bottom-12 xs:bottom-[45%] w-8 h-8;
 }
 .dosmilFrailejones .text {
   @apply w-[240px] absolute z-[60] bg-black bg-opacity-60 font-medium text-white text-center lg:text-lg xs:text-sm rounded-lg py-2 px-3 border border-white;
@@ -81,40 +81,55 @@
 }
 
 .travesia .cards {
-  @apply hidden absolute lg:w-1/4 lg:h-2/4 xs:w-full xs:h-full rounded-3xl overflow-hidden;
+  @apply absolute top-0 left-0 w-full h-full overflow-hidden;
 }
+/* .travesia .cards {
+  @apply hidden absolute lg:w-1/4 lg:h-2/4 xs:w-full xs:h-full rounded-3xl overflow-hidden;
+} */
 .travesia .cards.active {
   @apply w-full h-full left-0 top-0 translate-y-[0%] translate-x-[0%];
 }
 .cajaTitulos {
-  @apply flex relative z-[4] p-[6%] max-lg:flex-col max-lg:items-center;
+  @apply flex justify-evenly relative z-[4] lg:h-1/2 xs:h-[70%] max-lg:flex-col max-lg:items-center pt-16;
 }
-.titulo {
-  @apply lg:font-bold xs:font-light text-3xl text-center lg:max-w-[500px] w-full translate-y-[100%] xs:tracking-[5px] lg:tracking-[3px] max-lg:mt-8;
+.cajaTitulos .titulo {
+  @apply lg:font-bold xs:font-light max-lg:w-full lg:text-6xl xs:text-2xl lg:text-start xs:text-center text-white xs:tracking-[5px] lg:tracking-[3px] max-lg:mt-8;
 }
-.titulo2 {
-  @apply lg:font-bold xs:font-light uppercase text-white 2xl:text-2xl lg:text-lg;
+.cajaTitulos .titulo2 {
+  @apply inline-block lg:font-bold xs:font-light uppercase text-white 2xl:text-3xl lg:text-lg xs:text-sm;
 }
 .bg-degradadoTravesia {
-  @apply opacity-0 pointer-events-none bg-gradient-to-t from-[#2A1100d4] via-transparent to-[#020a47d6] bg-opacity-0;
+  @apply opacity-100 pointer-events-none bg-gradient-to-t from-[#0a0401d4] via-[#1e1e1e47] to-[#151933d6] bg-opacity-0;
 }
 
-.parrafo {
-  @apply text-white max-w-[570px] hidden opacity-0 2xl:text-xl lg:text-lg max-lg:text-center max-lg:px-6 max-lg:mt-8;
+.cajaParrafo {
+  @apply h-full flex flex-col justify-evenly max-lg:px-6;
 }
-.cajaIconos .subtitulo {
-  @apply 2xl:w-48 lg:w-36 text-white font-normal 2xl:text-lg lg:text-sm xs:text-[0.6rem] text-center;
+
+.cajaParrafo .parrafo {
+  @apply text-white max-w-[570px] 2xl:text-xl lg:text-lg max-lg:text-justify max-lg:my-8;
 }
-.cajaIconos {
-  @apply lg:p-[6%] xs:p-[3%] lg:pr-[12%] flex justify-end relative z-[4];
+
+.cajaParrafo .subtitulo {
+  @apply text-white font-normal 2xl:text-lg lg:text-sm xs:text-xs lg:text-center xs:text-start;
 }
-.cajaIconos .svgIcono {
-  @apply xl:ml-8 max-lg:mx-2 flex items-center flex-col justify-between opacity-0;
+
+.cajaParrafo .svgIcono {
+  @apply flex items-center justify-start;
 }
 .svgIcono .icono {
-  @apply 2xl:w-24 lg:w-16 xs:w-12 flex justify-center;
+  @apply 2xl:w-8 lg:w-8 xs:w-6 mr-4 flex justify-center;
 }
 
+.cardsInternas {
+  @apply lg:w-[50%] h-1/2 absolute right-0 bottom-0;
+}
+.cardsInternas .slideCards {
+  @apply w-[60%] h-full overflow-hidden relative whitespace-nowrap;
+}
+.cardsInternas .cardsInterna {
+  @apply w-[28%] mr-[4%] h-[70%] overflow-hidden border border-white rounded-xl;
+}
 .tamanoTitulos {
   @apply 2xl:text-5xl lg:text-4xl xs:text-xl;
 }

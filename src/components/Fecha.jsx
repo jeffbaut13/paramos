@@ -15,8 +15,13 @@ const Fecha = ({
   setInputNumber,
   fechaRef,
   TextEfect,
+  show360View,
+  setShow360View,
+  toggle360View,
 }) => {
   const [animatedNumber, setAnimatedNumber] = useState(2024);
+  const [isIframeLoaded, setIframeLoaded] = useState(false);
+  const iframeRef = useRef(null);
 
   useEffect(() => {
     TextoAbajoArriba(fechaRef);
@@ -88,6 +93,82 @@ const Fecha = ({
     }, 5000);
   };
 
+  const obtenerContenido = (inicio) => {
+    switch (inicio) {
+      case 3:
+        return {
+          parrafo: "El año en que naciste nuestros páramos se veían así:",
+          urlKuala:
+            "https://kuula.co/share/collection/7c9xt?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+        };
+      case 4:
+        return {
+          parrafo:
+            "En promedio, cada diez años perdemos 877,000 hectáreas de páramo.",
+          urlKuala:
+            "https://kuula.co/share/collection/7cFNQ?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+        };
+      case 5:
+        return {
+          parrafo:
+            "Desde la década de los 2000, perdimos el 79% de área de páramo entre Cundinamarca y Boyacá.",
+          urlKuala:
+            "https://kuula.co/share/collection/7cFGQ?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+        };
+      case 6:
+        return {
+          parrafo:
+            "Tristemente, entre el 2000 y el 2015 se quemó el 18% del área total del páramo de Sumapaz.",
+          urlKuala:
+            "https://kuula.co/share/collection/7cFYF?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+        };
+      case 7:
+        return {
+          parrafo:
+            "Entre el 2015 y el 2020, perdimos 20% de nuestros páramos de la Cordillera Oriental.",
+          urlKuala:
+            "https://kuula.co/share/collection/7cFP2?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+        };
+      case 8:
+        return {
+          parrafo:
+            "Si no hacemos nada, para el 2030, el complejo Tota-Bijagual-Mamapacha habrá perdido 35% de vegetación.",
+          urlKuala:
+            "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+        };
+      case 9:
+        return {
+          parrafo:
+            "La pérdida de páramos en las próximas décadas traerá consigo deslizamientos y tragedias ambientales.",
+          urlKuala:
+            "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+        };
+      case 10:
+        return {
+          parrafo:
+            "Nuestro presente es el mejor momento para cambiar esta realidad. Salvemos nuestros páramos.",
+          urlKuala:
+            "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+        };
+
+      default:
+        return { parrafo: "", urlKuala: "" };
+    }
+  };
+  const contenido = obtenerContenido(inicio);
+
+  useEffect(() => {
+    if (contenido.urlKuala && !isIframeLoaded) {
+      const iframe = document.createElement("iframe");
+      iframe.src = contenido.urlKuala;
+      iframe.onload = () => {
+        setIframeLoaded(true);
+      };
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+  }, [contenido.urlKuala, isIframeLoaded]);
+
   return (
     <>
       {inicio == 1 && (
@@ -118,84 +199,25 @@ const Fecha = ({
         </p>
       )}
 
-      {inicio == 3 && (
-        <div className="gradiente">
+{inicio >= 3 && inicio <= 10 && (
+      <div className="gradiente">
+        {!show360View && (
           <TextOnboarding
             TextEfect={TextEfect}
-            parrafo={`El año en que naciste nuestros páramos se veían así:`}
+            parrafo={contenido.parrafo}
+            on360IconClick={toggle360View}
           />
-        </div>
-      )}
-      {inicio == 4 && (
-        <div className="gradiente">
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={`En promedio, cada diez años perdemos 877,000 hectáreas de páramo.`}
-          />
-          <span className="absolute w-full h-full left-0 top-0 z-[1] ">
-            <EmbeddedIframe
-              urlKuala={
-                "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es"
-              }
-            />
-          </span>
-        </div>
-      )}
-      {inicio == 5 && (
-        <div className="gradiente">
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={`Desde la década de los 2000, perdimos el 79% de área de páramo entre Cundinamarca y Boyacá.`}
-          />
-        </div>
-      )}
-      {inicio == 6 && (
-        <div className="gradiente">
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={`Tristemente, entre el 2000 y el 2015 se quemó el 18% del área total del páramo de Sumapaz.`}
-          />
-        </div>
-      )}
-      {inicio == 7 && (
-        <div className="gradiente">
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={`Entre el 2015 y el 2020, perdimos 20% de nuestros páramos de la Cordillera Oriental.`}
-          />
-        </div>
-      )}
-      {inicio == 8 && (
-        <div className="gradiente">
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={`Si no hacemos nada, para el 2030, el complejo Tota-Bijagual-Mamapacha habrá perdido 35% de vegetación.`}
-          />
-        </div>
-      )}
-      {inicio == 9 && (
-        <div className="gradiente">
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={`La pérdida de páramos en las próximas décadas traerá consigo deslizamientos y tragedias ambientales.`}
-          />
-        </div>
-      )}
-      {inicio == 10 && (
-        <div className="gradiente">
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={`Nuestro presente es el mejor momento para cambiar esta realidad. <br/><br/> Salvemos nuestros páramos.`}
-          />
-        </div>
-      )}
-      {/*  {inicio == 11 && (
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={`Nuestro presente es el mejor momento para cambiar esta realidad. <br/><br/> Salvemos nuestros páramos.`}
-          />
-        )} */}
-    </>
+        )}
+
+<span className="absolute w-full h-full left-0 top-0 z-[1]">
+            {isIframeLoaded ? (
+              <EmbeddedIframe urlKuala={contenido.urlKuala} ref={iframeRef} />
+            ) : (
+              <div>Loading...</div>
+            )}
+        </span>
+      </div>
+    )}    </>
   );
 };
 

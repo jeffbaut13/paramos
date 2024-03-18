@@ -332,7 +332,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
       <div className=" responsiveReverse ocultarEnOrigen relative w-full h-full paddingComponentes">
         <div
           style={{ backgroundImage: "url(/Conoce/fondoConoce.webp)" }}
-          className="anchoInicialPrimario BoxConoceImg BoxesImgStart bg-center"
+          className="anchoInicialPrimario BoxConoceImg lg:w-1/2 max-lg:h-1/2 BoxesImgStart bg-center"
         >
           <div className="montaña hidden w-full h-full relative  sm:bg-gradient-to-r bg-gradient-to-b from-[#0073ab] to-[#b0f8f5]">
             <img
@@ -603,7 +603,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                 itemActive == 5
                   ? " ocult  pointer-events-none"
                   : "sho pointer-events-auto"
-              } next slideBtn cursor-pointer absolute lg:right-4 xs:right-1/2 max-lg:translate-x-[150%] max-lg:bottom-2 lg:top-1/2 z-50`}
+              } next slideBtn cursor-pointer absolute lg:right-14 xs:right-1/2 max-lg:translate-x-[150%] max-lg:bottom-2 lg:top-4 z-50`}
             >
               <IconSlideNextPrev customStyle={"previw"} />
             </span>
@@ -629,13 +629,13 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                 itemActive == 1 || itemActive == 2
                   ? " ocult pointer-events-none "
                   : "sho pointer-events-auto"
-              } back slideBtn cursor-pointer absolute lg:left-4 xs:left-1/2 max-lg:translate-x-[-150%] lg:top-1/2 max-lg:bottom-2 z-50`}
+              } back slideBtn cursor-pointer absolute lg:right-28 max-lg:left-1/2 max-lg:translate-x-[-150%] lg:top-4 max-lg:bottom-2 z-50`}
             >
               <IconSlideNextPrev customStyle={"previw"} reverse={true} />
             </span>
           </div>
         </div>
-        <div className="anchoInicialPrimario BoxConoceText BoxesTextEnd flex flex-col items-center justify-evenly">
+        <div className="anchoInicialPrimario lg:w-1/2 max-lg:h-1/2 BoxConoceText BoxesTextEnd flex flex-col items-center justify-evenly">
           <p className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Sembraremos <br />
             2,000 frailejones <br />

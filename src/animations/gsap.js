@@ -1,25 +1,30 @@
 import gsap from "gsap";
 
-export const TextoAbajoArriba = (ref) => {
-  if (ref.current) {
-    gsap.fromTo(
-      ref.current,
-      { opacity: 0, y: 100 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.5,
-        ease: "power2.inOut",
-      }
-    );
-  }
+export const TextoAbajoArriba = (ref, delay) => {
+  gsap.fromTo(
+    ref,
+    { opacity: 0, y: 100 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.5,
+      ease: "power2.inOut",
+      delay: delay ? delay : 0,
+    }
+  );
 };
-export const Opacidad = (ref, Num) => {
-  gsap.to(ref.current, {
-    opacity: Num,
-    ease: "power2.out",
-    duration: 1,
-  });
+export const Opacidad = (ref, from, to) => {
+  gsap.fromTo(
+    ref,
+    {
+      opacity: from,
+    },
+    {
+      opacity: to,
+      ease: "power3.inOut",
+      delay: 0.4,
+    }
+  );
 };
 export const transitionSection = (ref, Num, duration) => {
   gsap.to(ref, {
@@ -68,6 +73,7 @@ export const frailejon = (
 ) => {
   const tl7 = gsap.timeline({ ease: "power1.inOut" });
   tl7.fromTo(".bgvid", { opacity: 0 }, { opacity: 1, duration: rapido });
+  tl7.to(".boxBntSlide", { display: "none" }, "<-=1");
   if (isMobile) {
     tl7.to(".BoxDosmilTexto", { height: "100%" }).addLabel("titulo1");
     tl7.to(".BoxDosmilImage", { height: "0%" }, "<");
@@ -123,4 +129,5 @@ export const frailejon = (
   tl7.to(".Espeletia", { opacity: espelitia }, "titulo1");
 
   tl7.to(".punto", { display: "block", opacity: 1 }, "titulo1");
+  tl7.to(".boxBntSlide", { display: "flex" }, "<+=0.5");
 };

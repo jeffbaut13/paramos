@@ -5,7 +5,7 @@ const IconSlideNextPrev = ({ reverse, customStyle, handleClick }) => {
     <span
       className={`${
         customStyle ? customStyle : ""
-      } cursor-pointer iconContinue inline-block w-10 bg-white rounded-full bg-opacity-50`}
+      } cursor-pointer iconContinue inline-block lg:w-10 xs:w-7 bg-white rounded-full bg-opacity-50`}
       onClick={handleClick}
     >
       <svg

@@ -150,13 +150,13 @@ const NavBar = ({
   };
 
   const scroller = () => {
-    if (trasladar == 8) {
-      setTrasladar(8);
+    if (trasladar == 6) {
+      setTrasladar(6);
     } else {
       setTrasladar(trasladar + 1);
     }
   };
-
+  //console.log(trasladar);
   const scrollerResta = () => {
     if (trasladar == 0) {
       setTrasladar(0);
@@ -167,6 +167,16 @@ const NavBar = ({
 
   const buttons = [
     { id: 1, text: "2,000 Frailejones", percentage: 0 },
+    { id: 3, text: "Las especies", percentage: 1 },
+    { id: 4, text: "Primera siembra", percentage: 2 },
+    { id: 5, text: "Campamento", percentage: 3 },
+    { id: 6, text: "Moisés Moreno", percentage: 4 },
+    { id: 7, text: "¿Preguntas?", percentage: 5 },
+    { id: 8, text: "Descargable", percentage: 6 },
+  ];
+
+  /* const buttons = [
+    { id: 1, text: "2,000 Frailejones", percentage: 0 },
     { id: 2, text: "los expertos", percentage: 1 },
     { id: 3, text: "Las especies", percentage: 2 },
     { id: 4, text: "Primera siembra", percentage: 3 },
@@ -175,6 +185,7 @@ const NavBar = ({
     { id: 7, text: "¿Preguntas?", percentage: 7 },
     { id: 8, text: "Descargable", percentage: 8 },
   ];
+ */
 
   return (
     <>
@@ -182,9 +193,10 @@ const NavBar = ({
         <div className="flex justify-between items-center w-full relative">
           <div className="w-[10%]">
             <img
+              onClick={() => setTrasladar(0)}
               src="/logoFrailejones.png"
               alt="Logo Frailejones"
-              className="w-[25px]"
+              className="w-[25px] cursor-pointer"
             />
           </div>
           <div className="lg:flex space-x-4 rounded-3xl">
@@ -242,7 +254,7 @@ const NavBar = ({
                       activeButton === button.text
                         ? "bg-[#1d1d1b] text-white"
                         : "hover:bg-[#1d1d1b] hover:text-white"
-                    } menuHover text-sm rounded-3xl py-1 px-3 transition-all ease-in-out duration-300`}
+                    } menuHover uppercase text-sm rounded-3xl py-1 px-3 transition-all ease-in-out duration-300`}
                   >
                     {button.text}
                   </button>
@@ -254,15 +266,18 @@ const NavBar = ({
       </nav>
 
       <>
-        <IconSlideNextPrev
-          handleClick={scrollerResta}
-          customStyle={`iconoSlideInicial btn1 rotate-[-90deg] fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 max-lg:right-0 lg:translate-x-[150%] xs:translate-x-[100%] xs:translate-y-[-300%] lg:translate-y-[-150%] opacity-1 z-[100]`}
-        />
-
-        <IconSlideNextPrev
-          handleClick={scroller}
-          customStyle={`iconoSlideInicial rotate-90 fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 lg:translate-x-[150%] xs:translate-x-[100%] max-lg:right-0 xs:translate-y-[-150%] lg:translate-y-[150%]  opacity-1 z-[100]`}
-        />
+        {trasladar >= 1 && (
+          <IconSlideNextPrev
+            handleClick={scrollerResta}
+            customStyle={`iconoSlideInicial xs:rotate-[-90deg] btn1 lg:rotate-[-180deg] fixed lg:left-0 lg:top-1/2 max-lg:bottom-0 max-lg:right-0 lg:translate-x-[-150%] xs:translate-x-[120%] xs:translate-y-[-550%] lg:translate-y-[-50%] opacity-1 z-[100]`}
+          />
+        )}
+        {trasladar < 6 && (
+          <IconSlideNextPrev
+            handleClick={scroller}
+            customStyle={`iconoSlideInicial max-lg:rotate-90 fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 lg:translate-x-[150%] xs:translate-x-[120%] max-lg:right-0 xs:translate-y-[-350%] lg:translate-y-[-50%]  opacity-1 z-[100]`}
+          />
+        )}
       </>
 
       <div className="navVertical">

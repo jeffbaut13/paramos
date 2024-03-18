@@ -678,3 +678,117 @@ const TouchDetector = () => {
 };
 
 export default TouchDetector;
+
+useEffect(() => {
+  if (trasladar == 0) {
+    timeLine();
+    gsap.to(".contenedor", {
+      y: "-0",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setScrollPercentageTwo(0);
+    setActiveButton("2,000 Frailejones");
+    setScrollPercentage(1);
+  } else if (trasladar == 1) {
+    gsap.to(".contenedor", {
+      y: "-100%",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setScrollPercentageTwo(porcentaje);
+    setItemActive(0);
+    setActiveButton("los expertos");
+    setScrollPercentage(2);
+    setNumFrailejon(null);
+
+    gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+  } else if (trasladar == 2) {
+    gsap.to(".contenedor", {
+      y: "-200%",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setScrollPercentageTwo(porcentaje * 2);
+    setActiveButton("Las especies");
+    setScrollPercentage(3);
+    setPlayCapitulo(false);
+
+    gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+  } else if (trasladar == 3) {
+    gsap.to(".contenedor", {
+      y: "-300%",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setScrollPercentageTwo(porcentaje * 3);
+    setActiveButton("Primera siembra");
+
+    setScrollPercentage(4);
+    setTravesiaReverse(false);
+
+    gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+  } else if (trasladar == 4) {
+    gsap.to(".contenedor", {
+      y: "-400%",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setPlayCapitulo(false);
+    setScrollPercentageTwo(porcentaje * 4);
+    setScrollPercentage(5);
+    setTravesiaReverse(true);
+    setPlay(false);
+
+    gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+  } else if (trasladar == 5) {
+    gsap.to(".contenedor", {
+      y: "-500%",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setActiveButton("Campamento");
+    setScrollPercentageTwo(porcentaje * 5);
+    setScrollPercentage(6);
+    setPlayMoises(false);
+
+    gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+  } else if (trasladar == 6) {
+    gsap.to(".contenedor", {
+      y: "-600%",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setActiveButton("Moisés Moreno");
+    setScrollPercentageTwo(porcentaje * 6);
+    setScrollPercentage(7);
+    setPlay(false);
+
+    gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+  } else if (trasladar == 7) {
+    gsap.to(".contenedor", {
+      y: "-700%",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setActiveButton("¿Preguntas?");
+    setScrollPercentageTwo(porcentaje * 7);
+    setScrollPercentage(8);
+    setPlayMoises(false);
+
+    gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+  } else if (trasladar == 8) {
+    gsap.to(".contenedor", {
+      y: "-800%",
+      ease: "power1.inOut",
+      duration: velocidadTransicion,
+    });
+    setActiveButton("Descargable");
+    setScrollPercentageTwo(porcentaje * 8);
+    setScrollPercentage(9);
+    gsap.fromTo(".blurParamos", { opacity: 0 }, { opacity: 1, duration: 1 });
+  }
+  if (active360 === 2) {
+    setActive360(3);
+  }
+}, [trasladar, main, activeButton, numFrailejon, scrollPercentage]);

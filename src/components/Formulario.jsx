@@ -41,7 +41,7 @@ function ContactForm() {
   };
 
   return (
-    <div className="contact-form w-[80%] max-lg:pb-6">
+    <div className="contact-form   w-[80%] max-lg:pb-6">
       <form onSubmit={handleSubmit} className=" flex-col">
         <div className="form-group">
           <input
@@ -80,7 +80,10 @@ function ContactForm() {
           />
         </div>
         <div className=" lg:w-[60%] xs:w-full flex justify-center">
-          <button className="btnWhite bg-white" type="submit">
+          <button
+            className="w-fit flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal px-5 py-3 text-center lg:text-base xs:text-xs rounded-lg hover:bg-black bg-white transition-all ease-in-out duration-300 text-black hover:text-white"
+            type="submit"
+          >
             ENVIAR
           </button>
         </div>

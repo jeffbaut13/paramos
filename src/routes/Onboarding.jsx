@@ -30,6 +30,7 @@ const Onboarding = () => {
   const [isLoadingVisible, setIsLoadingVisible] = useState(true);
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const [startTouchY, setStartTouchY] = useState(0);
+  const [show360View, setShow360View] = useState(false);
 
   const handleTouchStart = (e) => {
     // Guarda la posición inicial del toque en Y
@@ -48,6 +49,15 @@ const Onboarding = () => {
       handlePrevClick();
     }
   };
+  const toggle360View = () => {
+    setShow360View(!show360View);
+  };
+
+  useEffect(() => {
+    if (inicio !== 1 && show360View) { // Si se cambia de estado y show360View está activado, desactívalo
+      setShow360View(false);
+    }
+  }, [inicio]); 
 
   useEffect(() => {
     // Función para capturar eventos de desplazamiento del mouse
@@ -274,28 +284,39 @@ const Onboarding = () => {
               inputNumber={inputNumber}
               setinicio={setinicio}
               setInputNumber={setInputNumber}
+              show360View={show360View}
+      setShow360View={setShow360View}
             />
-            {inicio > 2 && (
+            {!show360View && inicio > 2 && (
               <>
-                <div className=" pointer-events-none absolute top-0 left-0 lg:bg-gradient-to-r lg:from-[#000000ad] max-lg:bg-[#000000ad] lg:to-[#00000029] w-full h-full z-[2]"></div>
-
+              <div className=" pointer-events-none absolute top-0 left-0 lg:bg-gradient-to-r lg:from-[#000000ad] max-lg:bg-[#000000ad] lg:to-[#00000029] w-full h-full z-[2]"></div>
                 <FechasLateral
                   inicio={inicio}
                   barra={barra}
                   inputNumber={inputNumber}
                   setInputNumber={setInputNumber}
                 />
-
                 <Link
                   to={"/paramo"}
-                  ref={barra}
-                  className={`fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing z-[300] ${
-                    inicio >= 10 ? "claseAdicional" : ""
-                  }`}
+                  className="fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing z-[300]"
                 >
                   {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
                 </Link>
+                <span
+                  className="cursor-pointer absolute bottom-[20%] inline-block w-20 z-[300]"
+                  onClick={toggle360View}
+                >
+                  <img src="/svg/360Icon.svg" alt="Ver en 360" />
+                </span>
               </>
+            )}
+            {show360View && (
+              <span
+                className="close-icon-style w-20 z-[300]"
+                onClick={toggle360View}
+              >
+                <img src="/svg/360Icon.svg" alt="Ver en 360" />
+              </span>
             )}
             {inicio >= 3 && inicio <= 10 && Mobile && (
               <div className="botonesOnboarding2 flex items-center maxW w-full justify-center h-screen absolute bottom-10 right-11 ">

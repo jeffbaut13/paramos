@@ -8,7 +8,7 @@ const Home = () => {
     <div className="image-container">
       <BackgroundTransition />
 
-      <div className="fadeIn onBoarding absoluteCenterParrafos gradiente">
+      <div className="fadeIn onBoarding absoluteCenterParrafos">
         <h1 className="2xl:text-4xl xl:text-2xl xs:text-2xl font-semibold letterSpacing">
           Recuperemos nuestros páramos
         </h1>

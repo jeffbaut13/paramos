@@ -251,3 +251,7 @@ svg {
 .sho .previw {
   @apply opacity-100;
 }
+
+.play:hover path {
+  @apply fill-black transition-all ease-in-out duration-300;
+}
