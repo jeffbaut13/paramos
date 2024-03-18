@@ -255,7 +255,9 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
 
                         {isMobile ? (
                           <div
-                            className={`botones left-1/2 w-fit translate-x-[-50%] absolute bottom-4 z-10`}
+                            className={`${
+                              activeCaja ? "inline-block" : "hidden"
+                            } left-1/2 w-fit translate-x-[-50%] absolute bottom-4 z-10`}
                           >
                             <span
                               className={`${
