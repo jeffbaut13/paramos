@@ -164,7 +164,9 @@ const Xperience = ({ play, setPlay }) => {
             <img
               onClick={() => setPlay(true)}
               className="cursor-pointer xperiaimgBg w-full h-full object-cover"
-              src="/experiencia/experiencia.webp"
+              src={`/experiencia/${
+                isMobile ? "experienciaM" : "experiencia"
+              }.webp`}
               alt=""
             />
             {play && (

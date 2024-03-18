@@ -8,9 +8,6 @@ export const TextOnboarding = ({ parrafo, TextEfect }) => {
         className="parrafoOnboarding"
         dangerouslySetInnerHTML={{ __html: parrafo ? parrafo : "agrega texto" }}
       />
-      <span>
-        <img src="" alt="" />
-      </span>
     </div>
   );
 };

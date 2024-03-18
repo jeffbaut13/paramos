@@ -331,7 +331,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
     <div className="conoce w-full h-full flex">
       <div className=" responsiveReverse ocultarEnOrigen relative w-full h-full paddingComponentes">
         <div
-          style={{ backgroundImage: "url(/Conoce/fondoConoce.webp)" }}
+          style={{
+            backgroundImage: `url(/Conoce/fondoConoceM.webp)`,
+          }}
           className="anchoInicialPrimario BoxConoceImg lg:w-1/2 max-lg:h-1/2 BoxesImgStart bg-center"
         >
           <div className="montaña hidden w-full h-full relative  sm:bg-gradient-to-r bg-gradient-to-b from-[#0073ab] to-[#b0f8f5]">

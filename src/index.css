@@ -90,6 +90,9 @@ svg {
   @apply text-white xl:text-lg sm:text-sm xs:text-xs w-fit;
   @apply transicion_200 px-6 bg-black bg-opacity-60 min-w-[180px] hover:bg-white text-white hover:text-[#000000] hover:bg-opacity-70  rounded-lg uppercase py-3 letterSpacing hover:shadow-none;
 }
+.btn-siguiente {
+  @apply text-black bg-white hover:bg-black hover:text-white;
+}
 .gradiente {
   @apply bg-black bg-opacity-0 rounded-full;
   /* box-shadow: 0px 0px 15px 13px #00000015; */

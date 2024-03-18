@@ -150,7 +150,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
             <img
               onClick={() => setPlayMoises(true)}
               className="cursor-pointer xperiaimgBg w-full h-full object-cover"
-              src="/experiencia/moises.webp"
+              src={`/experiencia/${isMobile ? "moisesM" : "moises"}.webp`}
               alt=""
             />
             {playMoises && (

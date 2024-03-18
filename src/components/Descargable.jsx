@@ -1,12 +1,16 @@
 import React from "react";
-
+const isMobile = window.innerWidth <= 1024;
 const Descargable = () => {
   return (
     //<div className="descargable absolute w-full h-full z-[1] flex">
     <div className="descargable ocultarEnOrigen  w-full h-full z-[1] flex">
       <div className=" flex w-full h-full">
         <div
-          style={{ backgroundImage: "url(/contacto/descargable.webp)" }}
+          style={{
+            backgroundImage: `url(/contacto/${
+              isMobile ? "descargableM" : "descargable"
+            }.webp)`,
+          }}
           className=" overflow-hidden  bg-no-repeat bg-cover w-full rounded-3xl flex-col justify-center align-middle font-bold flex-center text-white text-2xl tracking-widest whitespace-wrap text-center "
         >
           <div>

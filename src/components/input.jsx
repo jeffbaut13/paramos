@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 const DigitarFecha = ({ setInputNumber, inputNumber, handleNextClick }) => {
   const [digits, setDigits] = useState(["", "", "", ""]);
   const inputRefs = useRef([]);
+
+  const inputType = window.innerWidth <= 1024 ? "number" : "text";
 
   const handleChange = (index, value) => {
     if (!isNaN(value) && value.length <= 1) {
@@ -58,7 +61,7 @@ const DigitarFecha = ({ setInputNumber, inputNumber, handleNextClick }) => {
           {digits.map((digit, index) => (
             <input
               key={index}
-              type="text"
+              type={inputType}
               maxLength="1"
               value={digit}
               onInput={(e) => handleChange(index, e.target.value)}

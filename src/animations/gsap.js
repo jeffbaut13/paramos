@@ -1,19 +1,43 @@
 import gsap from "gsap";
 
-export const TextoAbajoArriba = (ref, delay) => {
-  gsap.fromTo(
-    ref,
-    { opacity: 0, y: 100 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.5,
-      ease: "power2.inOut",
-      delay: delay ? delay : 0,
-    }
-  );
+export const TextoAbajoArriba = (ref) => {
+  if (ref.current) {
+    gsap.fromTo(
+      ref.current,
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power2.inOut",
+      }
+    );
+  }
 };
-export const Opacidad = (ref, from, to) => {
+export const Opacidad = (ref, Num) => {
+  gsap.to(ref.current, {
+    opacity: Num,
+    ease: "power2.out",
+    duration: 1,
+  });
+};
+
+export const TextoAbajoArriba3 = (ref, delay) => {
+  if (ref) {
+    gsap.fromTo(
+      ref,
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        delay: delay ? delay : 0,
+        ease: "power2.inOut",
+      }
+    );
+  }
+};
+export const Opacidad3 = (ref, from, to) => {
   gsap.fromTo(
     ref,
     {
@@ -21,8 +45,8 @@ export const Opacidad = (ref, from, to) => {
     },
     {
       opacity: to,
-      ease: "power3.inOut",
-      delay: 0.4,
+      ease: "power2.out",
+      delay: 0.5,
     }
   );
 };

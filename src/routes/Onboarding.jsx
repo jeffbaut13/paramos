@@ -54,10 +54,11 @@ const Onboarding = () => {
   };
 
   useEffect(() => {
-    if (inicio !== 1 && show360View) { // Si se cambia de estado y show360View está activado, desactívalo
+    if (inicio !== 1 && show360View) {
+      // Si se cambia de estado y show360View está activado, desactívalo
       setShow360View(false);
     }
-  }, [inicio]); 
+  }, [inicio]);
 
   useEffect(() => {
     // Función para capturar eventos de desplazamiento del mouse
@@ -285,11 +286,11 @@ const Onboarding = () => {
               setinicio={setinicio}
               setInputNumber={setInputNumber}
               show360View={show360View}
-      setShow360View={setShow360View}
+              setShow360View={setShow360View}
             />
             {!show360View && inicio > 2 && (
               <>
-              <div className=" pointer-events-none absolute top-0 left-0 lg:bg-gradient-to-r lg:from-[#000000ad] max-lg:bg-[#000000ad] lg:to-[#00000029] w-full h-full z-[2]"></div>
+                <div className=" pointer-events-none absolute top-0 left-0 lg:bg-gradient-to-r lg:from-[#000000ad] max-lg:bg-[#000000ad] lg:to-[#00000029] w-full h-full z-[2]"></div>
                 <FechasLateral
                   inicio={inicio}
                   barra={barra}
@@ -298,7 +299,9 @@ const Onboarding = () => {
                 />
                 <Link
                   to={"/paramo"}
-                  className="fadeIn btn-cards absolute sm:right-5 bottom-12 text-center letterSpacing z-[300]"
+                  className={`fadeIn btn-cards ${
+                    inicio >= 10 ? "btn-siguiente" : ""
+                  } absolute sm:right-5 bottom-12 text-center letterSpacing z-[300]`}
                 >
                   {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
                 </Link>
@@ -312,10 +315,10 @@ const Onboarding = () => {
             )}
             {show360View && (
               <span
-                className="close-icon-style w-20 z-[300]"
+                className=" cursor-pointer absolute close-icon-style w-20 bottom-4 z-[300]"
                 onClick={toggle360View}
               >
-                <img src="/svg/360Icon.svg" alt="Ver en 360" />
+                <img src="/svg/cerrar360.svg" alt="Ver en 360" />
               </span>
             )}
             {inicio >= 3 && inicio <= 10 && Mobile && (

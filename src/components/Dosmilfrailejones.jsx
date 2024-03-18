@@ -86,7 +86,7 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           className={`BoxDosmilImage lg:w-1/2 max-lg:h-1/2  bg-center BoxesImgStart flex-center z-10 relative ${
             numFrailejon >= 1 ? "Frailejonactivo" : ""
           } `}
-          style={{ backgroundImage: "url(/bgParamos/Bg20mil.webp)" }}
+          style={{ backgroundImage: "url(/bgParamos/Bg20milM.webp)" }}
         >
           <img
             onClick={limiarPuntos}

@@ -13,11 +13,7 @@ import BackgroundTransition from "../components/BackgroundTransition";
 import VideoComponent from "../components/videclud";
 import { switchProcentageZindex } from "../helpers/switchs";
 import NavBar from "../components/NavBar";
-import {
-  Opacidad,
-  TextoAbajoArriba,
-  transitionSection,
-} from "../animations/gsap";
+import { Opacidad3, TextoAbajoArriba3 } from "../animations/gsap";
 import Xperience from "../components/Xperience";
 import DocumentalMoises from "../components/DocumentalMoises";
 import { handleScrollEvent } from "../helpers/scrollEvents";
@@ -145,8 +141,8 @@ function App() {
       setActiveButton("2,000 Frailejones");
       setScrollPercentage(1);
       setNumFrailejon(null);
-      TextoAbajoArriba(".conoceTexto");
-      Opacidad(".conoce .btnconoce", 0, 1);
+      TextoAbajoArriba3(".conoceTexto");
+      Opacidad3(".conoce .btnconoce", 0, 1);
     } else if (trasladar == 1) {
       gsap.to(".contenedor", {
         y: "-100%",
@@ -157,8 +153,8 @@ function App() {
       setItemActive(0);
       setActiveButton("Las especies");
       setScrollPercentage(2);
-      TextoAbajoArriba(".PrimerTextoDosmil");
-      Opacidad(".dosmilFrailejones .btnconoce", 0, 1);
+      TextoAbajoArriba3(".PrimerTextoDosmil");
+      Opacidad3(".dosmilFrailejones .btnconoce", 0, 1);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
       //setTravesiaReverse(false);
     } else if (trasladar == 2) {
@@ -172,8 +168,8 @@ function App() {
       setScrollPercentage(3);
       setTravesiaReverse(true);
       setPlay(false);
-      TextoAbajoArriba(".origenTexto");
-      Opacidad(".travesia .btnconoce", 0, 1);
+      TextoAbajoArriba3(".origenTexto");
+      Opacidad3(".travesia .btnconoce", 0, 1);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 3) {
       gsap.to(".contenedor", {
@@ -186,7 +182,7 @@ function App() {
       setScrollPercentage(4);
       setActiveButton("Campamento");
       setPlayMoises(false);
-      TextoAbajoArriba(".experienciaTexto");
+      TextoAbajoArriba3(".experienciaTexto");
 
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 4) {
@@ -200,7 +196,7 @@ function App() {
       setScrollPercentage(5);
       setActiveButton("Moisés Moreno");
       setPlay(false);
-      TextoAbajoArriba(".moisesTexto");
+      TextoAbajoArriba3(".moisesTexto");
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 5) {
       gsap.to(".contenedor", {
@@ -213,9 +209,9 @@ function App() {
       setScrollPercentage(6);
       setActiveButton("¿Preguntas?");
       setPlayMoises(false);
-      TextoAbajoArriba(".tamanoTitulos");
-      TextoAbajoArriba(".parrafoContacto", 0.2);
-      Opacidad(".contact-form", 0, 1);
+      TextoAbajoArriba3(".tamanoTitulos");
+      TextoAbajoArriba3(".parrafoContacto", 0.2);
+      Opacidad3(".contact-form", 0, 1);
 
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 6) {
@@ -228,9 +224,9 @@ function App() {
       setScrollPercentageTwo(porcentaje * 6);
       setScrollPercentage(7);
       setActiveButton("Descargable");
-      TextoAbajoArriba(".textoContacto");
-      TextoAbajoArriba(".textoContacto2", 0.2);
-      Opacidad(".BotonContacto", 0, 1);
+      TextoAbajoArriba3(".textoContacto");
+      TextoAbajoArriba3(".textoContacto2", 0.2);
+      Opacidad3(".BotonContacto", 0, 1);
 
       gsap.to(".blurParamos", { opacity: 1, duration: 1 });
     }

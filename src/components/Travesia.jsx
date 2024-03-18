@@ -15,7 +15,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
   const [posicion, setPosicion] = useState(1);
   const [activeCaja, setActiveCaja] = useState(false);
   const padre = useRef(null);
-  //console.log(activeCaja);
+  console.log(activeCaja);
   const data = {
     paramos: [
       {
@@ -62,7 +62,6 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
 
   useEffect(() => {
     if (activeCaja == false) {
-      setPosicion(1);
       gsap.to(".bg-degradadoTravesia", {
         opacity: 0,
       });
