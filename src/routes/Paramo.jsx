@@ -18,6 +18,7 @@ import Xperience from "../components/Xperience";
 import DocumentalMoises from "../components/DocumentalMoises";
 import { handleScrollEvent } from "../helpers/scrollEvents";
 import { AudioContext } from "../context/AudioProvider";
+import { Helmet } from "react-helmet";
 
 function App() {
   const main = useRef(null);
@@ -236,67 +237,81 @@ function App() {
   }, [trasladar, main, activeButton, numFrailejon, scrollPercentage]);
 
   return (
-    <div
-      ref={main}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      className="maxW h-[700vh] relative"
-    >
-      <div className=" bg-gradient-to-t from-transparent from-85% to-[#0000009e] w-full h-full fixed left-0  z-[5]"></div>
-      {/* <Grilla /> */}
-
-      <BackgroundTransition />
-
-      <div className="blurParamos  fixed top-0 left-0 bg2 z-10 w-full h-full opacity-0"></div>
-      <div className="cajaParaelementos maxW fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[80%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%] ">
-        {active360 == 2 && (
-          <span
-            onClick={() => setActive360(3)}
-            className="close cursor-pointer fixed top-[-4%] right-[2%] w-4 z-[60]"
-          >
-            <img src="/svg/close.svg" alt="" />
-          </span>
-        )}
-        <NavBar
-          activeButton={activeButton}
-          scrollPercentage={scrollPercentage}
-          scrollPercentageTwo={scrollPercentageTwo}
-          trasladar={trasladar}
-          setTrasladar={setTrasladar}
+    <>
+      <Helmet>
+        <title>Recuperemos nuestros frailejones | Guardianes del páramo</title>
+        <link rel="canonical" href="/paramo" />
+        <meta
+          name="description"
+          content="Protegamos nuestros frailejones, recuperemos nuestros paramos"
         />
-        <VideoComponent />
-        <VideoComponent />
-        <VideoComponent />
-        <div className=" mainParamos relative rounded-3xl overflow-hidden w-full h-full ">
-          <div className="contenedor">
-            <Conocelosparamos
-              itemActive={itemActive}
-              setItemActive={setItemActive}
-            />
-            {/* <Origen active360={active360} setActive360={setActive360} /> */}
-            <Dosmilfrailejones
-              numFrailejon={numFrailejon}
-              setNumFrailejon={setNumFrailejon}
-            />
-            {/* <CapituloMoises
+        <meta
+          name="keywords"
+          content="frailejones, incendios forestales, calentamiento global, páramo, mongua, oceta, sincunsí, inter rapidísimo"
+        />
+      </Helmet>
+      <div
+        ref={main}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className="maxW h-[700vh] relative"
+      >
+        <div className=" bg-gradient-to-t from-transparent from-85% to-[#0000009e] w-full h-full fixed left-0  z-[5]"></div>
+        {/* <Grilla /> */}
+
+        <BackgroundTransition />
+
+        <div className="blurParamos  fixed top-0 left-0 bg2 z-10 w-full h-full opacity-0"></div>
+        <div className="cajaParaelementos maxW fixed z-50 rounded-3xl bg-white  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[80%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%] ">
+          {active360 == 2 && (
+            <span
+              onClick={() => setActive360(3)}
+              className="close cursor-pointer fixed top-[-4%] right-[2%] w-4 z-[60]"
+            >
+              <img src="/svg/close.svg" alt="" />
+            </span>
+          )}
+          <NavBar
+            activeButton={activeButton}
+            scrollPercentage={scrollPercentage}
+            scrollPercentageTwo={scrollPercentageTwo}
+            trasladar={trasladar}
+            setTrasladar={setTrasladar}
+          />
+          <VideoComponent />
+          <VideoComponent />
+          <VideoComponent />
+          <div className=" mainParamos relative rounded-3xl overflow-hidden w-full h-full ">
+            <div className="contenedor">
+              <Conocelosparamos
+                itemActive={itemActive}
+                setItemActive={setItemActive}
+              />
+              {/* <Origen active360={active360} setActive360={setActive360} /> */}
+              <Dosmilfrailejones
+                numFrailejon={numFrailejon}
+                setNumFrailejon={setNumFrailejon}
+              />
+              {/* <CapituloMoises
               playCapitulo={playCapitulo}
               setPlayCapitulo={setPlayCapitulo}
             /> */}
-            <Travesia
-              travesiaReverse={travesiaReverse}
-              setTravesiaReverse={setTravesiaReverse}
-            />
-            <Xperience play={play} setPlay={setPlay} />
-            <DocumentalMoises
-              playMoises={playMoises}
-              setPlayMoises={setPlayMoises}
-            />
-            <Contacto />
-            <Descargable />
+              <Travesia
+                travesiaReverse={travesiaReverse}
+                setTravesiaReverse={setTravesiaReverse}
+              />
+              <Xperience play={play} setPlay={setPlay} />
+              <DocumentalMoises
+                playMoises={playMoises}
+                setPlayMoises={setPlayMoises}
+              />
+              <Contacto />
+              <Descargable />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

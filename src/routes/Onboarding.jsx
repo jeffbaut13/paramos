@@ -9,6 +9,7 @@ import { Opacidad, scrolltrigerFunction } from "../animations/gsap";
 import { getContainerClass, switchProcentage } from "../helpers/switchs";
 import Loading from "../components/Loading";
 import IconSlideOnboarding from "../components/IconSlideOnboarding";
+import { Helmet } from "react-helmet";
 gsap.registerPlugin(ScrollTrigger);
 
 const Onboarding = () => {
@@ -212,6 +213,18 @@ const Onboarding = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Onboarding | Guardianes del páramo</title>
+        <link rel="canonical" href="/onboarding" />
+        <meta
+          name="description"
+          content="Explora lo que puede suceder si no protegemos nuestros paramos"
+        />
+        <meta
+          name="keywords"
+          content="frailejones, incendios forestales, calentamiento global, páramo, mongua, oceta, sincunsí, inter rapidísimo"
+        />
+      </Helmet>
       {isLoadingVisible && <Loading />}
       {isRouterReady && (
         <div

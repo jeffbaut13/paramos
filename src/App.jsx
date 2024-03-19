@@ -8,6 +8,7 @@ import router from "./routes/Rutas";
 import Loading from "./components/Loading"; // Importa tu componente de carga aquí
 import { AudioProvider } from "./context/AudioProvider";
 import AudioIcon from "./components/AudioIcon";
+import { Helmet } from "react-helmet";
 
 // Define tu componente principal
 const App = () => {
@@ -31,6 +32,18 @@ const App = () => {
 
   return (
     <React.StrictMode>
+      <Helmet>
+        <title>Guardianes del páramo</title>
+        <link rel="canonical" href="/" />
+        <meta
+          name="description"
+          content="Guardianes del páramo, recuperemos nuestros frailejones"
+        />
+        <meta
+          name="keywords"
+          content="frailejones, incendios forestales, calentamiento global, páramo, mongua, oceta, sincunsí, inter rapidísimo"
+        />
+      </Helmet>
       <AudioProvider>
         {isLoadingVisible && <Loading />}{" "}
         {/* Muestra el componente Loading mientras isLoadingVisible sea true */}
