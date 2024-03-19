@@ -638,13 +638,13 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
           </div>
         </div>
         <div className="anchoInicialPrimario lg:w-1/2 max-lg:h-1/2 BoxConoceText BoxesTextEnd flex flex-col items-center justify-evenly">
-          <p className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
+          <h1 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
             Sembraremos <br />
             2,000 frailejones <br />
             en el corazón <br />
             de nuestros <br />
             páramos.
-          </p>
+          </h1>
           <Button handleClick={handleClick} text={"Empecemos"} />
         </div>
       </div>
