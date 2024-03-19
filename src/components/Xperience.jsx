@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import gsap from "gsap";
 import ReactPlayer from "react-player";
 import Button from "./Button";
 import { IconPlay } from "./IconPlay";
+import { AudioContext } from "../context/AudioProvider";
+
 const isMobile = window.innerWidth < 640;
 const tablet = window.innerWidth >= 640 && window.innerWidth < 1280;
 const full = window.innerWidth >= 1500;
@@ -13,6 +15,9 @@ const medio = 1.5;
 const lento = 2;
 const Xperience = ({ play, setPlay }) => {
   const [pause, setPause] = useState(false);
+
+  const { isPlaying, playAudio, pauseAudio } = useContext(AudioContext);
+
   useEffect(() => {
     if (pause) {
       const tl = gsap.timeline();
@@ -34,6 +39,9 @@ const Xperience = ({ play, setPlay }) => {
 
   useEffect(() => {
     if (play) {
+      if (isPlaying) {
+        pauseAudio();
+      }
       const tl = gsap.timeline();
       if (isMobile || tablet) {
         tl.fromTo(
@@ -160,7 +168,21 @@ const Xperience = ({ play, setPlay }) => {
           </p>
         </div>
         <div className="bg-black experienciaImagen lg:w-1/2 max-lg:h-1/2 relative BoxesImgEnd">
-          <div onMouseEnter={() => setPause(true)} className="player-wrapper">
+          <div
+            onMouseLeave={() => {
+              gsap.to(".experienciaImagen .btncloseVideo", {
+                opacity: 0,
+                ease: "power1.inOut",
+              });
+            }}
+            onMouseEnter={() =>
+              gsap.to(".experienciaImagen .btncloseVideo", {
+                opacity: 1,
+                ease: "power1.inOut",
+              })
+            }
+            className="player-wrapper"
+          >
             <img
               onClick={() => setPlay(true)}
               className="cursor-pointer xperiaimgBg w-full h-full object-cover"
@@ -191,7 +213,10 @@ const Xperience = ({ play, setPlay }) => {
             )}
             {play && (
               <span
-                onClick={() => setPlay(false)}
+                onClick={() => {
+                  setPlay(false);
+                  playAudio();
+                }}
                 className="btncloseVideo cursor-pointer fadeIn absolute w-8 p-[11px] rounded-full border border-white bottom-16 left-1/2 translate-x-[-50%] iconoCloseMoises"
               >
                 <img src="/svg/close.svg" alt="" />

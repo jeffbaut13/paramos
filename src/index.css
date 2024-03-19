@@ -22,6 +22,14 @@
 .letterSpacing {
   @apply tracking-[0.3em];
 }
+.error {
+  @apply flex-center-col;
+}
+.error h1,
+.error p,
+.error a {
+  @apply letterSpacing text-[#3c3c3b] my-4 uppercase;
+}
 .absoluteCenter {
   @apply fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
   @apply xl:w-[80%] xs:w-[85%] xl:h-[80%] xl:max-h-[874px] xs:h-[70%];

@@ -6,6 +6,8 @@ import "./paramos.css";
 import "./conoceParamos.css";
 import router from "./routes/Rutas";
 import Loading from "./components/Loading"; // Importa tu componente de carga aquí
+import { AudioProvider } from "./context/AudioProvider";
+import AudioIcon from "./components/AudioIcon";
 
 // Define tu componente principal
 const App = () => {
@@ -29,11 +31,18 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      {isLoadingVisible && <Loading />}{" "}
-      {/* Muestra el componente Loading mientras isLoadingVisible sea true */}
-      {isRouterReady && ( // Muestra el RouterProvider cuando isRouterReady sea true
-        <RouterProvider router={router} />
-      )}
+      <AudioProvider>
+        {isLoadingVisible && <Loading />}{" "}
+        {/* Muestra el componente Loading mientras isLoadingVisible sea true */}
+        {isRouterReady && ( // Muestra el RouterProvider cuando isRouterReady sea true
+          <>
+            <RouterProvider router={router} />
+            <span className="audioIcon fixed z-50 right-6 bottom-4 w-5 h-5 inline-block">
+              <AudioIcon />
+            </span>
+          </>
+        )}
+      </AudioProvider>
     </React.StrictMode>
   );
 };

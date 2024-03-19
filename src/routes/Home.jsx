@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import BackgroundTransition from "../components/BackgroundTransition";
+import { AudioContext } from "../context/AudioProvider";
 
 // Componente Home que utiliza el hook useWindowSize
 const Home = () => {
+  const { playAudio } = useContext(AudioContext);
+
+  const HandlePlayAudio = () => {
+    playAudio();
+  };
+  playAudio;
   return (
     <div className="image-container">
       <BackgroundTransition />
@@ -20,6 +27,7 @@ const Home = () => {
         to={"/onboarding"}
         onClick={() => {
           document.body.style.overflow = "hidden";
+          HandlePlayAudio();
         }}
         className="fadeIn transicion_200 absolute flex-center text-center z-10 left-1/2 top-[75%] bg-slate-300 w-44 h-10 rounded-xl translate-x-[-50%] font-bold Amenti hover:bg-black hover:text-white tracking-[0.3em]"
       >

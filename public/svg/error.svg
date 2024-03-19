@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-6c3b6116-352a-49ce-abcd-148eeae656b5" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88.79 88.79">
+  <defs>
+    <style>
+      .uuid-fc2ee21a-2ba2-4776-a2cc-a1acbe8b3891 {
+        fill: none;
+        stroke: #3c3c3b;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-5cb6c94d-73a3-4128-8bd1-5a581d2d3fea" data-name="Capa 1">
+    <g>
+      <circle class="uuid-fc2ee21a-2ba2-4776-a2cc-a1acbe8b3891" cx="44.39" cy="44.39" r="43.39"/>
+      <circle class="uuid-fc2ee21a-2ba2-4776-a2cc-a1acbe8b3891" cx="44.39" cy="44.39" r="34.36"/>
+      <g>
+        <circle class="uuid-fc2ee21a-2ba2-4776-a2cc-a1acbe8b3891" cx="44.39" cy="61.2" r="5.99"/>
+        <path class="uuid-fc2ee21a-2ba2-4776-a2cc-a1acbe8b3891" d="m48.59,48.82h-8.38l-3.91-21.46c-.44-2.43,1.43-4.67,3.9-4.67h8.41c2.47,0,4.34,2.24,3.9,4.67l-3.91,21.46Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,42 +1,26 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function ErrorPage() {
-  const [mostrarElementos, setMostrarElementos] = useState(0);
-
-  const handleButtonClick = () => {
-    setMostrarElementos((prev) => prev + 1);
-  };
-  const handleButtonClickE = () => {
-    setMostrarElementos((prev) => prev - 1);
-  };
-
-  const translateYValue = `-${mostrarElementos * 100}%`;
-
   return (
-    <div className="contenedor-padre fixed bg-black w-screen h-screen flex-center">
-      <div className="contenedor-relativo relative bg-white w-[80%] h-[675px] overflow-hidden">
-        <div
-          className="elementos"
-          style={{ transform: `translateY(${translateYValue})` }}
-        >
-          <div className="elemento bg-blue-500">Elemento 1</div>
-          <div className="elemento bg-red-500">Elemento 2</div>
-          <div className="elemento bg-yellow-500">Elemento 3</div>
-          <div className="elemento bg-pink-500">Elemento 4</div>
-          <div className="elemento bg-gray-500">Elemento 5</div>
-          <div className="elemento bg-blue-200">Elemento 6</div>
-          <div className="elemento bg-green-500">Elemento 7</div>
-        </div>
+    <div className="bg-white">
+      <div className="error cajaParaelementos maxW fixed z-50 rounded-3xl bg-[#dadada]  top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] xl:w-[80%] xs:w-[80%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%] ">
+        <span className="w-20 inline-block relative lg:translate-x-[-1rem] xs:translate-x-[-0.4rem]">
+          <img
+            className="w-full h-full object-cover"
+            src="/svg/error.svg"
+            alt=""
+          />
+        </span>
+        <h1 className=" lg:text-7xl xs:text-2xl">Error</h1>
+        <h1 className=" lg:text-[12rem] xs:text-7xl lg:leading-[10rem] xs:leading-[4rem] font-black">
+          404
+        </h1>
+        <p className="text-center">OOPS! PÁGINA NO ENCONTRADA</p>
+        <Link to={"/paramo"} className="underline">
+          Ir al inicio
+        </Link>
       </div>
-      <button
-        className="fixed bg-fuchsia-500 translate-x-52"
-        onClick={handleButtonClick}
-      >
-        Mostrar siguiente elemento
-      </button>
-      <button className="fixed bg-fuchsia-500" onClick={handleButtonClickE}>
-        Mostrar anterior elemento
-      </button>
     </div>
   );
 }

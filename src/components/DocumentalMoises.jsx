@@ -1,14 +1,17 @@
 import gsap from "gsap";
 import { space } from "postcss/lib/list";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { IconPlay } from "./IconPlay";
+import { AudioContext } from "../context/AudioProvider";
 const isMobile = window.innerWidth < 640;
 const tablet = window.innerWidth >= 640 && window.innerWidth < 1280;
 const full = window.innerWidth >= 1500;
 const laptop = window.innerWidth >= 1280 && window.innerWidth < 1500;
 const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
   const [pause, setPause] = useState(false);
+  const { isPlaying, playAudio, pauseAudio } = useContext(AudioContext);
+
   useEffect(() => {
     if (pause) {
       const tl = gsap.timeline();
@@ -29,6 +32,9 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
   }, [pause]);
   useEffect(() => {
     if (playMoises) {
+      if (isPlaying) {
+        pauseAudio();
+      }
       const tl = gsap.timeline();
       if (isMobile || tablet) {
         tl.fromTo(
@@ -146,7 +152,21 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
     <div className=" documental w-full h-full flex">
       <div className="moises relative w-full h-full paddingComponentes flex xs:flex-col-reverse lg:flex-row">
         <div className="BoxMoisesImg lg:w-1/2 max-lg:h-1/2 bg-black BoxesImgStart bg-center">
-          <div onMouseEnter={() => setPause(true)} className="player-wrapper">
+          <div
+            onMouseEnter={() => {
+              gsap.to(".BoxMoisesImg .btncloseVideo", {
+                opacity: 1,
+                ease: "power1.inOut",
+              });
+            }}
+            onMouseLeave={() => {
+              gsap.to(".BoxMoisesImg .btncloseVideo", {
+                opacity: 0,
+                ease: "power1.inOut",
+              });
+            }}
+            className="player-wrapper"
+          >
             <img
               onClick={() => setPlayMoises(true)}
               className="cursor-pointer xperiaimgBg w-full h-full object-cover"
@@ -175,7 +195,10 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
             )}
             {playMoises && (
               <span
-                onClick={() => setPlayMoises(false)}
+                onClick={() => {
+                  setPlayMoises(false);
+                  playAudio();
+                }}
                 className="btncloseVideo cursor-pointer fadeIn absolute w-8 p-[11px] rounded-full border border-white bottom-16 left-1/2 translate-x-[-50%] iconoCloseMoises"
               >
                 <img src="/svg/close.svg" alt="" />

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Origen from "../components/Origen";
 import gsap from "gsap";
 import Dosmilfrailejones from "../components/Dosmilfrailejones";
@@ -17,6 +17,7 @@ import { Opacidad3, TextoAbajoArriba3 } from "../animations/gsap";
 import Xperience from "../components/Xperience";
 import DocumentalMoises from "../components/DocumentalMoises";
 import { handleScrollEvent } from "../helpers/scrollEvents";
+import { AudioContext } from "../context/AudioProvider";
 
 function App() {
   const main = useRef(null);
@@ -30,7 +31,7 @@ function App() {
   const [itemActive, setItemActive] = useState(0);
   const [scrollPercentage, setScrollPercentage] = useState(1);
   const [scrollPercentageTwo, setScrollPercentageTwo] = useState(0);
-
+  const { playAudio } = useContext(AudioContext);
   const [trasladar, setTrasladar] = useState(0);
 
   const [startTouchY, setStartTouchY] = useState(0);
@@ -171,6 +172,7 @@ function App() {
       TextoAbajoArriba3(".origenTexto");
       Opacidad3(".travesia .btnconoce", 0, 1);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
+      playAudio();
     } else if (trasladar == 3) {
       gsap.to(".contenedor", {
         y: "-300%",
@@ -199,6 +201,7 @@ function App() {
       TextoAbajoArriba3(".moisesTexto");
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 5) {
+      playAudio();
       gsap.to(".contenedor", {
         y: "-500%",
         ease: "power1.inOut",
