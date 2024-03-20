@@ -305,7 +305,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
                                 {posicion == 3 ? (
                                   <>
                                     <p
-                                      onClick={() => setTrasladar(4)}
+                                      onClick={() => setTrasladar(3)}
                                       className=" cursor-pointer fadeIn text-white absolute bottom-6"
                                     >
                                       Conoce los guardianes

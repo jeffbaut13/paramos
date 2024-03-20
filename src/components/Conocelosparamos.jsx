@@ -473,13 +473,11 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
             {itemActive == 5 && (
               <div className="titulo4 titulosGenral">
                 <h2 className="tituloConoce">
-                  ¿Cómo
+                  ¿Cómo hicimos
                   <br />
-                  sembraremos
+                  la primera
                   <br />
-                  nuestras
-                  <br />
-                  semillas??
+                  siembra?
                 </h2>
 
                 <div className="cajaTitu">
@@ -492,10 +490,11 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
                       activefour ? "block" : "hidden"
                     } parrafoConoce`}
                   >
-                    Nuestro viaje comienza en marzo, cuando nos uniremos en las
-                    cumbres mágicas de Boyacá. Allí, entre los susurros del
-                    viento y la quietud de la montaña, conectaremos almas con
-                    frailejones.
+                    Nos unimos a biólogos y expertos para explorar diferentes
+                    páramos, asegurando que antes de la siembra el terreno sirva
+                    para que cada frailejón sobreviva y cumpla su función.
+                    Además, junto a los Guardianes del Páramo, pedimos permiso a
+                    la montaña como muestra de respeto a la cultura ancestral.
                   </span>
                 </div>
 
