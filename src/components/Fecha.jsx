@@ -28,6 +28,19 @@ const Fecha = ({
     TextoAbajoArriba(TextEfect);
   }, [inicio]);
 
+  useEffect(() => {
+    gsap.fromTo(
+      iframeRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1, delay: 3, ease: "power1.inOut" }
+    );
+    gsap.fromTo(
+      ".icon360",
+      { opacity: 0 },
+      { opacity: 1, duration: 1, delay: 3, ease: "power1.inOut" }
+    );
+  }, [inicio, iframeRef, isIframeLoaded]);
+
   const easeOutQuad = (t) => 1 - (1 - t) * (1 - t);
   const easeInQuart = (t) => t * t * t * t;
 
@@ -97,58 +110,57 @@ const Fecha = ({
     switch (inicio) {
       case 3:
         return {
-          parrafo: "El año en que naciste nuestros páramos se veían así:",
+          parrafo:
+            "cuando naciste nuetros páramos eran fuertes y sanos, se veían así:",
           urlKuala:
             "https://kuula.co/share/collection/7c9xt?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 4:
         return {
           parrafo:
-            "En promedio, cada diez años perdemos 877,000 hectáreas de páramo.",
+            "a tus 10 años, 877.000 hectáras de estos frailejones ya no existían.",
           urlKuala:
             "https://kuula.co/share/collection/7cFNQ?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 5:
         return {
           parrafo:
-            "Desde la década de los 2000, perdimos el 79% de área de páramo entre Cundinamarca y Boyacá.",
+            "cuando tenías 20 años, el 79% de agua de los páramos de boyacá y cundinamarca ya no existía.",
           urlKuala:
             "https://kuula.co/share/collection/7cFGQ?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 6:
         return {
           parrafo:
-            "Tristemente, entre el 2000 y el 2015 se quemó el 18% del área total del páramo de Sumapaz.",
+            "a tus 30 años, los incendios habían arrasado con el 18% del páramo de sumapaz.",
           urlKuala:
             "https://kuula.co/share/collection/7cFYF?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 7:
         return {
           parrafo:
-            "Entre el 2015 y el 2020, perdimos 20% de nuestros páramos de la Cordillera Oriental.",
+            "para cuando tengas 40 años, el 20% de las especies que habitan en los páramos de la cordillera oriental no estarán.",
           urlKuala:
             "https://kuula.co/share/collection/7cFP2?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 8:
         return {
           parrafo:
-            "Si no hacemos nada, para el 2030, el complejo Tota-Bijagual-Mamapacha habrá perdido 35% de vegetación.",
+            "si no hacemos nada, cuando llegues a los 50, perderemos el 35% de todo el complejo que da agua a boyaca y casanare.",
           urlKuala:
             "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 9:
         return {
           parrafo:
-            "La pérdida de páramos en las próximas décadas traerá consigo deslizamientos y tragedias ambientales.",
+            "estas pérdidas pueden traer a futuro deslizamientos, enfermedades, desabastecimiento de agua y más tragedias ambientales.",
           urlKuala:
             "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 10:
         return {
           parrafo:
-            "Nuestro presente es el mejor momento para cambiar esta realidad. Salvemos nuestros páramos.",
-          urlKuala:
-            "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+            "nuestro presente es el mejor momento para cambiar esta realidad. unámonos y salvemos nuestros páramos.",
         };
 
       default:
@@ -164,7 +176,7 @@ const Fecha = ({
       iframe.onload = () => {
         setIframeLoaded(true);
       };
-      iframe.style.display = 'none';
+      iframe.style.display = "none";
       document.body.appendChild(iframe);
     }
   }, [contenido.urlKuala, isIframeLoaded]);
@@ -175,10 +187,10 @@ const Fecha = ({
         <>
           <div className="fadeIn">
             <h1 className="2xl:text-4xl xl:text-2xl xs:text-base font-semibold letterSpacing">
-              Queremos que entiendas el daño causado
+              Queremos que veas cómo han cambiado nuestros páramos.
             </h1>
             <h1 className="2xl:text-3xl xl:text-xl xs:text-sm font-light tracking-[0.21em]">
-              Ingresa tu año de nacimiento y vive esta experiencia
+              Ingresa tu año de nacimiento
             </h1>
           </div>
 
@@ -189,7 +201,6 @@ const Fecha = ({
           />
         </>
       )}
-
       {inicio == 2 && (
         <p
           ref={fechaRef}
@@ -198,26 +209,25 @@ const Fecha = ({
           {Math.round(animatedNumber)}
         </p>
       )}
+      {inicio >= 3 && inicio <= 10 && (
+        <div className="gradiente">
+          {!show360View && (
+            <TextOnboarding TextEfect={TextEfect} parrafo={contenido.parrafo} />
+          )}
 
-{inicio >= 3 && inicio <= 10 && (
-      <div className="gradiente">
-        {!show360View && (
-          <TextOnboarding
-            TextEfect={TextEfect}
-            parrafo={contenido.parrafo}
-            on360IconClick={toggle360View}
-          />
-        )}
-
-<span className="absolute w-full h-full left-0 top-0 z-[1]">
+          <span className="absolute w-full h-full left-0 top-0 z-[1]">
             {isIframeLoaded ? (
-              <EmbeddedIframe urlKuala={contenido.urlKuala} ref={iframeRef} />
+              <EmbeddedIframe
+                urlKuala={contenido.urlKuala}
+                node360={iframeRef}
+              />
             ) : (
               <div>Loading...</div>
             )}
-        </span>
-      </div>
-    )}    </>
+          </span>
+        </div>
+      )}{" "}
+    </>
   );
 };
 

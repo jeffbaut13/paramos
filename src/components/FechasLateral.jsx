@@ -22,7 +22,7 @@ const FechasLateral = ({ setinicio, inputNumber, barra, inicio }) => {
 
   return (
     <div
-      className="fechasLateral flex-center-col absolute lg:left-[-10px] xs:left-[-22px] w-[80px] z-[3]"
+      className="fechasLateral flex-center-col absolute lg:left-[-10px] xs:left-[-30px] w-[80px] z-[3]"
       ref={barra}
     >
       <ItemFecha

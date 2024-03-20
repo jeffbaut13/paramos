@@ -11,6 +11,7 @@ import Loading from "../components/Loading";
 import IconSlideOnboarding from "../components/IconSlideOnboarding";
 import { Helmet } from "react-helmet";
 import IconSlideNextPrev from "../components/IconSlideNextPrev";
+import Button from "../components/Button";
 gsap.registerPlugin(ScrollTrigger);
 
 const Onboarding = () => {
@@ -255,7 +256,7 @@ const Onboarding = () => {
               alt=""
             />
           </div>
-          {inicio >= 3 && inicio <= 10 && (
+          {inicio >= 3 && inicio <= 10 && !Mobile && (
             <div className=" slidesOnboarding maxW borderWhite flex-center-col z-10">
               <IconSlideNextPrev
                 customStyle={
@@ -312,31 +313,48 @@ const Onboarding = () => {
                   inputNumber={inputNumber}
                   setInputNumber={setInputNumber}
                 />
-                <Link
-                  to={"/paramo"}
-                  className={`fadeIn btn-cards ${
-                    inicio >= 10 ? "btn-siguiente" : ""
-                  } absolute sm:right-5 bottom-12 text-center letterSpacing z-[300]`}
-                >
-                  {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
-                </Link>
+
                 <span
-                  className="cursor-pointer absolute bottom-[20%] inline-block w-20 z-[300]"
+                  className="icon360 cursor-pointer absolute bottom-[20%] inline-block xl:w-20 xs:w-14 z-[300]"
                   onClick={toggle360View}
                 >
                   <img src="/svg/360Icon.svg" alt="Ver en 360" />
                 </span>
+                <div className="botonesAvance absolute bottom-6 xl:right-4 xs:right-0 flex xl:justify-between xs:justify-evenly items-center xl:w-[400px] xs:w-full">
+                  <button
+                    onClick={handlePrevClick}
+                    className="btn-cards z-20 xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit "
+                  >
+                    Atras
+                  </button>
+                  <button
+                    onClick={handleNextClick}
+                    className="btn-cards z-20 xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit"
+                  >
+                    Siguiente
+                  </button>
+                </div>
               </>
             )}
             {show360View && (
               <span
-                className=" cursor-pointer absolute close-icon-style w-20 bottom-4 z-[300]"
+                className=" cursor-pointer absolute close-icon-style w-10 bottom-[10%] z-[300] opacity-55"
                 onClick={toggle360View}
               >
                 <img src="/svg/cerrar360.svg" alt="Ver en 360" />
               </span>
             )}
           </div>
+          {inicio > 2 && (
+            <Link
+              to={"/paramo"}
+              className={`fadeIn btn-cards ${
+                inicio >= 10 ? "btn-siguiente" : ""
+              } absolute xl:right-5 max-xl:left-1/2 max-xl:translate-x-[-50%] xl:bottom-12 xs:bottom-8 text-center letterSpacing xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit`}
+            >
+              {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
+            </Link>
+          )}
         </div>
       )}
     </>
