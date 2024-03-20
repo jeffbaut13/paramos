@@ -16,29 +16,29 @@ const Descargable = () => {
           <p className="textoContacto xs:text-base lg:text-6xl uppercase mb-12">
             Entidades aliadas
           </p>
-          <div className="images flex xl:w-[70%] xs:w-full xl:justify-between xs:justify-evenly">
-            <span className="xl:w-34 xl:h-34 xs:w-14 xs:h-14 inline-block relative">
+          <div className="images flex w-[70%] xl:justify-between xs:justify-evenly max-xl:flex-wrap">
+            <span className="cajaimgAliados">
               <img
                 className="Imgaliado"
                 src="/imgAliados/Natura-Love.webp"
                 alt="Natura-Love"
               />
             </span>
-            <span className="xl:w-34 xl:h-34 xs:w-14 xs:h-14 inline-block relative">
+            <span className="cajaimgAliados">
               <img
                 className="Imgaliado"
                 src="/imgAliados/instituto-humboldt.webp"
                 alt="Instituto Humboldt colombia"
               />
             </span>
-            <span className="xl:w-34 xl:h-34 xs:w-14 xs:h-14 inline-block relative">
+            <span className="cajaimgAliados">
               <img
                 className="Imgaliado"
                 src="/imgAliados/alcadia-mongua.webp"
                 alt="Alcaldia de mongua"
               />
             </span>
-            <span className="xl:w-34 xl:h-34 xs:w-14 xs:h-14 inline-block relative">
+            <span className="cajaimgAliados">
               <img
                 className="Imgaliado"
                 src="/imgAliados/moisua-de-oceta.webp"

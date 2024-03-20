@@ -361,6 +361,9 @@
   @apply w-full h-full flex items-center justify-center;
 }
 
+.cajaimgAliados {
+  @apply xl:w-32 xl:h-32 xs:w-1/2 xs:h-auto inline-block relative p-4;
+}
 .Imgaliado {
-  @apply w-full h-full object-cover;
+  @apply w-full object-cover;
 }
