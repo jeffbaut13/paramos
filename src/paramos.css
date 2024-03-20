@@ -128,7 +128,7 @@
   @apply w-[28%] mr-[4%] h-[70%] overflow-hidden border border-white rounded-xl;
 }
 .tamanoTitulos {
-  @apply 2xl:text-6xl lg:text-4xl xs:text-xl;
+  @apply 2xl:text-5xl lg:text-3xl xs:text-lg;
 }
 .iconoCaminante {
   @apply opacity-90 pointer-events-none lg:w-fit xs:w-[35%] absolute z-[6]

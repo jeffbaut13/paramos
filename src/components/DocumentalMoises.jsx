@@ -221,7 +221,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
         </div>
         <div className="BoxMoisesText lg:w-1/2 max-lg:h-1/2 BoxesTextEnd flex flex-col items-center justify-center">
           <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-3/5">
-            <h1 className="conoceTexto font-bold uppercase tamanoTitulos text-5xl tracking-widest w-full">
+            <h1 className="conoceTexto font-bold uppercase tamanoTitulos   tracking-widest w-full">
               CONOCE A NUESTRO PRIMER GUARDIÁN, MOISÉS MORENO
             </h1>
             <p className="parrafodescripcion text-black">
