@@ -17,10 +17,10 @@ const Home = () => {
 
       <div className="fadeIn onBoarding absoluteCenterParrafos">
         <h1 className="2xl:text-4xl xl:text-2xl xs:text-2xl font-semibold letterSpacing">
-          Recuperemos nuestros páramos
+          Más de 3000 hectáreas de páramos fueron arrasadas en enero de 2024.
         </h1>
         <h1 className="2xl:text-2xl xl:text-xl xs:text-sm font-semibold tracking-[0.21em]">
-          el futuro de los ecosistemas <br /> dependerá de lo que hagamos ahora.
+          Es hora de hacer algo.
         </h1>
       </div>
       <Link
@@ -29,9 +29,9 @@ const Home = () => {
           document.body.style.overflow = "hidden";
           HandlePlayAudio();
         }}
-        className="fadeIn transicion_200 absolute flex-center text-center z-10 left-1/2 top-[75%] bg-slate-300 w-44 h-10 rounded-xl translate-x-[-50%] font-bold Amenti hover:bg-black hover:text-white tracking-[0.3em]"
+        className="btnWhite fadeIn absolute z-10 left-1/2 top-[75%] translate-x-[-50%] btnWhite xl:text-lg xs:text-sm"
       >
-        SIGUIENTE
+        Descubre cómo
       </Link>
     </div>
   );
