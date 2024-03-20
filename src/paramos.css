@@ -87,7 +87,7 @@
   @apply w-full h-full left-0 top-0 translate-y-[0%] translate-x-[0%];
 }
 .cajaTitulos {
-  @apply flex justify-evenly relative z-[4] lg:h-1/2 xs:h-[70%] max-lg:flex-col max-lg:items-center pt-16;
+  @apply flex justify-evenly relative z-[4] lg:h-[50%] xs:h-[70%] max-lg:flex-col max-lg:items-center pt-16;
 }
 .cajaTitulos .titulo {
   @apply lg:font-bold xs:font-light max-lg:w-full lg:text-6xl xs:text-2xl lg:text-start xs:text-center text-white xs:tracking-[5px] lg:tracking-[3px] max-lg:mt-8;
@@ -104,7 +104,7 @@
 }
 
 .cajaParrafo .parrafo {
-  @apply text-white max-w-[570px] 2xl:text-xl lg:text-lg max-lg:text-justify max-lg:my-8;
+  @apply text-white max-w-[600px] 2xl:text-xl lg:text-lg max-lg:text-justify max-lg:my-8;
 }
 
 .cajaParrafo .subtitulo {

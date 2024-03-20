@@ -21,26 +21,26 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
       {
         id: 1,
         titulo: "PÁRAMO <br /> DE OCETÁ <br />",
-        subtitulo: "Monguí, Boyaca",
+        subtitulo: "Monguí, Boyacá",
         descripcion:
-          "Hogar de “la ciudad de piedra”, una formación rocosa con callejones y paredes cubiertas de musgos.",
+          "Este mágico lugar en el que las montañas y el cielo se fusionan en un abrazo eterno, y donde la naturaleza despliega su belleza más sobrecogedora. Este páramo es un paraíso ubicado en Boyacá, aquí, entre picos y lagunas, la energía palpable y la conexión con la naturaleza hace que este lugar sea verdaderamente mágico. Un espacio en el que vale la pena recorrer cada sendero y descubrir la maravilla que aguarda en cada esquina.",
         item1:
           "La caminata tiene una distancia de <span class='font-black'>15 a 18 km.</span>",
         item2: "Altura máxima de 4,000 MSNM",
-        item3: "La caminata puede durar entre 8 - 10 horas.",
+        item3: "La caminata puede durar entre 6 - 8 horas.",
         imagBg: "/travesia/bg-travesia2.webp",
         imagPiso: "/travesia/camino-bg.webp",
       },
       {
         id: 2,
-        titulo: "PÁRAMO <br /> DE MONGUÁ <br />",
-        subtitulo: "Monguí, Boyaca",
+        titulo: "PÁRAMO <br /> DE MONGUA <br />",
+        subtitulo: "Monguí, Boyacá",
         descripcion:
-          "Considerado uno de los más bellos del mundo, con una diversidad única de flora y fauna.",
+          "Adentrarse en el páramo de Mongua es como entrar en un reino mágico en donde la naturaleza despliega su esplendor más cautivador. Con temperaturas entre los 5°C y los 15°C. Aquí, entre los imponentes frailejones, se encuentra un universo único de especies endémicas, donde cada sendero esconde secretos ancestrales y vistas que roban el aliento. No es coincidencia que sea mundialmente conocido como el páramo más hermoso del mundo.",
         item1:
           "La caminata tiene una distancia de <span class='font-black'>16 a 18 km.</span>",
         item2: "Altura máxima de 3,950 MSNM",
-        item3: "La caminata puede durar entre 9 - 11 horas.",
+        item3: "La caminata puede durar entre 2 - 3 horas.",
         imagBg: "/travesia/bg-travesia3.webp",
         imagPiso: "/travesia/camino-bg2.webp",
       },
@@ -49,7 +49,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         titulo: "PÁRAMO <br /> DE SISCUNSÍ <br />",
         subtitulo: "Monguí, Sogamoso",
         descripcion:
-          "En este lugar se han llevado a cabo programas de repoblamiento del cóndor andino.",
+          "Un tesoro natural que ofrece una experiencia incomparable. Con vastas extensiones de frailejones, cascadas naturales y la impresionante Laguna del Siscunsí, este lugar encanta a quienes lo visitan. A una altitud de 3.850 m.s.n.m., no solo es un espectáculo visual, sino también un recurso vital para la región, abastece de agua los pueblos cercanos. Su biodiversidad, que incluye frailejones y una rica variedad de fauna, como el majestuoso cóndor de los Andes. Este es un destino imperdible para los que buscan conectarse con la naturaleza.",
         item1: "Altura máxima de 4,000 MSNM",
         item2:
           "La caminata tiene una distancia de <span class='font-black'>15 a 18 km.</span>",
@@ -216,7 +216,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                           <div className="cajaParrafo lg:translate-x-[-10%]">
                             <p className="parrafo">{paramo.descripcion}</p>
                             <div className="svgIcono svgIcono1">
-                              <span className="icono">
+                              {/* <span className="icono">
                                 <img src="/svg/caminante.svg" alt="" />
                               </span>
                               <h6
@@ -224,10 +224,10 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                                 dangerouslySetInnerHTML={{
                                   __html: paramo.item1,
                                 }}
-                              />
+                              /> */}
                             </div>
                             <div className="svgIcono svgIcono2">
-                              <span className="icono">
+                              {/* <span className="icono">
                                 <img src="/svg/montanas.svg" alt="" />
                               </span>
 
@@ -236,10 +236,10 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                                 dangerouslySetInnerHTML={{
                                   __html: paramo.item2,
                                 }}
-                              />
+                              /> */}
                             </div>
                             <div className="svgIcono svgIcono3">
-                              <span className="icono">
+                              {/* <span className="icono">
                                 <img src="/svg/reloj.svg" alt="" />
                               </span>
                               <h6
@@ -247,7 +247,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                                 dangerouslySetInnerHTML={{
                                   __html: paramo.item3,
                                 }}
-                              />
+                              /> */}
                             </div>
                           </div>
                         </div>
@@ -345,15 +345,15 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
         </div>
         <div className="BoxTravesiaTexto lg:w-1/2 xs:w-full lg:h-full xs:h-1/2 flex-col justify-evenly BoxesTextEnd flex-center">
           <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-4/5">
-            <h1 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest w-full">
-              Sembraremos 2.000 frailejones
-            </h1>
+            <h2 className="conoceTexto font-bold uppercase tamanoTitulos text-5xl tracking-widest w-full">
+              de 37 páramos que existen en el país, escogimos 2 para nuestra
+              pimera siembra.
+            </h2>
             <p className="parrafodescripcion text-black">
-              Lanzamos una convocatoria y <strong>14000 voluntarios</strong> se
-              unieron para ser parte de <strong>Guardianes del Páramo</strong>,
-              seleccionamos los primeros <strong>170</strong> con los que
-              entregamos a la tierra <strong>500 frailejones</strong> de 6 años
-              con los que esperamos recuperar estos ecosistemas.
+              Después de varios estudios, seguimos la recomendación del Doctor
+              Alzate y el Instituto Humboldt para empezar nuestra siembra en el
+              páramo de Ocetá y el páramo de Mongua, ya que no representan
+              ningún peligro para las primeras especies que sembramos.
             </p>
             <Button handleClick={() => setActiveCaja(true)} text={"EXPLORAR"} />
           </div>

@@ -160,15 +160,17 @@ const Xperience = ({ play, setPlay }) => {
       <div className="relative w-full h-full paddingComponentes flex xs:flex-col lg:flex-row">
         <div className="experienciaTextoBox lg:w-1/2 max-lg:h-1/2 BoxesTextStart flex flex-col items-center justify-center">
           <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-3/5">
-            <h1 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest w-full">
-              Sembraremos 2.000 frailejones
+            <h1 className="conoceTexto font-bold uppercase tamanoTitulos text-5xl tracking-widest w-full">
+              GUARDIANES DEL PÁRAMO, CUIDADORES DE NUESTRA HERENCIA NATURAL
             </h1>
             <p className="parrafodescripcion text-black">
-              Lanzamos una convocatoria y <strong>14000 voluntarios</strong> se
-              unieron para ser parte de <strong>Guardianes del Páramo</strong>,
-              seleccionamos los primeros <strong>170</strong> con los que
-              entregamos a la tierra <strong>500 frailejones</strong> de 6 años
-              con los que esperamos recuperar estos ecosistemas.
+              Nuestros Guardianes se registraron y pacientemente esperaron el
+              llamado que los llevó a Boyacá, allí se capacitaron para cuidar y
+              sembrar frailejones. En el sitio de siembra, guiados por sabedores
+              ancestrales, pidieron permiso a la montaña y al final, se
+              despidieron del campamento con una moneda que los certifica como
+              los primeros Guardianes del Páramo.<br/><br/> Mira la experiencia completa
+              haciendo clic en el video.
             </p>
           </div>
         </div>

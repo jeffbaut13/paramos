@@ -221,15 +221,16 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
         </div>
         <div className="BoxMoisesText lg:w-1/2 max-lg:h-1/2 BoxesTextEnd flex flex-col items-center justify-center">
           <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-3/5">
-            <h1 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest w-full">
-              Sembraremos 2.000 frailejones
+            <h1 className="conoceTexto font-bold uppercase tamanoTitulos text-5xl tracking-widest w-full">
+              CONOCE A NUESTRO PRIMER GUARDIÁN, MOISÉS MORENO
             </h1>
             <p className="parrafodescripcion text-black">
-              Lanzamos una convocatoria y <strong>14000 voluntarios</strong> se
-              unieron para ser parte de <strong>Guardianes del Páramo</strong>,
-              seleccionamos los primeros <strong>170</strong> con los que
-              entregamos a la tierra <strong>500 frailejones</strong> de 6 años
-              con los que esperamos recuperar estos ecosistemas.
+              Residente de Monguí, Boyacá, ha dejado una huella imborrable en la
+              conservación ambiental y la preservación de los páramos
+              colombianos, especialmente a través de su dedicación incansable
+              hacia los frailejones. Conocer su historia es esencial para
+              entender cómo podemos proteger nuestro entorno y nos motiva a
+              actuar en beneficio de las futuras generaciones.
             </p>
           </div>
         </div>
