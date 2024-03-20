@@ -32,7 +32,7 @@
 }
 .absoluteCenter {
   @apply fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
-  @apply xl:w-[80%] xs:w-[85%] xl:h-[80%] xl:max-h-[874px] xs:h-[70%];
+  @apply xl:w-[80%] xs:w-[80%] xl:h-[80%] xl:max-h-[874px] xs:h-[80%];
 }
 .absoluteCenterParrafos {
   @apply absolute top-1/2 left-1/2 z-50 translate-x-[-50%] translate-y-[-50%];
@@ -265,4 +265,9 @@ svg {
 
 .play:hover path {
   @apply fill-black transition-all ease-in-out duration-300;
+}
+.slidesOnboarding {
+  @apply max-xl:bottom-20 xs:w-12 xs:h-56 max-xl:right-0
+  fixed xl:top-1/2 xl:left-1/2 xl:translate-x-[-50%] xl:translate-y-[-50%]
+   xl:w-[80%] xl:h-[80%] xl:max-h-[874px];
 }

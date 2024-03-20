@@ -1,11 +1,12 @@
 import React from "react";
 
-const ItemFecha = ({ inputNumber, aumento, color, active }) => {
+const ItemFecha = ({ inputNumber, aumento, color, active, handleClick }) => {
   return (
     <div
+      onClick={handleClick}
       className={`${
         active ? "active" : ""
-      } w-full flex items-center justify-around 2xl:h-16 lg:h-14 sm:h-8 xs:h-10 relative LineFather`}
+      } cursor-pointer w-full flex items-center justify-around 2xl:h-16 lg:h-14 sm:h-8 xs:h-10 relative LineFather`}
     >
       <span className={`${active ? "w-5" : "w-4"} inline-block Line`}>
         <svg

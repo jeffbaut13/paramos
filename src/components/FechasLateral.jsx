@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import gsap from "gsap";
 import ItemFecha from "./itemFecha";
 
-const FechasLateral = ({ inputNumber, barra, inicio }) => {
+const FechasLateral = ({ setinicio, inputNumber, barra, inicio }) => {
   useEffect(() => {
     // Configurar la animación con GSAP
     gsap.fromTo(
@@ -16,6 +16,9 @@ const FechasLateral = ({ inputNumber, barra, inicio }) => {
       }
     );
   }, [inputNumber]);
+  const goYear = (Num) => {
+    setinicio(Num);
+  };
 
   return (
     <div
@@ -23,48 +26,56 @@ const FechasLateral = ({ inputNumber, barra, inicio }) => {
       ref={barra}
     >
       <ItemFecha
+        handleClick={() => goYear(3)}
         active={inicio == 3 ? true : false}
         inputNumber={inputNumber}
         aumento={0}
         color={"#fff"}
       />
       <ItemFecha
+        handleClick={() => goYear(4)}
         active={inicio == 4 ? true : false}
         inputNumber={inputNumber}
         aumento={10}
         color={"#fff"}
       />
       <ItemFecha
+        handleClick={() => goYear(5)}
         active={inicio == 5 ? true : false}
-        inputNumber={2009}
-        aumento={0}
+        inputNumber={inputNumber}
+        aumento={20}
         color={"#fff"}
       />
       <ItemFecha
+        handleClick={() => goYear(6)}
         active={inicio == 6 ? true : false}
-        inputNumber={2015}
-        aumento={0}
+        inputNumber={inputNumber}
+        aumento={30}
         color={"#fff"}
       />
       <ItemFecha
+        handleClick={() => goYear(7)}
         active={inicio == 7 ? true : false}
-        inputNumber={2020}
-        aumento={0}
+        inputNumber={inputNumber}
+        aumento={40}
         color={"#fff"}
       />
       <ItemFecha
+        handleClick={() => goYear(8)}
         active={inicio == 8 ? true : false}
-        inputNumber={2030}
-        aumento={0}
+        inputNumber={inputNumber}
+        aumento={50}
         color={"#fff"}
       />
       <ItemFecha
+        handleClick={() => goYear(9)}
         active={inicio == 9 ? true : false}
-        inputNumber={2040}
-        aumento={0}
+        inputNumber={inputNumber}
+        aumento={60}
         color={"#fff"}
       />
       <ItemFecha
+        handleClick={() => goYear(10)}
         active={inicio == 10 ? true : false}
         inputNumber={2024}
         aumento={0}
