@@ -149,7 +149,7 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
     }
   }, [playMoises]);
   return (
-    <div className=" documental w-full h-full flex">
+    <div className=" documentalMoises w-full h-full flex">
       <div className="moises relative w-full h-full paddingComponentes flex xs:flex-col-reverse lg:flex-row">
         <div className="BoxMoisesImg lg:w-1/2 max-lg:h-1/2 bg-black BoxesImgStart bg-center">
           <div
@@ -220,14 +220,18 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
           </div>
         </div>
         <div className="BoxMoisesText lg:w-1/2 max-lg:h-1/2 BoxesTextEnd flex flex-col items-center justify-center">
-          <p className=" moisesTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            Nuestro primer <br />
-            guardián del <br /> Páramo. <br />
-            <br />
-            Un hombre que ha <br />
-            dedicado su vida <br />a cultivar <br />
-            frailejones.
-          </p>
+          <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-3/5">
+            <h1 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest w-full">
+              Sembraremos 2.000 frailejones
+            </h1>
+            <p className="parrafodescripcion text-black">
+              Lanzamos una convocatoria y <strong>14000 voluntarios</strong> se
+              unieron para ser parte de <strong>Guardianes del Páramo</strong>,
+              seleccionamos los primeros <strong>170</strong> con los que
+              entregamos a la tierra <strong>500 frailejones</strong> de 6 años
+              con los que esperamos recuperar estos ecosistemas.
+            </p>
+          </div>
         </div>
       </div>
     </div>

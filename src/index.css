@@ -256,6 +256,9 @@ svg {
 .btnWhite {
   @apply w-fit flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal px-5 py-3 text-center lg:text-2xl xs:text-xs rounded-lg hover:bg-black bg-white  transition-all ease-in-out duration-300 text-black hover:text-white;
 }
+.btnBorderyellow {
+  @apply uppercase tracking-[0.3em] flex items-center justify-center font-normal px-5 py-3 mt-4 flex-center-col text-center lg:text-xl xs:text-[0.6rem] border-2 rounded-lg hover:bg-white transition-all ease-in-out duration-300 border-[#B78B67] hover:border-white text-black hover:text-black;
+}
 .ocult .previw {
   @apply opacity-30;
 }

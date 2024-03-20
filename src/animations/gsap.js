@@ -97,7 +97,7 @@ export const frailejon = (
 ) => {
   const tl7 = gsap.timeline({ ease: "power1.inOut" });
   tl7.fromTo(".bgvid", { opacity: 0 }, { opacity: 1, duration: rapido });
-  tl7.to(".boxBntSlide", { display: "none" }, "<-=1");
+
   if (isMobile) {
     tl7.to(".BoxDosmilTexto", { height: "100%" }).addLabel("titulo1");
     tl7.to(".BoxDosmilImage", { height: "0%" }, "<");
@@ -105,16 +105,6 @@ export const frailejon = (
     tl7.to(".BoxDosmilTexto", { width: "100%" }).addLabel("titulo1");
     tl7.to(".BoxDosmilImage", { width: "0%" }, "<");
   }
-  tl7.to(
-    ".PrimerTextoDosmil",
-    {
-      opacity: 0,
-      y: "-100%",
-      display: "none",
-      duration: rapido,
-    },
-    "titulo1-=0.5"
-  );
 
   tl7.to(
     ".btnSlide",
@@ -135,7 +125,7 @@ export const frailejon = (
   tl7.fromTo(
     ".SegundoTextoDosmil",
     { display: "none", opacity: 0, y: "20%" },
-    { display: "block", opacity: 1, y: "0%" },
+    { display: "flex", opacity: 1, y: "0%" },
     "titulo1"
   );
 
@@ -153,5 +143,4 @@ export const frailejon = (
   tl7.to(".Espeletia", { opacity: espelitia }, "titulo1");
 
   tl7.to(".punto", { display: "block", opacity: 1 }, "titulo1");
-  tl7.to(".boxBntSlide", { display: "flex" }, "<+=0.5");
 };

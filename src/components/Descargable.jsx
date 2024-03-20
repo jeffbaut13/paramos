@@ -13,12 +13,41 @@ const Descargable = () => {
           }}
           className=" overflow-hidden  bg-no-repeat bg-cover w-full rounded-3xl flex-col justify-center align-middle font-bold flex-center text-white text-2xl tracking-widest whitespace-wrap text-center "
         >
-          <div>
-            <p className="textoContacto xs:text-base lg:text-2xl uppercase">
-              Hacer parte del cambio, <br />
-              solo te tomará unos segundos.
-            </p>
-            <p className="textoContacto2 pt-10 mb-10 xs:text-base lg:text-2xl uppercase">
+          <p className="textoContacto xs:text-base lg:text-6xl uppercase mb-12">
+            Entidades aliadas
+          </p>
+          <div className="images flex xl:w-[70%] xs:w-full xl:justify-between xs:justify-evenly">
+            <span className="xl:w-34 xl:h-34 xs:w-14 xs:h-14 inline-block relative">
+              <img
+                className="Imgaliado"
+                src="/imgAliados/Natura-Love.webp"
+                alt="Natura-Love"
+              />
+            </span>
+            <span className="xl:w-34 xl:h-34 xs:w-14 xs:h-14 inline-block relative">
+              <img
+                className="Imgaliado"
+                src="/imgAliados/instituto-humboldt.webp"
+                alt="Instituto Humboldt colombia"
+              />
+            </span>
+            <span className="xl:w-34 xl:h-34 xs:w-14 xs:h-14 inline-block relative">
+              <img
+                className="Imgaliado"
+                src="/imgAliados/alcadia-mongua.webp"
+                alt="Alcaldia de mongua"
+              />
+            </span>
+            <span className="xl:w-34 xl:h-34 xs:w-14 xs:h-14 inline-block relative">
+              <img
+                className="Imgaliado"
+                src="/imgAliados/moisua-de-oceta.webp"
+                alt="Moisua de Oceta"
+              />
+            </span>
+          </div>
+
+          {/* <p className="textoContacto2 pt-10 mb-10 xs:text-base lg:text-2xl uppercase">
               Descarga el video, compártelo con todos tus contactos <br />y no
               olvides etiquetarnos @interrapidisimo_co.
             </p>
@@ -28,8 +57,7 @@ const Descargable = () => {
               className="BotonContacto m-auto w-fit flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal px-5 py-3 text-center lg:text-base xs:text-xs rounded-lg hover:bg-black bg-white transition-all ease-in-out duration-300 text-black hover:text-white"
             >
               Descargar video
-            </a>
-          </div>
+            </a> */}
         </div>
       </div>
     </div>

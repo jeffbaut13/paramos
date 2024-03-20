@@ -84,7 +84,7 @@ function ContactForm() {
             className="w-fit flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal px-5 py-3 text-center lg:text-base xs:text-xs rounded-lg hover:bg-black bg-white transition-all ease-in-out duration-300 text-black hover:text-white"
             type="submit"
           >
-            ENVIAR
+            Quiero ayudar
           </button>
         </div>
       </form>

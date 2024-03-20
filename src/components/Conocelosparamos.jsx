@@ -27,14 +27,20 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
       ".parrafoConoce",
       {
         y: "20%",
-        opacity: 0,
       },
-      { y: "0%", opacity: 1, duration: 0.3, ease: "power1.inOut" }
+      { y: "0%", duration: 0.3, ease: "power1.inOut" }
     );
   }, [activeOne, activeTwo]);
 
   useEffect(() => {
     if (itemActive == 0) {
+      gsap.fromTo(
+        ".conoce .anchoInicialPrimario",
+        {
+          opacity: 0,
+        },
+        { opacity: 1, duration: 0.3, ease: "power1.inOut" }
+      );
       gsap.to(".montaña", { display: "none" });
       const tl = gsap.timeline();
       tl.to(".slideBtn", {
@@ -92,6 +98,11 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
       );
     }
     if (itemActive == 1) {
+      gsap.to(
+        ".conoce .anchoInicialPrimario",
+
+        { opacity: 0, duration: 0.1 }
+      );
       gsap.to(".montaña", { display: "block" });
       const tl = gsap.timeline();
       if (isMobile) {
@@ -334,7 +345,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
           style={{
             backgroundImage: `url(/Conoce/fondoConoceM.webp)`,
           }}
-          className="anchoInicialPrimario BoxConoceImg lg:w-1/2 max-lg:h-1/2 BoxesImgStart bg-center"
+          className="  BoxConoceImg lg:w-1/2 max-lg:h-1/2 BoxesImgStart bg-center"
         >
           <div className="montaña hidden w-full h-full relative  sm:bg-gradient-to-r bg-gradient-to-b from-[#0073ab] to-[#b0f8f5]">
             <img
@@ -376,11 +387,9 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             {(itemActive == 1 || itemActive == 2) && (
               <div className="titulo1 titulosGenral ">
                 <h2 className="tituloConoce">
-                  ¿por qué
+                  ¿por qué dar
                   <br />
-                  decidimos
-                  <br />
-                  hacerlo?
+                  este paso?
                 </h2>
 
                 <div className="cajaTitu ">
@@ -392,11 +401,11 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                       activeOne ? "block" : "hidden"
                     } parrafoConoce  `}
                   >
-                    En enero de 2024, una ola de calor arrasó con nuestros
-                    páramos, dejando tras de sí un paisaje desolador y el eco de
-                    un desafío inmenso. Pero en lugar de ser espectadores de la
-                    destrucción, elegimos ser agentes de cambio, sembrando
-                    semillas de esperanza en estas tierras.
+                    Ante los incendios forestales y el avance del cambio
+                    climático, entendimos que es urgente recuperar nuestros
+                    páramos. Sembrar 2000 frailejones no es solo una decisión,
+                    es un compromiso con el futuro de nuestro planeta y las
+                    futuras generaciones.
                   </span>
                 </div>
 
@@ -422,11 +431,11 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             {(itemActive == 3 || itemActive == 4) && (
               <div className="titulo2 titulosGenral">
                 <h2 className="tituloConoce">
-                  la importancia
+                  ¿por qué
                   <br />
-                  de sembrar
+                  sembrar
                   <br />
-                  frailejones
+                  frailejones?
                 </h2>
 
                 <div className="cajaTitu">
@@ -439,22 +448,11 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                       activeTwo ? "block" : "hidden"
                     } parrafoConoce`}
                   >
-                    Imagina un mundo donde cada hoja es un susurro de vida,
-                    donde cada flor es un faro de esperanza. Eso son los
-                    frailejones para nuestros páramos: guardianes silenciosos
-                    que sostienen el equilibrio de un ecosistema único.
-                  </span>
-                  <span
-                    onClick={() => {
-                      setActiveTwo(false);
-                      setActiveTree(false);
-                    }}
-                    className={`${
-                      activeTree ? "block" : "hidden"
-                    } parrafoConoce`}
-                  >
-                    Desde las alturas, absorben la humedad de la neblina y la
-                    transforman en agua, que alimenta arroyos y ríos.
+                    Son pilares de nuestra biodiversidad, regulan el agua,
+                    sustentan la vida y protegen nuestro planeta. Capturan el
+                    carbono de la atmósfera, esto ayuda a mitigar el cambio
+                    climático. Sembrar y promover el cuidado de estas especies
+                    es proteger nuestro futuro.
                   </span>
                 </div>
 
@@ -476,38 +474,19 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   }}
                   customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[43%] xs:top-[70%] xs:left-[65%] `}
                 />
-
-                <BtnHover
-                  handleClick={() => {
-                    if (activeTree) {
-                      setActiveTree(false);
-                      setActiveTwo(false);
-                    } else {
-                      setActiveTree(true);
-                      setActiveTwo(false);
-                    }
-                  }}
-                  handleMouseEnter={() => {
-                    setActiveTree(true);
-                  }}
-                  handleMouseLeave={() => {
-                    setActiveTree(false);
-                  }}
-                  customStyles={`punto top-0 w-5 h-5   lg:top-[75%] lg:left-[63%] xs:top-[80%] xs:left-[38%]`}
-                />
               </div>
             )}
 
             {itemActive == 5 && (
               <div className="titulo4 titulosGenral">
                 <h2 className="tituloConoce">
-                  ¿CÓMO
+                  ¿Cómo
                   <br />
-                  SEMBRAREMOS
+                  sembraremos
                   <br />
-                  NUESTRAS
+                  nuestras
                   <br />
-                  SEMILLAS?
+                  semillas??
                 </h2>
 
                 <div className="cajaTitu">
@@ -524,18 +503,6 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                     cumbres mágicas de Boyacá. Allí, entre los susurros del
                     viento y la quietud de la montaña, conectaremos almas con
                     frailejones.
-                  </span>
-                  <span
-                    onClick={() => {
-                      setActivefour(false);
-                      setActiveFive(false);
-                    }}
-                    className={`${
-                      activeFive ? "block" : "hidden"
-                    } parrafoConoce`}
-                  >
-                    Expertos guiarán nuestros pasos, asegurando que cada gesto
-                    sea un paso firme hacia el éxito en la siembra.
                   </span>
                 </div>
 
@@ -556,25 +523,6 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                     setActivefour(false);
                   }}
                   customStyles={`punto top-0 w-5 h-5  lg:top-[55%] lg:left-[70%] xs:top-[70%] xs:left-[50%]`}
-                />
-
-                <BtnHover
-                  handleClick={() => {
-                    if (activeFive) {
-                      setActiveFive(false);
-                      setActivefour(false);
-                    } else {
-                      setActiveFive(true);
-                      setActivefour(false);
-                    }
-                  }}
-                  handleMouseEnter={() => {
-                    setActiveFive(true);
-                  }}
-                  handleMouseLeave={() => {
-                    setActiveFive(false);
-                  }}
-                  customStyles={`punto top-0 w-5 h-5  lg:top-[75%] lg:left-[42%] xs:top-[77%] xs:left-[25%]`}
                 />
               </div>
             )}
@@ -637,15 +585,20 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
             </span>
           </div>
         </div>
-        <div className="anchoInicialPrimario lg:w-1/2 max-lg:h-1/2 BoxConoceText BoxesTextEnd flex flex-col items-center justify-evenly">
-          <h1 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap">
-            Sembraremos <br />
-            2,000 frailejones <br />
-            en el corazón <br />
-            de nuestros <br />
-            páramos.
-          </h1>
-          <Button handleClick={handleClick} text={"Empecemos"} />
+        <div className="lg:w-1/2 max-lg:h-1/2 BoxConoceText BoxesTextEnd flex flex-col items-center justify-evenly">
+          <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-4/5">
+            <h1 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest w-full">
+              Sembraremos 2.000 frailejones
+            </h1>
+            <p className="parrafodescripcion text-black">
+              Lanzamos una convocatoria y <strong>14000 voluntarios</strong> se
+              unieron para ser parte de <strong>Guardianes del Páramo</strong>,
+              seleccionamos los primeros <strong>170</strong> con los que
+              entregamos a la tierra <strong>500 frailejones</strong> de 6 años
+              con los que esperamos recuperar estos ecosistemas.
+            </p>
+            <Button handleClick={handleClick} text={"Conoce más"} />
+          </div>
         </div>
       </div>
     </div>

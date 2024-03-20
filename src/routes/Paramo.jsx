@@ -140,10 +140,11 @@ function App() {
         duration: velocidadTransicion,
       });
       setScrollPercentageTwo(0);
-      setActiveButton("2,000 Frailejones");
+      setActiveButton("PROPÓSITO");
       setScrollPercentage(1);
-      setNumFrailejon(null);
+
       TextoAbajoArriba3(".conoceTexto");
+      TextoAbajoArriba3(".conoce .parrafodescripcion", 0.3);
       Opacidad3(".conoce .btnconoce", 0, 1);
     } else if (trasladar == 1) {
       gsap.to(".contenedor", {
@@ -153,9 +154,10 @@ function App() {
       });
       setScrollPercentageTwo(porcentaje);
       setItemActive(0);
-      setActiveButton("Las especies");
+      setActiveButton("ESPECIES");
       setScrollPercentage(2);
-      TextoAbajoArriba3(".PrimerTextoDosmil");
+      TextoAbajoArriba3(".dosmilFrailejones .PrimerTextoDosmil");
+      TextoAbajoArriba3(".dosmilFrailejones .parrafodescripcion", 0.3);
       Opacidad3(".dosmilFrailejones .btnconoce", 0, 1);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
       //setTravesiaReverse(false);
@@ -166,11 +168,12 @@ function App() {
         duration: velocidadTransicion,
       });
       setScrollPercentageTwo(porcentaje * 2);
-      setActiveButton("Primera siembra");
+      setActiveButton("PRIMERA SIEMBRA");
       setScrollPercentage(3);
       setTravesiaReverse(true);
       setPlay(false);
-      TextoAbajoArriba3(".origenTexto");
+      TextoAbajoArriba3(".travesia .conoceTexto");
+      TextoAbajoArriba3(".travesia .parrafodescripcion", 0.3);
       Opacidad3(".travesia .btnconoce", 0, 1);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
       playAudio();
@@ -183,9 +186,10 @@ function App() {
 
       setScrollPercentageTwo(porcentaje * 3);
       setScrollPercentage(4);
-      setActiveButton("Campamento");
+      setActiveButton("GUARDIANES");
       setPlayMoises(false);
-      TextoAbajoArriba3(".experienciaTexto");
+      TextoAbajoArriba3(".documental .conoceTexto");
+      TextoAbajoArriba3(".documental .parrafodescripcion", 0.3);
 
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 4) {
@@ -197,9 +201,10 @@ function App() {
 
       setScrollPercentageTwo(porcentaje * 4);
       setScrollPercentage(5);
-      setActiveButton("Moisés Moreno");
+      setActiveButton("PRIMER GUARDIÁN");
       setPlay(false);
-      TextoAbajoArriba3(".moisesTexto");
+      TextoAbajoArriba3(".documentalMoises .conoceTexto");
+      TextoAbajoArriba3(".documentalMoises .parrafodescripcion", 0.3);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 5) {
       playAudio();
@@ -211,7 +216,7 @@ function App() {
 
       setScrollPercentageTwo(porcentaje * 5);
       setScrollPercentage(6);
-      setActiveButton("¿Preguntas?");
+      setActiveButton("CONTACTO");
       setPlayMoises(false);
       TextoAbajoArriba3(".tamanoTitulos");
       TextoAbajoArriba3(".parrafoContacto", 0.2);
@@ -227,7 +232,7 @@ function App() {
 
       setScrollPercentageTwo(porcentaje * 6);
       setScrollPercentage(7);
-      setActiveButton("Descargable");
+      setActiveButton("ALIADOS");
       TextoAbajoArriba3(".textoContacto");
       TextoAbajoArriba3(".textoContacto2", 0.2);
       Opacidad3(".BotonContacto", 0, 1);

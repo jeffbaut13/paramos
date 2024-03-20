@@ -21,11 +21,6 @@ const Contacto = () => {
                 <br /> RESOLVER TODAS
                 <br /> TUS DUDAS.
               </p>
-
-              <span className="parrafoContacto lg:text-start xs:text-center xl:text-xl xs:text-sm text-white mt-5">
-                LLENA EL FORMULARIO Y CUÉNTANOS
-                <br /> CÓMO PODEMOS AYUDARTE.
-              </span>
             </div>
             <div className="lg:w-[50%] lg:h-full z-50 flex items-center justify-center">
               <ContactForm />

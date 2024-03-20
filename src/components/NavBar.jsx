@@ -166,13 +166,13 @@ const NavBar = ({
   };
 
   const buttons = [
-    { id: 1, text: "2,000 Frailejones", percentage: 0 },
-    { id: 3, text: "Las especies", percentage: 1 },
-    { id: 4, text: "Primera siembra", percentage: 2 },
-    { id: 5, text: "Campamento", percentage: 3 },
-    { id: 6, text: "Moisés Moreno", percentage: 4 },
-    { id: 7, text: "¿Preguntas?", percentage: 5 },
-    { id: 8, text: "Descargable", percentage: 6 },
+    { id: 1, text: "PROPÓSITO", percentage: 0 },
+    { id: 3, text: "ESPECIES", percentage: 1 },
+    { id: 4, text: "PRIMERA SIEMBRA", percentage: 2 },
+    { id: 5, text: "GUARDIANES", percentage: 3 },
+    { id: 6, text: "PRIMER GUARDIÁN", percentage: 4 },
+    { id: 7, text: "CONTACTO", percentage: 5 },
+    { id: 8, text: "ALIADOS", percentage: 6 },
   ];
 
   /* const buttons = [

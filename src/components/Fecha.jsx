@@ -141,26 +141,28 @@ const Fecha = ({
           parrafo:
             "para cuando tengas 40 años, el 20% de las especies que habitan en los páramos de la cordillera oriental no estarán.",
           urlKuala:
-            "https://kuula.co/share/collection/7cFP2?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+            "https://kuula.co/share/collection/7cXF8?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 8:
         return {
           parrafo:
             "si no hacemos nada, cuando llegues a los 50, perderemos el 35% de todo el complejo que da agua a boyaca y casanare.",
           urlKuala:
-            "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+            "https://kuula.co/share/collection/7cFPw?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 9:
         return {
           parrafo:
             "estas pérdidas pueden traer a futuro deslizamientos, enfermedades, desabastecimiento de agua y más tragedias ambientales.",
           urlKuala:
-            "https://kuula.co/share/collection/7clb5?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
+            "https://kuula.co/share/collection/7cFP2?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };
       case 10:
         return {
           parrafo:
             "nuestro presente es el mejor momento para cambiar esta realidad. unámonos y salvemos nuestros páramos.",
+          urlKuala:
+            "https://kuula.co/share/collection/7clb5?logo=1&info=0&logosize=76&fs=1&vr=1&thumbs=3&margin=11&inst=es",
         };
 
       default:

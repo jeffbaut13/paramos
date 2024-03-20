@@ -57,7 +57,7 @@ const DescripcionFrailejones = ({
       <span
         className={`${
           activeOne ? "block" : "hidden"
-        } text lg:top-[15%] fadeIn parrafotooltip`}
+        } text lg:top-[10%] fadeIn parrafotooltip`}
       >
         {primerParrafo}
       </span>
