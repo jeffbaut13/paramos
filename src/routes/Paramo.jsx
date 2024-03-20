@@ -153,7 +153,7 @@ function App() {
         duration: velocidadTransicion,
       });
       setScrollPercentageTwo(porcentaje);
-      setItemActive(0);
+
       setActiveButton("ESPECIES");
       setScrollPercentage(2);
       TextoAbajoArriba3(".dosmilFrailejones .PrimerTextoDosmil");
@@ -289,11 +289,13 @@ function App() {
           <div className=" mainParamos relative rounded-3xl overflow-hidden w-full h-full ">
             <div className="contenedor">
               <Conocelosparamos
+                setTrasladar={setTrasladar}
                 itemActive={itemActive}
                 setItemActive={setItemActive}
               />
               {/* <Origen active360={active360} setActive360={setActive360} /> */}
               <Dosmilfrailejones
+                setTrasladar={setTrasladar}
                 numFrailejon={numFrailejon}
                 setNumFrailejon={setNumFrailejon}
               />
@@ -302,6 +304,7 @@ function App() {
               setPlayCapitulo={setPlayCapitulo}
             /> */}
               <Travesia
+                setTrasladar={setTrasladar}
                 travesiaReverse={travesiaReverse}
                 setTravesiaReverse={setTravesiaReverse}
               />
