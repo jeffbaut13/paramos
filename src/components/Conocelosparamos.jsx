@@ -11,12 +11,13 @@ const rapido = 0.5;
 const normal = 1;
 const medio = 1.5;
 const lento = 2;
-const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
+const Conocelosparamos = ({ itemActive, setItemActive }) => {
   const [activeOne, setActiveOne] = useState(false);
   const [activeTwo, setActiveTwo] = useState(false);
   const [activeTree, setActiveTree] = useState(false);
   const [activefour, setActivefour] = useState(false);
   const [activeFive, setActiveFive] = useState(false);
+  const [mostrarMas, setMostrarMas] = useState(false);
 
   const handleClick = () => {
     setItemActive(1);
@@ -31,6 +32,37 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
       { y: "0%", duration: 0.3, ease: "power1.inOut" }
     );
   }, [activeOne, activeTwo]);
+
+  useEffect(() => {
+    if (mostrarMas) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".BoxConoceText", { height: "100%", borderRadius: "1.5rem" });
+        tl.to(
+          ".BoxConoceImg",
+          {
+            height: "0%",
+          },
+          "<"
+        );
+      }
+    }
+    if (mostrarMas == false) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".BoxConoceText", { height: "50%", borderRadius: "1.5rem" });
+        tl.to(
+          ".BoxConoceImg",
+          {
+            height: "50%",
+          },
+          "<"
+        );
+      }
+    }
+  }, [mostrarMas]);
 
   useEffect(() => {
     if (itemActive == 0) {
@@ -310,10 +342,13 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
   return (
     //<div className="conoce absolute w-full h-full z-[1] flex">
     <div className="conoce w-full h-full flex">
-      {itemActive >= 1 && (
+      {(itemActive >= 1 || mostrarMas) && (
         <span
-          onClick={() => setItemActive(0)}
-          className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-6"
+          onClick={() => {
+            setItemActive(0);
+            setMostrarMas(false);
+          }}
+          className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-4"
         >
           <svg
             id="uuid-67bf61f3-378f-4a21-9846-0cb8be4b4215"
@@ -473,11 +508,13 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
             {itemActive == 5 && (
               <div className="titulo4 titulosGenral">
                 <h2 className="tituloConoce">
-                  ¿Cómo hicimos
+                  ¿Cómo
                   <br />
-                  la primera
+                  sembraremos
                   <br />
-                  siembra?
+                  nuestras
+                  <br />
+                  semillas??
                 </h2>
 
                 <div className="cajaTitu">
@@ -490,11 +527,10 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
                       activefour ? "block" : "hidden"
                     } parrafoConoce`}
                   >
-                    Nos unimos a biólogos y expertos para explorar diferentes
-                    páramos, asegurando que antes de la siembra el terreno sirva
-                    para que cada frailejón sobreviva y cumpla su función.
-                    Además, junto a los Guardianes del Páramo, pedimos permiso a
-                    la montaña como muestra de respeto a la cultura ancestral.
+                    Nuestro viaje comienza en marzo, cuando nos uniremos en las
+                    cumbres mágicas de Boyacá. Allí, entre los susurros del
+                    viento y la quietud de la montaña, conectaremos almas con
+                    frailejones.
                   </span>
                 </div>
 
@@ -538,20 +574,16 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
                   setItemActive(5);
                 }
                 if (itemActive == 5) {
-                  setTrasladar(1);
+                  setItemActive(0);
                 }
               }}
               className={`${
                 itemActive == 5
-                  ? " bg-white py-3 px-3 text-xs text-center rounded-full lg:right-6 uppercase max-lg:translate-x-[100%]"
-                  : "lg:right-16 max-lg:translate-x-[150%]"
-              } next slideBtn cursor-pointer absolute xs:right-1/2 max-lg:bottom-2 lg:top-12 z-50`}
+                  ? " ocult  pointer-events-none"
+                  : "sho pointer-events-auto"
+              } next slideBtn cursor-pointer absolute lg:right-14 xs:right-1/2 max-lg:translate-x-[150%] max-lg:bottom-2 lg:top-12 z-50`}
             >
-              {itemActive == 5 ? (
-                <>Especies</>
-              ) : (
-                <IconSlideNextPrev customStyle={"previw"} />
-              )}
+              <IconSlideNextPrev customStyle={"previw"} />
             </span>
 
             <span
@@ -575,7 +607,7 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
                 itemActive == 1 || itemActive == 2
                   ? " ocult pointer-events-none "
                   : "sho pointer-events-auto"
-              } back slideBtn cursor-pointer absolute lg:right-32 max-lg:left-1/2 max-lg:translate-x-[-150%] lg:top-12 max-lg:bottom-2 z-50`}
+              } back slideBtn cursor-pointer absolute lg:right-28 max-lg:left-1/2 max-lg:translate-x-[-150%] lg:top-12 max-lg:bottom-2 z-50`}
             >
               <IconSlideNextPrev customStyle={"previw"} reverse={true} />
             </span>
@@ -587,11 +619,39 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
               Sembraremos 2.000 frailejones
             </h1>
             <p className="parrafodescripcion text-black">
-              Lanzamos una convocatoria y <strong>14000 voluntarios</strong> se
-              unieron para ser parte de <strong>Guardianes del Páramo</strong>,
-              seleccionamos los primeros <strong>170</strong> con los que
-              entregamos a la tierra <strong>500 frailejones</strong> de 6 años
-              con los que esperamos recuperar estos ecosistemas.
+              {isMobile ? (
+                <>
+                  <span>
+                    Lanzamos una convocatoria y{" "}
+                    <strong>14000 voluntarios</strong> se unieron para ser parte
+                    de <br />
+                    {mostrarMas ? (
+                      <span>
+                        <strong>Guardianes del Páramo</strong>, seleccionamos
+                        los primeros <strong>170</strong> con los que entregamos
+                        a la tierra <strong>500 frailejones</strong> de 6 años
+                        con los que esperamos recuperar estos ecosistemas.
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => setMostrarMas(true)}
+                        className="text-blue-500 text-xs"
+                      >
+                        Leer mas...
+                      </span>
+                    )}
+                  </span>
+                </>
+              ) : (
+                <>
+                  Lanzamos una convocatoria y <strong>14000 voluntarios</strong>{" "}
+                  se unieron para ser parte de <br />{" "}
+                  <strong>Guardianes del Páramo</strong>, seleccionamos los
+                  primeros <strong>170</strong> con los que entregamos a la
+                  tierra <strong>500 frailejones</strong> de 6 años con los que
+                  esperamos recuperar estos ecosistemas.
+                </>
+              )}
             </p>
             <Button handleClick={handleClick} text={"Conoce más"} />
           </div>

@@ -12,7 +12,7 @@ const normal = 1;
 const medio = 1.5;
 const lento = 2;
 
-const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon, setTrasladar }) => {
+const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
   const parrafoFrailejon = useRef(null);
   const [limpiar, setLimpiar] = useState(false);
   const limpiarPuntos = () => {
@@ -63,7 +63,7 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon, setTrasladar }) => {
       {numFrailejon >= 1 && (
         <span
           onClick={() => setNumFrailejon(null)}
-          className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-6"
+          className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-4"
         >
           <svg
             id="uuid-67bf61f3-378f-4a21-9846-0cb8be4b4215"
@@ -261,19 +261,19 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon, setTrasladar }) => {
                 <span
                   onClick={() => {
                     if (numFrailejon >= 3) {
-                      setTrasladar(2);
+                      setNumFrailejon(3);
                     } else {
                       setNumFrailejon(numFrailejon + 1);
                     }
                   }}
-                  className={`  btnSlide cursor-pointer`}
+                  className={`${
+                    numFrailejon == 3
+                      ? " ocult pointer-events-none "
+                      : "sho pointer-events-auto"
+                  } btnSlide cursor-pointer`}
                 >
-                  <span
-                    className={`${
-                      numFrailejon == 3 ? "bg-white border-0 font-bold" : ""
-                    } previw btnBorderyellow text-xs`}
-                  >
-                    {numFrailejon == 3 ? "Primera siembra" : "Siguiente"}
+                  <span className="previw btnBorderyellow text-xs">
+                    Siguiente
                   </span>
                 </span>
               </div>
