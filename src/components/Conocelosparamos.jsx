@@ -11,7 +11,7 @@ const rapido = 0.5;
 const normal = 1;
 const medio = 1.5;
 const lento = 2;
-const Conocelosparamos = ({ itemActive, setItemActive }) => {
+const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
   const [activeOne, setActiveOne] = useState(false);
   const [activeTwo, setActiveTwo] = useState(false);
   const [activeTree, setActiveTree] = useState(false);
@@ -21,7 +21,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
   const handleClick = () => {
     setItemActive(1);
   };
-
+  console.log(itemActive);
   useEffect(() => {
     gsap.fromTo(
       ".parrafoConoce",
@@ -34,68 +34,38 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
 
   useEffect(() => {
     if (itemActive == 0) {
-      gsap.fromTo(
-        ".conoce .anchoInicialPrimario",
-        {
-          opacity: 0,
-        },
-        { opacity: 1, duration: 0.3, ease: "power1.inOut" }
-      );
-      gsap.to(".montaña", { display: "none" });
       const tl = gsap.timeline();
-      tl.to(".slideBtn", {
-        display: "none",
-      });
 
-      tl.to(
-        ".m4",
-
-        { opacity: 1, scale: 1.3, x: "0%", duration: normal }
-      );
-      tl.to(
-        ".m2",
-
-        { opacity: 0, width: "30%", duration: normal },
-        "<"
-      );
       if (isMobile) {
-        tl.to(".BoxConoceText", { height: "50%" }).addLabel("hide");
+        tl.to(".BoxConoceText", { height: "50%" });
         tl.to(
           ".BoxConoceImg",
-          { height: "50%", borderRadius: "0 0 1.5rem 1.5rem" },
+          {
+            height: "50%",
+            borderRadius: "0 0 1.5rem 1.5rem",
+          },
           "<"
         );
       } else {
         tl.to(".BoxConoceText", { width: "50%" });
         tl.to(
           ".BoxConoceImg",
-          { width: "50%", borderRadius: "1.5rem 0 0 1.5rem" },
+          {
+            width: "50%",
+            borderRadius: "1.5rem 0 0 1.5rem",
+          },
           "<"
-        ).addLabel("hide");
+        );
       }
-
-      tl.to(
-        ".moveTwo",
+      tl.to(".montaña", { display: "none" }, "<-=0.5");
+      tl.fromTo(
+        ".conoce .anchoInicialPrimario",
         {
-          display: "none",
+          opacity: 0,
         },
-        "hide"
+        { opacity: 1, duration: 0.3, ease: "power1.inOut" }
       );
-
-      tl.to(
-        ".moveTwo",
-        {
-          display: "none",
-        },
-        "hide"
-      );
-      tl.to(".blurParamos", { opacity: 0, duration: rapido }, "<-=1");
-      tl.to(
-        ".m3",
-        { opacity: 0 },
-
-        "<-=1"
-      );
+      tl.to(".blurParamos", { opacity: 0, duration: rapido });
     }
     if (itemActive == 1) {
       gsap.to(
@@ -340,6 +310,29 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
   return (
     //<div className="conoce absolute w-full h-full z-[1] flex">
     <div className="conoce w-full h-full flex">
+      {itemActive >= 1 && (
+        <span
+          onClick={() => setItemActive(0)}
+          className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-6"
+        >
+          <svg
+            id="uuid-67bf61f3-378f-4a21-9846-0cb8be4b4215"
+            data-name="Capa 2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 51.89 51.89"
+          >
+            <g
+              id="uuid-d0726665-c8dc-4a92-976a-b8915e0e1925"
+              data-name="Capa 1"
+            >
+              <path
+                d="M32.75,25.95l17.74-17.74c1.88-1.88,1.88-4.92,0-6.8-1.88-1.88-4.92-1.88-6.8,0l-17.74,17.74L8.21,1.41C6.33-.47,3.29-.47,1.41,1.41-.47,3.29-.47,6.33,1.41,8.21l17.74,17.74L1.41,43.69c-1.88,1.88-1.88,4.92,0,6.8,1.88,1.88,4.92,1.88,6.8,0l17.74-17.74,17.74,17.74c1.88,1.88,4.92,1.88,6.8,0,1.88-1.88,1.88-4.92,0-6.8l-17.74-17.74Z"
+                style={{ fill: "#000000", strokeWidth: "0px" }}
+              />
+            </g>
+          </svg>
+        </span>
+      )}
       <div className=" responsiveReverse ocultarEnOrigen relative w-full h-full paddingComponentes">
         <div
           style={{
@@ -546,16 +539,20 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   setItemActive(5);
                 }
                 if (itemActive == 5) {
-                  setItemActive(0);
+                  setTrasladar(1);
                 }
               }}
               className={`${
                 itemActive == 5
-                  ? " ocult  pointer-events-none"
-                  : "sho pointer-events-auto"
-              } next slideBtn cursor-pointer absolute lg:right-14 xs:right-1/2 max-lg:translate-x-[150%] max-lg:bottom-2 lg:top-4 z-50`}
+                  ? " bg-white py-3 px-3 bg-opacity-35 text-xs text-center rounded-full lg:right-6 uppercase max-lg:translate-x-[100%]"
+                  : "lg:right-16 max-lg:translate-x-[150%]"
+              } next slideBtn cursor-pointer absolute xs:right-1/2 max-lg:bottom-2 lg:top-12 z-50`}
             >
-              <IconSlideNextPrev customStyle={"previw"} />
+              {itemActive == 5 ? (
+                <>Especies</>
+              ) : (
+                <IconSlideNextPrev customStyle={"previw"} />
+              )}
             </span>
 
             <span
@@ -579,7 +576,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                 itemActive == 1 || itemActive == 2
                   ? " ocult pointer-events-none "
                   : "sho pointer-events-auto"
-              } back slideBtn cursor-pointer absolute lg:right-28 max-lg:left-1/2 max-lg:translate-x-[-150%] lg:top-4 max-lg:bottom-2 z-50`}
+              } back slideBtn cursor-pointer absolute lg:right-32 max-lg:left-1/2 max-lg:translate-x-[-150%] lg:top-12 max-lg:bottom-2 z-50`}
             >
               <IconSlideNextPrev customStyle={"previw"} reverse={true} />
             </span>

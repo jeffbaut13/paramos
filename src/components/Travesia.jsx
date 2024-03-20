@@ -11,11 +11,11 @@ import IconSlideNextPrev from "./IconSlideNextPrev";
 
 const isMobile = window.innerWidth <= 1024;
 
-const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
+const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
   const [posicion, setPosicion] = useState(1);
   const [activeCaja, setActiveCaja] = useState(false);
   const padre = useRef(null);
-  console.log(activeCaja);
+  //console.log(activeCaja);
   const data = {
     paramos: [
       {
@@ -169,7 +169,7 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
           <div className="card w-full h-full relative ">
             {activeCaja == true && (
               <span
-                className=" cursor-pointer w-3 absolute top-4 right-4 botoncerrar z-20"
+                className=" cursor-pointer w-3 absolute top-6 right-6 botoncerrar z-20"
                 onClick={() => setActiveCaja(false)}
               >
                 <img
@@ -302,6 +302,18 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse }) => {
                           >
                             <div className="slideCards">
                               <div className="slideCard flex w-[166%] h-full pt-4">
+                                {posicion == 3 ? (
+                                  <>
+                                    <p
+                                      onClick={() => setTrasladar(4)}
+                                      className=" cursor-pointer fadeIn text-white absolute bottom-6"
+                                    >
+                                      Conoce los guardianes
+                                    </p>
+                                  </>
+                                ) : (
+                                  ""
+                                )}
                                 {paramos.map((paramo) => (
                                   <div
                                     key={paramo.id}
