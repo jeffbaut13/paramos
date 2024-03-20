@@ -543,7 +543,7 @@ const Conocelosparamos = ({ itemActive, setItemActive, setTrasladar }) => {
               }}
               className={`${
                 itemActive == 5
-                  ? " bg-white py-3 px-3 bg-opacity-35 text-xs text-center rounded-full lg:right-6 uppercase max-lg:translate-x-[100%]"
+                  ? " bg-white py-3 px-3 text-xs text-center rounded-full lg:right-6 uppercase max-lg:translate-x-[100%]"
                   : "lg:right-16 max-lg:translate-x-[150%]"
               } next slideBtn cursor-pointer absolute xs:right-1/2 max-lg:bottom-2 lg:top-12 z-50`}
             >

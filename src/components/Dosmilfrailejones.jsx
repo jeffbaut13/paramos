@@ -268,7 +268,11 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon, setTrasladar }) => {
                   }}
                   className={`  btnSlide cursor-pointer`}
                 >
-                  <span className="previw btnBorderyellow text-xs">
+                  <span
+                    className={`${
+                      numFrailejon == 3 ? "bg-white border-0 font-bold" : ""
+                    } previw btnBorderyellow text-xs`}
+                  >
                     {numFrailejon == 3 ? "Primera siembra" : "Siguiente"}
                   </span>
                 </span>
