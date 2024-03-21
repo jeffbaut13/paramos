@@ -6,9 +6,29 @@ function ContactForm() {
   const [whatsapp, setWhatsApp] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [formStatus, setFormStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fileUrls = [
+    "/descargar/descargable.mp4",
+    "/descargar/IMAGEN-DESCARGABLE.jpg"
+  ];
+
+  const downloadFiles = () => {
+    fileUrls.forEach(url => {
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', ''); 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     const formData = {
       name,
@@ -19,25 +39,22 @@ function ContactForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/sheet",
+        "https://servernodeparamos.onrender.com/api/sheet",
         formData
       ); // Cambia la URL por la dirección de tu servidor
-      console.log(
-        "Formulario enviado con éxito a Google Sheets",
-        response.data
-      );
+      setFormStatus("Formulario enviado con éxito.");
       // Limpia el formulario después del envío exitoso o maneja la respuesta como desees
+      downloadFiles();
       setName("");
       setWhatsApp("");
       setEmail("");
       setMessage("");
     } catch (error) {
-      console.error(
-        "Hubo un error al enviar el formulario a Google Sheets",
-        error
-      );
-      // Aquí puedes manejar el error, por ejemplo, mostrando un mensaje al usuario
-    }
+      setFormStatus("Hubo un error al enviar el formulario.");
+
+    } finally {
+        setIsLoading(false); // Finaliza la carga después de recibir la respuesta
+      }
   };
 
   return (
@@ -79,10 +96,18 @@ function ContactForm() {
             maxLength="1800"
           />
         </div>
-        <div className=" lg:w-[60%] xs:w-full flex justify-center">
+        <div className="form-group">
+          {isLoading ? (
+            <div className="text-start  text-white mb-4 bg-[#ffffff1c] lg:w-[60%] xs:w-full text-xs">Enviando formulario...</div>
+          ) : (
+            formStatus && <div className="text-start text-white mb-4 bg-[#ffffff1c] lg:w-[60%] xs:w-full text-xs">{formStatus}</div>
+          )}
+        </div>
+        <div className="lg:w-[60%] xs:w-full flex justify-center">
           <button
             className="w-fit flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal px-5 py-3 text-center lg:text-base xs:text-xs rounded-lg hover:bg-black bg-white transition-all ease-in-out duration-300 text-black hover:text-white"
             type="submit"
+            disabled={isLoading} // Deshabilitar el botón durante la carga
           >
             Quiero ayudar
           </button>
