@@ -297,7 +297,7 @@ const NavBar = ({
       {isMenuOpen && (
         <div
           ref={menuMobile}
-          className="menuMobile fixed w-[101vw] h-[100vh] top-[-10vh] left-[-8vw] inset-0 bg-black bg-opacity-90 z-[101] flex justify-center items-center text-center"
+          className="menuMobile fixed w-[103vw] h-[100vh] top-[-10vh] left-[-10vw] inset-0 bg-black bg-opacity-90 z-[101] flex justify-center items-center text-center"
         >
           <div className="text-white p-6 rounded-lg text-2xl font-light amenti">
             {buttons.map((button) => (
