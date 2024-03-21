@@ -38,7 +38,10 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
       const tl = gsap.timeline();
 
       if (isMobile) {
-        tl.to(".BoxTravesiaTexto", { height: "50%", borderRadius: "1.5rem 1.5rem 0 0" });
+        tl.to(".BoxTravesiaTexto", {
+          height: "50%",
+          borderRadius: "1.5rem 1.5rem 0 0",
+        });
         tl.to(
           ".BoxTravesiaCards",
           {
@@ -231,7 +234,6 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
                 className=" cursor-pointer w-3 absolute top-6 right-6 botoncerrar z-20"
                 onClick={() => {
                   setActiveCaja(false);
-                  
                 }}
               >
                 <img
@@ -408,21 +410,22 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
         <div className="BoxTravesiaTexto lg:w-1/2 xs:w-full lg:h-full xs:h-1/2 flex-col justify-evenly BoxesTextEnd flex-center">
           <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-4/5">
             <h2 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest w-full">
-              de 37 páramos que existen en el país, escogimos 2 para nuestra
-              pimera siembra.
+              de 37 páramos que hay en el país, escogimos 2 para la pimera
+              siembra.
             </h2>
             <p className="parrafodescripcion text-black">
               {isMobile ? (
                 <>
                   <span>
-                    Después de varios estudios, 
+                    Después de varios estudios,
                     <br />
                     {mostrarMas ? (
                       <span>
-                        seguimos la recomendación del Doctor Alzate y el Instituto Humboldt para empezar
-                        nuestra siembra en el páramo de Ocetá y el páramo de
-                        Mongua, ya que no representan ningún peligro para las
-                        primeras especies que sembramos.
+                        seguimos la recomendación del Doctor Alzate y el
+                        Instituto Humboldt para empezar nuestra siembra en el
+                        páramo de Ocetá y el páramo de Mongua, ya que no
+                        representan ningún peligro para las primeras especies
+                        que sembramos.
                       </span>
                     ) : (
                       <span
@@ -444,7 +447,13 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
                 </>
               )}
             </p>
-            <Button handleClick={() => setActiveCaja(true)} text={"EXPLORAR"} />
+            <Button
+              handleClick={() => {
+                setActiveCaja(true);
+                setMostrarMas(false);
+              }}
+              text={"EXPLORAR"}
+            />
           </div>
         </div>
       </div>

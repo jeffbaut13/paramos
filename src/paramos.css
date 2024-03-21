@@ -349,7 +349,7 @@
   @apply max-lg:px-6 relative w-full h-full lg:pt-16 xs:pt-10 flex lg:justify-evenly lg:flex-row xs:flex-col z-[45];
 }
 .parrafodescripcion {
-  @apply 2xl:text-xl lg:text-lg xs:text-sm max-lg:mt-4 font-medium normal-case text-start inline-block tracking-[0.1em];
+  @apply 2xl:text-sm lg:text-sm xs:text-sm max-lg:mt-4 font-medium normal-case text-start inline-block tracking-[0.1em] max-xl:w-full;
 }
 .parrafoConoce {
   @apply text-white parrafodescripcion;
