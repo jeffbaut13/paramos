@@ -243,7 +243,10 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                 )}
               </p>
               <Button
-                handleClick={() => setNumFrailejon(1)}
+                handleClick={() => {
+                  setNumFrailejon(1);
+                  setMostrarMas(false);
+                }}
                 text={"Conócelas"}
               />
             </div>

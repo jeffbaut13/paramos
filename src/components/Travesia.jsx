@@ -38,7 +38,10 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
       const tl = gsap.timeline();
 
       if (isMobile) {
-        tl.to(".BoxTravesiaTexto", { height: "50%", borderRadius: "1.5rem 1.5rem 0 0" });
+        tl.to(".BoxTravesiaTexto", {
+          height: "50%",
+          borderRadius: "1.5rem 1.5rem 0 0",
+        });
         tl.to(
           ".BoxTravesiaCards",
           {
@@ -231,7 +234,6 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
                 className=" cursor-pointer w-3 absolute top-6 right-6 botoncerrar z-20"
                 onClick={() => {
                   setActiveCaja(false);
-                  
                 }}
               >
                 <img
@@ -415,14 +417,15 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
               {isMobile ? (
                 <>
                   <span>
-                    Después de varios estudios, 
+                    Después de varios estudios,
                     <br />
                     {mostrarMas ? (
                       <span>
-                        seguimos la recomendación del Doctor Alzate y el Instituto Humboldt para empezar
-                        nuestra siembra en el páramo de Ocetá y el páramo de
-                        Mongua, ya que no representan ningún peligro para las
-                        primeras especies que sembramos.
+                        seguimos la recomendación del Doctor Alzate y el
+                        Instituto Humboldt para empezar nuestra siembra en el
+                        páramo de Ocetá y el páramo de Mongua, ya que no
+                        representan ningún peligro para las primeras especies
+                        que sembramos.
                       </span>
                     ) : (
                       <span
@@ -444,7 +447,13 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
                 </>
               )}
             </p>
-            <Button handleClick={() => setActiveCaja(true)} text={"EXPLORAR"} />
+            <Button
+              handleClick={() => {
+                setActiveCaja(true);
+                setMostrarMas(false);
+              }}
+              text={"EXPLORAR"}
+            />
           </div>
         </div>
       </div>
