@@ -274,3 +274,7 @@ svg {
   fixed xl:top-1/2 xl:left-1/2 xl:translate-x-[-50%] xl:translate-y-[-50%]
    xl:w-[80%] xl:h-[80%] xl:max-h-[874px];
 }
+
+.placeTextAreaContacto-placeholder::placeholder{
+  color: white;
+}
