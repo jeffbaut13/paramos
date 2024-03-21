@@ -3,7 +3,6 @@ import gsap from "gsap";
 import ReactPlayer from "react-player";
 import Button from "./Button";
 import { IconPlay } from "./IconPlay";
-import { AudioContext } from "../context/AudioProvider";
 
 const isMobile = window.innerWidth < 640;
 const tablet = window.innerWidth >= 640 && window.innerWidth < 1280;
@@ -15,8 +14,44 @@ const medio = 1.5;
 const lento = 2;
 const Xperience = ({ play, setPlay }) => {
   const [pause, setPause] = useState(false);
+  const [mostrarMas, setMostrarMas] = useState(false);
 
-  const { isPlaying, playAudio, pauseAudio } = useContext(AudioContext);
+  useEffect(() => {
+    if (mostrarMas) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".experienciaTextoBox", {
+          height: "100%",
+          borderRadius: "1.5rem",
+        });
+        tl.to(
+          ".experienciaImagen",
+          {
+            height: "0%",
+          },
+          "<"
+        );
+      }
+    }
+    if (mostrarMas == false) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".experienciaTextoBox", {
+          height: "50%",
+          borderRadius: "1.5rem 1.5rem 0 0",
+        });
+        tl.to(
+          ".experienciaImagen",
+          {
+            height: "50%",
+          },
+          "<"
+        );
+      }
+    }
+  }, [mostrarMas]);
 
   useEffect(() => {
     if (pause) {
@@ -39,9 +74,6 @@ const Xperience = ({ play, setPlay }) => {
 
   useEffect(() => {
     if (play) {
-      if (isPlaying) {
-        pauseAudio();
-      }
       const tl = gsap.timeline();
       if (isMobile || tablet) {
         tl.fromTo(
@@ -158,20 +190,76 @@ const Xperience = ({ play, setPlay }) => {
   return (
     <div className="documental w-full h-full flex ">
       <div className="relative w-full h-full paddingComponentes flex xs:flex-col lg:flex-row">
+        {mostrarMas && (
+          <span
+            onClick={() => {
+              setMostrarMas(false);
+            }}
+            className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-4"
+          >
+            <svg
+              id="uuid-67bf61f3-378f-4a21-9846-0cb8be4b4215"
+              data-name="Capa 2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 51.89 51.89"
+            >
+              <g
+                id="uuid-d0726665-c8dc-4a92-976a-b8915e0e1925"
+                data-name="Capa 1"
+              >
+                <path
+                  d="M32.75,25.95l17.74-17.74c1.88-1.88,1.88-4.92,0-6.8-1.88-1.88-4.92-1.88-6.8,0l-17.74,17.74L8.21,1.41C6.33-.47,3.29-.47,1.41,1.41-.47,3.29-.47,6.33,1.41,8.21l17.74,17.74L1.41,43.69c-1.88,1.88-1.88,4.92,0,6.8,1.88,1.88,4.92,1.88,6.8,0l17.74-17.74,17.74,17.74c1.88,1.88,4.92,1.88,6.8,0,1.88-1.88,1.88-4.92,0-6.8l-17.74-17.74Z"
+                  style={{ fill: "#000000", strokeWidth: "0px" }}
+                />
+              </g>
+            </svg>
+          </span>
+        )}
         <div className="experienciaTextoBox lg:w-1/2 max-lg:h-1/2 BoxesTextStart flex flex-col items-center justify-center">
           <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-3/5">
             <h1 className="conoceTexto font-bold uppercase tamanoTitulos   tracking-widest w-full">
               GUARDIANES DEL PÁRAMO, CUIDADORES DE NUESTRA HERENCIA NATURAL
             </h1>
             <p className="parrafodescripcion text-black">
-              Nuestros Guardianes se registraron y pacientemente esperaron el
-              llamado que los llevó a Boyacá, allí se capacitaron para cuidar y
-              sembrar frailejones. En el sitio de siembra, guiados por sabedores
-              ancestrales, pidieron permiso a la montaña y al final, se
-              despidieron del campamento con una moneda que los certifica como
-              los primeros Guardianes del Páramo.
-              <br />
-              <br /> Mira la experiencia completa haciendo clic en el video.
+              {isMobile ? (
+                <>
+                  <span>
+                    Nuestros Guardianes se registraron y pacientemente esperaron
+                    el llamado que
+                    {mostrarMas ? (
+                      <span>
+                        los llevó a Boyacá, allí se capacitaron para cuidar y
+                        sembrar frailejones. En el sitio de siembra, guiados por
+                        sabedores ancestrales, pidieron permiso a la montaña y
+                        al final, se despidieron del campamento con una moneda
+                        que los certifica como los primeros Guardianes del
+                        Páramo.
+                        <br />
+                        <br /> Mira la experiencia completa haciendo clic en el
+                        video.
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => setMostrarMas(true)}
+                        className="text-blue-500 text-xs w-full inline-block"
+                      >
+                        Leer mas...
+                      </span>
+                    )}
+                  </span>
+                </>
+              ) : (
+                <>
+                  Nuestros Guardianes se registraron y pacientemente esperaron
+                  el llamado que los llevó a Boyacá, allí se capacitaron para
+                  cuidar y sembrar frailejones. En el sitio de siembra, guiados
+                  por sabedores ancestrales, pidieron permiso a la montaña y al
+                  final, se despidieron del campamento con una moneda que los
+                  certifica como los primeros Guardianes del Páramo.
+                  <br />
+                  <br /> Mira la experiencia completa haciendo clic en el video.
+                </>
+              )}
             </p>
           </div>
         </div>
@@ -223,7 +311,6 @@ const Xperience = ({ play, setPlay }) => {
               <span
                 onClick={() => {
                   setPlay(false);
-                  playAudio();
                 }}
                 className="btncloseVideo cursor-pointer fadeIn absolute w-8 p-[11px] rounded-full border border-white bottom-16 left-1/2 translate-x-[-50%] iconoCloseMoises"
               >

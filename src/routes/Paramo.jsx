@@ -17,7 +17,7 @@ import { Opacidad3, TextoAbajoArriba3 } from "../animations/gsap";
 import Xperience from "../components/Xperience";
 import DocumentalMoises from "../components/DocumentalMoises";
 import { handleScrollEvent } from "../helpers/scrollEvents";
-import { AudioContext } from "../context/AudioProvider";
+
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
   const [itemActive, setItemActive] = useState(0);
   const [scrollPercentage, setScrollPercentage] = useState(1);
   const [scrollPercentageTwo, setScrollPercentageTwo] = useState(0);
-  const { playAudio } = useContext(AudioContext);
+
   const [trasladar, setTrasladar] = useState(0);
 
   const [startTouchY, setStartTouchY] = useState(0);
@@ -176,7 +176,6 @@ function App() {
       TextoAbajoArriba3(".travesia .parrafodescripcion", 0.3);
       Opacidad3(".travesia .btnconoce", 0, 1);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
-      playAudio();
     } else if (trasladar == 3) {
       gsap.to(".contenedor", {
         y: "-300%",
@@ -207,7 +206,6 @@ function App() {
       TextoAbajoArriba3(".documentalMoises .parrafodescripcion", 0.3);
       gsap.to(".blurParamos", { opacity: 0, duration: 1 });
     } else if (trasladar == 5) {
-      playAudio();
       gsap.to(".contenedor", {
         y: "-500%",
         ease: "power1.inOut",

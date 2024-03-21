@@ -3,14 +3,51 @@ import { space } from "postcss/lib/list";
 import React, { useContext, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { IconPlay } from "./IconPlay";
-import { AudioContext } from "../context/AudioProvider";
+
 const isMobile = window.innerWidth < 640;
 const tablet = window.innerWidth >= 640 && window.innerWidth < 1280;
 const full = window.innerWidth >= 1500;
 const laptop = window.innerWidth >= 1280 && window.innerWidth < 1500;
 const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
   const [pause, setPause] = useState(false);
-  const { isPlaying, playAudio, pauseAudio } = useContext(AudioContext);
+  const [mostrarMas, setMostrarMas] = useState(false);
+
+  useEffect(() => {
+    if (mostrarMas) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".BoxMoisesText", {
+          height: "100%",
+          borderRadius: "1.5rem",
+        });
+        tl.to(
+          ".BoxMoisesImg",
+          {
+            height: "0%",
+          },
+          "<"
+        );
+      }
+    }
+    if (mostrarMas == false) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".BoxMoisesText", {
+          height: "50%",
+          borderRadius: "1.5rem 1.5rem 0 0",
+        });
+        tl.to(
+          ".BoxMoisesImg",
+          {
+            height: "50%",
+          },
+          "<"
+        );
+      }
+    }
+  }, [mostrarMas]);
 
   useEffect(() => {
     if (pause) {
@@ -32,9 +69,6 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
   }, [pause]);
   useEffect(() => {
     if (playMoises) {
-      if (isPlaying) {
-        pauseAudio();
-      }
       const tl = gsap.timeline();
       if (isMobile || tablet) {
         tl.fromTo(
@@ -151,6 +185,31 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
   return (
     <div className=" documentalMoises w-full h-full flex">
       <div className="moises relative w-full h-full paddingComponentes flex xs:flex-col-reverse lg:flex-row">
+        {mostrarMas && (
+          <span
+            onClick={() => {
+              setMostrarMas(false);
+            }}
+            className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-4"
+          >
+            <svg
+              id="uuid-67bf61f3-378f-4a21-9846-0cb8be4b4215"
+              data-name="Capa 2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 51.89 51.89"
+            >
+              <g
+                id="uuid-d0726665-c8dc-4a92-976a-b8915e0e1925"
+                data-name="Capa 1"
+              >
+                <path
+                  d="M32.75,25.95l17.74-17.74c1.88-1.88,1.88-4.92,0-6.8-1.88-1.88-4.92-1.88-6.8,0l-17.74,17.74L8.21,1.41C6.33-.47,3.29-.47,1.41,1.41-.47,3.29-.47,6.33,1.41,8.21l17.74,17.74L1.41,43.69c-1.88,1.88-1.88,4.92,0,6.8,1.88,1.88,4.92,1.88,6.8,0l17.74-17.74,17.74,17.74c1.88,1.88,4.92,1.88,6.8,0,1.88-1.88,1.88-4.92,0-6.8l-17.74-17.74Z"
+                  style={{ fill: "#000000", strokeWidth: "0px" }}
+                />
+              </g>
+            </svg>
+          </span>
+        )}
         <div className="BoxMoisesImg lg:w-1/2 max-lg:h-1/2 bg-black BoxesImgStart bg-center">
           <div
             onMouseEnter={() => {
@@ -197,7 +256,6 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
               <span
                 onClick={() => {
                   setPlayMoises(false);
-                  playAudio();
                 }}
                 className="btncloseVideo cursor-pointer fadeIn absolute w-8 p-[11px] rounded-full border border-white bottom-16 left-1/2 translate-x-[-50%] iconoCloseMoises"
               >
@@ -225,12 +283,40 @@ const DocumentalMoises = ({ playMoises, setPlayMoises }) => {
               CONOCE A NUESTRO PRIMER GUARDIÁN, MOISÉS MORENO
             </h1>
             <p className="parrafodescripcion text-black">
-              Residente de Monguí, Boyacá, ha dejado una huella imborrable en la
-              conservación ambiental y la preservación de los páramos
-              colombianos, especialmente a través de su dedicación incansable
-              hacia los frailejones. Conocer su historia es esencial para
-              entender cómo podemos proteger nuestro entorno y nos motiva a
-              actuar en beneficio de las futuras generaciones.
+              {isMobile ? (
+                <>
+                  <span>
+                    Residente de Monguí, Boyacá, ha dejado una huella imborrable
+                    en
+                    {mostrarMas ? (
+                      <span>
+                        la conservación ambiental y la preservación de los
+                        páramos colombianos, especialmente a través de su
+                        dedicación incansable hacia los frailejones. Conocer su
+                        historia es esencial para entender cómo podemos proteger
+                        nuestro entorno y nos motiva a actuar en beneficio de
+                        las futuras generaciones.
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => setMostrarMas(true)}
+                        className="text-blue-500 text-xs w-full inline-block"
+                      >
+                        Leer mas...
+                      </span>
+                    )}
+                  </span>
+                </>
+              ) : (
+                <>
+                  Residente de Monguí, Boyacá, ha dejado una huella imborrable
+                  en la conservación ambiental y la preservación de los páramos
+                  colombianos, especialmente a través de su dedicación
+                  incansable hacia los frailejones. Conocer su historia es
+                  esencial para entender cómo podemos proteger nuestro entorno y
+                  nos motiva a actuar en beneficio de las futuras generaciones.
+                </>
+              )}
             </p>
           </div>
         </div>

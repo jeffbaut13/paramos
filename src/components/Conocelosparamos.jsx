@@ -52,7 +52,10 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
       const tl = gsap.timeline();
 
       if (isMobile) {
-        tl.to(".BoxConoceText", { height: "50%", borderRadius: "1.5rem" });
+        tl.to(".BoxConoceText", {
+          height: "50%",
+          borderRadius: "1.5rem 1.5rem 0 0",
+        });
         tl.to(
           ".BoxConoceImg",
           {
@@ -635,7 +638,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                     ) : (
                       <span
                         onClick={() => setMostrarMas(true)}
-                        className="text-blue-500 text-xs"
+                        className="text-blue-500 text-xs w-full inline-block"
                       >
                         Leer mas...
                       </span>

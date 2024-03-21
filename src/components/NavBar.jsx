@@ -265,7 +265,7 @@ const NavBar = ({
         </div>
       </nav>
 
-      <>
+      {/*   <>
         {trasladar >= 1 && (
           <IconSlideNextPrev
             handleClick={scrollerResta}
@@ -278,7 +278,7 @@ const NavBar = ({
             customStyle={`iconoSlideInicial max-lg:rotate-90 fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 lg:translate-x-[150%] xs:translate-x-[120%] max-lg:right-0 xs:translate-y-[-350%] lg:translate-y-[-50%]  opacity-1 z-[100]`}
           />
         )}
-      </>
+      </> */}
 
       <div className="navVertical">
         {/* <span className="fixed lg:top-0 right-0 xs:translate-y-[-20px] lg:translate-y-[-50px] text-white">

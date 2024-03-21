@@ -6,8 +6,8 @@ import "./paramos.css";
 import "./conoceParamos.css";
 import router from "./routes/Rutas";
 import Loading from "./components/Loading"; // Importa tu componente de carga aquí
-import { AudioProvider } from "./context/AudioProvider";
-import AudioIcon from "./components/AudioIcon";
+//import { AudioProvider } from "./context/AudioProvider";
+//import AudioIcon from "./components/AudioIcon";
 import { Helmet } from "react-helmet";
 
 // Define tu componente principal
@@ -44,18 +44,14 @@ const App = () => {
           content="frailejones, incendios forestales, calentamiento global, páramo, mongua, oceta, sincunsí, inter rapidísimo"
         />
       </Helmet>
-      <AudioProvider>
-        {isLoadingVisible && <Loading />}{" "}
-        {/* Muestra el componente Loading mientras isLoadingVisible sea true */}
-        {isRouterReady && ( // Muestra el RouterProvider cuando isRouterReady sea true
-          <>
-            <RouterProvider router={router} />
-            <span className="audioIcon fixed z-50 right-6 bottom-4 w-5 h-5 inline-block">
-              <AudioIcon />
-            </span>
-          </>
-        )}
-      </AudioProvider>
+      {isLoadingVisible && <Loading />}{" "}
+      {/* Muestra el componente Loading mientras isLoadingVisible sea true */}
+      {isRouterReady && ( // Muestra el RouterProvider cuando isRouterReady sea true
+        <>
+          <RouterProvider router={router} />
+          <span className="audioIcon fixed z-50 right-6 bottom-4 w-5 h-5 inline-block"></span>
+        </>
+      )}
     </React.StrictMode>
   );
 };

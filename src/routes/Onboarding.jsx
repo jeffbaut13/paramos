@@ -12,6 +12,7 @@ import IconSlideOnboarding from "../components/IconSlideOnboarding";
 import { Helmet } from "react-helmet";
 import IconSlideNextPrev from "../components/IconSlideNextPrev";
 import Button from "../components/Button";
+import { BtnOmitir } from "../components/BtnOmitir";
 gsap.registerPlugin(ScrollTrigger);
 
 const Onboarding = () => {
@@ -256,6 +257,9 @@ const Onboarding = () => {
               alt=""
             />
           </div>
+
+          {inicio > 2 && inicio < 10 && <BtnOmitir inicio={inicio} />}
+
           {inicio >= 3 && inicio <= 10 && !Mobile && (
             <div className=" slidesOnboarding maxW borderWhite flex-center-col z-10">
               <IconSlideNextPrev
@@ -320,19 +324,32 @@ const Onboarding = () => {
                 >
                   <img src="/svg/360Icon.svg" alt="Ver en 360" />
                 </span>
-                <div className="botonesAvance absolute bottom-6 xl:right-4 xs:right-0 flex xl:justify-between xs:justify-evenly items-center xl:w-[400px] xs:w-full">
-                  <button
-                    onClick={handlePrevClick}
-                    className="btn-cards z-20 xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit "
-                  >
-                    Atras
-                  </button>
-                  <button
-                    onClick={handleNextClick}
-                    className="btn-cards z-20 xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit"
-                  >
-                    Siguiente
-                  </button>
+                <div className="botonesAvance absolute bottom-6 xl:right-4 xs:right-0 flex xl:justify-between xs:justify-evenly items-center xl:w-[300px] xs:w-full">
+                  {inicio == 10 ? (
+                    <Link
+                      to={"/paramo"}
+                      className={`fadeIn btn-cards ${
+                        inicio >= 10 ? "btn-siguiente" : ""
+                      }  border border-[#bd8661] min-w-fit z-20 xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit`}
+                    >
+                      {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
+                    </Link>
+                  ) : (
+                    <>
+                      <button
+                        onClick={handlePrevClick}
+                        className="btn-cards border border-[#bd8661] min-w-fit z-20 xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit "
+                      >
+                        Atras
+                      </button>
+                      <button
+                        onClick={handleNextClick}
+                        className="btn-cards border border-[#bd8661] min-w-fit z-20 xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit"
+                      >
+                        Siguiente
+                      </button>
+                    </>
+                  )}
                 </div>
               </>
             )}
@@ -345,16 +362,6 @@ const Onboarding = () => {
               </span>
             )}
           </div>
-          {inicio > 2 && (
-            <Link
-              to={"/paramo"}
-              className={`fadeIn btn-cards ${
-                inicio >= 10 ? "btn-siguiente" : ""
-              } absolute xl:right-5 max-xl:left-1/2 max-xl:translate-x-[-50%] xl:bottom-12 xs:bottom-8 text-center letterSpacing xl:text-xs xs:text-[0.6rem] max-xl:min-w-fit`}
-            >
-              {inicio < 10 ? "OMITIR" : "SIGUIENTE"}
-            </Link>
-          )}
         </div>
       )}
     </>
