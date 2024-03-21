@@ -410,8 +410,8 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
         <div className="BoxTravesiaTexto lg:w-1/2 xs:w-full lg:h-full xs:h-1/2 flex-col justify-evenly BoxesTextEnd flex-center">
           <div className="anchoInicialPrimario xl:w-[65%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-4/5">
             <h2 className="conoceTexto font-bold uppercase tamanoTitulos tracking-widest w-full">
-              de 37 páramos que existen en el país, escogimos 2 para nuestra
-              pimera siembra.
+              de 37 páramos que hay en el país, escogimos 2 para la pimera
+              siembra.
             </h2>
             <p className="parrafodescripcion text-black">
               {isMobile ? (

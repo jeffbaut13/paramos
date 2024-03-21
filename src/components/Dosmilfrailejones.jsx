@@ -208,20 +208,19 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           {numFrailejon == null && (
             <div className="anchoInicialPrimario xl:w-[80%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-4/5">
               <h2 className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest w-full">
-                Elegimos 3 especies de frailejón para garantizar una buena
-                siembra.
+                Elegimos 3 especies de frailejón.
               </h2>
               <p className="parrafodescripcion text-black">
                 {isMobile ? (
                   <>
                     <span>
-                      Estas especies endémicas, criadas cuidadosamente
+                      Estas especies endémicas,
                       <br />
                       {mostrarMas ? (
                         <span>
-                          Estas especies endémicas, criadas cuidadosamente
-                          durante 6 años y certificadas, son ideales para que
-                          crezcan en las altas y frías montañas del país.
+                          criadas cuidadosamente durante 6 años y certificadas,
+                          son ideales para que crezcan en las altas y frías
+                          montañas del país.
                         </span>
                       ) : (
                         <span

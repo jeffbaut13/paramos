@@ -224,10 +224,10 @@ const Xperience = ({ play, setPlay }) => {
               {isMobile ? (
                 <>
                   <span>
-                    Nuestros Guardianes se registraron y pacientemente esperaron
-                    el llamado que
+                    Nuestros Guardianes
                     {mostrarMas ? (
                       <span>
+                        se registraron y pacientemente esperaron el llamado que
                         los llevó a Boyacá, allí se capacitaron para cuidar y
                         sembrar frailejones. En el sitio de siembra, guiados por
                         sabedores ancestrales, pidieron permiso a la montaña y
@@ -256,8 +256,6 @@ const Xperience = ({ play, setPlay }) => {
                   por sabedores ancestrales, pidieron permiso a la montaña y al
                   final, se despidieron del campamento con una moneda que los
                   certifica como los primeros Guardianes del Páramo.
-                  <br />
-                  <br /> Mira la experiencia completa haciendo clic en el video.
                 </>
               )}
             </p>
