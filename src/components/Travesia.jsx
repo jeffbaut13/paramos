@@ -14,8 +14,42 @@ const isMobile = window.innerWidth <= 1024;
 const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
   const [posicion, setPosicion] = useState(1);
   const [activeCaja, setActiveCaja] = useState(false);
+  const [mostrarMas, setMostrarMas] = useState(false);
+
   const padre = useRef(null);
   //console.log(activeCaja);
+
+  useEffect(() => {
+    if (mostrarMas) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".BoxTravesiaTexto", { height: "100%", borderRadius: "1.5rem" });
+        tl.to(
+          ".BoxTravesiaCards",
+          {
+            height: "0%",
+          },
+          "<"
+        );
+      }
+    }
+    if (mostrarMas == false) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".BoxTravesiaTexto", { height: "50%", borderRadius: "1.5rem 1.5rem 0 0" });
+        tl.to(
+          ".BoxTravesiaCards",
+          {
+            height: "50%",
+          },
+          "<"
+        );
+      }
+    }
+  }, [mostrarMas]);
+
   const data = {
     paramos: [
       {
@@ -165,12 +199,40 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
         ref={padre}
         className=" flex relative w-full h-full responsiveReverse  paddingComponentes  "
       >
+        {mostrarMas && (
+          <span
+            onClick={() => {
+              setMostrarMas(false);
+            }}
+            className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-4"
+          >
+            <svg
+              id="uuid-67bf61f3-378f-4a21-9846-0cb8be4b4215"
+              data-name="Capa 2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 51.89 51.89"
+            >
+              <g
+                id="uuid-d0726665-c8dc-4a92-976a-b8915e0e1925"
+                data-name="Capa 1"
+              >
+                <path
+                  d="M32.75,25.95l17.74-17.74c1.88-1.88,1.88-4.92,0-6.8-1.88-1.88-4.92-1.88-6.8,0l-17.74,17.74L8.21,1.41C6.33-.47,3.29-.47,1.41,1.41-.47,3.29-.47,6.33,1.41,8.21l17.74,17.74L1.41,43.69c-1.88,1.88-1.88,4.92,0,6.8,1.88,1.88,4.92,1.88,6.8,0l17.74-17.74,17.74,17.74c1.88,1.88,4.92,1.88,6.8,0,1.88-1.88,1.88-4.92,0-6.8l-17.74-17.74Z"
+                  style={{ fill: "#000000", strokeWidth: "0px" }}
+                />
+              </g>
+            </svg>
+          </span>
+        )}
         <div className="BoxTravesiaCards lg:w-1/2 xs:w-full lg:h-full xs:h-1/2 BoxesImgStart ">
           <div className="card w-full h-full relative ">
             {activeCaja == true && (
               <span
                 className=" cursor-pointer w-3 absolute top-6 right-6 botoncerrar z-20"
-                onClick={() => setActiveCaja(false)}
+                onClick={() => {
+                  setActiveCaja(false);
+                  
+                }}
               >
                 <img
                   className="w-full h-full object-cover"
@@ -350,10 +412,37 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
               pimera siembra.
             </h2>
             <p className="parrafodescripcion text-black">
-              Después de varios estudios, seguimos la recomendación del Doctor
-              Alzate y el Instituto Humboldt para empezar nuestra siembra en el
-              páramo de Ocetá y el páramo de Mongua, ya que no representan
-              ningún peligro para las primeras especies que sembramos.
+              {isMobile ? (
+                <>
+                  <span>
+                    Después de varios estudios, 
+                    <br />
+                    {mostrarMas ? (
+                      <span>
+                        seguimos la recomendación del Doctor Alzate y el Instituto Humboldt para empezar
+                        nuestra siembra en el páramo de Ocetá y el páramo de
+                        Mongua, ya que no representan ningún peligro para las
+                        primeras especies que sembramos.
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => setMostrarMas(true)}
+                        className="text-blue-500 text-xs"
+                      >
+                        Leer mas...
+                      </span>
+                    )}
+                  </span>
+                </>
+              ) : (
+                <>
+                  Después de varios estudios, seguimos la recomendación del
+                  Doctor Alzate y el Instituto Humboldt para empezar nuestra
+                  siembra en el páramo de Ocetá y el páramo de Mongua, ya que no
+                  representan ningún peligro para las primeras especies que
+                  sembramos.
+                </>
+              )}
             </p>
             <Button handleClick={() => setActiveCaja(true)} text={"EXPLORAR"} />
           </div>

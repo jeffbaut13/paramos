@@ -15,9 +15,44 @@ const lento = 2;
 const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
   const parrafoFrailejon = useRef(null);
   const [limpiar, setLimpiar] = useState(false);
+  const [mostrarMas, setMostrarMas] = useState(false);
+
   const limpiarPuntos = () => {
     setLimpiar(true);
   };
+
+
+  useEffect(() => {
+    if (mostrarMas) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".BoxDosmilTexto", { height: "100%", borderRadius: "1.5rem" });
+        tl.to(
+          ".BoxDosmilImage",
+          {
+            height: "0%",
+          },
+          "<"
+        );
+      }
+    }
+    if (mostrarMas == false) {
+      const tl = gsap.timeline();
+
+      if (isMobile) {
+        tl.to(".BoxDosmilTexto", { height: "50%", borderRadius: "1.5rem" });
+        tl.to(
+          ".BoxDosmilImage",
+          {
+            height: "50%",
+          },
+          "<"
+        );
+      }
+    }
+  }, [mostrarMas]);
+
 
   useEffect(() => {
     if (parrafoFrailejon) {
@@ -60,9 +95,10 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
   return (
     //<div className="dosmilFrailejones absolute w-full h-full z-[1] flex">
     <div className="dosmilFrailejones relative ocultarEnOrigen w-full h-full z-[1] flex">
-      {numFrailejon >= 1 && (
+      {(numFrailejon >= 1 || mostrarMas) && (
         <span
-          onClick={() => setNumFrailejon(null)}
+          onClick={() => {setNumFrailejon(null)
+            setMostrarMas(false);}}
           className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-4"
         >
           <svg
@@ -165,9 +201,35 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                 siembra.
               </h2>
               <p className="parrafodescripcion text-black">
-                Estas especies endémicas, criadas cuidadosamente durante 6 años
+              {isMobile ? (
+                <>
+                  <span>
+                  Estas especies endémicas, criadas cuidadosamente<br/>
+                    {mostrarMas ? (
+                      <span>
+                        Estas especies endémicas, criadas cuidadosamente durante 6 años
                 y certificadas, son ideales para que crezcan en las altas y
                 frías montañas del país.
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => setMostrarMas(true)}
+                        className="text-blue-500 text-xs"
+                      >
+                        Leer mas...
+                      </span>
+                    )}
+                  </span>
+                </>
+                ) : (
+                  <>
+                  Estas especies endémicas, criadas cuidadosamente Estas especies endémicas, criadas cuidadosamente durante 6 años
+                y certificadas, son ideales para que crezcan en las altas y
+                frías montañas del país.
+                  </>
+
+                )}
+                
               </p>
               <Button
                 handleClick={() => setNumFrailejon(1)}
