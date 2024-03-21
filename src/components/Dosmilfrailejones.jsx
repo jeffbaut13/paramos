@@ -5,6 +5,7 @@ import gsap from "gsap";
 import Button from "./Button";
 import IconSlideNextPrev from "./IconSlideNextPrev";
 import { Opacidad3, TextoAbajoArriba3, frailejon } from "../animations/gsap";
+import { BtnFrailejones } from "./BtnFrailejones";
 
 const isMobile = window.innerWidth <= 1024;
 const rapido = 0.5;
@@ -20,7 +21,6 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
   const limpiarPuntos = () => {
     setLimpiar(true);
   };
-
 
   useEffect(() => {
     if (mostrarMas) {
@@ -41,7 +41,10 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
       const tl = gsap.timeline();
 
       if (isMobile) {
-        tl.to(".BoxDosmilTexto", { height: "50%", borderRadius: "1.5rem" });
+        tl.to(".BoxDosmilTexto", {
+          height: "50%",
+          borderRadius: "1.5rem 1.5rem 0 0",
+        });
         tl.to(
           ".BoxDosmilImage",
           {
@@ -52,7 +55,6 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
       }
     }
   }, [mostrarMas]);
-
 
   useEffect(() => {
     if (parrafoFrailejon) {
@@ -97,8 +99,10 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
     <div className="dosmilFrailejones relative ocultarEnOrigen w-full h-full z-[1] flex">
       {(numFrailejon >= 1 || mostrarMas) && (
         <span
-          onClick={() => {setNumFrailejon(null)
-            setMostrarMas(false);}}
+          onClick={() => {
+            setNumFrailejon(null);
+            setMostrarMas(false);
+          }}
           className="btnCloseDosMil absolute z-50 w-3 cursor-pointer right-6 top-4"
         >
           <svg
@@ -120,6 +124,13 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         </span>
       )}
       <div className=" flex responsiveReverse relative w-full h-full paddingComponentes">
+        {isMobile && numFrailejon >= 1 && (
+          <BtnFrailejones
+            Estil={"absolute bottom-4 justify-evenly"}
+            numFrailejon={numFrailejon}
+            setNumFrailejon={setNumFrailejon}
+          />
+        )}
         <div
           className={`BoxDosmilImage lg:w-1/2 max-lg:h-1/2  bg-center BoxesImgStart flex-center z-10 relative ${
             numFrailejon >= 1 ? "Frailejonactivo" : ""
@@ -201,35 +212,35 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                 siembra.
               </h2>
               <p className="parrafodescripcion text-black">
-              {isMobile ? (
-                <>
-                  <span>
-                  Estas especies endémicas, criadas cuidadosamente<br/>
-                    {mostrarMas ? (
-                      <span>
-                        Estas especies endémicas, criadas cuidadosamente durante 6 años
-                y certificadas, son ideales para que crezcan en las altas y
-                frías montañas del país.
-                      </span>
-                    ) : (
-                      <span
-                        onClick={() => setMostrarMas(true)}
-                        className="text-blue-500 text-xs"
-                      >
-                        Leer mas...
-                      </span>
-                    )}
-                  </span>
-                </>
+                {isMobile ? (
+                  <>
+                    <span>
+                      Estas especies endémicas, criadas cuidadosamente
+                      <br />
+                      {mostrarMas ? (
+                        <span>
+                          Estas especies endémicas, criadas cuidadosamente
+                          durante 6 años y certificadas, son ideales para que
+                          crezcan en las altas y frías montañas del país.
+                        </span>
+                      ) : (
+                        <span
+                          onClick={() => setMostrarMas(true)}
+                          className="text-blue-500 text-xs"
+                        >
+                          Leer mas...
+                        </span>
+                      )}
+                    </span>
+                  </>
                 ) : (
                   <>
-                  Estas especies endémicas, criadas cuidadosamente Estas especies endémicas, criadas cuidadosamente durante 6 años
-                y certificadas, son ideales para que crezcan en las altas y
-                frías montañas del país.
+                    Estas especies endémicas, criadas cuidadosamente Estas
+                    especies endémicas, criadas cuidadosamente durante 6 años y
+                    certificadas, son ideales para que crezcan en las altas y
+                    frías montañas del país.
                   </>
-
                 )}
-                
               </p>
               <Button
                 handleClick={() => setNumFrailejon(1)}
@@ -238,18 +249,18 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
             </div>
           )}
 
-          <div className="SegundoTextoDosmil w-[65%] h-[80%] flex flex-col justify-evenly">
+          <div className="SegundoTextoDosmil xl:w-[65%] xs:w-[90%] h-[80%] flex flex-col justify-evenly">
             {numFrailejon == 1 && (
               <>
                 <h2
                   className="font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap"
                   ref={parrafoFrailejon}
                 >
-                  FRAILEJÓN <br />
+                  FRAILEJÓN <br className="max-xl:hidden" />
                   AMARILLO <br />
-                  ESPELETIA <br /> LOPEZII
+                  ESPELETIA <br className="max-xl:hidden" /> LOPEZII
                 </h2>
-                <p className="parrafodescripcion lg:whitespace-nowrap">
+                <p className="parrafodescripcion max-xl:text-xs lg:whitespace-nowrap">
                   Esta especie está en peligro de extinción, su flor conocida{" "}
                   <br className="max-xl:hidden" />
                   popularmente como “cara de perro” lo convierte en el{" "}
@@ -264,11 +275,11 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                   className="font-bold uppercase tamanoTitulos tracking-widest whitespace-nowrap"
                   ref={parrafoFrailejon}
                 >
-                  FRAILEJÓN <br /> PLATEADO <br />
-                  ESPELETIA <br />
+                  FRAILEJÓN <br className="max-xl:hidden" /> PLATEADO <br />
+                  ESPELETIA <br className="max-xl:hidden" />
                   INCANA
                 </h2>
-                <p className="parrafodescripcion lg:whitespace-nowrap">
+                <p className="parrafodescripcion max-xl:text-xs lg:whitespace-nowrap">
                   Esta especie endémica está en vía de extinción.{" "}
                   <br className="max-xl:hidden" />
                   Se distingue por sus hojas plateadas y su forma de roseta,{" "}
@@ -286,10 +297,10 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                   ref={parrafoFrailejon}
                 >
                   FRAILEJÓN
-                  <br /> espeletia
-                  <br /> sp.
+                  <br className="max-xl:hidden" /> espeletia
+                  <br className="max-xl:hidden" /> sp.
                 </h2>
-                <p className="parrafodescripcion lg:whitespace-nowrap">
+                <p className="parrafodescripcion max-xl:text-xs lg:whitespace-nowrap">
                   Emblemática de los páramos de los Andes en{" "}
                   <br className="max-xl:hidden" />
                   América del Sur. Se caracteriza por su gran tamaño,{" "}
@@ -301,44 +312,12 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                 </p>
               </>
             )}
-            {numFrailejon >= 1 && (
+            {numFrailejon >= 1 && !isMobile && (
               //          <div className="boxBntSlide lg:w-1/2 xs:w-full min-h-1 absolute lg:bottom-12 xs:bottom-4 right-0 flex justify-evenly z-10">
-              <div className="boxBntSlide w-full min-h-1 flex justify-between z-10">
-                <span
-                  onClick={() => {
-                    if (numFrailejon <= 1) {
-                      setNumFrailejon(0);
-                    } else {
-                      setNumFrailejon(numFrailejon - 1);
-                    }
-                  }}
-                  className={`${
-                    numFrailejon == 1
-                      ? " ocult pointer-events-none "
-                      : "sho pointer-events-auto"
-                  } btnSlide cursor-pointer`}
-                >
-                  <span className="previw btnBorderyellow text-xs">atras</span>
-                </span>
-                <span
-                  onClick={() => {
-                    if (numFrailejon >= 3) {
-                      setNumFrailejon(3);
-                    } else {
-                      setNumFrailejon(numFrailejon + 1);
-                    }
-                  }}
-                  className={`${
-                    numFrailejon == 3
-                      ? " ocult pointer-events-none "
-                      : "sho pointer-events-auto"
-                  } btnSlide cursor-pointer`}
-                >
-                  <span className="previw btnBorderyellow text-xs">
-                    Siguiente
-                  </span>
-                </span>
-              </div>
+              <BtnFrailejones
+                numFrailejon={numFrailejon}
+                setNumFrailejon={setNumFrailejon}
+              />
             )}
           </div>
         </div>
