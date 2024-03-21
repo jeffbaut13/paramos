@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 .BoxesTextStart {
-  @apply overflow-hidden lg:rounded-s-3xl max-lg:rounded-t-3xl relative bg-[#DDDDDD];
+  @apply overflow-hidden lg:rounded-l-3xl max-lg:rounded-t-3xl relative bg-[#DDDDDD];
 }
 .BoxesImgEnd {
-  @apply overflow-hidden bg-no-repeat bg-cover lg:rounded-e-3xl max-lg:rounded-b-3xl bg-[#DDDDDD];
+  @apply overflow-hidden bg-no-repeat bg-cover lg:rounded-r-3xl max-lg:rounded-b-3xl bg-[#DDDDDD];
 }
 
 .BoxesTextEnd {
-  @apply overflow-hidden lg:rounded-e-3xl max-lg:rounded-t-3xl relative bg-[#DDDDDD];
+  @apply overflow-hidden xl:rounded-r-3xl max-xl:rounded-t-3xl  relative bg-[#DDDDDD];
 }
 .BoxesImgStart {
-  @apply overflow-hidden bg-no-repeat bg-cover lg:rounded-s-3xl max-lg:rounded-b-3xl  bg-[#DDDDDD];
+  @apply overflow-hidden bg-no-repeat bg-cover bg-[#DDDDDD] xl:rounded-l-3xl max-xl:rounded-b-3xl;
 }
 
 .bgvid {

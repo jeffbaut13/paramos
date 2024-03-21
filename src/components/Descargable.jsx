@@ -3,7 +3,7 @@ const isMobile = window.innerWidth <= 1024;
 const Descargable = () => {
   return (
     //<div className="descargable absolute w-full h-full z-[1] flex">
-    <div className="descargable ocultarEnOrigen bg-black w-full h-full z-[1] flex">
+    <div className="descargable ocultarEnOrigen bg-black w-full h-full z-[1] flex rounded-3xl">
       <div className=" flex w-full h-full">
         <div
           style={{
@@ -24,7 +24,7 @@ const Descargable = () => {
                 alt="Natura-Love"
               />
             </span>
-           
+
             <span className="cajaimgAliados">
               <img
                 className="Imgaliado"

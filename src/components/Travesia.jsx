@@ -243,11 +243,11 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
                 />
               </span>
             )}
-            <div className="cards z-[3]">
+            <div className="cards xl:rounded-l-3xl max-xl:rounded-b-3xl z-[3]">
               {paramos.map(
                 (paramo, i) =>
                   paramo.id == posicion && (
-                    <div className="relative h-full w-full ">
+                    <div className="xl:rounded-l-3xl max-xl:rounded-b-3xl relative h-full w-full ">
                       <div className="bg-degradadoTravesia w-full h-full absolute z-[2]"></div>
 
                       <img
