@@ -9,6 +9,8 @@ function ContactForm() {
   const [formStatus, setFormStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const inputType = window.innerWidth <= 1024 ? "number" : "text";
+
   const fileUrls = [
     "/descargar/descargable.mp4",
     "/descargar/IMAGEN-DESCARGABLE.jpg"
@@ -72,7 +74,7 @@ function ContactForm() {
         <div className="form-group ">
           <input
             className="bg-transparent border-b-[1px] lg:py-2 my-8 margenFormMobile max-lg:text-xs lg:w-[60%] xs:w-full cajasFormMobile placeholder-white text-white"
-            type="text"
+            type={inputType}
             placeholder="NÚMERO DE WHATSAPP"
             value={whatsapp}
             onChange={(e) => setWhatsApp(e.target.value)}
