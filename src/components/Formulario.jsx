@@ -73,7 +73,7 @@ function ContactForm() {
         <div className="form-group">
           <textarea
             value={message}
-            className=" placeTextAreaContacto-placeholder bg-[#ffffff1c] max-lg:text-xs rounded-lg xl:pb-14 xs:pb-6 lg:w-[60%] xs:w-full my-8 cajasFormMobile text-white"
+            className="placeTextAreaContacto-placeholder bg-[#ffffff1c] max-lg:text-xs rounded-lg xl:pb-14 xs:pb-6 lg:w-[60%] xs:w-full my-8 cajasFormMobile text-white"
             placeholder="Máximo 1800 caracteres"
             onChange={(e) => setMessage(e.target.value)}
             maxLength="1800"
