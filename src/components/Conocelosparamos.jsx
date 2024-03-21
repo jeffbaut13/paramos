@@ -648,7 +648,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
               ) : (
                 <>
                   Lanzamos una convocatoria y <strong>14000 voluntarios</strong>{" "}
-                  se unieron para ser parte de <br />{" "}
+                  se unieron para ser parte de{" "}
                   <strong>Guardianes del Páramo</strong>, seleccionamos los
                   primeros <strong>170</strong> con los que entregamos a la
                   tierra <strong>500 frailejones</strong> de 6 años con los que

@@ -24,13 +24,7 @@ const Descargable = () => {
                 alt="Natura-Love"
               />
             </span>
-            <span className="cajaimgAliados">
-              <img
-                className="Imgaliado"
-                src="/imgAliados/instituto-humboldt.webp"
-                alt="Instituto Humboldt colombia"
-              />
-            </span>
+           
             <span className="cajaimgAliados">
               <img
                 className="Imgaliado"

@@ -421,11 +421,10 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
                     <br />
                     {mostrarMas ? (
                       <span>
-                        seguimos la recomendación del Doctor Alzate y el
-                        Instituto Humboldt para empezar nuestra siembra en el
-                        páramo de Ocetá y el páramo de Mongua, ya que no
-                        representan ningún peligro para las primeras especies
-                        que sembramos.
+                        seguimos la recomendación del Doctor Alzate y de
+                        expertos para empezar nuestra siembra en el páramo de
+                        Ocetá y el páramo de Mongua, ya que no representan
+                        ningún peligro para las primeras especies que sembramos.
                       </span>
                     ) : (
                       <span
@@ -440,10 +439,9 @@ const Travesia = ({ travesiaReverse, setTravesiaReverse, setTrasladar }) => {
               ) : (
                 <>
                   Después de varios estudios, seguimos la recomendación del
-                  Doctor Alzate y el Instituto Humboldt para empezar nuestra
-                  siembra en el páramo de Ocetá y el páramo de Mongua, ya que no
-                  representan ningún peligro para las primeras especies que
-                  sembramos.
+                  Doctor Alzate y de expertos para empezar nuestra siembra en el
+                  páramo de Ocetá y el páramo de Mongua, ya que no representan
+                  ningún peligro para las primeras especies que sembramos.
                 </>
               )}
             </p>
