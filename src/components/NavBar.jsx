@@ -171,7 +171,7 @@ const NavBar = ({
     { id: 4, text: "PRIMERA SIEMBRA", percentage: 2 },
     { id: 5, text: "GUARDIANES", percentage: 3 },
     { id: 6, text: "PRIMER GUARDIÁN", percentage: 4 },
-    { id: 7, text: "CONTACTO", percentage: 5 },
+    { id: 7, text: "VOLUNTARIADO", percentage: 5 },
     { id: 8, text: "ALIADOS", percentage: 6 },
   ];
 
@@ -264,21 +264,22 @@ const NavBar = ({
           </div>
         </div>
       </nav>
-
-      {/*   <>
-        {trasladar >= 1 && (
-          <IconSlideNextPrev
-            handleClick={scrollerResta}
-            customStyle={`iconoSlideInicial xs:rotate-[-90deg] btn1 lg:rotate-[-180deg] fixed lg:left-0 lg:top-1/2 max-lg:bottom-0 max-lg:right-0 lg:translate-x-[-150%] xs:translate-x-[120%] xs:translate-y-[-550%] lg:translate-y-[-50%] opacity-1 z-[100]`}
-          />
-        )}
-        {trasladar < 6 && (
-          <IconSlideNextPrev
-            handleClick={scroller}
-            customStyle={`iconoSlideInicial max-lg:rotate-90 fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 lg:translate-x-[150%] xs:translate-x-[120%] max-lg:right-0 xs:translate-y-[-350%] lg:translate-y-[-50%]  opacity-1 z-[100]`}
-          />
-        )}
-      </> */}
+      {!isMobile && (
+        <>
+          {trasladar >= 1 && (
+            <IconSlideNextPrev
+              handleClick={scrollerResta}
+              customStyle={`iconoSlideInicial xs:rotate-[-90deg] btn1 lg:rotate-[-180deg] fixed lg:left-0 lg:top-1/2 max-lg:bottom-0 max-lg:right-0 lg:translate-x-[-150%] xs:translate-x-[120%] xs:translate-y-[-550%] lg:translate-y-[-50%] opacity-1 z-[100]`}
+            />
+          )}
+          {trasladar < 6 && (
+            <IconSlideNextPrev
+              handleClick={scroller}
+              customStyle={`iconoSlideInicial max-lg:rotate-90 fixed lg:right-0 lg:top-1/2 max-lg:bottom-0 lg:translate-x-[150%] xs:translate-x-[120%] max-lg:right-0 xs:translate-y-[-350%] lg:translate-y-[-50%]  opacity-1 z-[100]`}
+            />
+          )}
+        </>
+      )}
 
       <div className="navVertical">
         {/* <span className="fixed lg:top-0 right-0 xs:translate-y-[-20px] lg:translate-y-[-50px] text-white">

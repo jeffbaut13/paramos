@@ -214,7 +214,7 @@ function App() {
 
       setScrollPercentageTwo(porcentaje * 5);
       setScrollPercentage(6);
-      setActiveButton("CONTACTO");
+      setActiveButton("VOLUNTARIADO");
       setPlayMoises(false);
       TextoAbajoArriba3(".tamanoTitulos");
       TextoAbajoArriba3(".parrafoContacto", 0.2);
