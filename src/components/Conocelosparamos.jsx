@@ -22,7 +22,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
   const handleClick = () => {
     setItemActive(1);
   };
-  console.log(itemActive);
+
   useEffect(() => {
     gsap.fromTo(
       ".parrafoConoce",
