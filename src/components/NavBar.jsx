@@ -13,14 +13,14 @@ const NavBar = ({
 }) => {
   const isMobile = window.innerWidth <= 1024;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMenuDestopk, setIsMenuDestopk] = useState(null);
+  const [isMenuDestopk, setIsMenuDestopk] = useState(true);
   const menuMobile = useRef(null);
   const bntMobile = useRef(null);
   const buton = useRef(null);
   //console.log(isMenuDestopk);
   const openNav = () => {
     if (isMenuDestopk) {
-      const tl = gsap.timeline();
+      /*  const tl = gsap.timeline();
 
       tl.fromTo(
         ".cajaMenu",
@@ -30,7 +30,7 @@ const NavBar = ({
           opacity: 0,
         },
         {
-          width: "95%",
+          width: "70%",
           opacity: 1,
           duration: 0.2,
           ease: "power1.inOut",
@@ -51,7 +51,7 @@ const NavBar = ({
           ease: "power1.inOut",
         },
         "<+=0.2"
-      );
+      ); */
     } else if (isMenuDestopk == false) {
       const tl = gsap.timeline();
       tl.fromTo(
@@ -191,7 +191,7 @@ const NavBar = ({
     <>
       <nav className="text-black maxW w-full fixed flex items-center justify-center z-20 font-semibold m-0 px-6 top-0 left-1/2 min-h-[7vh] translate-x-[-50%] translate-y-[-130%]">
         <div className="flex justify-between items-center w-full relative">
-          <div className="w-[10%]">
+          <div className="w-[5%]">
             <img
               onClick={() => setTrasladar(0)}
               src="/logoFrailejones.png"
@@ -199,7 +199,7 @@ const NavBar = ({
               className="w-[25px] cursor-pointer"
             />
           </div>
-          <div className="lg:flex space-x-4 rounded-3xl">
+          {/* <div className="lg:flex space-x-4 rounded-3xl">
             {buttons.map((button) => {
               if (activeButton === button.text) {
                 return (
@@ -213,9 +213,28 @@ const NavBar = ({
                 );
               }
             })}
+          </div> */}
+          <div className="flex justify-end items-center w-[90%]">
+            {isMenuDestopk != null && !isMobile && (
+              <div className="cajaMenu overflow-hidden whitespace-nowrap w-full flex justify-evenly bg-[#d4d4d4] rounded-full">
+                {buttons.map((button) => (
+                  <button
+                    key={button.text}
+                    onClick={() => handleScrollToPercentage(button.percentage)}
+                    className={`${
+                      activeButton === button.text
+                        ? "bg-[#1d1d1b] text-white"
+                        : "hover:bg-[#1d1d1b] hover:text-white"
+                    } menuHover uppercase text-sm rounded-3xl py-1 px-3 transition-all ease-in-out duration-300`}
+                  >
+                    {button.text}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
-          <div className="flex justify-end items-center w-[10%]">
-            <button
+          <div className="flex justify-end items-center w-[5%]">
+            {/*  <button
               onClick={() => {
                 if (isMenuDestopk == null || isMenuDestopk == false) {
                   if (isMobile) {
@@ -242,28 +261,12 @@ const NavBar = ({
                   className="menuMobile max-lg:hidden inline-block w-3"
                 />
               )}
-            </button>
-
-            {isMenuDestopk != null && !isMobile && (
-              <div className="cajaMenu overflow-hidden whitespace-nowrap absolute flex w-[95%] translate-x-6 justify-evenly bg-[#d4d4d4] rounded-full">
-                {buttons.map((button) => (
-                  <button
-                    key={button.text}
-                    onClick={() => handleScrollToPercentage(button.percentage)}
-                    className={`${
-                      activeButton === button.text
-                        ? "bg-[#1d1d1b] text-white"
-                        : "hover:bg-[#1d1d1b] hover:text-white"
-                    } menuHover uppercase text-sm rounded-3xl py-1 px-3 transition-all ease-in-out duration-300`}
-                  >
-                    {button.text}
-                  </button>
-                ))}
-              </div>
-            )}
+            </button> */}
           </div>
         </div>
       </nav>
+
+      {/* Botones de siguiente o anterior seccion  */}
       {!isMobile && (
         <>
           {trasladar >= 1 && (
@@ -281,6 +284,7 @@ const NavBar = ({
         </>
       )}
 
+      {/* Barra de progreso */}
       <div className="navVertical">
         {/* <span className="fixed lg:top-0 right-0 xs:translate-y-[-20px] lg:translate-y-[-50px] text-white">
           {scrollPercentageTwo}
