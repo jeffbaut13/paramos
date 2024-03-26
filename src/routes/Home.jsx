@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import BackgroundTransition from "../components/BackgroundTransition";
 
+
+
+
 // Componente Home que utiliza el hook useWindowSize
 const Home = () => {
   return (

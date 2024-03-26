@@ -631,7 +631,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                     {mostrarMas ? (
                       <span>
                         <strong>Guardianes del Páramo</strong>, seleccionamos
-                        los primeros <strong>170</strong> con los que entregamos
+                        los primeros <strong>200</strong> con los que entregamos
                         a la tierra <strong>500 frailejones</strong> de 6 años
                         con los que esperamos recuperar estos ecosistemas.
                       </span>
@@ -650,7 +650,7 @@ const Conocelosparamos = ({ itemActive, setItemActive }) => {
                   Lanzamos una convocatoria y <strong>14000 voluntarios</strong>{" "}
                   se unieron para ser parte de{" "}
                   <strong>Guardianes del Páramo</strong>, seleccionamos los
-                  primeros <strong>170</strong> con los que entregamos a la
+                  primeros <strong>200</strong> con los que entregamos a la
                   tierra <strong>500 frailejones</strong> de 6 años con los que
                   esperamos recuperar estos ecosistemas.
                 </>
