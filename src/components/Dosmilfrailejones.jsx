@@ -140,23 +140,26 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           <img
             onClick={limpiarPuntos}
             className={`Espeletia imgFrailejon"`}
-            src={`/imgFrailejones/Espeletia.webp`}
-            alt=""
+            src={`/imgFrailejones/Espeletia-amarillo.webp`}
+            alt="sp-espelitia"
           />
           <img
             onClick={limpiarPuntos}
             className={`amarillo imgFrailejon"`}
-            src={`/imgFrailejones/amarillo.webp`}
-            alt=""
+            src={`/imgFrailejones/espeletia-incana.webp`}
+            alt="Espeletia amarillo"
           />
           <img
             onClick={limpiarPuntos}
             className={`Blanco imgFrailejon"`}
-            src={`/imgFrailejones/Blanco.webp`}
-            alt=""
+            src={`/imgFrailejones/sp-espelitia.webp`}
+            alt="espeletia incana"
           />
           {numFrailejon == 1 && (
             <DescripcionFrailejones
+              puntoUno={"top-[10%]"}
+              puntoDos={"left-[40%] top-[55%]"}
+              pountoTres={"left-[80%] top-[30%]"}
               limpiar={limpiar}
               setLimpiar={setLimpiar}
               claseFrailejon={"Espeletia"}
@@ -173,6 +176,9 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           )}
           {numFrailejon == 2 && (
             <DescripcionFrailejones
+              puntoUno={"top-[10%]"}
+              puntoDos={"left-[40%] top-[55%]"}
+              pountoTres={"left-[80%] top-[30%]"}
               limpiar={limpiar}
               setLimpiar={setLimpiar}
               claseFrailejon={"amarillo"}
@@ -189,6 +195,9 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           )}
           {numFrailejon == 3 && (
             <DescripcionFrailejones
+              puntoUno={"top-[10%]"}
+              puntoDos={"left-[40%] top-[55%]"}
+              pountoTres={"left-[80%] top-[30%]"}
               limpiar={limpiar}
               setLimpiar={setLimpiar}
               claseFrailejon={"Blanco"}

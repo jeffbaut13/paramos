@@ -9,6 +9,9 @@ const DescripcionFrailejones = ({
   tituloFrailejon,
   limpiar,
   setLimpiar,
+  puntoUno,
+  puntoDos,
+  pountoTres,
 }) => {
   const [activeOne, setActiveOne] = useState(false);
   const [activeTwo, setActiveTwo] = useState(false);
@@ -51,7 +54,7 @@ const DescripcionFrailejones = ({
         handleMouseLeave={() => {
           setActiveOne(false);
         }}
-        customStyles={`hidden w-5 h-5 ${claseFrailejon} lg:top-[30%] xs:top-[40%]`}
+        customStyles={`hidden w-5 h-5 ${claseFrailejon} ${puntoUno}`}
       />
 
       <span
@@ -81,7 +84,7 @@ const DescripcionFrailejones = ({
         handleMouseLeave={() => {
           setActiveTwo(false);
         }}
-        customStyles={`hidden w-5 h-5 ${claseFrailejon} left-[30%] lg:top-[52%] xs:top-[62%]`}
+        customStyles={`hidden w-5 h-5 ${claseFrailejon} ${puntoDos} `}
       />
 
       <span
@@ -111,7 +114,7 @@ const DescripcionFrailejones = ({
         handleMouseLeave={() => {
           setActiveThree(false);
         }}
-        customStyles={`hidden w-5 h-5 ${claseFrailejon} left-[80%] lg:top-[55%] xs:top-[65%]`}
+        customStyles={`hidden w-5 h-5 ${claseFrailejon} ${pountoTres} `}
       />
 
       <span
