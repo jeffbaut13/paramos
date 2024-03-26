@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 
 function ContactForm() {
   const [name, setName] = useState("");
   const [ciudad, setCiudad] = useState("");
+  const [ciudades, setCiudades] = useState([]);
   const [whatsapp, setWhatsApp] = useState("");
   const [edad, setEdad] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [formStatus, setFormStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // Cargar ciudades desde el archivo JSON
+    fetch('/descargar/ciudades.json')
+      .then(response => response.json())
+      .then(data => setCiudades(data.ciudades))
+      .catch(error => console.error("Error al cargar las ciudades:", error));
+  }, []);
 
   const inputType = window.innerWidth <= 1024 ? "number" : "text";
 
@@ -78,14 +88,20 @@ function ContactForm() {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className="form-group ">
+        <div className="form-group">
           <input
             className="bg-transparent border-b-[1px] margenFormMobile max-lg:text-xs lg:w-[60%] xs:w-full cajasFormMobile placeholder-white text-white"
-            type={"text"}
+            type="text"
             placeholder="CIUDAD"
             value={ciudad}
             onChange={(e) => setCiudad(e.target.value)}
+            list="ciudades-lista"
           />
+          <datalist id="ciudades-lista">
+            {ciudades.map((ciudad, index) => (
+              <option key={index} value={ciudad} />
+            ))}
+          </datalist>
         </div>
         <div className="form-group ">
           <input
