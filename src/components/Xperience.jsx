@@ -227,7 +227,7 @@ const Xperience = ({ play, setPlay }) => {
                     Nuestros Guardianes
                     {mostrarMas ? (
                       <span>
-                        se registraron y pacientemente esperaron el llamado que
+                        &nbsp;se registraron y pacientemente esperaron el llamado que
                         los llevó a Boyacá, allí se capacitaron para cuidar y
                         sembrar frailejones. En el sitio de siembra, guiados por
                         sabedores ancestrales, pidieron permiso a la montaña y

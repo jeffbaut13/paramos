@@ -56,6 +56,7 @@ const Onboarding = () => {
   const toggle360View = () => {
     setShow360View(!show360View);
   };
+  
 
   useEffect(() => {
     if (inicio !== 1 && show360View) {
