@@ -199,23 +199,25 @@ const NavBar = ({
               className="w-[25px] cursor-pointer"
             />
           </div>
-          {/* <div className="lg:flex space-x-4 rounded-3xl">
-            {buttons.map((button) => {
-              if (activeButton === button.text) {
-                return (
-                  <button
-                    ref={buton}
-                    key={button.text}
-                    className={`cursor-default px-4 py-1 transition-colors lg:text-xl xs:text-xs tracking-[0.5em] rounded-3xl uppercase text-white`}
-                  >
-                    {button.text}
-                  </button>
-                );
-              }
-            })}
-          </div> */}
-          <div className="flex justify-end items-center w-[90%]">
-            {isMenuDestopk != null && !isMobile && (
+          {isMobile && (
+            <div className="lg:flex space-x-4 rounded-3xl">
+              {buttons.map((button) => {
+                if (activeButton === button.text) {
+                  return (
+                    <button
+                      ref={buton}
+                      key={button.text}
+                      className={`cursor-default px-4 py-1 transition-colors lg:text-xl xs:text-xs tracking-[0.5em] rounded-3xl uppercase text-white`}
+                    >
+                      {button.text}
+                    </button>
+                  );
+                }
+              })}
+            </div>
+          )}
+          {isMenuDestopk != null && !isMobile && (
+            <div className="flex justify-end items-center w-[90%]">
               <div className="cajaMenu overflow-hidden whitespace-nowrap w-full flex justify-evenly bg-[#d4d4d4] rounded-full">
                 {buttons.map((button) => (
                   <button
@@ -231,37 +233,19 @@ const NavBar = ({
                   </button>
                 ))}
               </div>
-            )}
-          </div>
+            </div>
+          )}
+
+          {/* Hamburgesaa solo en mobile */}
           <div className="flex justify-end items-center w-[5%]">
-            {/*  <button
-              onClick={() => {
-                if (isMenuDestopk == null || isMenuDestopk == false) {
-                  if (isMobile) {
-                    setIsMenuOpen(true);
-                  } else {
-                    setIsMenuDestopk(true);
-                  }
-                } else {
-                  if (isMobile) {
-                    setIsMenuOpen(true);
-                  } else {
-                    setIsMenuDestopk(false);
-                  }
-                }
-              }}
-              className="relative inline-block z-20 toggleEvent"
-            >
-              {isMenuDestopk == null || isMenuDestopk == false ? (
+            {isMobile && (
+              <button
+                onClick={() => setIsMenuOpen(true)}
+                className="relative inline-block z-20 toggleEvent"
+              >
                 <img src="/menuMobile.webp" alt="Menu" className="menuMobile" />
-              ) : (
-                <img
-                  src="/svg/close.svg"
-                  alt="Menu"
-                  className="menuMobile max-lg:hidden inline-block w-3"
-                />
-              )}
-            </button> */}
+              </button>
+            )}
           </div>
         </div>
       </nav>
