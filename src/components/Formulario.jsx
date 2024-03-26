@@ -67,7 +67,7 @@ function ContactForm() {
     <div className="contact-form h-full w-[80%] max-lg:pb-6">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-evenly h-full py-12"
+        className="flex flex-col justify-evenly h-full lg:py-12"
       >
         <div className="form-group">
           <input
