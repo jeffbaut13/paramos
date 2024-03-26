@@ -17,7 +17,7 @@ export default function ErrorPage() {
           404
         </h1>
         <p className="text-center">OOPS! PÁGINA NO ENCONTRADA</p>
-        <Link to={"/paramo"} className="underline">
+        <Link to={"/paramo"} className="border-b-2 pb-[2px]">
           Ir al inicio
         </Link>
       </div>

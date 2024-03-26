@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 function ContactForm() {
   const [name, setName] = useState("");
   const [ciudad, setCiudad] = useState("");
@@ -15,10 +14,10 @@ function ContactForm() {
 
   useEffect(() => {
     // Cargar ciudades desde el archivo JSON
-    fetch('/descargar/ciudades.json')
-      .then(response => response.json())
-      .then(data => setCiudades(data.ciudades))
-      .catch(error => console.error("Error al cargar las ciudades:", error));
+    fetch("/descargar/ciudades.json")
+      .then((response) => response.json())
+      .then((data) => setCiudades(data.ciudades))
+      .catch((error) => console.error("Error al cargar las ciudades:", error));
   }, []);
 
   const inputType = window.innerWidth <= 1024 ? "number" : "text";
@@ -139,6 +138,16 @@ function ContactForm() {
             maxLength="1800"
           />
         </div>
+        <div className="form-group  text-white">
+          <input type="checkbox" />
+          <a
+            target="_blank"
+            href="https://interrapidisimo.com/wp-content/uploads/Proteccion-Datos-Personales-2024.pdf"
+          >
+            <span> Autorizo tratamiento de datos</span>{" "}
+            <span className="border-b-2 pb-[2px]">Leer aquí</span>{" "}
+          </a>
+        </div>
         <div className="form-group">
           {isLoading ? (
             <div className="text-start  text-white mb-4 bg-[#ffffff1c] lg:w-[60%] xs:w-full text-xs">
@@ -152,6 +161,7 @@ function ContactForm() {
             )
           )}
         </div>
+
         <div className="lg:w-[60%] xs:w-full flex justify-center">
           <button
             className="w-fit flex-center-col uppercase tracking-[0.3em] flex items-center justify-center font-normal px-5 py-3 text-center lg:text-base xs:text-xs rounded-lg hover:bg-black bg-white transition-all ease-in-out duration-300 text-black hover:text-white"
