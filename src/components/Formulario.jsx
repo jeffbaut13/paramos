@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ciudades } from "../data/ciudades.json";
 
 function ContactForm() {
   const [name, setName] = useState("");
   const [ciudad, setCiudad] = useState("");
-  const [ciudades, setCiudades] = useState([]);
+
   const [whatsapp, setWhatsApp] = useState("");
   const [edad, setEdad] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [formStatus, setFormStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    // Cargar ciudades desde el archivo JSON
-    fetch("/descargar/ciudades.json")
-      .then((response) => response.json())
-      .then((data) => setCiudades(data.ciudades))
-      .catch((error) => console.error("Error al cargar las ciudades:", error));
-  }, []);
 
   const inputType = window.innerWidth <= 1024 ? "number" : "text";
 
