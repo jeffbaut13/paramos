@@ -117,7 +117,7 @@ function ContactForm() {
         <div className="form-group">
           <textarea
             value={message}
-            className="placeTextAreaContacto-placeholder bg-[#ffffff1c] max-lg:text-xs rounded-lg xl:pb-14 xs:pb-10 w-full xs:w-ful cajasFormMobile text-white"
+            className="placeTextAreaContacto-placeholder bg-[#ffffff1c] max-lg:text-xs rounded-lg xl:pb-14 xs:pb-10 w-full xs:w-full lg:w-[60%] cajasFormMobile text-white"
             placeholder="Cuéntanos por qué quieres ser un Guardián"
             onChange={(e) => setMessage(e.target.value)}
             maxLength="1800"
