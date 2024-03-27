@@ -297,10 +297,6 @@ function App() {
                 numFrailejon={numFrailejon}
                 setNumFrailejon={setNumFrailejon}
               />
-              {/* <CapituloMoises
-              playCapitulo={playCapitulo}
-              setPlayCapitulo={setPlayCapitulo}
-            /> */}
               <Travesia
                 setTrasladar={setTrasladar}
                 travesiaReverse={travesiaReverse}
@@ -312,7 +308,12 @@ function App() {
                 setPlayMoises={setPlayMoises}
               />
               <Contacto />
-              <Descargable />
+              {/* <Descargable /> */} 
+                             <CapituloMoises
+              playCapitulo={playCapitulo}
+              setPlayCapitulo={setPlayCapitulo}
+            />
+
             </div>
           </div>
         </div>

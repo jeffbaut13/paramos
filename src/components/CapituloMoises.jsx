@@ -38,13 +38,13 @@ export const CapituloMoises = ({ playCapitulo, setPlayCapitulo }) => {
             {isMobile ? (
               <img
                 className="xperiaimgBg w-full h-full object-cover"
-                src="/experiencia/experiencia.webp"
+                src="/experiencia/biologomobile.webp"
                 alt=""
               />
             ) : (
               <img
                 className="xperiaimgBg w-full h-full object-cover"
-                src="/experiencia/experiencia.webp"
+                src="/experiencia/biologo.webp"
                 alt=""
               />
             )}
@@ -69,7 +69,7 @@ export const CapituloMoises = ({ playCapitulo, setPlayCapitulo }) => {
             onPause={() => setPause(true)}
             onPlay={() => setPause(false)}
             playing={playCapitulo == true ? true : false}
-            url="https://youtu.be/wP18CMcPoro"
+            url="https://youtu.be/hU4TeVmUWGs"
             className="react-player"
             loop
             width={
