@@ -154,7 +154,7 @@ function App() {
       });
       setScrollPercentageTwo(porcentaje);
 
-      setActiveButton("ESPECIES");
+      setActiveButton("ESPECIE");
       setScrollPercentage(2);
       TextoAbajoArriba3(".dosmilFrailejones .PrimerTextoDosmil");
       TextoAbajoArriba3(".dosmilFrailejones .parrafodescripcion", 0.3);

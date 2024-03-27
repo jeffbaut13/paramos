@@ -167,7 +167,7 @@ const NavBar = ({
 
   const buttons = [
     { id: 1, text: "PROPÓSITO", percentage: 0 },
-    { id: 3, text: "ESPECIES", percentage: 1 },
+    { id: 3, text: "ESPECIE", percentage: 1 },
     { id: 4, text: "PRIMERA SIEMBRA", percentage: 2 },
     { id: 5, text: "GUARDIANES", percentage: 3 },
     { id: 6, text: "PRIMER GUARDIÁN", percentage: 4 },
