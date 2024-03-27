@@ -111,7 +111,7 @@ const Fecha = ({
       case 3:
         return {
           parrafo:
-            "cuando naciste nuetros páramos eran fuertes y sanos, se veían así:",
+            "cuando naciste nuestros páramos eran fuertes y sanos, se veían así:",
           urlKuala:
             "https://kuula.co/share/collection/7c9xt?logo=-1&info=0&fs=1&vr=1&autorotate=0.04&thumbs=3&margin=11&inst=es",
         };

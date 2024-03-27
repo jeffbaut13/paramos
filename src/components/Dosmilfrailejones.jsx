@@ -243,8 +243,7 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                   </>
                 ) : (
                   <>
-                    Estas especies endémicas, criadas cuidadosamente Estas
-                    especies endémicas, criadas cuidadosamente durante 6 años y
+                    Estas especies endémicas, criadas cuidadosamente durante 6 años y
                     certificadas, son ideales para que crezcan en las altas y
                     frías montañas del país.
                   </>
@@ -293,10 +292,10 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                 <p className="parrafodescripcion max-xl:text-xs lg:whitespace-nowrap">
                   Esta especie endémica está en vía de extinción.{" "}
                   <br className="max-xl:hidden" />
-                  Se distingue por sus hojas plateadas y su forma de roseta,{" "}
-                  <br className="max-xl:hidden" /> lo que le da una apariencia
-                  única y llamativa. Crece entre{" "}
-                  <br className="max-xl:hidden" /> los 3200 y los 3900 m s. n.
+                  Se distingue por sus hojas plateadas y su forma <br className="max-xl:hidden" />de roseta,{" "}
+                   lo que le da una apariencia
+                  única <br className="max-xl:hidden" />y llamativa. Crece entre{" "}
+                   los 3200 <br className="max-xl:hidden" />y los 3900 m s. n.
                   m.
                 </p>
               </>
