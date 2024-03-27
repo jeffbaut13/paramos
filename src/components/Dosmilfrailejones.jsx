@@ -124,13 +124,13 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
         </span>
       )}
       <div className=" flex responsiveReverse relative w-full h-full paddingComponentes">
-        {isMobile && numFrailejon >= 1 && (
+        {/* {isMobile && numFrailejon >= 1 && (
           <BtnFrailejones
             Estil={"absolute bottom-4 justify-evenly"}
             numFrailejon={numFrailejon}
             setNumFrailejon={setNumFrailejon}
           />
-        )}
+        )} */}
         <div
           className={`BoxDosmilImage lg:w-1/2 max-lg:h-1/2  bg-center BoxesImgStart flex-center z-10 relative ${
             numFrailejon >= 1 ? "Frailejonactivo" : ""
@@ -217,19 +217,19 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
           {numFrailejon == null && (
             <div className="anchoInicialPrimario xl:w-[80%] xs:w-[75%] flex flex-col items-center justify-evenly xl:h-4/5">
               <h2 className="PrimerTextoDosmil font-bold uppercase tamanoTitulos tracking-widest w-full">
-                Elegimos 3 especies de frailejón.
+                EL FRAILEJÓN ENDÉMICO QUE SEMBRAMOS EN BOYACÁ.
               </h2>
               <p className="parrafodescripcion text-black">
                 {isMobile ? (
                   <>
                     <span>
-                      Estas especies endémicas,
+                      Esta especie endémica,
                       <br />
                       {mostrarMas ? (
                         <span>
-                          criadas cuidadosamente durante 6 años y certificadas,
-                          son ideales para que crezcan en las altas y frías
-                          montañas del país.
+                          criadas cuidadosamente durante 6 años y certificadas
+                          por el ICA, es ideal para que crezca en las altas y
+                          frías montañas del país.
                         </span>
                       ) : (
                         <span
@@ -243,9 +243,12 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                   </>
                 ) : (
                   <>
-                    Estas especies endémicas, criadas cuidadosamente durante 6 años y
-                    certificadas, son ideales para que crezcan en las altas y
-                    frías montañas del país.
+                    {/*  Estas especies endémicas, criadas cuidadosamente durante 6
+                    años y certificadas, son ideales para que crezcan en las
+                    altas y frías montañas del país. */}
+                    Esta especie endémica, criada cuidadosamente durante 6 años
+                    y certificadas por el ICA, es ideal para que crezca en las
+                    altas y frías montañas del país.
                   </>
                 )}
               </p>
@@ -254,7 +257,7 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                   setNumFrailejon(1);
                   setMostrarMas(false);
                 }}
-                text={"Conócelas"}
+                text={"Conócelo"}
               />
             </div>
           )}
@@ -292,11 +295,11 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                 <p className="parrafodescripcion max-xl:text-xs lg:whitespace-nowrap">
                   Esta especie endémica está en vía de extinción.{" "}
                   <br className="max-xl:hidden" />
-                  Se distingue por sus hojas plateadas y su forma <br className="max-xl:hidden" />de roseta,{" "}
-                   lo que le da una apariencia
-                  única <br className="max-xl:hidden" />y llamativa. Crece entre{" "}
-                   los 3200 <br className="max-xl:hidden" />y los 3900 m s. n.
-                  m.
+                  Se distingue por sus hojas plateadas y su forma{" "}
+                  <br className="max-xl:hidden" />
+                  de roseta, lo que le da una apariencia única{" "}
+                  <br className="max-xl:hidden" />y llamativa. Crece entre los
+                  3200 <br className="max-xl:hidden" />y los 3900 m s. n. m.
                 </p>
               </>
             )}
@@ -322,13 +325,13 @@ const Dosmilfrailejones = ({ numFrailejon, setNumFrailejon }) => {
                 </p>
               </>
             )}
-            {numFrailejon >= 1 && !isMobile && (
+            {/* {numFrailejon >= 1 && !isMobile && (
               //          <div className="boxBntSlide lg:w-1/2 xs:w-full min-h-1 absolute lg:bottom-12 xs:bottom-4 right-0 flex justify-evenly z-10">
               <BtnFrailejones
                 numFrailejon={numFrailejon}
                 setNumFrailejon={setNumFrailejon}
               />
-            )}
+            )} */}
           </div>
         </div>
       </div>
