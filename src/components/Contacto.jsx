@@ -1,7 +1,7 @@
 import React from "react";
 import ContactForm from "./Formulario";
 const isMobile = window.innerWidth <= 1024;
-const Contacto = () => {
+const Contacto = ({curvas}) => {
   return (
     //<div className="contacto absolute w-full h-full z-[1] flex">
     <div className="contacto ocultarEnOrigen w-full h-full z-[1] flex">
@@ -12,17 +12,18 @@ const Contacto = () => {
               isMobile ? "contactoM" : "contacto"
             }.webp)`,
           }}
-          className=" overflow-hidden  bg-no-repeat bg-cover w-full rounded-3xl flex "
+          className={` overflow-hidden  bg-no-repeat bg-cover w-full   flex ${!curvas ? "rounded-3xl": ""}`}
         >
-          <div className=" w-full h-auto bg2 rounded-3xl flex xs:flex-col lg:flex-row">
-            <div className=" lg:w-[50%] xs:w-full lg:h-full xs:h-[30%] flex flex-col justify-center lg:p-32">
-              <p className="tamanoTitulos textoContacto lg:text-start xs:text-center font-bold text-white tracking-widest whitespace-wrap relative">
-                HABRÁN MÁS SIEMBRAS EN AGOSTO.
-                <br />{" "}
-                <span className="lg:text-2xl xs:text-base">
-                  {" "}
-                  <br />
-                  HAZTE VOLUNTARIO
+          <div className={`w-full h-auto bg2  flex xs:flex-col lg:flex-row ${!curvas ? "rounded-3xl": ""}`}>
+            <div className=" lg:w-[50%] xs:w-full lg:h-full xs:h-[30%] flex flex-col lg:justify-center xs:justify-end lg:p-32">
+              <p className="uppercase tamanoTitulos textoContacto lg:text-start xs:text-center font-bold text-white tracking-widest whitespace-wrap relative">
+              <span className="w-full">
+                
+              Sembraremos en agosto. <br   />
+              </span>
+                <span className="w-full lg:text-2xl xs:text-base xs:mt-6 lg:mt-8 inline-block">
+                
+                  Hazte guardián del <br className="lg:hidden" />Páramo aquí:
                 </span>
               </p>
             </div>

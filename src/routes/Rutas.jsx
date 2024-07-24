@@ -7,6 +7,7 @@ import Paramo from "./Paramo";
 import Onboarding from "./Onboarding";
 
 import Home from "./Home";
+import Form from "./Form";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -45,6 +46,16 @@ const router = createBrowserRouter([
       <>
         <ScrollToTopOnRouteChange />
         <Paramo />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/formulario",
+    element: (
+      <>
+        <ScrollToTopOnRouteChange />
+        <Form />
       </>
     ),
     errorElement: <ErrorPage />,
