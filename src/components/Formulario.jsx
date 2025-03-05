@@ -136,7 +136,7 @@ function ContactForm() {
           <a
             target="_blank"
             className="max-lg:text-[0.65rem]"
-            href="https://interrapidisimo.com/wp-content/uploads/Proteccion-Datos-Personales-2024.pdf"
+            href="https://interrapidisimo.com/proteccion-de-datos-personales/"
           >
             <span> Autorizo tratamiento de datos</span>{" "}
             <span className="border-b-2 pb-[2px]">Leer aquí</span>{" "}
